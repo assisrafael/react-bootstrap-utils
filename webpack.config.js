@@ -1,0 +1,55 @@
+'use strict';
+
+const webpack = require('webpack');
+
+module.exports = [
+  {
+    entry: './src/index.js',
+    externals: {
+      react: {
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react',
+      },
+      'react-dom': {
+        root: 'ReactDOM',
+        commonjs2: 'react-dom',
+        commonjs: 'react-dom',
+        amd: 'react-dom',
+      },
+    },
+    output: {
+      library: 'ReactBootstrapUtils',
+      libraryTarget: 'umd',
+    },
+  },
+  {
+    entry: './demo/demo.jsx',
+    output: {
+      path: __dirname + '/demo',
+      filename: 'demo.js',
+    },
+    devServer: {
+      contentBase: './demo',
+      hot: true,
+    },
+    plugins: [new webpack.HotModuleReplacementPlugin()],
+  },
+].map((setup) => ({
+  ...setup,
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+  },
+}));
