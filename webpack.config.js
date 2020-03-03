@@ -22,6 +22,7 @@ module.exports = [
     output: {
       library: 'ReactBootstrapUtils',
       libraryTarget: 'umd',
+      globalObject: 'this',
     },
   },
   {
