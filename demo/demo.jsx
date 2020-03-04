@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Form, FormGroupInput, FormGroupSelect, FormGroupSwitch, FormGroupCheckbox } from '../src/';
+import { Form, FormGroupInput, FormGroupSelect, FormGroupSwitch, FormGroupCheckbox, FormGroupRadio } from '../src/';
 
 ReactDOM.render(
   <Form
@@ -76,6 +76,27 @@ ReactDOM.render(
           name="checkboxField"
           label="Checkbox field"
           valueLabel="Checkbox description"
+        />
+      </div>
+      <div className="col">
+        <FormGroupRadio
+          id="radioFieldId"
+          name="radioField"
+          label="Radio field"
+          options={[
+            {
+              value: 'a',
+              label: 'A',
+            },
+            {
+              value: 'b',
+              label: 'B',
+            },
+            {
+              value: 'c',
+              label: 'C',
+            },
+          ]}
         />
       </div>
     </div>

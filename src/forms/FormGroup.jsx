@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormCheckbox } from './FormCheckbox';
 import { FormInput } from './FormInput';
 import { FormLabel } from './FormLabel';
+import { FormRadio } from './FormRadio';
 import { FormSelect } from './FormSelect';
 import { FormSwitch } from './FormSwitch';
 
@@ -29,6 +31,33 @@ export function FormGroupInput(props) {
     </FormGroup>
   );
 }
+
+export function FormGroupRadio({ options, id, ...props }) {
+  return (
+    <FormGroup {...props}>
+      <div>
+        {options.map((option, index) => (
+          <FormRadio
+            key={index}
+            {...props}
+            checkedValue={option.value}
+            valueLabel={option.label}
+            id={`${id}-${index}`}
+          />
+        ))}
+      </div>
+    </FormGroup>
+  );
+}
+
+FormGroupRadio.defaultProps = {
+  inline: true,
+};
+
+FormGroupRadio.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.object),
+  inline: PropTypes.bool,
+};
 
 export function FormGroupSelect(props) {
   return (

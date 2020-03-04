@@ -9,7 +9,7 @@ export function useForm(initialState) {
     update(name, value) {
       setFormState({
         ...formState,
-        [name]: value
+        [name]: value,
       });
     },
     getFormData() {
@@ -20,7 +20,7 @@ export function useForm(initialState) {
     },
     reset() {
       setFormState(initialState);
-    }
+    },
   };
 }
 
