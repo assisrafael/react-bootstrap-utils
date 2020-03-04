@@ -29,10 +29,6 @@ export function FormSwitch({ id, name, required, trueLabel, falseLabel }) {
   );
 }
 
-FormSwitch.defaultProps = {
-  showValueLabel: false,
-};
-
 FormSwitch.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
