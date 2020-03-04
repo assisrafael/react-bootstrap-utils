@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Form, FormGroupInput, FormGroupSelect } from '../src/';
+import { Form, FormGroupInput, FormGroupSelect, FormGroupSwitch } from '../src/';
 
 ReactDOM.render(
   <Form
@@ -57,6 +57,8 @@ ReactDOM.render(
           }));
       }}
     />
+
+    <FormGroupSwitch id="switchFieldId" name="switchField" label="Switch field" trueLabel="ON" falseLabel="OFF" />
   </Form>,
   document.getElementById('root')
 );
