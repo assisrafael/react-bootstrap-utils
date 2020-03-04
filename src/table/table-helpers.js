@@ -10,3 +10,9 @@ export function normalizeColumns(columns) {
     };
   });
 }
+
+export function getColumnClass({ align }) {
+  const classes = [align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : ''];
+
+  return classes.join(' ');
+}

@@ -158,11 +158,7 @@ function TableExamples() {
 
       <h2>Table with custom styles</h2>
       <Table
-        columns={[
-          { attribute: 'a', label: 'A', align: 'center' },
-          { attribute: 'b', label: 'B', align: 'right' },
-          { attribute: 'c', label: 'C' },
-        ]}
+        columns={['a', 'b', 'c']}
         docs={[
           { a: 1, b: 2, c: 3 },
           { a: 4, b: 5, c: 6 },

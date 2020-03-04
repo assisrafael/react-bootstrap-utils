@@ -15,7 +15,7 @@ export function Table({ docs, columns, striped, bordered, hover, small, dark, ro
     dark && 'table-dark',
   ].join(' ');
   return (
-    <div class="table-responsive">
+    <div className="table-responsive">
       <table className={tableClasses}>
         {caption && <caption>{caption}</caption>}
         <TableHead columns={normalizedColumns} />
