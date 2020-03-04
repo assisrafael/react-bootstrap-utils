@@ -24,7 +24,6 @@ export function Form({ children, initialValues, onSubmit, submitLabel, cancelLab
 
   return (
     <form onSubmit={handleSubmit}>
-      <code>{JSON.stringify(formState.getFormData(), '', ' ')}</code>
       <FormContext.Provider value={formState}>{children}</FormContext.Provider>
 
       <FormActions {...{ submitLabel, cancelLabel, onCancel: handleCancel }} />
