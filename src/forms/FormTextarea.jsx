@@ -5,17 +5,11 @@ import { FormContext, handleInputChange } from './form-helpers';
 export function FormTextarea({ id, name, required, placeholder, rows }) {
   const formState = useContext(FormContext);
 
-  function onChange(e) {
-    const { name, value } = handleInputChange(e);
-
-    formState.update(name, value);
-  }
-
   return (
     <textarea
       {...{ required, name, id, placeholder, rows }}
       className="form-control"
-      onChange={onChange}
+      onChange={handleInputChange.bind(null, formState)}
       value={formState.getValue(name) || ''}
     ></textarea>
   );

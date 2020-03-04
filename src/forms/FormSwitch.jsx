@@ -4,13 +4,6 @@ import { FormContext, handleInputChange } from './form-helpers';
 
 export function FormSwitch({ id, name, required, trueLabel, falseLabel }) {
   const formState = useContext(FormContext);
-
-  function onChange(e) {
-    const { name, value } = handleInputChange(e);
-
-    formState.update(name, value);
-  }
-
   const value = formState.getValue(name) || false;
 
   return (
@@ -19,7 +12,7 @@ export function FormSwitch({ id, name, required, trueLabel, falseLabel }) {
         {...{ required, name, id }}
         type="checkbox"
         className="custom-control-input"
-        onChange={onChange}
+        onChange={handleInputChange.bind(null, formState)}
         checked={value}
       />
       <label className="custom-control-label" htmlFor={id}>

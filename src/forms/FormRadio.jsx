@@ -4,13 +4,6 @@ import { FormContext, handleInputChange } from './form-helpers';
 
 export function FormRadio({ id, name, required, checkedValue, valueLabel, inline }) {
   const formState = useContext(FormContext);
-
-  function onChange(e) {
-    const { name, value } = handleInputChange(e);
-
-    formState.update(name, value);
-  }
-
   const value = formState.getValue(name) || false;
 
   return (
@@ -19,7 +12,7 @@ export function FormRadio({ id, name, required, checkedValue, valueLabel, inline
         {...{ required, name, id }}
         type="radio"
         className="custom-control-input"
-        onChange={onChange}
+        onChange={handleInputChange.bind(null, formState)}
         checked={value === checkedValue}
         value={checkedValue}
       />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 export const FormContext = React.createContext(null);
 
@@ -24,10 +24,10 @@ export function useForm(initialState) {
   };
 }
 
-export function handleInputChange(event) {
+export function handleInputChange(formState, event) {
   const target = event.target;
   const value = target.type === 'checkbox' ? target.checked : target.value;
   const name = target.name;
 
-  return { name, value };
+  formState.update(name, value);
 }

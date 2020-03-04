@@ -4,17 +4,11 @@ import { FormContext, handleInputChange } from './form-helpers';
 export function FormSelect({ id, name, options, required, placeholder }) {
   const formState = useContext(FormContext);
 
-  function onChange(e) {
-    const { name, value } = handleInputChange(e);
-
-    formState.update(name, value);
-  }
-
   return (
     <select
       {...{ required, name, id }}
       className="form-control"
-      onChange={onChange}
+      onChange={handleInputChange.bind(null, formState)}
       value={formState.getValue(name) || ''}
     >
       <option value="">{placeholder}</option>
