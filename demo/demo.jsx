@@ -155,6 +155,26 @@ function TableExamples() {
           { a: 7, b: 8, c: 9 },
         ]}
       />
+
+      <h2>Table with custom styles</h2>
+      <Table
+        columns={[
+          { attribute: 'a', label: 'A', align: 'center' },
+          { attribute: 'b', label: 'B', align: 'right' },
+          { attribute: 'c', label: 'C' },
+        ]}
+        docs={[
+          { a: 1, b: 2, c: 3 },
+          { a: 4, b: 5, c: 6 },
+          { a: 7, b: 8, c: 9 },
+        ]}
+        dark={true}
+        small={false}
+        hover={false}
+        striped={false}
+        bordered={true}
+        rowClass={(doc) => (doc.b % 2 === 1 ? 'table-primary' : '')}
+      />
     </div>
   );
 }
