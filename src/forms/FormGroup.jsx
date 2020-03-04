@@ -1,6 +1,7 @@
 import React from 'react';
-import { FormLabel } from './FormLabel';
+import { FormCheckbox } from './FormCheckbox';
 import { FormInput } from './FormInput';
+import { FormLabel } from './FormLabel';
 import { FormSelect } from './FormSelect';
 import { FormSwitch } from './FormSwitch';
 
@@ -10,6 +11,14 @@ function FormGroup({ children, ...props }) {
       <FormLabel {...props} />
       {children}
     </div>
+  );
+}
+
+export function FormGroupCheckbox(props) {
+  return (
+    <FormGroup {...props}>
+      <FormCheckbox {...props} />
+    </FormGroup>
   );
 }
 

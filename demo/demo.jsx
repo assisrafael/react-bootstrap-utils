@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Form, FormGroupInput, FormGroupSelect, FormGroupSwitch } from '../src/';
+import { Form, FormGroupInput, FormGroupSelect, FormGroupSwitch, FormGroupCheckbox } from '../src/';
 
 ReactDOM.render(
   <Form
@@ -22,43 +22,63 @@ ReactDOM.render(
       </div>
     </div>
 
-    <FormGroupSelect name="selectField" label="Select field (list)" options={['A', 'B', 'C']} />
-    <FormGroupSelect
-      name="selectField2"
-      label="Select field 2 (array of objects)"
-      options={[
-        { label: 'A', value: 'a' },
-        { label: 'B', value: 'b' },
-        { label: 'C', value: 'c' },
-      ]}
-      required
-    />
+    <div className="row">
+      <div className="col">
+        <FormGroupSelect name="selectField" label="Select field (list)" options={['A', 'B', 'C']} />
+      </div>
+      <div className="col">
+        <FormGroupSelect
+          name="selectField2"
+          label="Select field 2 (array of objects)"
+          options={[
+            { label: 'A', value: 'a' },
+            { label: 'B', value: 'b' },
+            { label: 'C', value: 'c' },
+          ]}
+          required
+        />
+      </div>
+      <div className="col">
+        <FormGroupSelect
+          name="selectField3"
+          label="Select field 3 (function)"
+          options={(formData) => {
+            return Object.entries(formData)
+              .filter(([key]) => key !== 'selectField3')
+              .map(([_, value]) => value);
+          }}
+          placeholder="Select one value"
+        />
+      </div>
+      <div className="col">
+        <FormGroupSelect
+          name="selectField4"
+          label="Select field 4 (function)"
+          options={(formData) => {
+            return Object.entries(formData)
+              .filter(([key]) => key !== 'selectField4')
+              .map(([key, value]) => ({
+                label: key,
+                value,
+              }));
+          }}
+        />
+      </div>
+    </div>
 
-    <FormGroupSelect
-      name="selectField3"
-      label="Select field 3 (function)"
-      options={(formData) => {
-        return Object.entries(formData)
-          .filter(([key]) => key !== 'selectField3')
-          .map(([_, value]) => value);
-      }}
-      placeholder="Select one value"
-    />
-
-    <FormGroupSelect
-      name="selectField4"
-      label="Select field 4 (function)"
-      options={(formData) => {
-        return Object.entries(formData)
-          .filter(([key]) => key !== 'selectField4')
-          .map(([key, value]) => ({
-            label: key,
-            value,
-          }));
-      }}
-    />
-
-    <FormGroupSwitch id="switchFieldId" name="switchField" label="Switch field" trueLabel="ON" falseLabel="OFF" />
+    <div className="row">
+      <div className="col">
+        <FormGroupSwitch id="switchFieldId" name="switchField" label="Switch field" trueLabel="ON" falseLabel="OFF" />
+      </div>
+      <div className="col">
+        <FormGroupCheckbox
+          id="checkboxFieldId"
+          name="checkboxField"
+          label="Checkbox field"
+          valueLabel="Checkbox description"
+        />
+      </div>
+    </div>
   </Form>,
   document.getElementById('root')
 );
