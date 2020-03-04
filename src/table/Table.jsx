@@ -15,11 +15,13 @@ export function Table({ docs, columns, striped, bordered, hover, small, dark, ro
     dark && 'table-dark',
   ].join(' ');
   return (
-    <table className={tableClasses}>
-      {caption && <caption>{caption}</caption>}
-      <TableHead columns={normalizedColumns} />
-      <TableBody docs={docs} columns={normalizedColumns} rowClass={rowClass} />
-    </table>
+    <div class="table-responsive">
+      <table className={tableClasses}>
+        {caption && <caption>{caption}</caption>}
+        <TableHead columns={normalizedColumns} />
+        <TableBody docs={docs} columns={normalizedColumns} rowClass={rowClass} />
+      </table>
+    </div>
   );
 }
 
