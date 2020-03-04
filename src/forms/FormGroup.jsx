@@ -6,6 +6,7 @@ import { FormLabel } from './FormLabel';
 import { FormRadio } from './FormRadio';
 import { FormSelect } from './FormSelect';
 import { FormSwitch } from './FormSwitch';
+import { FormTextarea } from './FormTextarea';
 
 function FormGroup({ children, ...props }) {
   return (
@@ -71,6 +72,14 @@ export function FormGroupSwitch(props) {
   return (
     <FormGroup {...props}>
       <FormSwitch {...props} />
+    </FormGroup>
+  );
+}
+
+export function FormGroupTextarea(props) {
+  return (
+    <FormGroup {...props}>
+      <FormTextarea {...props} />
     </FormGroup>
   );
 }

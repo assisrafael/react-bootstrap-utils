@@ -1,7 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Form, FormGroupInput, FormGroupSelect, FormGroupSwitch, FormGroupCheckbox, FormGroupRadio } from '../src/';
+import {
+  Form,
+  FormGroupInput,
+  FormGroupSelect,
+  FormGroupSwitch,
+  FormGroupCheckbox,
+  FormGroupRadio,
+  FormGroupTextarea,
+} from '../src/';
 
 ReactDOM.render(
   <Form
@@ -100,6 +108,8 @@ ReactDOM.render(
         />
       </div>
     </div>
+
+    <FormGroupTextarea name="textareaField" label="Textarea field" />
   </Form>,
   document.getElementById('root')
 );
