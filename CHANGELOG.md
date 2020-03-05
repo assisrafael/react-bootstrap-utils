@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.2.4...v0.3.0) (2020-03-05)
+
+
+### Features
+
+* **table:** allow table actions ([d77f4d8](https://github.com/assisrafael/react-bootstrap-utils/commit/d77f4d829a6faf52047f8dbd874d24c2df310205))
+* **table:** include table cell value formatting ([c0be209](https://github.com/assisrafael/react-bootstrap-utils/commit/c0be209eb1aec6c65c0fe88058df7bf03d6fb98f))
+
 ### [0.2.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.2.3...v0.2.4) (2020-03-05)
 
 
