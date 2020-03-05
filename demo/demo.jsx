@@ -14,9 +14,9 @@ import {
 
 ReactDOM.render(
   <div>
-    <h1 className="mt-3">Forms</h1>
+    {/* <h1 className="mt-3">Forms</h1>
     <FormExamples />
-    <hr className="my-5" />
+    <hr className="my-5" /> */}
     <h1 className="mt-3">Tables</h1>
     <TableExamples />
   </div>,
@@ -135,45 +135,87 @@ function FormExamples() {
 function TableExamples() {
   return (
     <div>
-      <h2>Simple Table</h2>
-      <Table
-        columns={['a', 'b', 'c']}
-        docs={[
-          { a: 1, b: 2, c: 3 },
-          { a: 4, b: 5, c: 6 },
-          { a: 7, b: 8, c: 9 },
-        ]}
-      />
+      <div className="row">
+        <div className="col">
+          <h2>Simple Table</h2>
+          <Table
+            columns={['a', 'b', 'c']}
+            docs={[
+              { a: 1, b: 2, c: 3 },
+              { a: 4, b: 5, c: 6 },
+              { a: 7, b: 8, c: 9 },
+            ]}
+          />
+        </div>
+        <div className="col">
+          <h2>Table with formated colums</h2>
+          <Table
+            columns={[
+              { attribute: 'a', label: 'A', align: 'center' },
+              { attribute: 'b', label: 'B', align: 'right' },
+              { attribute: 'c', label: 'C' },
+            ]}
+            docs={[
+              { a: 1, b: 2, c: 3 },
+              { a: 4, b: 5, c: 6 },
+              { a: 7, b: 8, c: 9 },
+            ]}
+          />
+        </div>
+        <div className="col">
+          <h2>Table with formatted values </h2>
+          <Table
+            columns={[
+              {
+                attribute: 'a',
+                label: 'A',
+                format(v) {
+                  return v + '*';
+                },
+              },
+              {
+                attribute: 'b',
+                label: 'B',
+                format(v, doc) {
+                  return v + doc.a;
+                },
+              },
+              {
+                attribute: 'c',
+                label: 'C',
+                format(v, doc) {
+                  return v + doc.c;
+                },
+              },
+            ]}
+            docs={[
+              { a: 1, b: 2, c: 3 },
+              { a: 4, b: 5, c: 6 },
+              { a: 7, b: 8, c: 9 },
+            ]}
+          />
+        </div>
+      </div>
 
-      <h2>Table with formated colums</h2>
-      <Table
-        columns={[
-          { attribute: 'a', label: 'A', align: 'center' },
-          { attribute: 'b', label: 'B', align: 'right' },
-          { attribute: 'c', label: 'C' },
-        ]}
-        docs={[
-          { a: 1, b: 2, c: 3 },
-          { a: 4, b: 5, c: 6 },
-          { a: 7, b: 8, c: 9 },
-        ]}
-      />
-
-      <h2>Table with custom styles</h2>
-      <Table
-        columns={['a', 'b', 'c']}
-        docs={[
-          { a: 1, b: 2, c: 3 },
-          { a: 4, b: 5, c: 6 },
-          { a: 7, b: 8, c: 9 },
-        ]}
-        dark={true}
-        small={false}
-        hover={false}
-        striped={false}
-        bordered={true}
-        rowClass={(doc) => (doc.b % 2 === 1 ? 'table-primary' : '')}
-      />
+      <div className="row">
+        <div className="col">
+          <h2>Table with custom styles</h2>
+          <Table
+            columns={['a', 'b', 'c']}
+            docs={[
+              { a: 1, b: 2, c: 3 },
+              { a: 4, b: 5, c: 6 },
+              { a: 7, b: 8, c: 9 },
+            ]}
+            dark={true}
+            small={false}
+            hover={false}
+            striped={false}
+            bordered={true}
+            rowClass={(doc) => (doc.b % 2 === 1 ? 'table-primary' : '')}
+          />
+        </div>
+      </div>
     </div>
   );
 }

@@ -8,11 +8,21 @@ export function TableBody({ columns, docs, rowClass }) {
         <tr key={docIndex} className={rowClass(doc)}>
           {columns.map((column, columnIndex) => (
             <td key={columnIndex} className={getColumnClass(column)}>
-              {doc[column.attribute]}
+              {getColumnValue(doc, column)}
             </td>
           ))}
         </tr>
       ))}
     </tbody>
   );
+}
+
+function getColumnValue(doc, column) {
+  let rawValue = doc[column.attribute];
+
+  if (!column.format) {
+    return rawValue;
+  }
+
+  return column.format(rawValue, doc);
 }
