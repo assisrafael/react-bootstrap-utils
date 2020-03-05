@@ -1,7 +1,7 @@
 import React from 'react';
 import { getColumnClass } from './table-helpers';
 
-export function TableHead({ columns }) {
+export function TableHead({ columns, actions, actionLabel }) {
   return (
     <thead>
       <tr>
@@ -10,6 +10,7 @@ export function TableHead({ columns }) {
             {column.label}
           </th>
         ))}
+        {actions && <th className="text-center">{actionLabel}</th>}
       </tr>
     </thead>
   );

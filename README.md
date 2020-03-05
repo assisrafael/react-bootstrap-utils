@@ -6,10 +6,10 @@ A React implementation of Boostrap v4 components.
 
 ## Roadmap
 
-- [] Table
 - [] Dialogs
 - [] Tabs
 - [] Pagination
+- [] Smartable
 - [] Form validations (dependent field validation)
 - [] Form Autocomplete
 - [] Form Range
@@ -35,3 +35,8 @@ A React implementation of Boostrap v4 components.
 - [] Progress bar
 - [] Tooltip
 - [] Popovers
+- [] Table with row details
+- [] Table footer (sums, counters, etc)
+- [] Table with sticky footer
+- [] Table with sticky columns
+- [] Table with sticky header

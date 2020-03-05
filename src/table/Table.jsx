@@ -3,7 +3,19 @@ import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
 import { normalizeColumns } from './table-helpers';
 
-export function Table({ docs, columns, striped, bordered, hover, small, dark, rowClass, caption }) {
+export function Table({
+  docs,
+  columns,
+  striped,
+  bordered,
+  hover,
+  small,
+  dark,
+  rowClass,
+  caption,
+  actions,
+  actionLabel,
+}) {
   const normalizedColumns = normalizeColumns(columns);
 
   const tableClasses = [
@@ -14,12 +26,13 @@ export function Table({ docs, columns, striped, bordered, hover, small, dark, ro
     small && 'table-sm',
     dark && 'table-dark',
   ].join(' ');
+
   return (
     <div className="table-responsive">
       <table className={tableClasses}>
         {caption && <caption>{caption}</caption>}
-        <TableHead columns={normalizedColumns} />
-        <TableBody docs={docs} columns={normalizedColumns} rowClass={rowClass} />
+        <TableHead {...{ actions, actionLabel }} columns={normalizedColumns} />
+        <TableBody {...{ docs, rowClass, actions }} columns={normalizedColumns} />
       </table>
     </div>
   );
@@ -31,5 +44,6 @@ Table.defaultProps = {
   hover: true,
   small: true,
   dark: false,
+  actionLabel: 'Actions',
   rowClass: () => '',
 };

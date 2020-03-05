@@ -147,6 +147,7 @@ function TableExamples() {
             ]}
           />
         </div>
+
         <div className="col">
           <h2>Table with formated colums</h2>
           <Table
@@ -162,10 +163,18 @@ function TableExamples() {
             ]}
           />
         </div>
+
         <div className="col">
           <h2>Table with formatted values </h2>
           <Table
             columns={[
+              {
+                attribute: 'selected',
+                label: '#',
+                format() {
+                  return <input type="checkbox" />;
+                },
+              },
               {
                 attribute: 'a',
                 label: 'A',
@@ -183,8 +192,8 @@ function TableExamples() {
               {
                 attribute: 'c',
                 label: 'C',
-                format(v, doc) {
-                  return v + doc.c;
+                format(_, __, docIndex) {
+                  return <strong>{docIndex + 1}</strong>;
                 },
               },
             ]}
@@ -213,6 +222,38 @@ function TableExamples() {
             striped={false}
             bordered={true}
             rowClass={(doc) => (doc.b % 2 === 1 ? 'table-primary' : '')}
+          />
+        </div>
+
+        <div className="col">
+          <h2>Table with row actions</h2>
+          <Table
+            columns={[
+              { attribute: 'a', label: 'A', align: 'center' },
+              { attribute: 'b', label: 'B', align: 'right' },
+              { attribute: 'c', label: 'C' },
+            ]}
+            docs={[
+              { a: 1, b: 2, c: 3 },
+              { a: 4, b: 5, c: 6 },
+              { a: 7, b: 8, c: 9 },
+            ]}
+            actions={[
+              {
+                title: 'View details',
+                content: <span>V</span>,
+                link(doc) {
+                  return `#/${doc.a}`;
+                },
+              },
+              {
+                title: 'Remove item',
+                content: '-',
+                onClick(doc) {
+                  console.log('removing', doc);
+                },
+              },
+            ]}
           />
         </div>
       </div>
