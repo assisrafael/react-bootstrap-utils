@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.2.3...v0.2.4) (2020-03-05)
+
+
+### Bug Fixes
+
+* **forms:** include an option to change the FormInput type ([7313d75](https://github.com/assisrafael/react-bootstrap-utils/commit/7313d75cb92ce6c1015dc605713bf074a3263703))
+
 ### [0.2.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.2.2...v0.2.3) (2020-03-04)
 
 ### Features
