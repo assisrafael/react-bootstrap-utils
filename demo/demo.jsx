@@ -43,6 +43,9 @@ function FormExamples() {
         <div className="col">
           <FormGroupInput name="textField2" label="Text field 2" required placeholder="Fill some value" />
         </div>
+        <div className="col">
+          <FormGroupInput name="textField3" label="Text field 3" type="number" />
+        </div>
       </div>
 
       <div className="row">
