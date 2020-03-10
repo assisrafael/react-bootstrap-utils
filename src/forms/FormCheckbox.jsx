@@ -26,4 +26,5 @@ FormCheckbox.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   valueLabel: PropTypes.string,
+  required: PropTypes.any,
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getColumnClass } from './table-helpers';
 
 export function TableHead({ columns, actions, actionLabel }) {
@@ -15,3 +16,9 @@ export function TableHead({ columns, actions, actionLabel }) {
     </thead>
   );
 }
+
+TableHead.propTypes = {
+  actionLabel: PropTypes.string,
+  actions: PropTypes.arrayOf(PropTypes.object),
+  columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
+};

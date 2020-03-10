@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getColumnClass } from './table-helpers';
 
 export function TableBody({ columns, docs, rowClass, actions }) {
@@ -31,6 +32,13 @@ export function TableBody({ columns, docs, rowClass, actions }) {
     </tbody>
   );
 }
+
+TableBody.propTypes = {
+  actions: PropTypes.arrayOf(PropTypes.object),
+  columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
+  docs: PropTypes.arrayOf(PropTypes.object),
+  rowClass: PropTypes.func,
+};
 
 function getColumnValue(doc, column, docIndex) {
   let rawValue = doc[column.attribute];

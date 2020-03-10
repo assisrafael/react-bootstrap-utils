@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
 import { normalizeColumns } from './table-helpers';
@@ -46,4 +47,18 @@ Table.defaultProps = {
   dark: false,
   actionLabel: 'Actions',
   rowClass: () => '',
+};
+
+Table.propTypes = {
+  actions: PropTypes.arrayOf(PropTypes.object),
+  columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
+  docs: PropTypes.arrayOf(PropTypes.object),
+  rowClass: PropTypes.func,
+  striped: PropTypes.bool,
+  bordered: PropTypes.bool,
+  hover: PropTypes.bool,
+  small: PropTypes.bool,
+  dark: PropTypes.bool,
+  caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  actionLabel: PropTypes.string,
 };

@@ -56,4 +56,5 @@ Tabs.propTypes = {
   activeTab: PropTypes.number,
   onlyRenderActiveTab: PropTypes.bool,
   bordered: PropTypes.bool,
+  onSelect: PropTypes.func,
 };

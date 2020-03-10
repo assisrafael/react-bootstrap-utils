@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { FormContext, handleInputChange } from './form-helpers';
 
 export function FormSelect({ id, name, options, required, placeholder }) {
@@ -17,6 +18,17 @@ export function FormSelect({ id, name, options, required, placeholder }) {
     </select>
   );
 }
+
+FormSelect.propTypes = {
+  id: PropTypes.string,
+  options: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
+  ]),
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  required: PropTypes.any,
+};
 
 function renderOptions(options, formData) {
   let _options = typeof options === 'function' ? options(formData) : options;

@@ -27,4 +27,5 @@ FormSwitch.propTypes = {
   name: PropTypes.string.isRequired,
   trueLabel: PropTypes.string,
   falseLabel: PropTypes.string,
+  required: PropTypes.any,
 };

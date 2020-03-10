@@ -17,6 +17,10 @@ function FormGroup({ children, ...props }) {
   );
 }
 
+FormGroup.propTypes = {
+  children: PropTypes.element,
+};
+
 export function FormGroupCheckbox(props) {
   return (
     <FormGroup {...props}>
@@ -56,6 +60,7 @@ FormGroupRadio.defaultProps = {
 };
 
 FormGroupRadio.propTypes = {
+  id: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object),
   inline: PropTypes.bool,
 };

@@ -22,4 +22,7 @@ FormTextarea.defaultProps = {
 FormTextarea.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
+  required: PropTypes.any,
+  placeholder: PropTypes.string,
+  rows: PropTypes.number,
 };

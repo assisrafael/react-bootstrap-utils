@@ -32,4 +32,6 @@ FormRadio.propTypes = {
   name: PropTypes.string.isRequired,
   valueLabel: PropTypes.string,
   inline: PropTypes.bool,
+  required: PropTypes.any,
+  checkedValue: PropTypes.any,
 };

@@ -55,7 +55,7 @@ export function FormExamples() {
             options={(formData) => {
               return Object.entries(formData)
                 .filter(([key]) => key !== 'selectField3')
-                .map(([_, value]) => value);
+                .map(([, value]) => value);
             }}
             placeholder="Select one value"
           />
