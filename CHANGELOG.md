@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.4.0...v0.5.0) (2020-03-10)
+
+
+### Features
+
+* **pagination:** implement <Pagination> component ([e6d10f8](https://github.com/assisrafael/react-bootstrap-utils/commit/e6d10f8ba3c779ddc38457b8419df68a733327b7))
+* **tabs:** allow initial tab configuration ([f553213](https://github.com/assisrafael/react-bootstrap-utils/commit/f553213c382f4fbc54cfe3b704af44f19d7a56a6))
+
 ## [0.4.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.3.0...v0.4.0) (2020-03-10)
 
 
