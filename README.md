@@ -7,8 +7,8 @@ A React implementation of Boostrap v4 components.
 ## Roadmap
 
 - [] Dialogs
-- [] Tabs
-- [] Pagination
+- [] UrlLinkedTabs
+- [] UrlLinkedPagination
 - [] Smartable
 - [] Form validations (dependent field validation)
 - [] Form Autocomplete
