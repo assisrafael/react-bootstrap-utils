@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.3.0...v0.4.0) (2020-03-10)
+
+
+### Features
+
+* **tabs:** implement <Tabs> and <StatefulTabs> components ([46121b9](https://github.com/assisrafael/react-bootstrap-utils/commit/46121b97f29a460edcb8eed59bd51271d45d3dc7))
+
+
+### Bug Fixes
+
+* include missing propTypes definitions and fix eslint warnings ([0f1c85b](https://github.com/assisrafael/react-bootstrap-utils/commit/0f1c85b415410a671eed3685d2cbeea9fa2f97c2))
+
 ## [0.3.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.2.4...v0.3.0) (2020-03-05)
 
 
