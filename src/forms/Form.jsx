@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormContext, useForm } from './form-helpers';
+import { FormActions } from './FormActions';
 
 export function Form({ children, initialValues, onSubmit, submitLabel, cancelLabel, onCancel }) {
   const formState = useForm(initialValues);
@@ -41,17 +42,6 @@ Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   cancelLabel: PropTypes.string,
   onCancel: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
+  initialValues: PropTypes.object,
 };
-
-function FormActions({ submitLabel, cancelLabel, onCancel }) {
-  return (
-    <div className="form-actions">
-      <button type="submit" className="btn btn-primary mr-1">
-        {submitLabel}
-      </button>
-      <button type="button" className="btn btn-secondary" onClick={onCancel}>
-        {cancelLabel}
-      </button>
-    </div>
-  );
-}
