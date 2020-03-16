@@ -2,7 +2,7 @@
   "name": "react-bootstrap-utils",
   "version": "0.5.2",
   "description": "React bootstrap library",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "rollup --config",
     "start": "webpack-dev-server --open --mode development",
