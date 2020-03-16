@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from '../src/';
+import { Table } from '../dist/main';
 
 export function TableExamples() {
   return (

@@ -7,7 +7,7 @@ import {
   FormGroupCheckbox,
   FormGroupRadio,
   FormGroupTextarea,
-} from '../src/';
+} from '../dist/main';
 
 export function FormExamples() {
   return (

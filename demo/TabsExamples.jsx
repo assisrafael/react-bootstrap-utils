@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatefulTabs, Tabs } from '../src/';
+import { StatefulTabs, Tabs } from '../dist/main';
 
 export function TabsExamples() {
   return (

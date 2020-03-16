@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { StatefulTabs, Pagination } from '../src/';
+import { StatefulTabs, Pagination } from '../dist/main';
 import { FormExamples } from './FormExamples';
 import { TableExamples } from './TableExamples';
 import { TabsExamples } from './TabsExamples';
