@@ -6,7 +6,7 @@ A React implementation of Boostrap v4 components.
 
 ## Roadmap
 
-- [] Dialogs
+- [] List group
 - [] UrlLinkedTabs
 - [] UrlLinkedPagination
 - [] Smartable
@@ -31,7 +31,6 @@ A React implementation of Boostrap v4 components.
 - [] Tree
 - [] Button group
 - [] Accordion (expansion panel)
-- [] List group
 - [] Progress bar
 - [] Tooltip
 - [] Popovers
