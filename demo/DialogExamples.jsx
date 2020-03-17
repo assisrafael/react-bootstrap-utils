@@ -106,7 +106,7 @@ export function DialogExamples() {
                 close();
               }}
             >
-              <FormGroupInput name="test" label="Test" />
+              <FormGroupInput name="test" label="Test" required />
             </Form>
           )}
         >
