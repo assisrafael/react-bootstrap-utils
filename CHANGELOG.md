@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.5.3...v0.6.0) (2020-03-17)
+
+
+### Features
+
+* **dialog:** implement Dialog, AlertDialog and ConfirmationDialog ([ccd6bb8](https://github.com/assisrafael/react-bootstrap-utils/commit/ccd6bb8c44223ef163047ac6af9ded9665b72d43))
+* **list-group:** implement ListGroup and StatefulListGroup ([97908e7](https://github.com/assisrafael/react-bootstrap-utils/commit/97908e7a9ebbe9894db43a178a880a8b0dc69a70))
+
 ### [0.5.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.5.2...v0.5.3) (2020-03-16)
 
 ### [0.5.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.5.1...v0.5.2) (2020-03-16)
