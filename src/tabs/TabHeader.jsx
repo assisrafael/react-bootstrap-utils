@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { safeClick } from '../utils/event-handlers';
 
 export function TabHeader({ index, isActive, title, onSelect }) {
   return (
@@ -27,11 +28,3 @@ TabHeader.propTypes = {
   title: PropTypes.string,
   onSelect: PropTypes.func,
 };
-
-function safeClick(callback, index) {
-  return (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    callback(index);
-  };
-}

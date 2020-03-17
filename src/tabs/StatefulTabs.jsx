@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs } from './Tabs';
+import { useSelectedItem } from '../utils/useSelectedItem';
 
 export function StatefulTabs({ initialTab, activeTab: _, tabs, ...props }) {
-  const { getSelected, select } = useTabs(tabs, initialTab);
+  const { getSelected, select } = useSelectedItem(initialTab, tabs.length);
+  useSelectedItem;
 
   return <Tabs tabs={tabs} {...props} activeTab={getSelected()} onSelect={select} />;
 }
@@ -13,20 +15,3 @@ StatefulTabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.object),
   initialTab: PropTypes.number,
 };
-
-function useTabs(tabs, initialTab) {
-  const [activeTab, setActiveTab] = useState(initialTab < tabs.length ? initialTab : 0);
-
-  return {
-    getSelected() {
-      return activeTab;
-    },
-    select(index) {
-      if (index >= tabs.length) {
-        throw new Error('Invalid tab');
-      }
-
-      setActiveTab(index);
-    },
-  };
-}
