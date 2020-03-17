@@ -32,11 +32,10 @@ ListGroupItem.defaultProps = {
 };
 
 ListGroupItem.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.element.isRequired,
   index: PropTypes.number.isRequired,
   isActive: PropTypes.bool,
   isDisabled: PropTypes.bool,
   linked: PropTypes.bool.isRequired,
   onSelect: PropTypes.func,
-  template: PropTypes.func.isRequired,
 };
