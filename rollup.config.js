@@ -15,5 +15,5 @@ export default {
       exclude: 'node_modules/**', // only transpile our source code
     }),
   ],
-  external: ['react', 'prop-types'],
+  external: ['react', 'prop-types', 'react-modal', 'react-dom'],
 };
