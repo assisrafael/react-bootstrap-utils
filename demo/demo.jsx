@@ -6,13 +6,14 @@ import { FormExamples } from './FormExamples';
 import { TableExamples } from './TableExamples';
 import { TabsExamples } from './TabsExamples';
 import { DialogExamples } from './DialogExamples';
+import { ListGroupExamples } from './ListGroupExamples';
 
 ReactDOM.render(
   <div className="mt-3">
     <React.StrictMode>
       <StatefulTabs
         vertical={true}
-        initialTab={0}
+        initialTab={2}
         tabs={[
           {
             title: 'Dialog',
@@ -21,6 +22,10 @@ ReactDOM.render(
           {
             title: 'Forms',
             content: <FormExamples />,
+          },
+          {
+            title: 'List groups',
+            content: <ListGroupExamples />,
           },
           {
             title: 'Pagination',
