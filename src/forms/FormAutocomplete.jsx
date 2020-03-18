@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext, handleInputChange, normalizeOptions } from './form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
+import { useOpenState } from '../utils/useOpenState';
 
 /**
  * - load itens from server
@@ -22,19 +23,19 @@ export function FormAutocomplete({
   filter,
 }) {
   const [searchValue, setSearchValue] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
   const formState = useContext(FormContext);
   const inputRef = useRef(null);
 
   return (
     <Dropdown
-      isOpen={isOpen}
+      isOpen={isOpen()}
       items={normalizeOptions(options, FormData).filter(filter(searchValue))}
       onSelect={({ value, label }) => {
         formState.update(name, value);
         setSearchValue(label);
-        setIsOpen(false);
+        close();
       }}
       template={template}
       onTouchStart={() => setIgnoreBlur(true)}
@@ -50,7 +51,7 @@ export function FormAutocomplete({
           update(_, value) {
             setSearchValue(value);
             onSearch(value);
-            setIsOpen(true);
+            open();
 
             if (formState.getValue(name)) {
               formState.update(name, null);
@@ -60,7 +61,7 @@ export function FormAutocomplete({
         onFocus={() => {
           if (openOnFocus) {
             setTimeout(() => {
-              setIsOpen(true);
+              open();
             }, 250);
           }
         }}
@@ -68,7 +69,7 @@ export function FormAutocomplete({
           if (ignoreBlur) {
             inputRef.current.focus();
           } else {
-            setIsOpen(false);
+            close();
           }
         }}
         value={searchValue}

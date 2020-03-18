@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalPortal } from './ModalPortal';
 import { Modal } from './Modal';
-import { useModal } from './modal-helpers';
+import { useOpenState } from '../utils/useOpenState';
 
 export function Dialog({ children, ...props }) {
-  const { isOpen, open, close } = useModal();
+  const { isOpen, open, close } = useOpenState();
 
   return (
     <React.Fragment>
