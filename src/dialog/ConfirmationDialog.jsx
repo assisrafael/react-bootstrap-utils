@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Dialog } from './Dialog';
-import { handleClick } from './modal-helpers';
+import { awaitForAsyncTask } from '../utils/event-handlers';
 
 export function ConfirmationDialog({ title, message, children, onProceed, onCancel, cancelLabel, proceedLabel }) {
   return (
@@ -10,10 +10,10 @@ export function ConfirmationDialog({ title, message, children, onProceed, onCanc
       body={message}
       footer={({ close }) => (
         <>
-          <button type="button" className="btn btn-secondary" onClick={handleClick(onCancel, close)}>
+          <button type="button" className="btn btn-secondary" onClick={awaitForAsyncTask(onCancel, close)}>
             {cancelLabel}
           </button>
-          <button type="button" className="btn btn-primary" onClick={handleClick(onProceed, close)}>
+          <button type="button" className="btn btn-primary" onClick={awaitForAsyncTask(onProceed, close)}>
             {proceedLabel}
           </button>
         </>
