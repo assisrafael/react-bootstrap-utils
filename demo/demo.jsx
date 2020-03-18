@@ -13,7 +13,7 @@ ReactDOM.render(
     <React.StrictMode>
       <StatefulTabs
         vertical={true}
-        initialTab={2}
+        initialTab={1}
         tabs={[
           {
             title: 'Dialog',

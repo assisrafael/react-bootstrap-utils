@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormAutocomplete } from './FormAutocomplete';
 import { FormCheckbox } from './FormCheckbox';
 import { FormInput } from './FormInput';
 import { FormLabel } from './FormLabel';
@@ -20,6 +21,14 @@ function FormGroup({ children, ...props }) {
 FormGroup.propTypes = {
   children: PropTypes.element,
 };
+
+export function FormGroupAutocomplete(props) {
+  return (
+    <FormGroup {...props}>
+      <FormAutocomplete {...props} />
+    </FormGroup>
+  );
+}
 
 export function FormGroupCheckbox(props) {
   return (

@@ -1,4 +1,5 @@
 export * from './Form';
+export * from './FormAutocomplete';
 export * from './FormCheckbox';
 export * from './FormGroup';
 export * from './FormInput';

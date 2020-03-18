@@ -7,6 +7,7 @@ import {
   FormGroupCheckbox,
   FormGroupRadio,
   FormGroupTextarea,
+  FormGroupAutocomplete,
 } from '../dist/main';
 
 export function FormExamples() {
@@ -34,6 +35,53 @@ export function FormExamples() {
 
       <div className="row">
         <div className="col">
+          <FormGroupAutocomplete
+            name="autocompleteField1"
+            label="Autocomplete"
+            options={['1234', '2345', '3456']}
+            placeholder="Type some numbers"
+          />
+        </div>
+        <div className="col">
+          <FormGroupAutocomplete
+            name="autocompleteField2"
+            label="Autocomplete that opens on focus"
+            options={['Abcde', 'Fghij', 'klmno']}
+            placeholder="Type some letters"
+            openOnFocus={true}
+            required
+          />
+        </div>
+        <div className="col">
+          <FormGroupAutocomplete
+            name="autocompleteField3"
+            label="Autocomplete with item template"
+            options={[
+              {
+                value: 1,
+                label: '1234',
+              },
+              {
+                value: 2,
+                label: '2345',
+              },
+              {
+                value: 3,
+                label: '3456',
+              },
+            ]}
+            placeholder="Type some numbers"
+            template={(option) => (
+              <>
+                <strong>{option}</strong> - {option}
+              </>
+            )}
+          />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col">
           <FormGroupSelect name="selectField" label="Select field (list)" options={['A', 'B', 'C']} />
         </div>
         <div className="col">
@@ -54,7 +102,7 @@ export function FormExamples() {
             label="Select field 3 (function)"
             options={(formData) => {
               return Object.entries(formData)
-                .filter(([key]) => key !== 'selectField3')
+                .filter(([key, value]) => key !== 'selectField3' && value)
                 .map(([, value]) => value);
             }}
             placeholder="Select one value"
