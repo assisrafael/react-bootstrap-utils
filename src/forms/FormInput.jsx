@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext, handleInputChange } from './form-helpers';
 
-export function FormInput({ id, type, name, required, placeholder }) {
+export function FormInput({ id, type, name, placeholder, required, minLength, maxLength, min, max, pattern, step }) {
   const formState = useContext(FormContext);
 
   return (
     <input
-      {...{ required, name, id, placeholder, type }}
+      {...{ required, name, id, placeholder, type, minLength, maxLength, min, max, pattern, step }}
       className="form-control"
       onChange={handleInputChange.bind(null, formState)}
       value={formState.getValue(name) || ''}
@@ -25,4 +25,10 @@ FormInput.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   required: PropTypes.any,
+  minLength: PropTypes.string,
+  maxLength: PropTypes.string,
+  min: PropTypes.string,
+  max: PropTypes.string,
+  pattern: PropTypes.string,
+  step: PropTypes.string,
 };
