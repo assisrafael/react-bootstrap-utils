@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.6.0...v0.7.0) (2020-03-18)
+
+
+### Features
+
+* **dropdown:** implement Dropdown component ([6c84a5b](https://github.com/assisrafael/react-bootstrap-utils/commit/6c84a5bd28f8d69f5d4a0bcebe0e270ecc3d48b8))
+* **forms:** implement FormAutocomplete and FormGroupAutocomplete ([05dab8e](https://github.com/assisrafael/react-bootstrap-utils/commit/05dab8e579c29551f0bd4e98821b23934889aa98))
+
+
+### Bug Fixes
+
+* **list-group:** fix ListGroupItem propTypes ([48909ae](https://github.com/assisrafael/react-bootstrap-utils/commit/48909ae0d77b3a84c10d77f7bca553d43f22b18c))
+* **modal:** remove event listener on clean up ([94fec85](https://github.com/assisrafael/react-bootstrap-utils/commit/94fec855be484c89538e0cd0af825b38182f3383))
+
 ## [0.6.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.5.3...v0.6.0) (2020-03-17)
 
 
