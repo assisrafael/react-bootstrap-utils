@@ -1,0 +1,40 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { safeClick } from '../utils/event-handlers';
+import { formatClasses } from '../utils/attributes';
+
+export function Dropdown({ children, items, onSelect, isOpen, onTouchStart, onMouseEnter, onMouseLeave, template }) {
+  return (
+    <div className={formatClasses(['dropdown', isOpen && 'show'])} {...{ onTouchStart, onMouseEnter, onMouseLeave }}>
+      {children}
+
+      {items.length > 0 && (
+        <div
+          className={formatClasses(['dropdown-menu', isOpen && 'show'])}
+          // aria-labelledby="dropdownMenuButton"
+        >
+          {items.map(({ label, value }, index) => (
+            <a key={index} href="#" className="dropdown-item" onClick={safeClick(onSelect, { value, index, label })}>
+              {template(label)}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+Dropdown.defaultProps = {
+  template: (v) => v,
+};
+
+Dropdown.propTypes = {
+  children: PropTypes.element,
+  isOpen: PropTypes.bool,
+  items: PropTypes.arrayOf(PropTypes.object),
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  onSelect: PropTypes.func,
+  onTouchStart: PropTypes.func,
+  template: PropTypes.func,
+};
