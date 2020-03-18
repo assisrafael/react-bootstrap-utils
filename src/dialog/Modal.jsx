@@ -6,14 +6,18 @@ const ESCAPE_KEYCODE = 27;
 export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, scrollable, centered, size, keyboard }) {
   const modalRef = useRef(null);
 
-  useEffect(() => {
-    if (keyboard) {
-      modalRef.current.addEventListener('keydown', (event) => {
-        if (event.which === ESCAPE_KEYCODE) {
-          onClose();
-        }
-      });
+  function closeIfEscape(event) {
+    if (keyboard && event.which === ESCAPE_KEYCODE) {
+      onClose();
     }
+  }
+
+  useEffect(() => {
+    modalRef.current.addEventListener('keydown', closeIfEscape);
+
+    return () => {
+      modalRef.current.removeEventListener('keydown', closeIfEscape);
+    };
   }, [keyboard]);
 
   useEffect(() => {
