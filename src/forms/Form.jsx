@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext, useForm } from './form-helpers';
 import { FormActions } from './FormActions';
 
-export function Form({ children, initialValues, onSubmit, submitLabel, cancelLabel, onCancel }) {
+export function Form({ children, initialValues, onSubmit, submitLabel, cancelLabel, onCancel, customValidation }) {
   const formState = useForm(initialValues);
+  const formRef = useRef(null);
+
+  function resetForm() {
+    formRef.current.classList.remove('was-validated');
+    formState.reset();
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    const res = onSubmit(formState.getFormData(), () => formState.reset());
+    if (customValidation && !formRef.current.checkValidity()) {
+      formRef.current.classList.add('was-validated');
+      return;
+    }
+
+    const res = onSubmit(formState.getFormData(), resetForm);
 
     if (res && res.then) {
-      res.then(() => {
-        formState.reset();
-      });
+      res.then(resetForm);
     }
   }
 
@@ -23,8 +32,17 @@ export function Form({ children, initialValues, onSubmit, submitLabel, cancelLab
     onCancel();
   }
 
+  const formProps = {
+    ref: formRef,
+    onSubmit: handleSubmit,
+  };
+
+  if (customValidation) {
+    formProps.noValidate = true;
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form {...formProps}>
       <FormContext.Provider value={formState}>{children}</FormContext.Provider>
 
       <FormActions {...{ submitLabel, cancelLabel, onCancel: handleCancel }} />
@@ -35,13 +53,15 @@ export function Form({ children, initialValues, onSubmit, submitLabel, cancelLab
 Form.defaultProps = {
   submitLabel: 'Submit',
   cancelLabel: 'Cancel',
+  customValidation: true,
 };
 
 Form.propTypes = {
-  submitLabel: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired,
   cancelLabel: PropTypes.string,
-  onCancel: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
+  customValidation: PropTypes.bool,
   initialValues: PropTypes.object,
+  onCancel: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  submitLabel: PropTypes.string,
 };
