@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange } from './form-helpers';
+import { FormContext, handleInputChange, normalizeOptions } from './form-helpers';
 
 export function FormSelect({ id, name, options, required, placeholder }) {
   const formState = useContext(FormContext);
@@ -31,22 +31,7 @@ FormSelect.propTypes = {
 };
 
 function renderOptions(options, formData) {
-  let _options = typeof options === 'function' ? options(formData) : options;
-
-  if (!Array.isArray(_options)) {
-    throw new Error('Select Options should be an array');
-  }
-
-  return _options.map((option, index) => {
-    let value, label;
-
-    if (typeof option === 'string') {
-      value = label = option;
-    } else {
-      value = option.value;
-      label = option.label;
-    }
-
+  return normalizeOptions(options, formData).map(({ value, label }, index) => {
     return (
       <option key={index} value={value}>
         {label}

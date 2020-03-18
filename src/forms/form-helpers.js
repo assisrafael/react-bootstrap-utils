@@ -31,3 +31,22 @@ export function handleInputChange(formState, event) {
 
   formState.update(name, value);
 }
+
+export function normalizeOptions(options, formData) {
+  let _options = typeof options === 'function' ? options(formData) : options;
+
+  if (!Array.isArray(_options)) {
+    throw new Error('Select Options should be an array');
+  }
+
+  return _options.map((option) => {
+    if (typeof option !== 'string') {
+      return option;
+    }
+
+    return {
+      value: option,
+      label: option,
+    };
+  });
+}
