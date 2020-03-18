@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { stopPropagation } from '../utils/event-handlers';
 
 const ESCAPE_KEYCODE = 27;
 
@@ -53,7 +54,7 @@ export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, sc
           centered ? 'modal-dialog-centered' : ''
         } ${size ? `modal-${size}` : ''}`}
         role="document"
-        onClick={(e) => e.stopPropagation()}
+        onClick={stopPropagation}
       >
         <div className="modal-content">
           <div className="modal-header">

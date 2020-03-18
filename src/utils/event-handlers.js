@@ -1,6 +1,6 @@
 export function safeClick(callback, callbackArgs) {
   return (e) => {
-    e.stopPropagation();
+    stopPropagation(e);
     e.preventDefault();
 
     callback(callbackArgs);
@@ -18,4 +18,8 @@ export function awaitForAsyncTask(task, callback) {
 
     res.then(callback);
   };
+}
+
+export function stopPropagation(e) {
+  e.stopPropagation();
 }

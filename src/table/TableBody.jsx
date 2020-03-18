@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getColumnClass } from './table-helpers';
+import { safeClick } from '../utils/event-handlers';
 
 export function TableBody({ columns, docs, rowClass, actions }) {
   return (
@@ -55,11 +56,7 @@ function getActionProps(action, doc) {
 
   if (action.onClick) {
     props.href = '';
-    props.onClick = (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-      action.onClick(doc);
-    };
+    props.onClick = safeClick(action.onClick, doc);
   } else if (action.link) {
     props.href = action.link(doc);
   }

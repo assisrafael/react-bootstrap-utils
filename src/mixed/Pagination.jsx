@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { safeClick } from '../utils/event-handlers';
 
 export function Pagination({
   actualPage,
@@ -25,11 +26,7 @@ export function Pagination({
     (v, i) => startPage + i
   );
 
-  const select = (page) => (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onSelect(page);
-  };
+  const select = (page) => safeClick(onSelect, page);
 
   return (
     <nav aria-label={ariaLabel}>
