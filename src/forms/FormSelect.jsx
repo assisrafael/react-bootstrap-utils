@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange, normalizeOptions } from './form-helpers';
+import { FormContext, handleInputChange, normalizeOptions, handleOnInvalid } from './form-helpers';
 
 export function FormSelect({ id, name, options, required, placeholder }) {
   const formState = useContext(FormContext);
@@ -11,6 +11,7 @@ export function FormSelect({ id, name, options, required, placeholder }) {
       className="form-control"
       onChange={handleInputChange.bind(null, formState)}
       value={formState.getValue(name) || ''}
+      onInvalid={handleOnInvalid.bind(null, formState, name)}
     >
       <option value="">{placeholder}</option>
 

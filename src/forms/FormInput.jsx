@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange } from './form-helpers';
+import { FormContext, handleInputChange, handleOnInvalid } from './form-helpers';
 
 export function FormInput({ id, type, name, placeholder, required, minLength, maxLength, min, max, pattern, step }) {
   const formState = useContext(FormContext);
@@ -11,6 +11,7 @@ export function FormInput({ id, type, name, placeholder, required, minLength, ma
       className="form-control"
       onChange={handleInputChange.bind(null, formState)}
       value={formState.getValue(name) || ''}
+      onInvalid={handleOnInvalid.bind(null, formState, name)}
     />
   );
 }

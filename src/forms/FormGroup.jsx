@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { FormAutocomplete } from './FormAutocomplete';
 import { FormCheckbox } from './FormCheckbox';
@@ -8,17 +8,24 @@ import { FormRadio } from './FormRadio';
 import { FormSelect } from './FormSelect';
 import { FormSwitch } from './FormSwitch';
 import { FormTextarea } from './FormTextarea';
+import { FormContext } from './form-helpers';
 
-function FormGroup({ children, ...props }) {
+function FormGroup({ children, name, ...props }) {
+  const formState = useContext(FormContext);
+  const validationMessage = formState.getValidationMessage(name);
+
   return (
     <div className="form-group">
       <FormLabel {...props} />
       {children}
+      <div className="valid-feedback">&nbsp;</div>
+      <div className="invalid-feedback">{validationMessage}</div>
     </div>
   );
 }
 
 FormGroup.propTypes = {
+  name: PropTypes.string.isRequired,
   children: PropTypes.element,
 };
 

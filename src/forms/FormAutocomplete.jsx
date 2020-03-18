@@ -1,6 +1,6 @@
 import React, { useState, useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange, normalizeOptions } from './form-helpers';
+import { FormContext, handleInputChange, normalizeOptions, handleOnInvalid } from './form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
 
@@ -29,19 +29,7 @@ export function FormAutocomplete({
   const inputRef = useRef(null);
 
   return (
-    <Dropdown
-      isOpen={isOpen()}
-      items={normalizeOptions(options, FormData).filter(filter(searchValue))}
-      onSelect={({ value, label }) => {
-        formState.update(name, value);
-        setSearchValue(label);
-        close();
-      }}
-      template={template}
-      onTouchStart={() => setIgnoreBlur(true)}
-      onMouseEnter={() => setIgnoreBlur(true)}
-      onMouseLeave={() => setIgnoreBlur(false)}
-    >
+    <>
       <input
         {...{ required, name, id, placeholder }}
         type="text"
@@ -72,13 +60,27 @@ export function FormAutocomplete({
             close();
           }
         }}
+        onInvalid={handleOnInvalid.bind(null, formState, name)}
         value={searchValue}
         role="combobox"
         aria-autocomplete="list"
         aria-expanded="false"
         autoComplete="off"
       />
-    </Dropdown>
+      <Dropdown
+        isOpen={isOpen()}
+        items={normalizeOptions(options, FormData).filter(filter(searchValue))}
+        onSelect={({ value, label }) => {
+          formState.update(name, value);
+          setSearchValue(label);
+          close();
+        }}
+        template={template}
+        onTouchStart={() => setIgnoreBlur(true)}
+        onMouseEnter={() => setIgnoreBlur(true)}
+        onMouseLeave={() => setIgnoreBlur(false)}
+      />
+    </>
   );
 }
 

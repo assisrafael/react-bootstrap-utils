@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useValueMap } from '../utils/useValueMap';
 
 export const FormContext = React.createContext(null);
 
 export function useForm(initialState) {
   const [formState, setFormState] = useState(initialState);
+  const { getValue: getValidationMessage, setValue: setValidationMessage } = useValueMap();
 
   return {
     update(name, value) {
+      //target.setCustomValidity("");
       setFormState({
         ...formState,
         [name]: value,
@@ -21,6 +24,16 @@ export function useForm(initialState) {
     reset() {
       setFormState(initialState);
     },
+    updateElementValidationMessage(name, element) {
+      if (element.valid) {
+        setValidationMessage(name, '');
+      } else {
+        setValidationMessage(name, element.validationMessage);
+      }
+    },
+    getValidationMessage(name) {
+      return getValidationMessage(name);
+    },
   };
 }
 
@@ -30,6 +43,10 @@ export function handleInputChange(formState, event) {
   const name = target.name;
 
   formState.update(name, value);
+}
+
+export function handleOnInvalid(formState, name, { target }) {
+  formState.updateElementValidationMessage(name, target);
 }
 
 export function normalizeOptions(options, formData) {
