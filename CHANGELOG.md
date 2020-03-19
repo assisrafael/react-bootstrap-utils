@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.7.0...v0.8.0) (2020-03-19)
+
+
+### Features
+
+* **forms:** allow using bootstrap form validation feedback ([39e0c81](https://github.com/assisrafael/react-bootstrap-utils/commit/39e0c81bce4a552aa54ea75ae07e4b5e8058c3c2))
+* **forms:** implement custom form element validations ([e8061ca](https://github.com/assisrafael/react-bootstrap-utils/commit/e8061ca999c8e5f7dc6aa3d836a2bbb89a3b3959))
+* **forms:** show validation messages bellow form elements ([2f6e3a5](https://github.com/assisrafael/react-bootstrap-utils/commit/2f6e3a5a6894754e838a5cb7b6ef86936b25625d))
+* **toasts:** implement toast components ([3e94bf1](https://github.com/assisrafael/react-bootstrap-utils/commit/3e94bf1c0886d9cacda553b7fd9750ff74a1e071))
+
+
+### Bug Fixes
+
+* **forms:** include missing validation properties do FormInput ([927f23e](https://github.com/assisrafael/react-bootstrap-utils/commit/927f23ecb1ffc338509f2cc729d11ab6bc6995c7))
+
 ## [0.7.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.6.0...v0.7.0) (2020-03-18)
 
 
