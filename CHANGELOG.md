@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.1...v0.8.2) (2020-03-19)
+
+
+### Bug Fixes
+
+* **forms:** form elements validation should be optional ([74b32e9](https://github.com/assisrafael/react-bootstrap-utils/commit/74b32e95ebc41ecfb0bd896d80a5717de9e65d39))
+
 ### [0.8.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.0...v0.8.1) (2020-03-19)
 
 
