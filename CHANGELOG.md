@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.0...v0.8.1) (2020-03-19)
+
+
+### Features
+
+* **table:** allow table column header customization ([4f46927](https://github.com/assisrafael/react-bootstrap-utils/commit/4f46927ae176f24e2c4f53a081b19e870848d695))
+
 ## [0.8.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.7.0...v0.8.0) (2020-03-19)
 
 
