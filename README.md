@@ -6,7 +6,6 @@ A React implementation of Boostrap v4 components.
 
 ## Roadmap
 
-- [] Toast
 - [] UrlLinkedTabs
 - [] UrlLinkedPagination
 - [] Smartable
