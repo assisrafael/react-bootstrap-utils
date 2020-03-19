@@ -1,46 +1,53 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { StatefulTabs, Pagination } from '../dist/main';
+import { StatefulTabs, Pagination, ToastsContainer } from '../dist/main';
 import { FormExamples } from './FormExamples';
 import { TableExamples } from './TableExamples';
 import { TabsExamples } from './TabsExamples';
 import { DialogExamples } from './DialogExamples';
 import { ListGroupExamples } from './ListGroupExamples';
+import { ToastsExamples } from './ToastsExamples';
 
 ReactDOM.render(
   <div className="mt-3">
     <React.StrictMode>
-      <StatefulTabs
-        vertical={true}
-        initialTab={1}
-        tabs={[
-          {
-            title: 'Dialog',
-            content: <DialogExamples />,
-          },
-          {
-            title: 'Forms',
-            content: <FormExamples />,
-          },
-          {
-            title: 'List groups',
-            content: <ListGroupExamples />,
-          },
-          {
-            title: 'Pagination',
-            content: <PaginationExamples />,
-          },
-          {
-            title: 'Tables',
-            content: <TableExamples />,
-          },
-          {
-            title: 'Tabs',
-            content: <TabsExamples />,
-          },
-        ]}
-      />
+      <ToastsContainer>
+        <StatefulTabs
+          vertical={true}
+          initialTab={6}
+          tabs={[
+            {
+              title: 'Dialog',
+              content: <DialogExamples />,
+            },
+            {
+              title: 'Forms',
+              content: <FormExamples />,
+            },
+            {
+              title: 'List groups',
+              content: <ListGroupExamples />,
+            },
+            {
+              title: 'Pagination',
+              content: <PaginationExamples />,
+            },
+            {
+              title: 'Tables',
+              content: <TableExamples />,
+            },
+            {
+              title: 'Tabs',
+              content: <TabsExamples />,
+            },
+            {
+              title: 'Toasts',
+              content: <ToastsExamples />,
+            },
+          ]}
+        />
+      </ToastsContainer>
     </React.StrictMode>
   </div>,
   document.getElementById('root')

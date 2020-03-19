@@ -36,7 +36,7 @@ export function useValueMap() {
   };
 }
 
-export function useArrayValueMap({ unique = true } = {}) {
+export function useArrayValueMap({ unique = true, equalityComparator = (a) => (b) => a === b } = {}) {
   const { getAllKeys, getValue, setValue } = useValueMap();
 
   return {
@@ -48,11 +48,16 @@ export function useArrayValueMap({ unique = true } = {}) {
           values = [];
         }
 
-        if (!unique || !values.includes(value)) {
+        if (!unique || !values.find(equalityComparator(value))) {
           values.push(value);
         }
 
         return values;
+      });
+    },
+    unset(key, filterfn) {
+      setValue(key, (prevValues) => {
+        return prevValues.filter(filterfn);
       });
     },
     get: getValue,
