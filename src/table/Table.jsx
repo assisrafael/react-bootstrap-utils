@@ -16,6 +16,7 @@ export function Table({
   caption,
   actions,
   actionLabel,
+  columnHeaderFormat,
 }) {
   const normalizedColumns = normalizeColumns(columns);
 
@@ -32,7 +33,7 @@ export function Table({
     <div className="table-responsive">
       <table className={tableClasses}>
         {caption && <caption>{caption}</caption>}
-        <TableHead {...{ actions, actionLabel }} columns={normalizedColumns} />
+        <TableHead {...{ actions, actionLabel, columnHeaderFormat }} columns={normalizedColumns} />
         <TableBody {...{ docs, rowClass, actions }} columns={normalizedColumns} />
       </table>
     </div>
@@ -47,18 +48,20 @@ Table.defaultProps = {
   dark: false,
   actionLabel: 'Actions',
   rowClass: () => '',
+  columnHeaderFormat: (label) => label,
 };
 
 Table.propTypes = {
-  actions: PropTypes.arrayOf(PropTypes.object),
-  columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
-  docs: PropTypes.arrayOf(PropTypes.object),
-  rowClass: PropTypes.func,
-  striped: PropTypes.bool,
-  bordered: PropTypes.bool,
-  hover: PropTypes.bool,
-  small: PropTypes.bool,
-  dark: PropTypes.bool,
-  caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   actionLabel: PropTypes.string,
+  actions: PropTypes.arrayOf(PropTypes.object),
+  bordered: PropTypes.bool,
+  caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  columnHeaderFormat: PropTypes.func,
+  columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
+  dark: PropTypes.bool,
+  docs: PropTypes.arrayOf(PropTypes.object),
+  hover: PropTypes.bool,
+  rowClass: PropTypes.func,
+  small: PropTypes.bool,
+  striped: PropTypes.bool,
 };

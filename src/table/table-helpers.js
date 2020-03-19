@@ -1,3 +1,5 @@
+import { formatClasses } from '../utils/attributes';
+
 export function normalizeColumns(columns) {
   return columns.map((column) => {
     if (typeof column !== 'string') {
@@ -12,7 +14,5 @@ export function normalizeColumns(columns) {
 }
 
 export function getColumnClass({ align }) {
-  const classes = [align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : ''];
-
-  return classes.join(' ');
+  return formatClasses([align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : '']);
 }
