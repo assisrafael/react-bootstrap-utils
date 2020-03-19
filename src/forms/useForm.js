@@ -11,12 +11,14 @@ export function useForm(initialState, validations) {
     register(name, elementRef) {
       registerElementRef(name, elementRef);
 
-      validateFormElement({
-        name,
-        formData: formState,
-        validations: validations[name],
-        elementRefs: [elementRef],
-      });
+      if (validations) {
+        validateFormElement({
+          name,
+          formData: formState,
+          validations: validations[name],
+          elementRefs: [elementRef],
+        });
+      }
     },
     update(name, value) {
       setFormState((prevFormState) => {
@@ -28,10 +30,12 @@ export function useForm(initialState, validations) {
         return nextState;
       });
 
-      this.validateForm({
-        ...formState,
-        [name]: value,
-      });
+      if (validations) {
+        this.validateForm({
+          ...formState,
+          [name]: value,
+        });
+      }
     },
     getFormData() {
       return formState;
