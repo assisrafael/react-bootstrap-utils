@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormAutocomplete } from './FormAutocomplete';
 import { FormCheckbox } from './FormCheckbox';
@@ -8,25 +8,28 @@ import { FormRadio } from './FormRadio';
 import { FormSelect } from './FormSelect';
 import { FormSwitch } from './FormSwitch';
 import { FormTextarea } from './FormTextarea';
-import { FormContext } from './form-helpers';
+import { FormValidationFeedback } from './FormValidationFeedback';
 
-function FormGroup({ children, name, ...props }) {
-  const formState = useContext(FormContext);
-  const validationMessage = formState.getValidationMessage(name);
-
+function FormGroup({ children, name, feedback, mockInvalidSibling, ...props }) {
   return (
     <div className="form-group">
       <FormLabel {...props} />
       {children}
-      <div className="valid-feedback">&nbsp;</div>
-      <div className="invalid-feedback">{validationMessage}</div>
+      {feedback && <FormValidationFeedback mockInvalidSibling={mockInvalidSibling} name={name} />}
     </div>
   );
 }
 
+FormGroup.defaultProps = {
+  feedback: true,
+  mockInvalidSibling: false,
+};
+
 FormGroup.propTypes = {
-  name: PropTypes.string.isRequired,
   children: PropTypes.element,
+  feedback: PropTypes.bool,
+  mockInvalidSibling: PropTypes.bool,
+  name: PropTypes.string.isRequired,
 };
 
 export function FormGroupAutocomplete(props) {
@@ -39,7 +42,7 @@ export function FormGroupAutocomplete(props) {
 
 export function FormGroupCheckbox(props) {
   return (
-    <FormGroup {...props}>
+    <FormGroup mockInvalidSibling={true} {...props}>
       <FormCheckbox {...props} />
     </FormGroup>
   );
@@ -55,7 +58,7 @@ export function FormGroupInput(props) {
 
 export function FormGroupRadio({ options, id, ...props }) {
   return (
-    <FormGroup {...props}>
+    <FormGroup mockInvalidSibling={true} {...props}>
       <div>
         {options.map((option, index) => (
           <FormRadio
@@ -91,7 +94,7 @@ export function FormGroupSelect(props) {
 
 export function FormGroupSwitch(props) {
   return (
-    <FormGroup {...props}>
+    <FormGroup mockInvalidSibling={true} {...props}>
       <FormSwitch {...props} />
     </FormGroup>
   );

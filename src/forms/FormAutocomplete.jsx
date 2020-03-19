@@ -1,15 +1,8 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange, normalizeOptions, handleOnInvalid } from './form-helpers';
+import { FormContext, handleInputChange, normalizeOptions } from './form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
-
-/**
- * - load itens from server
- * - at least X chars
- * - debounce
- * -
- */
 
 export function FormAutocomplete({
   onSearch,
@@ -27,6 +20,10 @@ export function FormAutocomplete({
   const [ignoreBlur, setIgnoreBlur] = useState(false);
   const formState = useContext(FormContext);
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    formState.register(name, inputRef.current);
+  }, []);
 
   return (
     <>
@@ -60,7 +57,6 @@ export function FormAutocomplete({
             close();
           }
         }}
-        onInvalid={handleOnInvalid.bind(null, formState, name)}
         value={searchValue}
         role="combobox"
         aria-autocomplete="list"

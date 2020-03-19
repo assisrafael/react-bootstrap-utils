@@ -1,40 +1,26 @@
-import React, { useState } from 'react';
-import { useValueMap } from '../utils/useValueMap';
+import React from 'react';
 
 export const FormContext = React.createContext(null);
 
-export function useForm(initialState) {
-  const [formState, setFormState] = useState(initialState);
-  const { getValue: getValidationMessage, setValue: setValidationMessage } = useValueMap();
+export function validateFormElement({ name, validations = [], formData, elementRefs }) {
+  let validationMessage = '';
+  const value = formData[name];
 
-  return {
-    update(name, value) {
-      //target.setCustomValidity("");
-      setFormState({
-        ...formState,
-        [name]: value,
-      });
-    },
-    getFormData() {
-      return formState;
-    },
-    getValue(name) {
-      return formState[name];
-    },
-    reset() {
-      setFormState(initialState);
-    },
-    updateElementValidationMessage(name, element) {
-      if (element.valid) {
-        setValidationMessage(name, '');
-      } else {
-        setValidationMessage(name, element.validationMessage);
-      }
-    },
-    getValidationMessage(name) {
-      return getValidationMessage(name);
-    },
-  };
+  validations.some(({ message, validate }) => {
+    const isValid = validate(value, formData);
+
+    if (!isValid) {
+      validationMessage = message;
+    }
+
+    return !isValid;
+  });
+
+  for (let elementRef of elementRefs) {
+    elementRef.setCustomValidity(validationMessage);
+  }
+
+  return validationMessage;
 }
 
 export function handleInputChange(formState, event) {
@@ -43,10 +29,6 @@ export function handleInputChange(formState, event) {
   const name = target.name;
 
   formState.update(name, value);
-}
-
-export function handleOnInvalid(formState, name, { target }) {
-  formState.updateElementValidationMessage(name, target);
 }
 
 export function normalizeOptions(options, formData) {

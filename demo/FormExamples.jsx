@@ -20,6 +20,65 @@ export function FormExamples() {
         reset();
       }}
       onCancel={() => console.log('onCancel')}
+      customValidation={true}
+      validations={{
+        textField3: [
+          {
+            message: 'Must be filled if textField is not empty',
+            validate(value, formData) {
+              return !formData.textField || value;
+            },
+          },
+        ],
+        autocompleteField1: [
+          {
+            message: 'Must be filled if textField3 is empty',
+            validate(value, formData) {
+              return formData.textField3 || value;
+            },
+          },
+        ],
+        selectField: [
+          {
+            message: 'Must be filled if autocompleteField1 is empty',
+            validate(value, formData) {
+              return formData.autocompleteField1 || value;
+            },
+          },
+        ],
+        switchField: [
+          {
+            message: 'Must be filled if selectField is empty',
+            validate(value, formData) {
+              return formData.selectField || value;
+            },
+          },
+        ],
+        checkboxField: [
+          {
+            message: 'Must be filled if switchField is empty',
+            validate(value, formData) {
+              return formData.switchField || value;
+            },
+          },
+        ],
+        radioField: [
+          {
+            message: 'Must be filled if checkboxField is empty',
+            validate(value, formData) {
+              return formData.checkboxField || value;
+            },
+          },
+        ],
+        textareaField: [
+          {
+            message: 'Must be filled if radioField is empty',
+            validate(value, formData) {
+              return formData.radioField || value;
+            },
+          },
+        ],
+      }}
     >
       <div className="row">
         <div className="col">

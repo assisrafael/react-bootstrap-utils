@@ -10,7 +10,6 @@ A React implementation of Boostrap v4 components.
 - [] UrlLinkedTabs
 - [] UrlLinkedPagination
 - [] Smartable
-- [] Form validations (dependent field validation)
 - [] Form Range
 - [] Form generation based on a configuration option
 - [] Input help
@@ -18,7 +17,6 @@ A React implementation of Boostrap v4 components.
 - [] Input Masks
 - [] Input groups
 - [] Hide/show form inputs
-- [] Conditional required input validation
 - [] Keyboard navigation on FormAutocomplete
 - [] Forms with array of fields
 - [] Automatic input id

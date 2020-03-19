@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange, handleOnInvalid } from './form-helpers';
+import { FormContext, handleInputChange } from './form-helpers';
 
 export function FormInput({ id, type, name, placeholder, required, minLength, maxLength, min, max, pattern, step }) {
   const formState = useContext(FormContext);
+  const register = useCallback((ref) => {
+    formState.register(name, ref);
+  }, []);
 
   return (
     <input
@@ -11,7 +14,7 @@ export function FormInput({ id, type, name, placeholder, required, minLength, ma
       className="form-control"
       onChange={handleInputChange.bind(null, formState)}
       value={formState.getValue(name) || ''}
-      onInvalid={handleOnInvalid.bind(null, formState, name)}
+      ref={register}
     />
   );
 }
@@ -22,14 +25,14 @@ FormInput.defaultProps = {
 
 FormInput.propTypes = {
   id: PropTypes.string,
-  type: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  required: PropTypes.any,
-  minLength: PropTypes.string,
+  max: PropTypes.string,
   maxLength: PropTypes.string,
   min: PropTypes.string,
-  max: PropTypes.string,
+  minLength: PropTypes.string,
+  name: PropTypes.string.isRequired,
   pattern: PropTypes.string,
+  placeholder: PropTypes.string,
+  required: PropTypes.any,
   step: PropTypes.string,
+  type: PropTypes.string,
 };

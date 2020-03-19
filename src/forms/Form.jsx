@@ -1,10 +1,20 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, useForm } from './form-helpers';
+import { FormContext } from './form-helpers';
+import { useForm } from './useForm';
 import { FormActions } from './FormActions';
 
-export function Form({ children, initialValues, onSubmit, submitLabel, cancelLabel, onCancel, customValidation }) {
-  const formState = useForm(initialValues);
+export function Form({
+  cancelLabel,
+  children,
+  customValidation,
+  initialValues,
+  onCancel,
+  onSubmit,
+  submitLabel,
+  validations,
+}) {
+  const formState = useForm(initialValues, validations);
   const formRef = useRef(null);
 
   function resetForm() {
@@ -14,6 +24,8 @@ export function Form({ children, initialValues, onSubmit, submitLabel, cancelLab
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    formState.setSubmitedAttempted();
 
     if (customValidation && !formRef.current.checkValidity()) {
       formRef.current.classList.add('was-validated');
@@ -51,9 +63,9 @@ export function Form({ children, initialValues, onSubmit, submitLabel, cancelLab
 }
 
 Form.defaultProps = {
-  submitLabel: 'Submit',
   cancelLabel: 'Cancel',
-  customValidation: true,
+  customValidation: false,
+  submitLabel: 'Submit',
 };
 
 Form.propTypes = {
@@ -64,4 +76,5 @@ Form.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   submitLabel: PropTypes.string,
+  validations: PropTypes.object,
 };

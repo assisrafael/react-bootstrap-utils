@@ -1,17 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange, normalizeOptions, handleOnInvalid } from './form-helpers';
+import { FormContext, handleInputChange, normalizeOptions } from './form-helpers';
 
 export function FormSelect({ id, name, options, required, placeholder }) {
   const formState = useContext(FormContext);
+  const register = useCallback((ref) => {
+    formState.register(name, ref);
+  }, []);
 
   return (
     <select
       {...{ required, name, id }}
-      className="form-control"
+      className="custom-select"
       onChange={handleInputChange.bind(null, formState)}
       value={formState.getValue(name) || ''}
-      onInvalid={handleOnInvalid.bind(null, formState, name)}
+      ref={register}
     >
       <option value="">{placeholder}</option>
 
@@ -22,11 +25,11 @@ export function FormSelect({ id, name, options, required, placeholder }) {
 
 FormSelect.propTypes = {
   id: PropTypes.string,
+  name: PropTypes.string.isRequired,
   options: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   ]),
-  name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   required: PropTypes.any,
 };
