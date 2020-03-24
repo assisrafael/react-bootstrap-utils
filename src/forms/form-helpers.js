@@ -16,7 +16,7 @@ export function validateFormElement({ name, validations = [], formData, elementR
     return !isValid;
   });
 
-  for (let elementRef of elementRefs) {
+  for (const elementRef of elementRefs) {
     elementRef.setCustomValidity(validationMessage);
   }
 
@@ -32,7 +32,7 @@ export function handleInputChange(formState, event) {
 }
 
 export function normalizeOptions(options, formData) {
-  let _options = typeof options === 'function' ? options(formData) : options;
+  const _options = typeof options === 'function' ? options(formData) : options;
 
   if (!Array.isArray(_options)) {
     throw new Error('Select Options should be an array');

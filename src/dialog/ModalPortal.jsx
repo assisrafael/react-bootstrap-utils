@@ -6,12 +6,15 @@ export function ModalPortal({ children, isOpen }) {
   const [container, setContainer] = useState();
 
   useEffect(() => {
-    let body = document.getElementsByTagName('body')[0];
+    const body = document.getElementsByTagName('body')[0];
+
     if (!container) {
-      let containerElem = document.createElement('div');
+      const containerElem = document.createElement('div');
+
       body.appendChild(containerElem);
       setContainer(containerElem);
     }
+
     return () => {
       body.removeChild(container);
     };

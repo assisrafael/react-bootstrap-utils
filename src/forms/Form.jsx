@@ -29,6 +29,7 @@ export function Form({
 
     if (customValidation && !formRef.current.checkValidity()) {
       formRef.current.classList.add('was-validated');
+
       return;
     }
 

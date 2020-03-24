@@ -13,6 +13,7 @@ export function awaitForAsyncTask(task, callback) {
 
     if (!res || !res.then) {
       callback();
+
       return;
     }
 

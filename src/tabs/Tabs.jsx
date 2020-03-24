@@ -5,7 +5,7 @@ import { TabContent } from './TabContent';
 
 export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered, onSelect }) {
   if (activeTab >= tabs.length) {
-    console.warn('Invalid tab selected:', activeTab);
+    throw new Error(`Invalid tab selected: ${activeTab}`);
   }
 
   return (

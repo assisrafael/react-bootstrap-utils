@@ -42,7 +42,7 @@ TableBody.propTypes = {
 };
 
 function getColumnValue(doc, column, docIndex) {
-  let rawValue = doc[column.attribute];
+  const rawValue = doc[column.attribute];
 
   if (!column.format) {
     return rawValue;

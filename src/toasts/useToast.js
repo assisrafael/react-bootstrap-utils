@@ -5,16 +5,12 @@ export function useToast({ unique }) {
   const [nextId, setNextId] = useState(0);
   const { push, unset, get } = useArrayValueMap(
     unique && {
-      equalityComparator: (a) => (b) => {
-        return a.message === b.message;
-      },
+      equalityComparator: (a) => (b) => a.message === b.message,
     }
   );
 
   function close(position, toastId) {
-    unset(position, (toast) => {
-      return toast.id !== toastId;
-    });
+    unset(position, (toast) => toast.id !== toastId);
   }
 
   return {

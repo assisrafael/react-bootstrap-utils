@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import {
   Form,
@@ -159,11 +160,11 @@ export function FormExamples() {
           <FormGroupSelect
             name="selectField3"
             label="Select field 3 (function)"
-            options={(formData) => {
-              return Object.entries(formData)
+            options={(formData) =>
+              Object.entries(formData)
                 .filter(([key, value]) => key !== 'selectField3' && value)
-                .map(([, value]) => value);
-            }}
+                .map(([, value]) => value)
+            }
             placeholder="Select one value"
           />
         </div>
@@ -171,14 +172,14 @@ export function FormExamples() {
           <FormGroupSelect
             name="selectField4"
             label="Select field 4 (function)"
-            options={(formData) => {
-              return Object.entries(formData)
+            options={(formData) =>
+              Object.entries(formData)
                 .filter(([key]) => key !== 'selectField4')
                 .map(([key, value]) => ({
                   label: key,
                   value,
-                }));
-            }}
+                }))
+            }
           />
         </div>
       </div>

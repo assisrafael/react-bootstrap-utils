@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 import { Table } from '../dist/main';
 
@@ -43,6 +44,7 @@ export function TableExamples() {
       </div>
     );
   }
+
   return (
     <div>
       <div className="row">
@@ -89,7 +91,7 @@ export function TableExamples() {
                 attribute: 'a',
                 label: 'A',
                 format(v) {
-                  return v + '*';
+                  return `${v}*`;
                 },
               },
               {

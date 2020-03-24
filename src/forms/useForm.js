@@ -54,6 +54,7 @@ export function useForm(initialState, validations) {
     },
     getValidationMessage(name) {
       const elementRefs = getElementRefs(name);
+
       return elementRefs && elementRefs[0] ? elementRefs[0].validationMessage : '';
     },
     validateForm(_formData) {
@@ -61,7 +62,7 @@ export function useForm(initialState, validations) {
       let isFormValid = true;
       const formData = _formData || formState;
 
-      for (let name of elementNames) {
+      for (const name of elementNames) {
         const isElementValid = !validateFormElement({
           name,
           formData,

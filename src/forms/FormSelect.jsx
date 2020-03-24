@@ -35,11 +35,9 @@ FormSelect.propTypes = {
 };
 
 function renderOptions(options, formData) {
-  return normalizeOptions(options, formData).map(({ value, label }, index) => {
-    return (
-      <option key={index} value={value}>
-        {label}
-      </option>
-    );
-  });
+  return normalizeOptions(options, formData).map(({ value, label }, index) => (
+    <option key={index} value={value}>
+      {label}
+    </option>
+  ));
 }

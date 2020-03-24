@@ -22,6 +22,22 @@
     }
   },
   "rules": {
-    "no-unused-vars": ["error", { "ignoreRestSiblings": true }]
+    "arrow-body-style": "error",
+    "no-console": "error",
+    "no-plusplus": "error",
+    "no-unused-expressions": "error",
+    "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+    "no-var": "error",
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": ["const", "let", "var", "directive", "if", "break"], "next": "*" },
+      { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] },
+      { "blankLine": "any", "prev": "directive", "next": "directive" }
+    ],
+    "prefer-const": "error",
+    "prefer-template": "error",
+    "quote-props": "off",
+    "quotes": "off"
   }
 }

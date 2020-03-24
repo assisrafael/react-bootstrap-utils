@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 
 import { Dialog, Form, FormGroupInput } from '../dist/main';

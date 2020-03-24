@@ -56,9 +56,7 @@ export function useArrayValueMap({ unique = true, equalityComparator = (a) => (b
       });
     },
     unset(key, filterfn) {
-      setValue(key, (prevValues) => {
-        return prevValues.filter(filterfn);
-      });
+      setValue(key, (prevValues) => prevValues.filter(filterfn));
     },
     get: getValue,
     getAllKeys,

@@ -84,8 +84,8 @@ FormAutocomplete.defaultProps = {
   openOnFocus: false,
   onSearch: () => {},
   filter: (_searchValue) => (item) => {
-    let itemValue = JSON.stringify(item.label).toLowerCase();
-    let searchValue = _searchValue.toLowerCase();
+    const itemValue = JSON.stringify(item.label).toLowerCase();
+    const searchValue = _searchValue.toLowerCase();
 
     return itemValue.includes(searchValue);
   },
