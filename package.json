@@ -8,8 +8,11 @@
     "start": "webpack-dev-server --open --mode development",
     "release": "standard-version",
     "prepublishOnly": "npm run build",
-    "lint": "eslint --fix {src,demo}\"/**/*.\"{js,jsx}",
-    "format": "prettier --write {src,demo}\"/**/*.\"{js,jsx}"
+    "eslint": "eslint {src,demo}\"/**/*.\"{js,jsx}",
+    "prettier": "prettier {src,demo}\"/**/*.\"{js,jsx}",
+    "ci": "npm run prettier -- --list-different && npm run eslint",
+    "lint": "npm run eslint -- --fix",
+    "format": "npm run prettier -- --write"
   },
   "repository": {
     "type": "git",
