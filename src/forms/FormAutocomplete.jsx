@@ -52,6 +52,10 @@ export function FormAutocomplete({
           }
         }}
         onBlur={() => {
+          if (!getValue()) {
+            setSearchValue('');
+          }
+
           if (ignoreBlur) {
             inputRef.current.focus();
           } else {
