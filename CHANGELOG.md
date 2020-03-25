@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.4...v0.8.5) (2020-03-25)
+
+
+### Features
+
+* **forms:** extract and exports "useFormControl" (custom hook) to allow external custom form elements ([c37b955](https://github.com/assisrafael/react-bootstrap-utils/commit/c37b955b2e38acacbbffc2e6eebf73785722cb3e))
+
+
+### Bug Fixes
+
+* **forms:** change onCancel prop-type to optional ([57bcdb8](https://github.com/assisrafael/react-bootstrap-utils/commit/57bcdb875a511f4d4ef3eb31eb0e36179e361a4f))
+* **tabs:** change tab title prop-types to allow jsx content ([8ac7cb6](https://github.com/assisrafael/react-bootstrap-utils/commit/8ac7cb63dbca1b6b05a6ac13ec3777b323416fbc))
+
 ### [0.8.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.3...v0.8.4) (2020-03-25)
 
 
