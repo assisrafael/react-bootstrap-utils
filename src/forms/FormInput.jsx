@@ -1,20 +1,18 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange } from './form-helpers';
+import { useFormControl } from './helpers/useFormControl';
 
 export function FormInput({ id, type, name, placeholder, required, minLength, maxLength, min, max, pattern, step }) {
-  const formState = useContext(FormContext);
-  const register = useCallback((ref) => {
-    formState.register(name, ref);
-  }, []);
+  const { getValue, handleOnChange, register } = useFormControl(name);
+  const registerRef = useCallback(register, []);
 
   return (
     <input
       {...{ required, name, id, placeholder, type, minLength, maxLength, min, max, pattern, step }}
       className="form-control"
-      onChange={handleInputChange.bind(null, formState)}
-      value={formState.getValue(name) || ''}
-      ref={register}
+      onChange={handleOnChange}
+      value={getValue()}
+      ref={registerRef}
     />
   );
 }

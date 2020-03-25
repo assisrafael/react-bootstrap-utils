@@ -1,20 +1,18 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange } from './form-helpers';
+import { useFormControl } from './helpers/useFormControl';
 
 export function FormTextarea({ id, name, required, placeholder, rows }) {
-  const formState = useContext(FormContext);
-  const register = useCallback((ref) => {
-    formState.register(name, ref);
-  }, []);
+  const { getValue, handleOnChange, register } = useFormControl(name);
+  const registerRef = useCallback(register, []);
 
   return (
     <textarea
       {...{ required, name, id, placeholder, rows }}
       className="form-control"
-      onChange={handleInputChange.bind(null, formState)}
-      value={formState.getValue(name) || ''}
-      ref={register}
+      onChange={handleOnChange}
+      value={getValue()}
+      ref={registerRef}
     ></textarea>
   );
 }

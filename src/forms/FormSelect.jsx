@@ -1,24 +1,23 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange, normalizeOptions } from './form-helpers';
+import { normalizeOptions } from './helpers/form-helpers';
+import { useFormControl } from './helpers/useFormControl';
 
 export function FormSelect({ id, name, options, required, placeholder }) {
-  const formState = useContext(FormContext);
-  const register = useCallback((ref) => {
-    formState.register(name, ref);
-  }, []);
+  const { getFormData, getValue, handleOnChange, register } = useFormControl(name);
+  const registerRef = useCallback(register, []);
 
   return (
     <select
       {...{ required, name, id }}
       className="custom-select"
-      onChange={handleInputChange.bind(null, formState)}
-      value={formState.getValue(name) || ''}
-      ref={register}
+      onChange={handleOnChange}
+      value={getValue()}
+      ref={registerRef}
     >
       <option value="">{placeholder}</option>
 
-      {renderOptions(options, formState.getFormData())}
+      {renderOptions(options, getFormData())}
     </select>
   );
 }

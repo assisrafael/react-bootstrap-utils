@@ -1,13 +1,11 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange } from './form-helpers';
+import { useFormControl } from './helpers/useFormControl';
 
 export function FormRadio({ id, name, required, checkedValue, valueLabel, inline }) {
-  const formState = useContext(FormContext);
-  const value = formState.getValue(name) || false;
-  const register = useCallback((ref) => {
-    formState.register(name, ref);
-  }, []);
+  const { getValue, handleOnChange, register } = useFormControl(name, 'boolean');
+  const registerRef = useCallback(register, []);
+  const value = getValue();
 
   return (
     <div className={`custom-control custom-radio ${inline ? 'custom-control-inline' : ''}`}>
@@ -15,10 +13,10 @@ export function FormRadio({ id, name, required, checkedValue, valueLabel, inline
         {...{ required, name, id }}
         type="radio"
         className="custom-control-input"
-        onChange={handleInputChange.bind(null, formState)}
+        onChange={handleOnChange}
         checked={value === checkedValue}
         value={checkedValue}
-        ref={register}
+        ref={registerRef}
       />
       <label className="custom-control-label" htmlFor={id}>
         {valueLabel}

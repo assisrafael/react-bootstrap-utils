@@ -1,8 +1,9 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, handleInputChange, normalizeOptions } from './form-helpers';
+import { handleInputChange, normalizeOptions } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
+import { useFormControl } from './helpers/useFormControl';
 
 export function FormAutocomplete({
   onSearch,
@@ -18,11 +19,11 @@ export function FormAutocomplete({
   const [searchValue, setSearchValue] = useState('');
   const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
-  const formState = useContext(FormContext);
+  const { getValue, setValue, register } = useFormControl(name);
   const inputRef = useRef(null);
 
   useEffect(() => {
-    formState.register(name, inputRef.current);
+    register(inputRef.current);
   }, []);
 
   return (
@@ -38,8 +39,8 @@ export function FormAutocomplete({
             onSearch(value);
             open();
 
-            if (formState.getValue(name)) {
-              formState.update(name, null);
+            if (getValue()) {
+              setValue(null);
             }
           },
         })}
@@ -67,7 +68,7 @@ export function FormAutocomplete({
         isOpen={isOpen()}
         items={normalizeOptions(options, FormData).filter(filter(searchValue))}
         onSelect={({ value, label }) => {
-          formState.update(name, value);
+          setValue(value);
           setSearchValue(label);
           close();
         }}

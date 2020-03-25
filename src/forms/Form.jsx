@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext } from './form-helpers';
-import { useForm } from './useForm';
+import { FormContext } from './helpers/form-helpers';
+import { useForm } from './helpers/useForm';
 import { FormActions } from './FormActions';
 
 export function Form({

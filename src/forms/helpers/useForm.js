@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useArrayValueMap } from '../utils/useValueMap';
 import { validateFormElement } from './form-helpers';
+import { useArrayValueMap } from '../../utils/useValueMap';
 
 export function useForm(initialState, validations) {
   const [formState, setFormState] = useState(initialState);
