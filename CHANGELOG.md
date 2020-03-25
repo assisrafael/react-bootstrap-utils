@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.3...v0.8.4) (2020-03-25)
+
+
+### Features
+
+* **forms:** allow custom form actions ([52861bd](https://github.com/assisrafael/react-bootstrap-utils/commit/52861bd014e2c8d73698c52ee6e0164a747a2882))
+
+
+### Bug Fixes
+
+* **toasts:** fix prop-types warning about multiple children ([8dbe04c](https://github.com/assisrafael/react-bootstrap-utils/commit/8dbe04c12679d916d588bf69a05f5316f0a688f1))
+
 ### [0.8.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.2...v0.8.3) (2020-03-25)
 
 ### [0.8.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.1...v0.8.2) (2020-03-19)
