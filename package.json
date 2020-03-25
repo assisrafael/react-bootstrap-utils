@@ -35,6 +35,8 @@
     "eslint-plugin-react": "^7.19.0",
     "prettier": "^2.0.2",
     "react-hot-loader": "^4.12.20",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "rollup": "^2.1.0",
     "rollup-plugin-babel": "^4.4.0",
     "standard-version": "^7.1.0",
@@ -42,7 +44,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
