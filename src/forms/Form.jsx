@@ -76,7 +76,7 @@ Form.propTypes = {
   customValidation: PropTypes.bool,
   customActions: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
   initialValues: PropTypes.object,
-  onCancel: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
   submitLabel: PropTypes.string,
   validations: PropTypes.object,
