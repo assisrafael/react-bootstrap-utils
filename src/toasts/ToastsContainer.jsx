@@ -26,7 +26,7 @@ ToastsContainer.defaultProps = {
 };
 
 ToastsContainer.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
   noStyle: PropTypes.bool,
   unique: PropTypes.bool,
 };
