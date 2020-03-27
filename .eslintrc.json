@@ -25,6 +25,7 @@
   "rules": {
     "arrow-body-style": "error",
     "no-console": "error",
+    "no-else-return": ["error", { "allowElseIf": false }],
     "no-plusplus": "error",
     "no-unused-expressions": "error",
     "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
