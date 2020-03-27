@@ -220,6 +220,21 @@ export function FormExamples() {
       </div>
 
       <FormGroupTextarea name="textareaField" label="Textarea field" />
+
+      {[0, 1].map((index) => (
+        <div className="row" key={index}>
+          <div className="col">
+            <FormGroupInput name={`array[${index}].data.text`} label={`Array text ${index}`} />
+          </div>
+          <div className="col">
+            <FormGroupSelect
+              name={`array[${index}].data.select`}
+              label={`Array select ${index}`}
+              options={['Yes', 'No']}
+            />
+          </div>
+        </div>
+      ))}
     </Form>
   );
 }

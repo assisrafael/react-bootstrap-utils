@@ -1,4 +1,4 @@
-import { setValueByPath, getValueByPath, splitPath } from '../src/utils/getters-setters';
+import { setValueByPath, getValueByPath, splitPath, deepClone } from '../src/utils/getters-setters';
 
 test('splitPath should split path strings into hierarchical components', () => {
   expect(splitPath('a.b.0.c')).toStrictEqual([
@@ -45,4 +45,26 @@ test('getValueByPath should get path value of complex objects', () => {
   expect(getValueByPath({ a: [6] }, 'a[0]')).toBe(6);
   expect(getValueByPath({ a: { '0': 6 } }, 'a[0]')).toBe(6);
   expect(getValueByPath({ a: [2, { b: [3, 4, 5, { c: { d: 'efg' } }] }] }, 'a[1].b.3.c')).toStrictEqual({ d: 'efg' });
+});
+
+test('deepClone should not result in a shallow copy', () => {
+  const source = {
+    a: 'hello',
+    c: 'test',
+    po: 33,
+    arr: [1, 2, 3, 4],
+    anotherObj: {
+      a: 33,
+      str: 'whazzup',
+    },
+  };
+  const dest = deepClone(source);
+
+  expect(dest).toStrictEqual(source);
+  source.anotherObj.a = 200;
+  expect(source.anotherObj.a).toBe(200);
+  expect(dest.anotherObj.a).toBe(33);
+  source.arr.push(5);
+  expect(source.arr[4]).toBe(5);
+  expect(dest.arr[4]).toBe(undefined);
 });

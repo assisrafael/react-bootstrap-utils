@@ -1,10 +1,11 @@
 import React from 'react';
+import { getValueByPath } from '../../utils/getters-setters';
 
 export const FormContext = React.createContext(null);
 
 export function validateFormElement({ name, validations = [], formData, elementRefs }) {
   let validationMessage = '';
-  const value = formData[name];
+  const value = getValueByPath(formData, name);
 
   validations.some(({ message, validate }) => {
     const isValid = validate(value, formData);

@@ -57,3 +57,41 @@ export function setValueByPath(obj, objPath, value) {
 
   return obj || lastCursor;
 }
+
+export function deepClone(item) {
+  // null, undefined values check
+  if (!item) {
+    return item;
+  }
+
+  if (Object.prototype.toString.call(item) === '[object Array]') {
+    return item.map(deepClone);
+  }
+
+  if (typeof item != 'object') {
+    return item;
+  }
+
+  // testing that this is DOM
+  if (item.nodeType && typeof item.cloneNode == 'function') {
+    return item.cloneNode(true);
+  }
+
+  if (!item.prototype) {
+    // check that this is a literal
+    if (item instanceof Date) {
+      return new Date(item);
+    }
+
+    // it is an object literal
+    const result = {};
+
+    for (const i in item) {
+      result[i] = deepClone(item[i]);
+    }
+
+    return result;
+  }
+
+  return item;
+}

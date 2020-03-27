@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { validateFormElement } from './form-helpers';
 import { useArrayValueMap } from '../../utils/useValueMap';
+import { setValueByPath, deepClone, getValueByPath } from '../../utils/getters-setters';
+import { validateFormElement } from './form-helpers';
 
 export function useForm(initialState, validations) {
   const [formState, setFormState] = useState(initialState);
@@ -21,27 +22,17 @@ export function useForm(initialState, validations) {
       }
     },
     update(name, value) {
-      setFormState((prevFormState) => {
-        const nextState = {
-          ...prevFormState,
-          [name]: value,
-        };
-
-        return nextState;
-      });
+      setFormState((prevFormState) => nextState(prevFormState, name, value));
 
       if (validations) {
-        this.validateForm({
-          ...formState,
-          [name]: value,
-        });
+        this.validateForm(nextState(formState, name, value));
       }
     },
     getFormData() {
       return formState;
     },
     getValue(name) {
-      return formState[name];
+      return getValueByPath(formState, name);
     },
     reset() {
       setFormState(initialState);
@@ -79,4 +70,8 @@ export function useForm(initialState, validations) {
       return isFormValid;
     },
   };
+}
+
+function nextState(previousState, path, value) {
+  return setValueByPath(deepClone(previousState), path, value);
 }
