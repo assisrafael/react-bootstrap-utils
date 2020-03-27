@@ -12,7 +12,8 @@
     "prettier": "prettier {src,demo}\"/**/*.\"{js,jsx}",
     "ci": "npm run prettier -- --list-different && npm run eslint",
     "lint": "npm run eslint -- --fix",
-    "format": "npm run prettier -- --write"
+    "format": "npm run prettier -- --write",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -30,13 +31,15 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
     "@rollup/plugin-node-resolve": "^7.1.1",
+    "babel-jest": "^25.2.3",
     "babel-loader": "^8.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
+    "jest": "^25.2.3",
     "prettier": "^2.0.2",
-    "react-hot-loader": "^4.12.20",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.20",
     "rollup": "^2.1.0",
     "rollup-plugin-babel": "^4.4.0",
     "standard-version": "^7.1.0",
