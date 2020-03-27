@@ -20,6 +20,8 @@ export function useFormControl(name, type) {
       formState.register(name, ref);
     },
     getFormData: () => formState.getFormData(),
+    isValid: () => formState.getValidationMessage(name) === '',
+    getFormSubmitedAttempted: () => formState.getSubmitedAttempted(),
   };
 }
 

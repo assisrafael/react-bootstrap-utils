@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { handleInputChange, normalizeOptions } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
@@ -19,27 +19,35 @@ export function FormAutocomplete({
   const [searchValue, setSearchValue] = useState('');
   const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
-  const { getValue, setValue, register } = useFormControl(name);
-  const inputRef = useRef(null);
+  const [isFocused, setFocus] = useState(false);
+  const { getValue, setValue, register, isValid, getFormSubmitedAttempted } = useFormControl(name);
+  const registerRef = useCallback(register, []);
+  const searchInputRef = useRef(null);
+
+  const items = normalizeOptions(options, FormData);
+  const value = getValue();
+  const selectedItem = items.find((item) => item.value === value);
+
+  const controlFeedback = `${getFormSubmitedAttempted() ? (isValid() ? 'is-valid' : 'is-invalid') : ''}`;
 
   useEffect(() => {
-    register(inputRef.current);
-  }, []);
+    searchInputRef.current.setCustomValidity(controlFeedback === 'is-invalid' ? 'invalid' : '');
+  }, [controlFeedback]);
 
   return (
     <>
       <input
-        {...{ required, name, id, placeholder }}
+        {...{ placeholder }}
         type="text"
-        ref={inputRef}
-        className="form-control"
+        ref={searchInputRef}
+        className={`form-control ${isFocused ? '' : 'd-none'} ${controlFeedback}`}
         onChange={handleInputChange.bind(null, {
           update(_, value) {
             setSearchValue(value);
             onSearch(value);
             open();
 
-            if (getValue()) {
+            if (value) {
               setValue(null);
             }
           },
@@ -52,14 +60,15 @@ export function FormAutocomplete({
           }
         }}
         onBlur={() => {
-          if (!getValue()) {
+          if (!value) {
             setSearchValue('');
           }
 
           if (ignoreBlur) {
-            inputRef.current.focus();
+            searchInputRef.current.focus();
           } else {
             close();
+            setFocus(false);
           }
         }}
         value={searchValue}
@@ -68,13 +77,40 @@ export function FormAutocomplete({
         aria-expanded="false"
         autoComplete="off"
       />
+
+      {!isFocused && (
+        <div
+          className={`form-control ${controlFeedback} `}
+          onClick={() => {
+            setFocus(true);
+            setTimeout(() => {
+              searchInputRef.current.focus();
+            });
+          }}
+        >
+          {selectedItem ? (template ? template(selectedItem.label) : selectedItem.label) : placeholder}
+        </div>
+      )}
+
+      <input
+        type="text"
+        className={`form-control d-none`}
+        {...{ name, required, id }}
+        onChange={() => {}}
+        value={getValue()}
+        ref={registerRef}
+      />
       <Dropdown
         isOpen={isOpen()}
-        items={normalizeOptions(options, FormData).filter(filter(searchValue))}
+        items={items.filter(filter(searchValue))}
         onSelect={({ value, label }) => {
           setValue(value);
           setSearchValue(label);
-          close();
+          setIgnoreBlur(false);
+          setTimeout(() => {
+            setFocus(false);
+            close();
+          }, 250);
         }}
         template={template}
         onTouchStart={() => setIgnoreBlur(true)}
