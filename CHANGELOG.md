@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.5...v0.9.0) (2020-03-27)
+
+
+### Bug Fixes
+
+* **FormAutocomplete:** clear search value onBlur if no option was selected ([3004f4b](https://github.com/assisrafael/react-bootstrap-utils/commit/3004f4bde55fa9d5f4eb01cf0e0242de3661796d))
+* **FormAutocomplete:** fix FormAutocomplete validation feedback ([6a67e45](https://github.com/assisrafael/react-bootstrap-utils/commit/6a67e451ea8a0a733083dd2d1550e17560b4bc25))
+* **forms:** reset submitAttempted state on form reset ([4be36e2](https://github.com/assisrafael/react-bootstrap-utils/commit/4be36e2c9016524604741ae6ba8ce3e95e21eba1))
+
 ### [0.8.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.4...v0.8.5) (2020-03-25)
 
 
