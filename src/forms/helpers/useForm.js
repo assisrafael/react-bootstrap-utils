@@ -45,6 +45,7 @@ export function useForm(initialState, validations) {
     },
     reset() {
       setFormState(initialState);
+      setSubmitAttempted(false);
     },
     setSubmitedAttempted() {
       setSubmitAttempted(true);
