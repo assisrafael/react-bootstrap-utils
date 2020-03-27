@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.9.0...v0.10.0) (2020-03-27)
+
+
+### Features
+
+* **forms:** allow deep objects and arrays as form control names ([9d0d1dd](https://github.com/assisrafael/react-bootstrap-utils/commit/9d0d1dd11acf62212fd91b4725791797f34303b3))
+* **utils:** include getters and setters utils ([0b46d08](https://github.com/assisrafael/react-bootstrap-utils/commit/0b46d085e4ee10d7e2d85c0e7a951d71ef19887e))
+
 ## [0.9.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.8.5...v0.9.0) (2020-03-27)
 
 
