@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.10.0...v0.11.0) (2020-04-06)
+
+
+### Features
+
+* **forms:** allow data change monitoring events ([85d65cd](https://github.com/assisrafael/react-bootstrap-utils/commit/85d65cd2a1a53dda810e2825b208063ec486e9c6))
+
+
+### Bug Fixes
+
+* **list-group:** include item index on template function argument list ([c2c32c4](https://github.com/assisrafael/react-bootstrap-utils/commit/c2c32c4146f6ba469ec17a342973bb2d657e0fa6))
+* **list-group:** include item object into "onSelect" argument list ([5d35c6c](https://github.com/assisrafael/react-bootstrap-utils/commit/5d35c6c671a4fb665b59fa51b748c9cca9877de0))
+* **modal:** always remove .modal-open on body classList after onClose ([75b3fd7](https://github.com/assisrafael/react-bootstrap-utils/commit/75b3fd77e5eafb42914651fbfb6551e9185ec58b))
+
 ## [0.10.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.9.0...v0.10.0) (2020-03-27)
 
 
