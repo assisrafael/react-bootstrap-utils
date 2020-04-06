@@ -13,7 +13,7 @@ export function ListGroup({ items, active, linked, bordered, horizontal, templat
       linked={linked}
       onSelect={onSelect}
     >
-      {template(item)}
+      {template(item, index)}
     </ListGroupItem>
   ));
 

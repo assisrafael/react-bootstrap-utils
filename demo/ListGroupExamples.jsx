@@ -28,8 +28,9 @@ export function ListGroupExamples() {
         <h1 className="h4">Simple list group</h1>
         <ListGroup
           items={items}
-          template={(item) => (
+          template={(item, index) => (
             <>
+              <em>{index + 1} </em>
               <strong>{item.title}</strong> <br />
               {item.description}
             </>
