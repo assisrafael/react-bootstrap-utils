@@ -35,6 +35,7 @@ export function ListGroupExamples() {
               {item.description}
             </>
           )}
+          onSelect={console.warn}
         />
       </div>
       <div className="col-6 mb-3">

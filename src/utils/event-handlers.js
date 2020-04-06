@@ -1,9 +1,9 @@
-export function safeClick(callback, callbackArgs) {
+export function safeClick(callback, ...callbackArgs) {
   return (e) => {
     stopPropagation(e);
     e.preventDefault();
 
-    callback(callbackArgs);
+    callback(...callbackArgs);
   };
 }
 
