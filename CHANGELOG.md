@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.0...v0.11.1) (2020-04-06)
+
+
+### Bug Fixes
+
+* **utils:** exports utils ([ee052e7](https://github.com/assisrafael/react-bootstrap-utils/commit/ee052e7b59e6a155b51b7221cf39f8fae0184a3c))
+
 ## [0.11.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.10.0...v0.11.0) (2020-04-06)
 
 
