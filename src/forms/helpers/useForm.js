@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useArrayValueMap } from '../../utils/useValueMap';
 import { setValueByPath, deepClone, getValueByPath } from '../../utils/getters-setters';
 import { validateFormElement } from './form-helpers';
+import { debounce } from 'lodash-es';
 
-export function useForm(initialState, validations) {
+export function useForm(initialState, validations, onChange) {
   const [formState, setFormState] = useState(initialState);
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const { getAllKeys: getElementNames, get: getElementRefs, push: registerElementRef } = useArrayValueMap();
+
+  if (onChange) {
+    const _onChange = useCallback(debounce(onChange, 500), []);
+
+    useEffect(() => {
+      _onChange(formState);
+    }, [formState]);
+  }
 
   return {
     register(name, elementRef) {

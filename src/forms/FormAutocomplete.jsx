@@ -42,12 +42,12 @@ export function FormAutocomplete({
         ref={searchInputRef}
         className={`form-control ${isFocused ? '' : 'd-none'} ${controlFeedback}`}
         onChange={handleInputChange.bind(null, {
-          update(_, value) {
-            setSearchValue(value);
-            onSearch(value);
+          update(_, nextSearchValue) {
+            setSearchValue(nextSearchValue);
+            onSearch(nextSearchValue);
             open();
 
-            if (value) {
+            if (nextSearchValue && value) {
               setValue(null);
             }
           },
@@ -56,7 +56,7 @@ export function FormAutocomplete({
           if (openOnFocus) {
             setTimeout(() => {
               open();
-            }, 250);
+            }, 100);
           }
         }}
         onBlur={() => {
@@ -110,7 +110,7 @@ export function FormAutocomplete({
           setTimeout(() => {
             setFocus(false);
             close();
-          }, 250);
+          }, 100);
         }}
         template={template}
         onTouchStart={() => setIgnoreBlur(true)}

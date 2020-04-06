@@ -15,6 +15,7 @@ export function FormExamples() {
   return (
     <Form
       initialValues={{ textField: 'abc' }}
+      onChange={console.info}
       onSubmit={(formData, reset) => {
         console.log('onSubmit', formData);
         // return Promise.resolve();
