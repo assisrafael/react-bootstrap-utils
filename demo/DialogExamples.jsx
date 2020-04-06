@@ -17,6 +17,7 @@ export function DialogExamples() {
               sunt, a eveniet nobis est ex magni nesciunt magnam. Eaque eius hic eligendi dolorum ut quas?
             </div>
           }
+          keyboard={false}
         >
           <a href="" className="btn btn-primary">
             Simple Dialog

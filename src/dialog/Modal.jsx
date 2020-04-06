@@ -9,6 +9,7 @@ export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, sc
 
   function closeIfEscape(event) {
     if (keyboard && event.which === ESCAPE_KEYCODE) {
+      hideModal(modalRef);
       onClose();
     }
   }
@@ -22,17 +23,10 @@ export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, sc
   }, [keyboard]);
 
   useEffect(() => {
-    const body = document.querySelector('body');
-
     if (isOpen) {
-      body.classList.add('modal-open');
-      modalRef.current.style.display = 'block';
-      modalRef.current.classList.add('show');
-      modalRef.current.focus();
+      showModal(modalRef);
     } else {
-      body.classList.remove('modal-open');
-      modalRef.current.style.display = 'none';
-      modalRef.current.classList.remove('show');
+      hideModal(modalRef);
     }
   }, [isOpen]);
 
@@ -45,6 +39,7 @@ export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, sc
       onClick={(e) => {
         e.stopPropagation();
         if (!staticBackdrop) {
+          hideModal(modalRef);
           onClose();
         }
       }}
@@ -91,6 +86,23 @@ Modal.propTypes = {
   staticBackdrop: PropTypes.bool,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
+
+function hideModal(modalRef) {
+  const body = document.querySelector('body');
+
+  body.classList.remove('modal-open');
+  modalRef.current.style.display = 'none';
+  modalRef.current.classList.remove('show');
+}
+
+function showModal(modalRef) {
+  const body = document.querySelector('body');
+
+  body.classList.add('modal-open');
+  modalRef.current.style.display = 'block';
+  modalRef.current.classList.add('show');
+  modalRef.current.focus();
+}
 
 function renderObjectOrFunction(content, params) {
   if (typeof content === 'function') {
