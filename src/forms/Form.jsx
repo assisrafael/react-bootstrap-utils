@@ -15,8 +15,9 @@ export function Form({
   onChange,
   submitLabel,
   validations,
+  transform,
 }) {
-  const formState = useForm(initialValues, validations, onChange);
+  const formState = useForm(initialValues, { validations, onChange, transform });
   const formRef = useRef(null);
 
   function resetForm() {
@@ -69,17 +70,19 @@ Form.defaultProps = {
   cancelLabel: 'Cancel',
   customValidation: false,
   submitLabel: 'Submit',
+  transform: (data) => data,
 };
 
 Form.propTypes = {
   cancelLabel: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
-  customValidation: PropTypes.bool,
   customActions: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+  customValidation: PropTypes.bool,
   initialValues: PropTypes.object,
   onCancel: PropTypes.func,
-  onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func,
+  onSubmit: PropTypes.func.isRequired,
   submitLabel: PropTypes.string,
+  transform: PropTypes.func,
   validations: PropTypes.object,
 };

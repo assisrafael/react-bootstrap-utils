@@ -21,6 +21,11 @@ export function FormExamples() {
         // return Promise.resolve();
         reset();
       }}
+      transform={(formData) => {
+        formData.__v = formData.__v ? formData.__v + 1 : 1;
+
+        return formData;
+      }}
       onCancel={() => console.log('onCancel')}
       customValidation={true}
       validations={{

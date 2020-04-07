@@ -4,7 +4,7 @@ import { setValueByPath, deepClone, getValueByPath } from '../../utils/getters-s
 import { validateFormElement } from './form-helpers';
 import { debounce } from 'lodash-es';
 
-export function useForm(initialState, validations, onChange) {
+export function useForm(initialState, { validations, onChange, transform }) {
   const [formState, setFormState] = useState(initialState);
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const { getAllKeys: getElementNames, get: getElementRefs, push: registerElementRef } = useArrayValueMap();
@@ -31,7 +31,7 @@ export function useForm(initialState, validations, onChange) {
       }
     },
     update(name, value) {
-      setFormState((prevFormState) => nextState(prevFormState, name, value));
+      setFormState((prevFormState) => transform(nextState(prevFormState, name, value), name));
 
       if (validations) {
         this.validateForm(nextState(formState, name, value));
