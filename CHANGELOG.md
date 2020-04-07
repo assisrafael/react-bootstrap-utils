@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.3...v0.11.4) (2020-04-07)
+
+
+### Features
+
+* **forms:** allow form data transformation after each input change ([41ea647](https://github.com/assisrafael/react-bootstrap-utils/commit/41ea64780c04dc6a04e5c3a0b95197b296c1d23d))
+
 ### [0.11.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.2...v0.11.3) (2020-04-07)
 
 
