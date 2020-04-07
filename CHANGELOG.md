@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.2...v0.11.3) (2020-04-07)
+
+
+### Features
+
+* **forms:** allow useFormControl to receive type === "array" ([15003d9](https://github.com/assisrafael/react-bootstrap-utils/commit/15003d9ccb8dc3669a56a1b237a897af367a2a05))
+
+
+### Bug Fixes
+
+* **FormAutocomplete:** fix normalizeOptions argument ([2186117](https://github.com/assisrafael/react-bootstrap-utils/commit/2186117bcd66691c72260fc364849d6f43f961a8))
+
 ### [0.11.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.1...v0.11.2) (2020-04-07)
 
 
