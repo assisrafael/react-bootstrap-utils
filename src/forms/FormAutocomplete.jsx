@@ -20,11 +20,11 @@ export function FormAutocomplete({
   const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
   const [isFocused, setFocus] = useState(false);
-  const { getValue, setValue, register, isValid, getFormSubmitedAttempted } = useFormControl(name);
+  const { getValue, setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(name);
   const registerRef = useCallback(register, []);
   const searchInputRef = useRef(null);
 
-  const items = normalizeOptions(options, FormData);
+  const items = normalizeOptions(options, getFormData());
   const value = getValue();
   const selectedItem = items.find((item) => item.value === value);
 
