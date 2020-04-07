@@ -8,3 +8,4 @@ export * from './FormSelect';
 export * from './FormSwitch';
 export * from './FormTextarea';
 export * from './helpers/useFormControl';
+export * from './helpers/useFormData';
