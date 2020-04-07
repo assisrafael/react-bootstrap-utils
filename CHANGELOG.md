@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.1...v0.11.2) (2020-04-07)
+
+
+### Features
+
+* **forms:** export useFormData hook to access formData from outside ([9575798](https://github.com/assisrafael/react-bootstrap-utils/commit/9575798f6031a7866323bad78d55f5d2b35d8678))
+
 ### [0.11.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.0...v0.11.1) (2020-04-06)
 
 
