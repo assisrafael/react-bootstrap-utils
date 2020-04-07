@@ -30,6 +30,9 @@ function getEmptyValue(type) {
     case 'boolean':
       return false;
 
+    case 'array':
+      return [];
+
     default:
       return '';
   }
