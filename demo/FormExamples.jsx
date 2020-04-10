@@ -14,7 +14,7 @@ import {
 export function FormExamples() {
   return (
     <Form
-      initialValues={{ textField: 'abc' }}
+      initialValues={{ textField: 'abc', selectField2: { e: 2, c: 'b' } }}
       onChange={console.info}
       onSubmit={(formData, reset) => {
         console.log('onSubmit', formData);
@@ -157,7 +157,7 @@ export function FormExamples() {
             options={[
               { label: 'A', value: 'a' },
               { label: 'B', value: 'b' },
-              { label: 'C', value: 'c' },
+              { label: 'C', value: 'd' },
             ]}
             required
           />
@@ -177,15 +177,14 @@ export function FormExamples() {
         <div className="col">
           <FormGroupSelect
             name="selectField4"
-            label="Select field 4 (function)"
-            options={(formData) =>
-              Object.entries(formData)
-                .filter(([key]) => key !== 'selectField4')
-                .map(([key, value]) => ({
-                  label: key,
-                  value,
-                }))
-            }
+            label="Select field 4 (objects with trackBy)"
+            options={[
+              { label: 'A', value: { c: 'a', e: 1 } },
+              { label: 'B', value: { c: 'b', e: 2 } },
+              { label: 'C', value: { c: 'd', e: 3 } },
+            ]}
+            trackBy="c"
+            required
           />
         </div>
       </div>

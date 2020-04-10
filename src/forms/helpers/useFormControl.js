@@ -12,7 +12,18 @@ export function useFormControl(name, type) {
     getValue: () => formState.getValue(name) || getEmptyValue(type),
     setValue,
     handleOnChange: ({ target }) => {
-      const value = target.type === 'checkbox' ? target.checked : target.value;
+      let value = target.type === 'checkbox' ? target.checked : target.value;
+
+      if (target.type === 'select-one') {
+        if (value && ['{', '['].includes(value[0])) {
+          try {
+            value = JSON.parse(value);
+          } catch (error) {
+            // eslint-disable-next-line no-console
+            console.error(error);
+          }
+        }
+      }
 
       setValue(value);
     },
