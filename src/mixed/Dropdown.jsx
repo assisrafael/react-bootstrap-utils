@@ -12,6 +12,7 @@ export function Dropdown({ children, items, onSelect, isOpen, onTouchStart, onMo
         <div
           className={formatClasses(['dropdown-menu', isOpen && 'show'])}
           // aria-labelledby="dropdownMenuButton"
+          style={{ maxHeight: '200px', overflowY: 'auto' }}
         >
           {items.map(({ label, value }, index) => (
             <a key={index} href="#" className="dropdown-item" onClick={safeClick(onSelect, { value, index, label })}>
