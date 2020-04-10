@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.12.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.4...v0.12.0) (2020-04-10)
+
+
+### Features
+
+* **forms:** allow objects as FormSelect value ([d45adfd](https://github.com/assisrafael/react-bootstrap-utils/commit/d45adfd38efc72ea8249c3758636423bb46f82a9))
+
+
+### Bug Fixes
+
+* **forms:** fix FormAutocomplete selecting the wrong item ([a688b87](https://github.com/assisrafael/react-bootstrap-utils/commit/a688b87bf400c85516c89d28586758618cd65ba8))
+* **forms:** limit FormAutocomplete options window size ([e05a70f](https://github.com/assisrafael/react-bootstrap-utils/commit/e05a70fe8986466dea05468d342291e6cca865fd))
+* **modal:** do not remove container from body if it has not been included yet ([575bab9](https://github.com/assisrafael/react-bootstrap-utils/commit/575bab96f644a766de0082ff0b65a636f59690b6))
+
 ### [0.11.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.3...v0.11.4) (2020-04-07)
 
 
