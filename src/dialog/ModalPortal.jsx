@@ -16,6 +16,10 @@ export function ModalPortal({ children, isOpen }) {
     }
 
     return () => {
+      if (!container) {
+        return;
+      }
+
       body.removeChild(container);
     };
   }, []);
