@@ -35,6 +35,7 @@ export function ListGroupExamples() {
               {item.description}
             </>
           )}
+          // eslint-disable-next-line no-console
           onSelect={console.warn}
         />
       </div>
