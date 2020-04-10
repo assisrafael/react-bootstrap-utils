@@ -122,20 +122,10 @@ export function FormExamples() {
           <FormGroupAutocomplete
             name="autocompleteField3"
             label="Autocomplete with item template"
-            options={[
-              {
-                value: 1,
-                label: '1234',
-              },
-              {
-                value: 2,
-                label: '2345',
-              },
-              {
-                value: 3,
-                label: '3456',
-              },
-            ]}
+            options={Array.from({ length: 10 }).map((_, index) => ({
+              value: index + 1,
+              label: `${index + 1}${index + 2}${index + 3}${index + 4}`,
+            }))}
             placeholder="Type some numbers"
             template={(option) => (
               <>

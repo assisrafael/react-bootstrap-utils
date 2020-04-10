@@ -60,10 +60,6 @@ export function FormAutocomplete({
           }
         }}
         onBlur={() => {
-          if (!value) {
-            setSearchValue('');
-          }
-
           if (ignoreBlur) {
             searchInputRef.current.focus();
           } else {
@@ -110,9 +106,10 @@ export function FormAutocomplete({
           setTimeout(() => {
             setFocus(false);
             close();
-          }, 100);
+          }, 60);
         }}
         template={template}
+        onClick={(e) => e.stopPropation()}
         onTouchStart={() => setIgnoreBlur(true)}
         onMouseEnter={() => setIgnoreBlur(true)}
         onMouseLeave={() => setIgnoreBlur(false)}
