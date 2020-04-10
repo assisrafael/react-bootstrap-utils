@@ -17,7 +17,6 @@ A React implementation of Boostrap v4 components.
 - [] Input groups
 - [] Hide/show form inputs
 - [] Keyboard navigation on FormAutocomplete
-- [] Forms with array of fields
 - [] Automatic input id
 - [] Subforms
 - [] Button with loading/saving state
