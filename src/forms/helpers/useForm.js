@@ -8,14 +8,11 @@ export function useForm(initialState, { validations, onChange, transform }) {
   const [formState, setFormState] = useState(initialState);
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const { getAllKeys: getElementNames, get: getElementRefs, push: registerElementRef } = useArrayValueMap();
+  const _onChange = useCallback(debounce(onChange, 500), []);
 
-  if (onChange) {
-    const _onChange = useCallback(debounce(onChange, 500), []);
-
-    useEffect(() => {
-      _onChange(formState);
-    }, [formState]);
-  }
+  useEffect(() => {
+    _onChange(formState);
+  }, [formState, _onChange]);
 
   return {
     register(name, elementRef) {

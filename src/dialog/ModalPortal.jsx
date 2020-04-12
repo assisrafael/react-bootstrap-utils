@@ -22,7 +22,7 @@ export function ModalPortal({ children, isOpen }) {
 
       body.removeChild(container);
     };
-  }, []);
+  }, [container]);
 
   //FIXME: prop to define if modal will be always included into DOM
   if (!container || !isOpen) {

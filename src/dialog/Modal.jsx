@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { stopPropagation } from '../utils/event-handlers';
 
@@ -6,21 +6,25 @@ const ESCAPE_KEYCODE = 27;
 
 export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, scrollable, centered, size, keyboard }) {
   const modalRef = useRef(null);
-
-  function closeIfEscape(event) {
-    if (keyboard && event.which === ESCAPE_KEYCODE) {
-      hideModal(modalRef);
-      onClose();
-    }
-  }
+  const closeIfEscape = useCallback(
+    (event) => {
+      if (keyboard && event.which === ESCAPE_KEYCODE) {
+        hideModal(modalRef);
+        onClose();
+      }
+    },
+    [modalRef, onClose, keyboard]
+  );
 
   useEffect(() => {
-    modalRef.current.addEventListener('keydown', closeIfEscape);
+    const modalElement = modalRef.current;
+
+    modalElement.addEventListener('keydown', closeIfEscape);
 
     return () => {
-      modalRef.current.removeEventListener('keydown', closeIfEscape);
+      modalElement.removeEventListener('keydown', closeIfEscape);
     };
-  }, [keyboard]);
+  }, [keyboard, closeIfEscape, modalRef]);
 
   useEffect(() => {
     if (isOpen) {
