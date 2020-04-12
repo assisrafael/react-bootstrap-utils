@@ -14,7 +14,7 @@ import {
 export function FormExamples() {
   return (
     <Form
-      initialValues={{ textField: 'abc', selectField2: { e: 2, c: 'b' } }}
+      initialValues={{ textField: 'abc', selectField4: { e: 2, c: 'b' } }}
       onChange={console.info}
       onSubmit={(formData, reset) => {
         console.log('onSubmit', formData);
