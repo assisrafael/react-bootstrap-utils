@@ -4,21 +4,51 @@ import { setValueByPath, deepClone, getValueByPath } from '../../utils/getters-s
 import { validateFormElement } from './form-helpers';
 import { debounce } from 'lodash-es';
 
-export function useForm(initialState, { validations, onChange, transform }) {
+function useFormState(initialState, { onChange, transform }) {
   const [formState, setFormState] = useState(initialState);
-  const [submitAttempted, setSubmitAttempted] = useState(false);
-  const { getAllKeys: getElementNames, get: getElementRefs, push: registerElementRef } = useArrayValueMap();
-  const _onChange = useCallback(debounce(onChange, 500), []);
-  const _transfrom = useCallback(
-    debounce((name) => {
-      setFormState((prevFormState) => transform(deepClone(prevFormState), name));
-    }, 1000),
-    [setFormState, transform]
+  const _onChange = useCallback(debounce(onChange, 1000), []);
+  const _transform = useCallback(
+    debounce(
+      (nextFormState, name) =>
+        transform(nextFormState, name, (state) => {
+          setFormState(state);
+        }),
+      500
+    ),
+    [setFormState]
   );
 
   useEffect(() => {
     _onChange(formState);
   }, [formState, _onChange]);
+
+  return {
+    getState() {
+      return formState;
+    },
+    updateState(name, value) {
+      setFormState((prevFormState) => {
+        const nextFormState = nextState(prevFormState, name, value);
+
+        setTimeout(() => {
+          _transform(nextFormState, name);
+        });
+
+        return nextFormState;
+      });
+    },
+    resetState() {
+      setFormState(initialState);
+    },
+  };
+}
+
+export function useForm(initialState, { validations, onChange, transform }) {
+  const { getState, updateState, resetState } = useFormState(initialState, { onChange, transform });
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+  const { getAllKeys: getElementNames, get: getElementRefs, push: registerElementRef } = useArrayValueMap();
+
+  const formState = getState();
 
   return {
     register(name, elementRef) {
@@ -34,11 +64,7 @@ export function useForm(initialState, { validations, onChange, transform }) {
       }
     },
     update(name, value) {
-      setFormState((prevFormState) => nextState(prevFormState, name, value), name);
-
-      setTimeout(() => {
-        _transfrom(name);
-      });
+      updateState(name, value);
 
       if (validations) {
         this.validateForm(nextState(formState, name, value));
@@ -51,7 +77,7 @@ export function useForm(initialState, { validations, onChange, transform }) {
       return getValueByPath(formState, name);
     },
     reset() {
-      setFormState(initialState);
+      resetState();
       setSubmitAttempted(false);
     },
     setSubmitedAttempted() {
