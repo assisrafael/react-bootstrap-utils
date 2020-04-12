@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.12.0...v0.13.0) (2020-04-12)
+
+
+### Bug Fixes
+
+* **demo:** fix form examples initial value select input with trackby ([7baff72](https://github.com/assisrafael/react-bootstrap-utils/commit/7baff72c2febed1c8c52b28cb26468a97bfe657c))
+* **forms:** async and debounced call of transform function ([31968c3](https://github.com/assisrafael/react-bootstrap-utils/commit/31968c3376d962a3f0f35e641b3f55ba75b20e7b))
+
 ## [0.12.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.4...v0.12.0) (2020-04-10)
 
 
