@@ -9,6 +9,12 @@ export function useForm(initialState, { validations, onChange, transform }) {
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const { getAllKeys: getElementNames, get: getElementRefs, push: registerElementRef } = useArrayValueMap();
   const _onChange = useCallback(debounce(onChange, 500), []);
+  const _transfrom = useCallback(
+    debounce((name) => {
+      setFormState((prevFormState) => transform(deepClone(prevFormState), name));
+    }, 1000),
+    [setFormState, transform]
+  );
 
   useEffect(() => {
     _onChange(formState);
@@ -28,7 +34,11 @@ export function useForm(initialState, { validations, onChange, transform }) {
       }
     },
     update(name, value) {
-      setFormState((prevFormState) => transform(nextState(prevFormState, name, value), name));
+      setFormState((prevFormState) => nextState(prevFormState, name, value), name);
+
+      setTimeout(() => {
+        _transfrom(name);
+      });
 
       if (validations) {
         this.validateForm(nextState(formState, name, value));
