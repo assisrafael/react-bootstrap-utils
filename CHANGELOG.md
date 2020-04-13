@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.0...v0.14.1) (2020-04-13)
+
+
+### Bug Fixes
+
+* **forms:** fix broken forms when onChange was not defined ([9fc3975](https://github.com/assisrafael/react-bootstrap-utils/commit/9fc3975bc6f50c381c062e81efb489cbdfe54ef4))
+
 ## [0.14.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.13.0...v0.14.0) (2020-04-12)
 
 
