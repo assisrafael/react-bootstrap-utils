@@ -14,7 +14,7 @@ export function FormSwitch({ id, name, required, trueLabel, falseLabel }) {
         type="checkbox"
         className="custom-control-input"
         onChange={handleOnChange}
-        value={value}
+        checked={value}
         ref={registerRef}
       />
       <label className="custom-control-label" htmlFor={id}>

@@ -14,7 +14,14 @@ import {
 export function FormExamples() {
   return (
     <Form
-      initialValues={{ textField: 'abc', selectField4: { e: 2, c: 'b' } }}
+      initialValues={{
+        textField: 'abc',
+        autocompleteField1: '2345',
+        selectField4: { e: 2, c: 'b' },
+        switchField2: true,
+        checkboxField2: true,
+        radioField2: 'b',
+      }}
       onChange={console.info}
       onSubmit={(formData, reset) => {
         console.log('onSubmit', formData);
@@ -184,12 +191,18 @@ export function FormExamples() {
           <FormGroupSwitch id="switchFieldId" name="switchField" label="Switch field" trueLabel="ON" falseLabel="OFF" />
         </div>
         <div className="col">
+          <FormGroupSwitch id="switchFieldId2" name="switchField2" label="Switch field 2" />
+        </div>
+        <div className="col">
           <FormGroupCheckbox
             id="checkboxFieldId"
             name="checkboxField"
             label="Checkbox field"
             valueLabel="Checkbox description"
           />
+        </div>
+        <div className="col">
+          <FormGroupCheckbox id="checkboxFieldId2" name="checkboxField2" label="Checkbox field 2" />
         </div>
         <div className="col">
           <FormGroupRadio
@@ -208,6 +221,23 @@ export function FormExamples() {
               {
                 value: 'c',
                 label: 'C',
+              },
+            ]}
+          />
+        </div>
+        <div className="col">
+          <FormGroupRadio
+            id="radioFieldId2"
+            name="radioField2"
+            label="Radio field 2"
+            options={[
+              {
+                value: 'a',
+                label: 'A',
+              },
+              {
+                value: 'b',
+                label: 'B',
               },
             ]}
           />

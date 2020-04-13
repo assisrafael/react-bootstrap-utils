@@ -13,7 +13,7 @@ export function FormCheckbox({ id, name, required, valueLabel }) {
         type="checkbox"
         className="custom-control-input"
         onChange={handleOnChange}
-        value={getValue()}
+        checked={getValue()}
         ref={registerRef}
       />
       <label className="custom-control-label" htmlFor={id}>
