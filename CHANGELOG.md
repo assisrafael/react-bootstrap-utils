@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.3...v0.14.4) (2020-04-13)
+
+
+### Bug Fixes
+
+* **forms:** fix number input default value to allow 0 to be stored in state ([16905bd](https://github.com/assisrafael/react-bootstrap-utils/commit/16905bd9cca928ec7221041cd3042aa42bd3efc7))
+
 ### [0.14.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.2...v0.14.3) (2020-04-13)
 
 
