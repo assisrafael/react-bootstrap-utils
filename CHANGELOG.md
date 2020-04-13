@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.2...v0.14.3) (2020-04-13)
+
+
+### Features
+
+* **forms:** include value parsing from type prop ([8d7b56e](https://github.com/assisrafael/react-bootstrap-utils/commit/8d7b56edb706924361176d5f4710cf6c4574691e))
+
 ### [0.14.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.1...v0.14.2) (2020-04-13)
 
 
