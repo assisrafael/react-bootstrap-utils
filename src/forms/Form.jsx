@@ -70,6 +70,7 @@ Form.defaultProps = {
   cancelLabel: 'Cancel',
   customValidation: false,
   submitLabel: 'Submit',
+  onChange: () => {},
   transform: (data) => data,
 };
 
