@@ -9,21 +9,10 @@ export function useFormControl(name, type) {
   }
 
   return {
-    getValue: () => formState.getValue(name) || getEmptyValue(type),
+    getValue: () => encode(formState.getValue(name) || getEmptyValue(type), type),
     setValue,
     handleOnChange: ({ target }) => {
-      let value = target.type === 'checkbox' ? target.checked : target.value;
-
-      if (target.type === 'select-one') {
-        if (value && ['{', '['].includes(value[0])) {
-          try {
-            value = JSON.parse(value);
-          } catch (error) {
-            // eslint-disable-next-line no-console
-            console.error(error);
-          }
-        }
-      }
+      const value = getTargetValue(target);
 
       setValue(value);
     },
@@ -47,4 +36,37 @@ function getEmptyValue(type) {
     default:
       return '';
   }
+}
+
+function encode(value, type) {
+  if (type === 'datetime-local') {
+    return value && value.toISOString().slice(0, 16);
+  }
+
+  return value;
+}
+
+function getTargetValue(target) {
+  let value = target.type === 'checkbox' ? target.checked : target.value;
+
+  if (target.type === 'number') {
+    value = target.valueAsNumber;
+  }
+
+  if (target.type === 'datetime-local') {
+    value = new Date(Date.parse(target.value));
+  }
+
+  if (target.type === 'select-one') {
+    if (value && ['{', '['].includes(value[0])) {
+      try {
+        value = JSON.parse(value);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      }
+    }
+  }
+
+  return value;
 }

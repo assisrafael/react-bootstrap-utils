@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { useFormControl } from './helpers/useFormControl';
 
 export function FormInput({ id, type, name, placeholder, required, minLength, maxLength, min, max, pattern, step }) {
-  const { getValue, handleOnChange, register } = useFormControl(name);
+  const { getValue, handleOnChange, register } = useFormControl(name, type);
   const registerRef = useCallback(register, []);
 
-  return (
-    <input
-      {...{ required, name, id, placeholder, type, minLength, maxLength, min, max, pattern, step }}
-      className="form-control"
-      onChange={handleOnChange}
-      value={getValue()}
-      ref={registerRef}
-    />
-  );
+  const attrs = { required, name, id, placeholder, type, minLength, maxLength, min, max, pattern, step };
+
+  if (type === 'datetime-local') {
+    attrs.defaultValue = getValue();
+  } else {
+    attrs.value = getValue();
+  }
+
+  return <input {...attrs} className="form-control" onChange={handleOnChange} ref={registerRef} />;
 }
 
 FormInput.defaultProps = {

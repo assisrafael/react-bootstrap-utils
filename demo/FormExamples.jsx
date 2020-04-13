@@ -36,7 +36,7 @@ export function FormExamples() {
       onCancel={() => console.log('onCancel')}
       customValidation={true}
       validations={{
-        textField3: [
+        numberField: [
           {
             message: 'Must be filled if textField is not empty',
             validate(value, formData) {
@@ -46,9 +46,9 @@ export function FormExamples() {
         ],
         autocompleteField1: [
           {
-            message: 'Must be filled if textField3 is empty',
+            message: 'Must be filled if numberField is empty',
             validate(value, formData) {
-              return formData.textField3 || value;
+              return formData.numberField || value;
             },
           },
         ],
@@ -102,7 +102,10 @@ export function FormExamples() {
           <FormGroupInput name="textField2" label="Text field 2" required placeholder="Fill some value" />
         </div>
         <div className="col">
-          <FormGroupInput name="textField3" label="Text field 3" type="number" />
+          <FormGroupInput name="numberField" label="Number field" type="number" />
+        </div>
+        <div className="col">
+          <FormGroupInput name="dateField" label="Date field " type="datetime-local" />
         </div>
       </div>
 
