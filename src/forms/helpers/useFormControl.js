@@ -9,7 +9,7 @@ export function useFormControl(name, type) {
   }
 
   return {
-    getValue: () => encode(formState.getValue(name) || getEmptyValue(type), type),
+    getValue: () => encode(formState.getValue(name), type),
     setValue,
     handleOnChange: ({ target }) => {
       const value = getTargetValue(target);
@@ -39,6 +39,10 @@ function getEmptyValue(type) {
 }
 
 function encode(value, type) {
+  if (typeof value === 'undefined') {
+    return getEmptyValue(type);
+  }
+
   if (type === 'datetime-local') {
     return value && value.toISOString().slice(0, 16);
   }
