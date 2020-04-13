@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.1...v0.14.2) (2020-04-13)
+
+
+### Bug Fixes
+
+* **forms:** fix FormCheckbox and FormSwitch value initialization ([cb324be](https://github.com/assisrafael/react-bootstrap-utils/commit/cb324be15fb9e051c0ee57dbed1f98663c176dce))
+
 ### [0.14.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.0...v0.14.1) (2020-04-13)
 
 
