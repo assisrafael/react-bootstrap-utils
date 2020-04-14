@@ -21,6 +21,7 @@ export function FormExamples() {
         switchField2: true,
         checkboxField2: true,
         radioField2: 'b',
+        dateField: new Date().toISOString(),
       }}
       onChange={console.info}
       onSubmit={(formData, reset) => {
@@ -105,7 +106,7 @@ export function FormExamples() {
           <FormGroupInput name="numberField" label="Number field" type="number" />
         </div>
         <div className="col">
-          <FormGroupInput name="dateField" label="Date field " type="datetime-local" />
+          <FormGroupInput name="dateField" label="Date field" type="datetime-local" />
         </div>
       </div>
 

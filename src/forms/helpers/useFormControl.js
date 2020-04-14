@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { FormContext } from './form-helpers';
+import { toDatetimeLocal, fromDatetimeLocal } from '../../utils/formatters';
 
 export function useFormControl(name, type) {
   const formState = useContext(FormContext);
@@ -44,7 +45,7 @@ function encode(value, type) {
   }
 
   if (type === 'datetime-local') {
-    return value && value.toISOString().slice(0, 16);
+    return toDatetimeLocal(value);
   }
 
   return value;
@@ -58,7 +59,7 @@ function getTargetValue(target) {
   }
 
   if (target.type === 'datetime-local') {
-    value = new Date(Date.parse(target.value));
+    value = fromDatetimeLocal(target.value);
   }
 
   if (target.type === 'select-one') {
