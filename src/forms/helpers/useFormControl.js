@@ -55,7 +55,7 @@ function getTargetValue(target) {
   let value = target.type === 'checkbox' ? target.checked : target.value;
 
   if (target.type === 'number') {
-    value = target.valueAsNumber;
+    value = target.valueAsNumber || undefined;
   }
 
   if (target.type === 'datetime-local') {
