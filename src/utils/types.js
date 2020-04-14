@@ -17,3 +17,7 @@ export function isString(value) {
 export function isDate(value) {
   return Object.prototype.toString.call(value) === '[object Date]';
 }
+
+export function isNull(value) {
+  return value === null;
+}

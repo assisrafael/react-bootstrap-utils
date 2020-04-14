@@ -21,6 +21,7 @@ export function FormExamples() {
         switchField2: true,
         checkboxField2: true,
         radioField2: 'b',
+        numberField: null,
         dateField: new Date().toISOString(),
       }}
       onChange={console.info}

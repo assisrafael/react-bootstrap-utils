@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { FormContext } from './form-helpers';
 import { toDatetimeLocal, fromDatetimeLocal } from '../../utils/formatters';
+import { isNull } from '../../utils/types';
 
 export function useFormControl(name, type) {
   const formState = useContext(FormContext);
@@ -40,7 +41,7 @@ function getEmptyValue(type) {
 }
 
 function encode(value, type) {
-  if (typeof value === 'undefined') {
+  if (typeof value === 'undefined' || isNull(value)) {
     return getEmptyValue(type);
   }
 
