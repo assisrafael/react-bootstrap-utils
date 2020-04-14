@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-utils",
-  "version": "0.14.5",
+  "version": "0.14.6",
   "description": "React bootstrap library",
   "main": "dist/main.js",
   "scripts": {
