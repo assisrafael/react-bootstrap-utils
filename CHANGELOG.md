@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.7](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.6...v0.14.7) (2020-04-15)
+
+
+### Bug Fixes
+
+* **forms:** allow 0 to be filled into input[type=number] again ([e5e7a70](https://github.com/assisrafael/react-bootstrap-utils/commit/e5e7a70d2d38617efdcf08747c98502ab12a4bf5))
+
 ### [0.14.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.5...v0.14.6) (2020-04-14)
 
 
