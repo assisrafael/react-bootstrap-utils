@@ -49,6 +49,10 @@ function encode(value, type) {
     return toDatetimeLocal(value);
   }
 
+  if (type === 'number' && isNaN(value)) {
+    return;
+  }
+
   return value;
 }
 
@@ -56,7 +60,10 @@ function getTargetValue(target) {
   let value = target.type === 'checkbox' ? target.checked : target.value;
 
   if (target.type === 'number') {
-    value = target.valueAsNumber || undefined;
+    value = target.valueAsNumber;
+    if (isNaN(value)) {
+      value = undefined;
+    }
   }
 
   if (target.type === 'datetime-local') {
