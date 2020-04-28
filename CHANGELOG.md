@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.15.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.7...v0.15.0) (2020-04-28)
+
+
+### Features
+
+* **forms:** allow input disable (with boolean or function that returns boolean) ([39cb627](https://github.com/assisrafael/react-bootstrap-utils/commit/39cb62724bd1d7fd1d619086ddf0cb9139ed11c4))
+* **table:** allow paths as attributes values on column definition ([ddeff7b](https://github.com/assisrafael/react-bootstrap-utils/commit/ddeff7bac73012069f952860ef0ab7760d2c6220))
+
+
+### Bug Fixes
+
+* **dialog:** always remove .modal-open class from body after closing the dialog ([341dec3](https://github.com/assisrafael/react-bootstrap-utils/commit/341dec38d085fbd59cee57319480f3f321652175))
+
 ### [0.14.7](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.6...v0.14.7) (2020-04-15)
 
 
