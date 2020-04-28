@@ -6,14 +6,17 @@ const ESCAPE_KEYCODE = 27;
 
 export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, scrollable, centered, size, keyboard }) {
   const modalRef = useRef(null);
+  const closeAndHide = useCallback(() => {
+    hideModal(modalRef);
+    onClose();
+  }, [onClose]);
   const closeIfEscape = useCallback(
     (event) => {
       if (keyboard && event.which === ESCAPE_KEYCODE) {
-        hideModal(modalRef);
-        onClose();
+        closeAndHide();
       }
     },
-    [modalRef, onClose, keyboard]
+    [keyboard, closeAndHide]
   );
 
   useEffect(() => {
@@ -43,8 +46,7 @@ export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, sc
       onClick={(e) => {
         e.stopPropagation();
         if (!staticBackdrop) {
-          hideModal(modalRef);
-          onClose();
+          closeAndHide();
         }
       }}
     >
@@ -58,12 +60,12 @@ export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, sc
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">{title}</h5>
-            <button type="button" className="close" onClick={onClose} aria-label="Close">
+            <button type="button" className="close" onClick={closeAndHide} aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body">{renderObjectOrFunction(body, { close: onClose })}</div>
-          {footer && <div className="modal-footer">{renderObjectOrFunction(footer, { close: onClose })}</div>}
+          <div className="modal-body">{renderObjectOrFunction(body, { close: closeAndHide })}</div>
+          {footer && <div className="modal-footer">{renderObjectOrFunction(footer, { close: closeAndHide })}</div>}
         </div>
       </div>
     </div>
