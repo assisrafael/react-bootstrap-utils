@@ -1,5 +1,6 @@
 import React from 'react';
 import { getValueByPath } from '../../utils/getters-setters';
+import { isFunction } from '../../utils/types';
 
 export const FormContext = React.createContext(null);
 
@@ -49,4 +50,12 @@ export function normalizeOptions(options, formData) {
       label: option,
     };
   });
+}
+
+export function normalizeDisabled(disabled, formData) {
+  if (!isFunction(disabled)) {
+    return disabled;
+  }
+
+  return disabled(formData);
 }

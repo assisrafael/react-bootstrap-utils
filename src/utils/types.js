@@ -21,3 +21,7 @@ export function isDate(value) {
 export function isNull(value) {
   return value === null;
 }
+
+export function isFunction(value) {
+  return typeof value === 'function';
+}

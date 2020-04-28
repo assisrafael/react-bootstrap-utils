@@ -1,8 +1,9 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { handleInputChange, normalizeOptions } from './helpers/form-helpers';
+import { handleInputChange, normalizeOptions, normalizeDisabled } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
+import { formatClasses } from '../utils/attributes';
 import { useFormControl } from './helpers/useFormControl';
 
 export function FormAutocomplete({
@@ -15,6 +16,7 @@ export function FormAutocomplete({
   openOnFocus,
   template,
   filter,
+  disabled: _disabled,
 }) {
   const [searchValue, setSearchValue] = useState('');
   const { isOpen, open, close } = useOpenState();
@@ -27,6 +29,7 @@ export function FormAutocomplete({
   const items = normalizeOptions(options, getFormData());
   const value = getValue();
   const selectedItem = items.find((item) => item.value === value);
+  const disabled = normalizeDisabled(_disabled, getFormData());
 
   const controlFeedback = `${getFormSubmitedAttempted() ? (isValid() ? 'is-valid' : 'is-invalid') : ''}`;
 
@@ -37,7 +40,7 @@ export function FormAutocomplete({
   return (
     <>
       <input
-        {...{ placeholder }}
+        {...{ placeholder, disabled }}
         type="text"
         ref={searchInputRef}
         className={`form-control ${isFocused ? '' : 'd-none'} ${controlFeedback}`}
@@ -76,8 +79,13 @@ export function FormAutocomplete({
 
       {!isFocused && (
         <div
-          className={`form-control ${controlFeedback} `}
+          className={formatClasses(['form-control', controlFeedback])}
+          disabled={disabled}
           onClick={() => {
+            if (disabled) {
+              return;
+            }
+
             setFocus(true);
             setTimeout(() => {
               searchInputRef.current.focus();
@@ -140,7 +148,8 @@ FormAutocomplete.propTypes = {
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   ]),
   placeholder: PropTypes.string,
-  required: PropTypes.any,
+  required: PropTypes.bool,
   template: PropTypes.func,
   type: PropTypes.string,
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

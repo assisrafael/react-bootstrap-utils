@@ -1,12 +1,27 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useFormControl } from './helpers/useFormControl';
+import { normalizeDisabled } from './helpers/form-helpers';
 
-export function FormInput({ id, type, name, placeholder, required, minLength, maxLength, min, max, pattern, step }) {
-  const { getValue, handleOnChange, register } = useFormControl(name, type);
+export function FormInput({
+  id,
+  type,
+  name,
+  placeholder,
+  required,
+  minLength,
+  maxLength,
+  min,
+  max,
+  pattern,
+  step,
+  disabled: _disabled,
+}) {
+  const { getValue, handleOnChange, register, getFormData } = useFormControl(name, type);
   const registerRef = useCallback(register, []);
+  const disabled = normalizeDisabled(_disabled, getFormData());
 
-  const attrs = { required, name, id, placeholder, type, minLength, maxLength, min, max, pattern, step };
+  const attrs = { required, name, id, placeholder, type, minLength, maxLength, min, max, pattern, step, disabled };
 
   if (type === 'datetime-local') {
     attrs.defaultValue = getValue();
@@ -30,7 +45,8 @@ FormInput.propTypes = {
   name: PropTypes.string.isRequired,
   pattern: PropTypes.string,
   placeholder: PropTypes.string,
-  required: PropTypes.any,
+  required: PropTypes.bool,
   step: PropTypes.string,
   type: PropTypes.string,
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

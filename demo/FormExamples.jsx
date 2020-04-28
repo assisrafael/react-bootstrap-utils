@@ -98,13 +98,18 @@ export function FormExamples() {
     >
       <div className="row">
         <div className="col">
-          <FormGroupInput name="textField" label="Text field" />
+          <FormGroupInput name="textField" label="Text field" disabled />
         </div>
         <div className="col">
           <FormGroupInput name="textField2" label="Text field 2" required placeholder="Fill some value" />
         </div>
         <div className="col">
-          <FormGroupInput name="numberField" label="Number field" type="number" />
+          <FormGroupInput
+            name="numberField"
+            label="Number field"
+            type="number"
+            disabled={({ textField2 }) => textField2 === 'ABC'}
+          />
         </div>
         <div className="col">
           <FormGroupInput name="dateField" label="Date field" type="datetime-local" />
@@ -119,6 +124,7 @@ export function FormExamples() {
             options={['1234', '2345', '3456']}
             placeholder="Type some numbers"
             required
+            disabled
           />
         </div>
         <div className="col">
@@ -150,7 +156,7 @@ export function FormExamples() {
 
       <div className="row">
         <div className="col">
-          <FormGroupSelect name="selectField" label="Select field (list)" options={['A', 'B', 'C']} />
+          <FormGroupSelect name="selectField" label="Select field (list)" options={['A', 'B', 'C']} disabled />
         </div>
         <div className="col">
           <FormGroupSelect
@@ -196,7 +202,7 @@ export function FormExamples() {
           <FormGroupSwitch id="switchFieldId" name="switchField" label="Switch field" trueLabel="ON" falseLabel="OFF" />
         </div>
         <div className="col">
-          <FormGroupSwitch id="switchFieldId2" name="switchField2" label="Switch field 2" />
+          <FormGroupSwitch id="switchFieldId2" name="switchField2" label="Switch field 2" disabled />
         </div>
         <div className="col">
           <FormGroupCheckbox
@@ -207,7 +213,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupCheckbox id="checkboxFieldId2" name="checkboxField2" label="Checkbox field 2" />
+          <FormGroupCheckbox id="checkboxFieldId2" name="checkboxField2" label="Checkbox field 2" disabled />
         </div>
         <div className="col">
           <FormGroupRadio
@@ -245,11 +251,13 @@ export function FormExamples() {
                 label: 'B',
               },
             ]}
+            disabled
           />
         </div>
       </div>
 
       <FormGroupTextarea name="textareaField" label="Textarea field" />
+      <FormGroupTextarea name="textareaField2" label="Textarea field 2" disabled rows="1" />
 
       {[0, 1].map((index) => (
         <div className="row" key={index}>
