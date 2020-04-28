@@ -51,11 +51,11 @@ export function TableExamples() {
         <div className="col mb-3">
           <h1 className="h4">Simple Table</h1>
           <Table
-            columns={['a', 'b', 'c']}
+            columns={['a', 'b', 'c.d']}
             docs={[
-              { a: 1, b: 2, c: 3 },
-              { a: 4, b: 5, c: 6 },
-              { a: 7, b: 8, c: 9 },
+              { a: 1, b: 2, c: { d: 3 } },
+              { a: 4, b: 5, c: { d: 6 } },
+              { a: 7, b: 8, c: { d: 9 } },
             ]}
           />
         </div>

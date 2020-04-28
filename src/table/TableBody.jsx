@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getColumnClass } from './table-helpers';
 import { safeClick } from '../utils/event-handlers';
+import { getValueByPath } from '../utils/getters-setters';
 
 export function TableBody({ columns, docs, rowClass, actions }) {
   return (
@@ -42,7 +43,7 @@ TableBody.propTypes = {
 };
 
 function getColumnValue(doc, column, docIndex) {
-  const rawValue = doc[column.attribute];
+  const rawValue = getValueByPath(doc, column.attribute);
 
   if (!column.format) {
     return rawValue;
