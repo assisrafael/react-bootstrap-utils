@@ -17,7 +17,7 @@ export function getValueByPath(obj, objPath) {
   const paths = splitPath(objPath);
 
   return paths.reduce((cursor, { path }) => {
-    if (typeof cursor === 'undefined') {
+    if (typeof cursor === 'undefined' || cursor === null) {
       return;
     }
 
