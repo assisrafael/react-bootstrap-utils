@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.0...v0.15.1) (2020-05-18)
+
+
+### Bug Fixes
+
+* **getValueByPath:** handle null objects ([48c4b23](https://github.com/assisrafael/react-bootstrap-utils/commit/48c4b23d4c0b145de220bfde731de1b0a140cc1b))
+
 ## [0.15.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.7...v0.15.0) (2020-04-28)
 
 
