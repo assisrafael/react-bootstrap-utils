@@ -107,6 +107,16 @@ export function DialogExamples() {
                 console.warn('cancel');
                 close();
               }}
+              validations={{
+                test: [
+                  {
+                    message: 'Should be different from test',
+                    validate(value) {
+                      return value !== 'test';
+                    },
+                  },
+                ],
+              }}
             >
               <FormGroupInput name="test" label="Test" required />
             </Form>

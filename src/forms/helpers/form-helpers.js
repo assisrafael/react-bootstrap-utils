@@ -19,6 +19,10 @@ export function validateFormElement({ name, validations = [], formData, elementR
   });
 
   for (const elementRef of elementRefs) {
+    if (!elementRef) {
+      continue;
+    }
+
     elementRef.setCustomValidity(validationMessage);
   }
 
