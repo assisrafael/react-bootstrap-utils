@@ -6,8 +6,6 @@ A React implementation of Boostrap v4 components.
 
 ## Roadmap
 
-- [] UrlLinkedTabs
-- [] UrlLinkedPagination
 - [] Smartable
 - [] Form Range
 - [] Form generation based on a configuration option
@@ -19,7 +17,6 @@ A React implementation of Boostrap v4 components.
 - [] Keyboard navigation on FormAutocomplete
 - [] Automatic input id
 - [] Subforms
-- [] Button with loading/saving state
 - [] Sidebar
 - [] Stepper
 - [] Tree

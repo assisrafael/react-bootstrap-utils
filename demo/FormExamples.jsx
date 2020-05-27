@@ -25,10 +25,14 @@ export function FormExamples() {
         dateField: new Date().toISOString(),
       }}
       onChange={console.info}
-      onSubmit={(formData, reset) => {
+      onSubmit={(formData) => {
         console.log('onSubmit', formData);
-        // return Promise.resolve();
-        reset();
+
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, 1000);
+        });
       }}
       transform={(formData, pathUpdated, update) => {
         formData.__v = formData.__v ? formData.__v + 1 : 1;

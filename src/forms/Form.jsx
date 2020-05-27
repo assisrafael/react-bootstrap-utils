@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext } from './helpers/form-helpers';
 import { useForm } from './helpers/useForm';
@@ -19,6 +19,7 @@ export function Form({
 }) {
   const formState = useForm(initialValues, { validations, onChange, transform });
   const formRef = useRef(null);
+  const [isSubmiting, setIsSubmiting] = useState(false);
 
   function resetForm() {
     formRef.current.classList.remove('was-validated');
@@ -36,11 +37,20 @@ export function Form({
       return;
     }
 
-    const res = onSubmit(formState.getFormData(), resetForm);
+    setIsSubmiting(true);
+    const submitResponse = onSubmit(formState.getFormData(), resetForm);
 
-    if (res && res.then) {
-      res.then(resetForm);
+    let submitPromise = Promise.resolve();
+
+    if (submitResponse && submitResponse.then) {
+      submitPromise = submitResponse.then(() => {
+        resetForm();
+      });
     }
+
+    submitPromise.finally(() => {
+      setIsSubmiting(false);
+    });
   }
 
   function handleCancel() {
@@ -61,7 +71,7 @@ export function Form({
     <form {...formProps}>
       <FormContext.Provider value={formState}>{children}</FormContext.Provider>
 
-      {customActions || <FormActions {...{ submitLabel, cancelLabel, onCancel: handleCancel }} />}
+      <FormActions {...{ submitLabel, cancelLabel, onCancel: handleCancel, isSubmiting, customActions }} />
     </form>
   );
 }
