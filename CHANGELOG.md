@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.2...v0.15.3) (2020-05-27)
+
+
+### Bug Fixes
+
+* **forms:** show visual indication of required fields ([4095743](https://github.com/assisrafael/react-bootstrap-utils/commit/40957434fb3a91db6457d31bf59b963f877921cb))
+
 ### [0.15.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.1...v0.15.2) (2020-05-27)
 
 
