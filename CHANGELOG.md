@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.3...v0.15.4) (2020-05-29)
+
+
+### Features
+
+* **forms:** disabled action buttons while submiting data ([5dba43f](https://github.com/assisrafael/react-bootstrap-utils/commit/5dba43f17ca9bcd38fbf36c4f5e1cc1f2187a231))
+* **table:** allow row click with "onRowClick" prop ([214bc7c](https://github.com/assisrafael/react-bootstrap-utils/commit/214bc7c4b1c7837235100d8075d2657ffa3fe063))
+
 ### [0.15.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.2...v0.15.3) (2020-05-27)
 
 
