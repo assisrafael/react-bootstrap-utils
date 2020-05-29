@@ -73,6 +73,7 @@ export function TableExamples() {
               { a: 4, b: 5, c: 6 },
               { a: 7, b: 8, c: 9 },
             ]}
+            onRowClick={console.log}
           />
         </div>
 
@@ -150,6 +151,7 @@ export function TableExamples() {
               { a: 4, b: 5, c: 6 },
               { a: 7, b: 8, c: 9 },
             ]}
+            onRowClick={console.info}
             actions={[
               {
                 title: 'View details',

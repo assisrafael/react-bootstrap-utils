@@ -16,7 +16,7 @@ ReactDOM.render(
       <ToastsContainer>
         <StatefulTabs
           vertical={true}
-          initialTab={1}
+          initialTab={4}
           tabs={[
             {
               title: 'Dialog',

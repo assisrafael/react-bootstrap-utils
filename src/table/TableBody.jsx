@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getColumnClass } from './table-helpers';
-import { safeClick } from '../utils/event-handlers';
+import { safeClick, stopPropagation } from '../utils/event-handlers';
 import { getValueByPath } from '../utils/getters-setters';
 
-export function TableBody({ columns, docs, rowClass, actions }) {
+export function TableBody({ columns, docs, rowClass, actions, onRowClick }) {
   return (
     <tbody>
       {docs.map((doc, docIndex) => (
-        <tr key={docIndex} className={rowClass(doc)}>
+        <tr key={docIndex} className={rowClass(doc)} role="button" onClick={safeClick(onRowClick, doc, docIndex)}>
           {columns.map((column, columnIndex) => (
             <td key={columnIndex} className={getColumnClass(column)}>
               {getColumnValue(doc, column, docIndex)}
@@ -21,7 +21,7 @@ export function TableBody({ columns, docs, rowClass, actions }) {
                 <a
                   key={actionIndex}
                   title={action.title}
-                  {...getActionProps(action, doc)}
+                  {...getActionProps(action, doc, docIndex)}
                   className={actionIndex > 0 ? 'ml-2' : ''}
                 >
                   {action.content}
@@ -40,6 +40,7 @@ TableBody.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   docs: PropTypes.arrayOf(PropTypes.object),
   rowClass: PropTypes.func,
+  onRowClick: PropTypes.func,
 };
 
 function getColumnValue(doc, column, docIndex) {
@@ -52,14 +53,15 @@ function getColumnValue(doc, column, docIndex) {
   return column.format(rawValue, doc, docIndex);
 }
 
-function getActionProps(action, doc) {
+function getActionProps(action, doc, docIndex) {
   const props = {};
 
   if (action.onClick) {
     props.href = '';
-    props.onClick = safeClick(action.onClick, doc);
+    props.onClick = safeClick(action.onClick, doc, docIndex);
   } else if (action.link) {
-    props.href = action.link(doc);
+    props.onClick = stopPropagation;
+    props.href = action.link(doc, docIndex);
   }
 
   return props;

@@ -14,6 +14,7 @@ export function Table({
   dark,
   rowClass,
   caption,
+  onRowClick,
   actions,
   actionLabel,
   columnHeaderFormat,
@@ -34,7 +35,7 @@ export function Table({
       <table className={tableClasses}>
         {caption && <caption>{caption}</caption>}
         <TableHead {...{ actions, actionLabel, columnHeaderFormat }} columns={normalizedColumns} />
-        <TableBody {...{ docs, rowClass, actions }} columns={normalizedColumns} />
+        <TableBody {...{ docs, rowClass, actions, onRowClick }} columns={normalizedColumns} />
       </table>
     </div>
   );
@@ -48,6 +49,7 @@ Table.defaultProps = {
   dark: false,
   actionLabel: 'Actions',
   rowClass: () => '',
+  onRowClick: () => {},
   columnHeaderFormat: (label) => label,
 };
 
@@ -61,6 +63,7 @@ Table.propTypes = {
   dark: PropTypes.bool,
   docs: PropTypes.arrayOf(PropTypes.object),
   hover: PropTypes.bool,
+  onRowClick: PropTypes.func,
   rowClass: PropTypes.func,
   small: PropTypes.bool,
   striped: PropTypes.bool,
