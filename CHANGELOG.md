@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.4...v0.15.5) (2020-06-05)
+
+
+### Bug Fixes
+
+* **forms:** remove duplicated cancelLabel from form actions ([c62251c](https://github.com/assisrafael/react-bootstrap-utils/commit/c62251c9acaa2d3ca6a603ba353a3d3eb1ff601a))
+
 ### [0.15.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.3...v0.15.4) (2020-05-29)
 
 
