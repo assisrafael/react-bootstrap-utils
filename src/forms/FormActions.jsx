@@ -13,7 +13,6 @@ export function FormActions({ submitLabel, cancelLabel, onCancel, isSubmiting, c
         {isFunction(submitLabel) ? submitLabel(isSubmiting) : submitLabel}
       </button>
       <button type="button" className="btn btn-secondary" onClick={onCancel} disabled={isSubmiting}>
-        {cancelLabel}
         {isFunction(cancelLabel) ? cancelLabel(isSubmiting) : cancelLabel}
       </button>
     </div>
