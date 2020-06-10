@@ -135,7 +135,14 @@ export function FormExamples() {
           <FormGroupAutocomplete
             name="autocompleteField2"
             label="Autocomplete that opens on focus"
-            options={['Abcde', 'Fghij', 'klmno']}
+            options={(formData, searchValue) => {
+              if (searchValue.length < 2) {
+                return ['Abcde', 'Fghij', 'klmno'];
+              }
+
+              return ['1234', '2345', '3456'];
+            }}
+            onSearch={console.log}
             placeholder="Type some letters"
             openOnFocus={true}
           />

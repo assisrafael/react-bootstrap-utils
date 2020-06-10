@@ -37,8 +37,8 @@ export function handleInputChange(formState, event) {
   formState.update(name, value);
 }
 
-export function normalizeOptions(options, formData) {
-  const _options = typeof options === 'function' ? options(formData) : options;
+export function normalizeOptions(options, formData, extraData) {
+  const _options = typeof options === 'function' ? options(formData, extraData) : options;
 
   if (!Array.isArray(_options)) {
     throw new Error('Select Options should be an array');

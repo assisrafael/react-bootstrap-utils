@@ -26,7 +26,7 @@ export function FormAutocomplete({
   const registerRef = useCallback(register, []);
   const searchInputRef = useRef(null);
 
-  const items = normalizeOptions(options, getFormData());
+  const items = normalizeOptions(options, getFormData(), searchValue);
   const value = getValue();
   const selectedItem = items.find((item) => item.value === value);
   const disabled = normalizeDisabled(_disabled, getFormData());
