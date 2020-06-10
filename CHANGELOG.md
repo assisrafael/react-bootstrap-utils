@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.5...v0.15.6) (2020-06-10)
+
+
+### Bug Fixes
+
+* **forms:** FormAutocomplete options function now receive searchValue as an argument ([0924a41](https://github.com/assisrafael/react-bootstrap-utils/commit/0924a417de3e6a99a6718d8b6ef6ad1a6c7c9835))
+
 ### [0.15.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.4...v0.15.5) (2020-06-05)
 
 
