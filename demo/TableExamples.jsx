@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import { Table } from '../dist/main';
+import { Table, Form, FormCheckbox } from '../dist/main';
+import { stopPropagation } from '../src/utils/event-handlers';
 
 export function TableExamples() {
   const [sortState, setSortState] = useState({ sortBy: 'a', sortOrder: 'ASC' });
@@ -78,44 +79,52 @@ export function TableExamples() {
         </div>
 
         <div className="col mb-3">
-          <h1 className="h4">Table with formatted values </h1>
-          <Table
-            columns={[
-              {
-                attribute: 'selected',
-                label: '#',
-                format() {
-                  return <input type="checkbox" />;
+          <h1 className="h4">Table with formatted values and form </h1>
+          <Form initialValues={{}} onSubmit={console.info}>
+            <Table
+              columns={[
+                {
+                  attribute: 'selected',
+                  label: '#',
+                  format(_, __, index) {
+                    console.log(index);
+
+                    return (
+                      <div onClick={stopPropagation}>
+                        <FormCheckbox name={`selected[${index}].isSelected`} id={`selected[${index}].isSelected`} />
+                      </div>
+                    );
+                  },
                 },
-              },
-              {
-                attribute: 'a',
-                label: 'A',
-                format(v) {
-                  return `${v}*`;
+                {
+                  attribute: 'a',
+                  label: 'A',
+                  format(v) {
+                    return `${v}*`;
+                  },
                 },
-              },
-              {
-                attribute: 'b',
-                label: 'B',
-                format(v, doc) {
-                  return v + doc.a;
+                {
+                  attribute: 'b',
+                  label: 'B',
+                  format(v, doc) {
+                    return v + doc.a;
+                  },
                 },
-              },
-              {
-                attribute: 'c',
-                label: 'C',
-                format(_, __, docIndex) {
-                  return <strong>{docIndex + 1}</strong>;
+                {
+                  attribute: 'c',
+                  label: 'C',
+                  format(_, __, docIndex) {
+                    return <strong>{docIndex + 1}</strong>;
+                  },
                 },
-              },
-            ]}
-            docs={[
-              { a: 1, b: 2, c: 3 },
-              { a: 4, b: 5, c: 6 },
-              { a: 7, b: 8, c: 9 },
-            ]}
-          />
+              ]}
+              docs={[
+                { a: 1, b: 2, c: 3 },
+                { a: 4, b: 5, c: 6 },
+                { a: 7, b: 8, c: 9 },
+              ]}
+            />
+          </Form>
         </div>
       </div>
 
