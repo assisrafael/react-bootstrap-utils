@@ -5,6 +5,7 @@ import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
 import { formatClasses } from '../utils/attributes';
 import { useFormControl } from './helpers/useFormControl';
+import { isEmpty } from '../utils/types';
 
 export function FormAutocomplete({
   onSearch,
@@ -40,6 +41,68 @@ export function FormAutocomplete({
     searchInputRef.current.setCustomValidity(controlFeedback === 'is-invalid' ? 'invalid' : '');
   }, [controlFeedback]);
 
+  useEffect(() => {
+    if (isEmpty(value) && !isFocused) {
+      setSearchValue('');
+      setSelectedItem(null);
+    }
+  }, [isFocused, value]);
+
+  const onSearchInputType = useCallback(
+    (_, nextSearchValue) => {
+      setSearchValue(nextSearchValue);
+      onSearch(nextSearchValue);
+      open();
+
+      if (nextSearchValue && value) {
+        setValue(null);
+      }
+    },
+    [onSearch, open, setValue, value]
+  );
+
+  const onSearchInputFocus = useCallback(() => {
+    if (openOnFocus) {
+      setTimeout(() => {
+        open();
+      }, 100);
+    }
+  }, []);
+
+  const onSearchInputBlur = useCallback(() => {
+    if (ignoreBlur) {
+      searchInputRef.current.focus();
+    } else {
+      close();
+      setFocus(false);
+    }
+  }, [close, ignoreBlur]);
+
+  const enableSearchInput = useCallback(() => {
+    if (disabled) {
+      return;
+    }
+
+    setFocus(true);
+    setTimeout(() => {
+      searchInputRef.current.focus();
+    });
+  }, [disabled]);
+
+  const onSelectItem = useCallback(
+    ({ value, label }) => {
+      setValue(value);
+      setSearchValue(label);
+      setSelectedItem({ value, label });
+      setIgnoreBlur(false);
+      setTimeout(() => {
+        setFocus(false);
+        close();
+      }, 60);
+    },
+    [close, setValue]
+  );
+
   return (
     <>
       <input
@@ -48,31 +111,10 @@ export function FormAutocomplete({
         ref={searchInputRef}
         className={`form-control ${isFocused ? '' : 'd-none'} ${controlFeedback}`}
         onChange={handleInputChange.bind(null, {
-          update(_, nextSearchValue) {
-            setSearchValue(nextSearchValue);
-            onSearch(nextSearchValue);
-            open();
-
-            if (nextSearchValue && value) {
-              setValue(null);
-            }
-          },
+          update: onSearchInputType,
         })}
-        onFocus={() => {
-          if (openOnFocus) {
-            setTimeout(() => {
-              open();
-            }, 100);
-          }
-        }}
-        onBlur={() => {
-          if (ignoreBlur) {
-            searchInputRef.current.focus();
-          } else {
-            close();
-            setFocus(false);
-          }
-        }}
+        onFocus={onSearchInputFocus}
+        onBlur={onSearchInputBlur}
         value={searchValue}
         role="combobox"
         aria-autocomplete="list"
@@ -84,16 +126,7 @@ export function FormAutocomplete({
         <div
           className={formatClasses(['form-control', controlFeedback])}
           disabled={disabled}
-          onClick={() => {
-            if (disabled) {
-              return;
-            }
-
-            setFocus(true);
-            setTimeout(() => {
-              searchInputRef.current.focus();
-            });
-          }}
+          onClick={enableSearchInput}
         >
           {selectedItem ? (template ? template(selectedItem.label) : selectedItem.label) : placeholder}
         </div>
@@ -110,16 +143,7 @@ export function FormAutocomplete({
       <Dropdown
         isOpen={isOpen()}
         items={items.filter(filter(searchValue))}
-        onSelect={({ value, label }) => {
-          setValue(value);
-          setSearchValue(label);
-          setSelectedItem({ value, label });
-          setIgnoreBlur(false);
-          setTimeout(() => {
-            setFocus(false);
-            close();
-          }, 60);
-        }}
+        onSelect={onSelectItem}
         template={template}
         onClick={(e) => e.stopPropation()}
         onTouchStart={() => setIgnoreBlur(true)}

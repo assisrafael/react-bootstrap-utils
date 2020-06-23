@@ -34,12 +34,15 @@ export function FormExamples() {
           }, 1000);
         });
       }}
-      transform={(formData, pathUpdated, update) => {
+      transform={(formData, _, update) => {
         formData.__v = formData.__v ? formData.__v + 1 : 1;
 
         update(formData);
       }}
-      onCancel={() => console.log('onCancel')}
+      onCancel={(resetForm) => {
+        console.log('onCancel');
+        resetForm();
+      }}
       customValidation={true}
       validations={{
         numberField: [

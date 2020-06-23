@@ -25,3 +25,11 @@ export function isNull(value) {
 export function isFunction(value) {
   return typeof value === 'function';
 }
+
+export function isEmpty(value) {
+  return isUndefined(value) || isNull(value) || (isString(value) && value.length === 0);
+}
+
+export function isUndefined(value) {
+  return typeof value === 'undefined';
+}

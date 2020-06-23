@@ -55,7 +55,7 @@ export function Form({
 
   function handleCancel() {
     //TODO: improve cancel options
-    onCancel();
+    onCancel(resetForm);
   }
 
   const formProps = {
