@@ -67,7 +67,7 @@ export function FormAutocomplete({
         open();
       }, 100);
     }
-  }, []);
+  }, [open, openOnFocus]);
 
   const onSearchInputBlur = useCallback(() => {
     if (ignoreBlur) {
