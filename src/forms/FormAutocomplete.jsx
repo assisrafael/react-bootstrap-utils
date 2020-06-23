@@ -18,20 +18,23 @@ export function FormAutocomplete({
   filter,
   disabled: _disabled,
 }) {
+  const { getValue, setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(name);
+  const value = getValue();
+
   const [searchValue, setSearchValue] = useState('');
+  const items = normalizeOptions(options, getFormData(), searchValue);
+  const _selectedItem = items.find((item) => item.value === value);
+
+  const [selectedItem, setSelectedItem] = useState(_selectedItem);
   const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
   const [isFocused, setFocus] = useState(false);
-  const { getValue, setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(name);
   const registerRef = useCallback(register, []);
   const searchInputRef = useRef(null);
 
-  const items = normalizeOptions(options, getFormData(), searchValue);
-  const value = getValue();
-  const selectedItem = items.find((item) => item.value === value);
   const disabled = normalizeDisabled(_disabled, getFormData());
 
-  const controlFeedback = `${getFormSubmitedAttempted() ? (isValid() ? 'is-valid' : 'is-invalid') : ''}`;
+  const controlFeedback = getFormSubmitedAttempted() ? (isValid() ? 'is-valid' : 'is-invalid') : '';
 
   useEffect(() => {
     searchInputRef.current.setCustomValidity(controlFeedback === 'is-invalid' ? 'invalid' : '');
@@ -110,6 +113,7 @@ export function FormAutocomplete({
         onSelect={({ value, label }) => {
           setValue(value);
           setSearchValue(label);
+          setSelectedItem({ value, label });
           setIgnoreBlur(false);
           setTimeout(() => {
             setFocus(false);
@@ -135,6 +139,7 @@ FormAutocomplete.defaultProps = {
 
     return itemValue.includes(searchValue);
   },
+  template: (x) => x,
 };
 
 FormAutocomplete.propTypes = {

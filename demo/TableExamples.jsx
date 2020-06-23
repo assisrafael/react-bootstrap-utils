@@ -87,8 +87,6 @@ export function TableExamples() {
                   attribute: 'selected',
                   label: '#',
                   format(_, __, index) {
-                    console.log(index);
-
                     return (
                       <div onClick={stopPropagation}>
                         <FormCheckbox name={`selected[${index}].isSelected`} id={`selected[${index}].isSelected`} />
