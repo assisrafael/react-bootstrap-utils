@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.16.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.6...v0.16.0) (2020-06-23)
+
+
+### Bug Fixes
+
+* **forms:** fix selected item on FormAutocomplete when options is a dynamic array ([bd6b345](https://github.com/assisrafael/react-bootstrap-utils/commit/bd6b3455566452bccfd8ab1ef526e3d388cf82f3))
+* **forms:** reset FormAutocomplete internal state when value is empty ([8821b1d](https://github.com/assisrafael/react-bootstrap-utils/commit/8821b1d80b1b48e89e93629d37f7c01c3737a5bc))
+
 ### [0.15.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.5...v0.15.6) (2020-06-10)
 
 
