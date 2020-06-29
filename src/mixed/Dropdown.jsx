@@ -14,8 +14,13 @@ export function Dropdown({ children, items, onSelect, isOpen, onTouchStart, onMo
           // aria-labelledby="dropdownMenuButton"
           style={{ maxHeight: '200px', overflowY: 'auto' }}
         >
-          {items.map(({ label, value }, index) => (
-            <a key={index} href="#" className="dropdown-item" onClick={safeClick(onSelect, { value, index, label })}>
+          {items.map(({ label, value, isDisabled }, index) => (
+            <a
+              key={index}
+              href="#"
+              className={formatClasses(['dropdown-item', isDisabled && 'disabled'])}
+              onClick={safeClick(onSelect, { value, index, label })}
+            >
               {template(label)}
             </a>
           ))}
@@ -26,6 +31,7 @@ export function Dropdown({ children, items, onSelect, isOpen, onTouchStart, onMo
 }
 
 Dropdown.defaultProps = {
+  isOpen: false,
   template: (v) => v,
 };
 

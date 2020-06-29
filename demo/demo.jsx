@@ -9,6 +9,7 @@ import { TabsExamples } from './TabsExamples';
 import { DialogExamples } from './DialogExamples';
 import { ListGroupExamples } from './ListGroupExamples';
 import { ToastsExamples } from './ToastsExamples';
+import { DropdownExamples } from './DropdownExamples';
 
 ReactDOM.render(
   <div className="mt-3">
@@ -16,11 +17,16 @@ ReactDOM.render(
       <ToastsContainer>
         <StatefulTabs
           vertical={true}
+          onlyRenderActiveTab={true}
           initialTab={1}
           tabs={[
             {
               title: 'Dialog',
               content: <DialogExamples />,
+            },
+            {
+              title: 'Dropdown',
+              content: <DropdownExamples />,
             },
             {
               title: 'Forms',

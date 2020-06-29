@@ -11,6 +11,7 @@ export function StatefulTabs({ initialTab, activeTab: _, tabs, ...props }) {
 
 StatefulTabs.propTypes = {
   activeTab: PropTypes.any,
-  tabs: PropTypes.arrayOf(PropTypes.object),
   initialTab: PropTypes.number,
+  onlyRenderActiveTab: PropTypes.bool,
+  tabs: PropTypes.arrayOf(PropTypes.object),
 };
