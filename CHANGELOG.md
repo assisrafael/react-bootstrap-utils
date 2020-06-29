@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.17.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.16.0...v0.17.0) (2020-06-29)
+
+
+### Features
+
+* **dropdown:** add "isDisabled" attribute for dropdown items ([1564184](https://github.com/assisrafael/react-bootstrap-utils/commit/1564184aa091345afeebf827062ab77efa0d2989))
+
 ## [0.16.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.6...v0.16.0) (2020-06-23)
 
 
