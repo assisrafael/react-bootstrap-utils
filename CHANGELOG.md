@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.17.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.17.0...v0.17.1) (2020-07-03)
+
+
+### Bug Fixes
+
+* **forms:** allow autocomplete customization based on css selectors ([c4fadc5](https://github.com/assisrafael/react-bootstrap-utils/commit/c4fadc55f43f92308bf6840c1fdf3f51fa6ac19e))
+
 ## [0.17.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.16.0...v0.17.0) (2020-06-29)
 
 
