@@ -109,7 +109,7 @@ export function FormAutocomplete({
         {...{ placeholder, disabled }}
         type="text"
         ref={searchInputRef}
-        className={`form-control ${isFocused ? '' : 'd-none'} ${controlFeedback}`}
+        className={formatClasses(['form-control form-autocomplete-search', isFocused ? '' : 'd-none', controlFeedback])}
         onChange={handleInputChange.bind(null, {
           update: onSearchInputType,
         })}
@@ -124,7 +124,7 @@ export function FormAutocomplete({
 
       {!isFocused && (
         <div
-          className={formatClasses(['form-control', controlFeedback])}
+          className={formatClasses(['form-control form-autocomplete-selected', controlFeedback])}
           disabled={disabled}
           onClick={enableSearchInput}
         >
@@ -141,6 +141,7 @@ export function FormAutocomplete({
         ref={registerRef}
       />
       <Dropdown
+        className="form-autocomplete-dropdown"
         isOpen={isOpen()}
         items={items.filter(filter(searchValue))}
         onSelect={onSelectItem}

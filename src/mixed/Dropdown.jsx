@@ -3,9 +3,22 @@ import PropTypes from 'prop-types';
 import { safeClick } from '../utils/event-handlers';
 import { formatClasses } from '../utils/attributes';
 
-export function Dropdown({ children, items, onSelect, isOpen, onTouchStart, onMouseEnter, onMouseLeave, template }) {
+export function Dropdown({
+  children,
+  items,
+  onSelect,
+  isOpen,
+  onTouchStart,
+  onMouseEnter,
+  onMouseLeave,
+  template,
+  className,
+}) {
   return (
-    <div className={formatClasses(['dropdown', isOpen && 'show'])} {...{ onTouchStart, onMouseEnter, onMouseLeave }}>
+    <div
+      className={formatClasses(['dropdown', className, isOpen && 'show'])}
+      {...{ onTouchStart, onMouseEnter, onMouseLeave }}
+    >
       {children}
 
       {items.length > 0 && (
@@ -44,4 +57,5 @@ Dropdown.propTypes = {
   onSelect: PropTypes.func,
   onTouchStart: PropTypes.func,
   template: PropTypes.func,
+  className: PropTypes.string,
 };
