@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.18.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.17.1...v0.18.0) (2020-07-06)
+
+
+### Features
+
+* **table:** allow custom action definition ([0ff6972](https://github.com/assisrafael/react-bootstrap-utils/commit/0ff6972d6e0dc4ccd86b092a9e7ba4243e8d1bbb))
+
 ### [0.17.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.17.0...v0.17.1) (2020-07-03)
 
 
