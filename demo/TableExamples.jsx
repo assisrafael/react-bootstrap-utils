@@ -207,6 +207,16 @@ export function TableExamples() {
               ],
               sortState
             )}
+            actions={(doc, docIndex) => [
+              {
+                title: 'Add',
+                content: <span>{doc.b + docIndex}?</span>,
+              },
+              {
+                title: 'Subtract',
+                content: <span>{doc.b - docIndex}?</span>,
+              },
+            ]}
           />
         </div>
       </div>

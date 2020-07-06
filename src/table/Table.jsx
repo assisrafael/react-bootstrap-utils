@@ -34,7 +34,7 @@ export function Table({
     <div className="table-responsive">
       <table className={tableClasses}>
         {caption && <caption>{caption}</caption>}
-        <TableHead {...{ actions, actionLabel, columnHeaderFormat }} columns={normalizedColumns} />
+        <TableHead {...{ actionLabel, columnHeaderFormat, hasActions: Boolean(actions) }} columns={normalizedColumns} />
         <TableBody {...{ docs, rowClass, actions, onRowClick }} columns={normalizedColumns} />
       </table>
     </div>
@@ -55,7 +55,7 @@ Table.defaultProps = {
 
 Table.propTypes = {
   actionLabel: PropTypes.string,
-  actions: PropTypes.arrayOf(PropTypes.object),
+  actions: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.object)]),
   bordered: PropTypes.bool,
   caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   columnHeaderFormat: PropTypes.func,

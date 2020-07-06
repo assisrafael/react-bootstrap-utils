@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getColumnClass } from './table-helpers';
 
-export function TableHead({ columns, actions, actionLabel, columnHeaderFormat }) {
+export function TableHead({ columns, hasActions, actionLabel, columnHeaderFormat }) {
   return (
     <thead>
       <tr>
@@ -11,7 +11,7 @@ export function TableHead({ columns, actions, actionLabel, columnHeaderFormat })
             {columnHeaderFormat(column.label, column.attribute)}
           </th>
         ))}
-        {actions && <th className="text-center">{actionLabel}</th>}
+        {hasActions && <th className="text-center">{actionLabel}</th>}
       </tr>
     </thead>
   );
@@ -19,7 +19,7 @@ export function TableHead({ columns, actions, actionLabel, columnHeaderFormat })
 
 TableHead.propTypes = {
   actionLabel: PropTypes.string,
-  actions: PropTypes.arrayOf(PropTypes.object),
+  hasActions: PropTypes.bool,
   columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   columnHeaderFormat: PropTypes.func.isRequired,
 };

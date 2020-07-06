@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getColumnClass } from './table-helpers';
-import { safeClick, stopPropagation } from '../utils/event-handlers';
+import { safeClick } from '../utils/event-handlers';
 import { getValueByPath } from '../utils/getters-setters';
+import { TableActions } from './TableActions';
 
 export function TableBody({ columns, docs, rowClass, actions, onRowClick }) {
   return (
@@ -15,20 +16,7 @@ export function TableBody({ columns, docs, rowClass, actions, onRowClick }) {
             </td>
           ))}
 
-          {actions && (
-            <td className="text-center">
-              {actions.map((action, actionIndex) => (
-                <a
-                  key={actionIndex}
-                  title={action.title}
-                  {...getActionProps(action, doc, docIndex)}
-                  className={actionIndex > 0 ? 'ml-2' : ''}
-                >
-                  {action.content}
-                </a>
-              ))}
-            </td>
-          )}
+          <TableActions doc={doc} docIndex={docIndex} actions={actions} />
         </tr>
       ))}
     </tbody>
@@ -36,7 +24,7 @@ export function TableBody({ columns, docs, rowClass, actions, onRowClick }) {
 }
 
 TableBody.propTypes = {
-  actions: PropTypes.arrayOf(PropTypes.object),
+  actions: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.object)]),
   columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   docs: PropTypes.arrayOf(PropTypes.object),
   rowClass: PropTypes.func,
@@ -51,18 +39,4 @@ function getColumnValue(doc, column, docIndex) {
   }
 
   return column.format(rawValue, doc, docIndex);
-}
-
-function getActionProps(action, doc, docIndex) {
-  const props = {};
-
-  if (action.onClick) {
-    props.href = '';
-    props.onClick = safeClick(action.onClick, doc, docIndex);
-  } else if (action.link) {
-    props.onClick = stopPropagation;
-    props.href = action.link(doc, docIndex);
-  }
-
-  return props;
 }
