@@ -44,7 +44,7 @@
     "react-hot-loader": "^4.12.20",
     "rollup": "^2.1.0",
     "rollup-plugin-babel": "^4.4.0",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
