@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.19.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.18.1...v0.19.0) (2020-07-16)
+
+
+### Features
+
+* **forms:** allow "required" prop to be a function ([79bb221](https://github.com/assisrafael/react-bootstrap-utils/commit/79bb22164036fb13bc393d1adcd2b5c86969dc73))
+
 ### [0.18.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.18.0...v0.18.1) (2020-07-16)
 
 
