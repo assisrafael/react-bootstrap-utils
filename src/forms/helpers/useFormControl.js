@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { FormContext } from './form-helpers';
 import { toDatetimeLocal, fromDatetimeLocal } from '../../utils/formatters';
 import { isNull } from '../../utils/types';
@@ -10,6 +10,14 @@ export function useFormControl(name, type) {
     formState.update(name, value);
   }
 
+  const register = useCallback(
+    (ref) => {
+      formState.register(name, ref);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [name]
+  );
+
   return {
     getValue: () => encode(formState.getValue(name), type),
     setValue,
@@ -18,9 +26,7 @@ export function useFormControl(name, type) {
 
       setValue(value);
     },
-    register: (ref) => {
-      formState.register(name, ref);
-    },
+    register,
     getFormData: () => formState.getFormData(),
     isValid: () => formState.getValidationMessage(name) === '',
     getFormSubmitedAttempted: () => formState.getSubmitedAttempted(),

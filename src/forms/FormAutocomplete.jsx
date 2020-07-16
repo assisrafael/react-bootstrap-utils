@@ -30,7 +30,7 @@ export function FormAutocomplete({
   const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
   const [isFocused, setFocus] = useState(false);
-  const registerRef = useCallback(register, []);
+  const registerRef = useCallback(register, [register]);
   const searchInputRef = useRef(null);
 
   const disabled = normalizeDisabled(_disabled, getFormData());

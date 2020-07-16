@@ -5,7 +5,7 @@ import { normalizeDisabled } from './helpers/form-helpers';
 
 export function FormSwitch({ id, name, required, trueLabel, falseLabel, disabled: _disabled }) {
   const { getValue, handleOnChange, register, getFormData } = useFormControl(name, 'boolean');
-  const registerRef = useCallback(register, []);
+  const registerRef = useCallback(register, [register]);
   const value = getValue();
   const disabled = normalizeDisabled(_disabled, getFormData());
 

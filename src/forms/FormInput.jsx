@@ -18,7 +18,7 @@ export function FormInput({
   disabled: _disabled,
 }) {
   const { getValue, handleOnChange, register, getFormData } = useFormControl(name, type);
-  const registerRef = useCallback(register, []);
+  const registerRef = useCallback(register, [register]);
   const disabled = normalizeDisabled(_disabled, getFormData());
 
   const attrs = { required, name, id, placeholder, type, minLength, maxLength, min, max, pattern, step, disabled };

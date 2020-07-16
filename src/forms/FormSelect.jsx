@@ -6,7 +6,7 @@ import { getValueByPath } from '../utils/getters-setters';
 
 export function FormSelect({ id, name, options, required, placeholder, trackBy, disabled: _disabled }) {
   const { getFormData, getValue, handleOnChange, register } = useFormControl(name);
-  const registerRef = useCallback(register, []);
+  const registerRef = useCallback(register, [register]);
   const value = getValue();
   const normalizedOptions = normalizeOptions(options, getFormData());
   const disabled = normalizeDisabled(_disabled, getFormData());

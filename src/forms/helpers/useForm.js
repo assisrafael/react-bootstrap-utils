@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useArrayValueMap } from '../../utils/useValueMap';
 import { setValueByPath, deepClone, getValueByPath } from '../../utils/getters-setters';
 import { validateFormElement } from './form-helpers';
@@ -6,21 +6,20 @@ import { debounce } from 'lodash-es';
 
 function useFormState(initialState, { onChange, transform }) {
   const [formState, setFormState] = useState(initialState);
-  const _onChange = useCallback(debounce(onChange, 1000), []);
-  const _transform = useCallback(
+  const onChangeRef = useRef(debounce(onChange, 1000));
+  const transformRef = useRef(
     debounce(
       (nextFormState, name) =>
         transform(nextFormState, name, (state) => {
           setFormState(state);
         }),
       500
-    ),
-    [setFormState]
+    )
   );
 
   useEffect(() => {
-    _onChange(formState);
-  }, [formState, _onChange]);
+    onChangeRef.current(formState);
+  }, [formState]);
 
   return {
     getState() {
@@ -31,7 +30,7 @@ function useFormState(initialState, { onChange, transform }) {
         const nextFormState = nextState(prevFormState, name, value);
 
         setTimeout(() => {
-          _transform(nextFormState, name);
+          transformRef.current(nextFormState, name);
         });
 
         return nextFormState;

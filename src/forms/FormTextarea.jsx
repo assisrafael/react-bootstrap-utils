@@ -5,7 +5,7 @@ import { normalizeDisabled } from './helpers/form-helpers';
 
 export function FormTextarea({ id, name, required, placeholder, rows, disabled: _disabled }) {
   const { getValue, handleOnChange, register, getFormData } = useFormControl(name);
-  const registerRef = useCallback(register, []);
+  const registerRef = useCallback(register, [register]);
   const disabled = normalizeDisabled(_disabled, getFormData());
 
   return (
