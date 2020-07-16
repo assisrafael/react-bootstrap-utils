@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.18.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.18.0...v0.18.1) (2020-07-16)
+
+
+### Bug Fixes
+
+* **forms:** allow the reset of a FormAutocomplete selected value ([144d223](https://github.com/assisrafael/react-bootstrap-utils/commit/144d2239ff7432467b007cccdf61e4ee9464e70f))
+* **forms:** only call onChange after the form was modified by the user ([294898d](https://github.com/assisrafael/react-bootstrap-utils/commit/294898d9d832cdaa0b75ceb8e23b5f2011c9c58d))
+
 ## [0.18.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.17.1...v0.18.0) (2020-07-06)
 
 
