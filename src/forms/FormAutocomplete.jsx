@@ -30,12 +30,23 @@ export function FormAutocomplete({
   const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
   const [isFocused, setFocus] = useState(false);
-  const registerRef = useCallback(register, [register]);
   const searchInputRef = useRef(null);
 
+  const registerRef = useCallback(register, [register]);
   const disabled = normalizeDisabled(_disabled, getFormData());
 
   const controlFeedback = getFormSubmitedAttempted() ? (isValid() ? 'is-valid' : 'is-invalid') : '';
+
+  const updateSearchInputValidation = useCallback(() => {
+    searchInputRef.current.setCustomValidity(controlFeedback === 'is-invalid' ? 'invalid' : '');
+  }, [controlFeedback]);
+
+  const clearSearchValue = useCallback(() => {
+    if (isEmpty(value) && !isFocused) {
+      setSearchValue('');
+      setSelectedItem(null);
+    }
+  }, [isFocused, value]);
 
   const onSearchInputType = useCallback(
     (_, nextSearchValue) => {
@@ -70,6 +81,7 @@ export function FormAutocomplete({
     if (isEmpty(searchValue) && value) {
       setValue('');
       setSelectedItem(null);
+      updateSearchInputValidation();
     }
 
     if (ignoreBlur) {
@@ -78,7 +90,7 @@ export function FormAutocomplete({
       close();
       setFocus(false);
     }
-  }, [close, ignoreBlur, searchValue, setValue, value]);
+  }, [close, ignoreBlur, searchValue, setValue, updateSearchInputValidation, value]);
 
   const enableSearchInput = useCallback(() => {
     if (disabled) {
@@ -104,17 +116,6 @@ export function FormAutocomplete({
     },
     [close, setValue]
   );
-
-  const updateSearchInputValidation = useCallback(() => {
-    searchInputRef.current.setCustomValidity(controlFeedback === 'is-invalid' ? 'invalid' : '');
-  }, [controlFeedback]);
-
-  const clearSearchValue = useCallback(() => {
-    if (isEmpty(value) && !isFocused) {
-      setSearchValue('');
-      setSelectedItem(null);
-    }
-  }, [isFocused, value]);
 
   useEffect(updateSearchInputValidation, [updateSearchInputValidation]);
   useEffect(clearSearchValue, [clearSearchValue]);

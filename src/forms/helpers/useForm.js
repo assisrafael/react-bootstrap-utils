@@ -6,6 +6,7 @@ import { debounce } from 'lodash-es';
 
 function useFormState(initialState, { onChange, transform }) {
   const [formState, setFormState] = useState(initialState);
+  const [isDirty, setIsDirty] = useState(false);
   const onChangeRef = useRef(debounce(onChange, 1000));
   const transformRef = useRef(
     debounce(
@@ -18,14 +19,17 @@ function useFormState(initialState, { onChange, transform }) {
   );
 
   useEffect(() => {
-    onChangeRef.current(formState);
-  }, [formState]);
+    if (isDirty) {
+      onChangeRef.current(formState);
+    }
+  }, [formState, isDirty]);
 
   return {
     getState() {
       return formState;
     },
     updateState(name, value) {
+      setIsDirty(true);
       setFormState((prevFormState) => {
         const nextFormState = nextState(prevFormState, name, value);
 
@@ -37,6 +41,7 @@ function useFormState(initialState, { onChange, transform }) {
       });
     },
     resetState() {
+      setIsDirty(false);
       setFormState(initialState);
     },
   };
