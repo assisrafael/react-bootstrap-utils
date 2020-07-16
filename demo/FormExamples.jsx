@@ -130,7 +130,6 @@ export function FormExamples() {
             label="Autocomplete"
             options={['1234', '2345', '3456']}
             placeholder="Type some numbers"
-            required
             disabled
           />
         </div>
@@ -148,6 +147,7 @@ export function FormExamples() {
             onSearch={console.log}
             placeholder="Type some letters"
             openOnFocus={true}
+            required
           />
         </div>
         <div className="col">

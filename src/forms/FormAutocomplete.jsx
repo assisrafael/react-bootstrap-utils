@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { handleInputChange, normalizeOptions, normalizeDisabled } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
@@ -37,17 +37,6 @@ export function FormAutocomplete({
 
   const controlFeedback = getFormSubmitedAttempted() ? (isValid() ? 'is-valid' : 'is-invalid') : '';
 
-  useEffect(() => {
-    searchInputRef.current.setCustomValidity(controlFeedback === 'is-invalid' ? 'invalid' : '');
-  }, [controlFeedback]);
-
-  useEffect(() => {
-    if (isEmpty(value) && !isFocused) {
-      setSearchValue('');
-      setSelectedItem(null);
-    }
-  }, [isFocused, value]);
-
   const onSearchInputType = useCallback(
     (_, nextSearchValue) => {
       setSearchValue(nextSearchValue);
@@ -61,6 +50,14 @@ export function FormAutocomplete({
     [onSearch, open, setValue, value]
   );
 
+  const inputHandleChange = useMemo(
+    () =>
+      handleInputChange.bind(null, {
+        update: onSearchInputType,
+      }),
+    [onSearchInputType]
+  );
+
   const onSearchInputFocus = useCallback(() => {
     if (openOnFocus) {
       setTimeout(() => {
@@ -70,13 +67,18 @@ export function FormAutocomplete({
   }, [open, openOnFocus]);
 
   const onSearchInputBlur = useCallback(() => {
+    if (isEmpty(searchValue) && value) {
+      setValue('');
+      setSelectedItem(null);
+    }
+
     if (ignoreBlur) {
       searchInputRef.current.focus();
     } else {
       close();
       setFocus(false);
     }
-  }, [close, ignoreBlur]);
+  }, [close, ignoreBlur, searchValue, setValue, value]);
 
   const enableSearchInput = useCallback(() => {
     if (disabled) {
@@ -103,16 +105,28 @@ export function FormAutocomplete({
     [close, setValue]
   );
 
+  const updateSearchInputValidation = useCallback(() => {
+    searchInputRef.current.setCustomValidity(controlFeedback === 'is-invalid' ? 'invalid' : '');
+  }, [controlFeedback]);
+
+  const clearSearchValue = useCallback(() => {
+    if (isEmpty(value) && !isFocused) {
+      setSearchValue('');
+      setSelectedItem(null);
+    }
+  }, [isFocused, value]);
+
+  useEffect(updateSearchInputValidation, [updateSearchInputValidation]);
+  useEffect(clearSearchValue, [clearSearchValue]);
+
   return (
     <>
       <input
         {...{ placeholder, disabled }}
-        type="text"
+        type="search"
         ref={searchInputRef}
         className={formatClasses(['form-control form-autocomplete-search', isFocused ? '' : 'd-none', controlFeedback])}
-        onChange={handleInputChange.bind(null, {
-          update: onSearchInputType,
-        })}
+        onChange={inputHandleChange}
         onFocus={onSearchInputFocus}
         onBlur={onSearchInputBlur}
         value={searchValue}
@@ -134,12 +148,13 @@ export function FormAutocomplete({
 
       <input
         type="text"
-        className={`form-control d-none`}
+        className={formatClasses(['form-control', 'd-none'])}
         {...{ name, required, id }}
         onChange={() => {}}
         value={getValue()}
         ref={registerRef}
       />
+
       <Dropdown
         className="form-autocomplete-dropdown"
         isOpen={isOpen()}
