@@ -147,7 +147,7 @@ export function FormExamples() {
             onSearch={console.log}
             placeholder="Type some letters"
             openOnFocus={true}
-            required
+            required={() => true}
           />
         </div>
         <div className="col">
@@ -164,6 +164,7 @@ export function FormExamples() {
                 <strong>{option}</strong> - {option}
               </>
             )}
+            required={() => false}
           />
         </div>
       </div>

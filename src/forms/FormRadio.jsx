@@ -1,13 +1,15 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useFormControl } from './helpers/useFormControl';
-import { normalizeDisabled } from './helpers/form-helpers';
 
-export function FormRadio({ id, name, required, checkedValue, valueLabel, inline, disabled: _disabled }) {
+import { useFormControl } from './helpers/useFormControl';
+import { booleanOrFunction } from './helpers/form-helpers';
+
+export function FormRadio({ id, name, required: _required, checkedValue, valueLabel, inline, disabled: _disabled }) {
   const { getValue, handleOnChange, register, getFormData } = useFormControl(name, 'boolean');
   const registerRef = useCallback(register, [register]);
   const value = getValue();
-  const disabled = normalizeDisabled(_disabled, getFormData());
+  const disabled = booleanOrFunction(_disabled, getFormData());
+  const required = booleanOrFunction(_required, getFormData());
 
   return (
     <div className={`custom-control custom-radio ${inline ? 'custom-control-inline' : ''}`}>
@@ -36,7 +38,7 @@ FormRadio.propTypes = {
   id: PropTypes.string.isRequired,
   inline: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  required: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   valueLabel: PropTypes.string,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

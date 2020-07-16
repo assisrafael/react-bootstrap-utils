@@ -56,10 +56,10 @@ export function normalizeOptions(options, formData, extraData) {
   });
 }
 
-export function normalizeDisabled(disabled, formData) {
-  if (!isFunction(disabled)) {
-    return disabled;
+export function booleanOrFunction(property, formData) {
+  if (!isFunction(property)) {
+    return property;
   }
 
-  return disabled(formData);
+  return property(formData);
 }

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { handleInputChange, normalizeOptions, normalizeDisabled } from './helpers/form-helpers';
+
+import { handleInputChange, normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
 import { formatClasses } from '../utils/attributes';
@@ -10,7 +11,7 @@ import { isEmpty } from '../utils/types';
 export function FormAutocomplete({
   onSearch,
   options,
-  required,
+  required: _required,
   id,
   placeholder,
   name,
@@ -33,7 +34,8 @@ export function FormAutocomplete({
   const searchInputRef = useRef(null);
 
   const registerRef = useCallback(register, [register]);
-  const disabled = normalizeDisabled(_disabled, getFormData());
+  const disabled = booleanOrFunction(_disabled, getFormData());
+  const required = booleanOrFunction(_required, getFormData());
 
   const controlFeedback = getFormSubmitedAttempted() ? (isValid() ? 'is-valid' : 'is-invalid') : '';
 
@@ -194,7 +196,7 @@ FormAutocomplete.propTypes = {
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   ]),
   placeholder: PropTypes.string,
-  required: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   template: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),

@@ -1,12 +1,14 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useFormControl } from './helpers/useFormControl';
-import { normalizeDisabled } from './helpers/form-helpers';
 
-export function FormCheckbox({ id, name, required, valueLabel, disabled: _disabled }) {
+import { useFormControl } from './helpers/useFormControl';
+import { booleanOrFunction } from './helpers/form-helpers';
+
+export function FormCheckbox({ id, name, required: _required, valueLabel, disabled: _disabled }) {
   const { getValue, handleOnChange, register, getFormData } = useFormControl(name, 'boolean');
   const registerRef = useCallback(register, [register]);
-  const disabled = normalizeDisabled(_disabled, getFormData());
+  const disabled = booleanOrFunction(_disabled, getFormData());
+  const required = booleanOrFunction(_required, getFormData());
 
   return (
     <div className="custom-control custom-checkbox">
@@ -29,6 +31,6 @@ FormCheckbox.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   valueLabel: PropTypes.string,
-  required: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

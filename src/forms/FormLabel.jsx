@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export function FormLabel({ id, label, required }) {
+export function FormLabel({ id, label, required: _required }) {
+  const required = typeof _required === 'boolean';
+
   return (
     <label htmlFor={id}>
       {label}
@@ -14,5 +16,5 @@ export function FormLabel({ id, label, required }) {
 FormLabel.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
-  required: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

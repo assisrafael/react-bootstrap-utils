@@ -1,15 +1,17 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { normalizeOptions, normalizeDisabled } from './helpers/form-helpers';
-import { useFormControl } from './helpers/useFormControl';
-import { getValueByPath } from '../utils/getters-setters';
 
-export function FormSelect({ id, name, options, required, placeholder, trackBy, disabled: _disabled }) {
+import { getValueByPath } from '../utils/getters-setters';
+import { normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
+import { useFormControl } from './helpers/useFormControl';
+
+export function FormSelect({ id, name, options, required: _required, placeholder, trackBy, disabled: _disabled }) {
   const { getFormData, getValue, handleOnChange, register } = useFormControl(name);
   const registerRef = useCallback(register, [register]);
   const value = getValue();
   const normalizedOptions = normalizeOptions(options, getFormData());
-  const disabled = normalizeDisabled(_disabled, getFormData());
+  const disabled = booleanOrFunction(_disabled, getFormData());
+  const required = booleanOrFunction(_required, getFormData());
 
   return (
     <select
@@ -34,7 +36,7 @@ FormSelect.propTypes = {
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   ]),
   placeholder: PropTypes.string,
-  required: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   trackBy: PropTypes.string,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };
