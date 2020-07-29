@@ -4,26 +4,19 @@ import PropTypes from 'prop-types';
 import { useFormControl } from './helpers/useFormControl';
 import { booleanOrFunction } from './helpers/form-helpers';
 
-export function FormInput({
-  id,
-  type,
-  name,
-  placeholder,
-  required: _required,
-  minLength,
-  maxLength,
-  min,
-  max,
-  pattern,
-  step,
-  disabled: _disabled,
-}) {
+export function FormInput({ type, name, required: _required, disabled: _disabled, ..._attrs }) {
   const { getValue, handleOnChange, register, getFormData } = useFormControl(name, type);
   const registerRef = useCallback(register, [register]);
   const disabled = booleanOrFunction(_disabled, getFormData());
   const required = booleanOrFunction(_required, getFormData());
 
-  const attrs = { required, name, id, placeholder, type, minLength, maxLength, min, max, pattern, step, disabled };
+  const attrs = {
+    ..._attrs,
+    disabled,
+    name,
+    required,
+    type,
+  };
 
   if (type === 'datetime-local') {
     attrs.defaultValue = getValue();
@@ -39,6 +32,7 @@ FormInput.defaultProps = {
 };
 
 FormInput.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
   max: PropTypes.string,
   maxLength: PropTypes.string,
@@ -47,8 +41,8 @@ FormInput.propTypes = {
   name: PropTypes.string.isRequired,
   pattern: PropTypes.string,
   placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   step: PropTypes.string,
   type: PropTypes.string,
-  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

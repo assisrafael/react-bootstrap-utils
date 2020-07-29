@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { useFormControl } from './helpers/useFormControl';
 import { booleanOrFunction } from './helpers/form-helpers';
+import { formatClasses } from '../utils/attributes';
 
 export function FormRadio({ id, name, required: _required, checkedValue, valueLabel, inline, disabled: _disabled }) {
   const { getValue, handleOnChange, register, getFormData } = useFormControl(name, 'boolean');
@@ -12,7 +13,7 @@ export function FormRadio({ id, name, required: _required, checkedValue, valueLa
   const required = booleanOrFunction(_required, getFormData());
 
   return (
-    <div className={`custom-control custom-radio ${inline ? 'custom-control-inline' : ''}`}>
+    <div className={formatClasses([`custom-control`, `custom-radio`, inline && 'custom-control-inline'])}>
       <input
         {...{ required, name, id, disabled }}
         type="radio"
@@ -35,10 +36,10 @@ FormRadio.defaultProps = {
 
 FormRadio.propTypes = {
   checkedValue: PropTypes.any,
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string.isRequired,
   inline: PropTypes.bool,
   name: PropTypes.string.isRequired,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   valueLabel: PropTypes.string,
-  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

@@ -186,6 +186,7 @@ FormAutocomplete.defaultProps = {
 };
 
 FormAutocomplete.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -199,5 +200,4 @@ FormAutocomplete.propTypes = {
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   template: PropTypes.func,
   type: PropTypes.string,
-  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

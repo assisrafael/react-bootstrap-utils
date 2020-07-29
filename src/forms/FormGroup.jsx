@@ -10,7 +10,7 @@ import { FormSwitch } from './FormSwitch';
 import { FormTextarea } from './FormTextarea';
 import { FormValidationFeedback } from './FormValidationFeedback';
 
-function FormGroup({ children, name, feedback, mockInvalidSibling, ...props }) {
+export function FormGroup({ children, name, feedback, mockInvalidSibling, ...props }) {
   return (
     <div className="form-group">
       <FormLabel {...props} />
@@ -40,6 +40,23 @@ export function FormGroupAutocomplete(props) {
   );
 }
 
+FormGroupAutocomplete.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  filter: PropTypes.func,
+  id: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onSearch: PropTypes.func,
+  openOnFocus: PropTypes.bool,
+  options: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
+  ]),
+  placeholder: PropTypes.string,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  template: PropTypes.func,
+  type: PropTypes.string,
+};
+
 export function FormGroupCheckbox(props) {
   return (
     <FormGroup mockInvalidSibling={true} {...props}>
@@ -48,6 +65,15 @@ export function FormGroupCheckbox(props) {
   );
 }
 
+FormGroupCheckbox.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  falseLabel: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  trueLabel: PropTypes.string,
+};
+
 export function FormGroupInput(props) {
   return (
     <FormGroup {...props}>
@@ -55,6 +81,22 @@ export function FormGroupInput(props) {
     </FormGroup>
   );
 }
+
+FormGroupInput.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  id: PropTypes.string,
+  max: PropTypes.string,
+  maxLength: PropTypes.string,
+  min: PropTypes.string,
+  minLength: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  pattern: PropTypes.string,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  step: PropTypes.string,
+  type: PropTypes.string,
+};
 
 export function FormGroupRadio({ options, id, ...props }) {
   return (
@@ -79,9 +121,12 @@ FormGroupRadio.defaultProps = {
 };
 
 FormGroupRadio.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.object),
   inline: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.any.isRequired, label: PropTypes.string.isRequired })),
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };
 
 export function FormGroupSelect(props) {
@@ -92,6 +137,24 @@ export function FormGroupSelect(props) {
   );
 }
 
+FormGroupSelect.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  id: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({ value: PropTypes.any.isRequired, label: PropTypes.string.isRequired }),
+      ])
+    ),
+  ]),
+  placeholder: PropTypes.string,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  trackBy: PropTypes.string,
+};
+
 export function FormGroupSwitch(props) {
   return (
     <FormGroup mockInvalidSibling={true} {...props}>
@@ -100,6 +163,15 @@ export function FormGroupSwitch(props) {
   );
 }
 
+FormGroupSwitch.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  falseLabel: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  trueLabel: PropTypes.string,
+};
+
 export function FormGroupTextarea(props) {
   return (
     <FormGroup {...props}>
@@ -107,3 +179,13 @@ export function FormGroupTextarea(props) {
     </FormGroup>
   );
 }
+
+FormGroupTextarea.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  id: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+};
