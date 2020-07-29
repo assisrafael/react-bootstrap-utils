@@ -14,47 +14,49 @@ import { DropdownExamples } from './DropdownExamples';
 ReactDOM.render(
   <div className="mt-3">
     <React.StrictMode>
-      <ToastsContainer>
-        <StatefulTabs
-          vertical={true}
-          onlyRenderActiveTab={true}
-          initialTab={2}
-          tabs={[
-            {
-              title: 'Dialog',
-              content: <DialogExamples />,
-            },
-            {
-              title: 'Dropdown',
-              content: <DropdownExamples />,
-            },
-            {
-              title: 'Forms',
-              content: <FormExamples />,
-            },
-            {
-              title: 'List groups',
-              content: <ListGroupExamples />,
-            },
-            {
-              title: 'Pagination',
-              content: <PaginationExamples />,
-            },
-            {
-              title: 'Tables',
-              content: <TableExamples />,
-            },
-            {
-              title: 'Tabs',
-              content: <TabsExamples />,
-            },
-            {
-              title: 'Toasts',
-              content: <ToastsExamples />,
-            },
-          ]}
-        />
-      </ToastsContainer>
+      <StatefulTabs
+        vertical={true}
+        onlyRenderActiveTab={true}
+        initialTab={7}
+        tabs={[
+          {
+            title: 'Dialog',
+            content: <DialogExamples />,
+          },
+          {
+            title: 'Dropdown',
+            content: <DropdownExamples />,
+          },
+          {
+            title: 'Forms',
+            content: <FormExamples />,
+          },
+          {
+            title: 'List groups',
+            content: <ListGroupExamples />,
+          },
+          {
+            title: 'Pagination',
+            content: <PaginationExamples />,
+          },
+          {
+            title: 'Tables',
+            content: <TableExamples />,
+          },
+          {
+            title: 'Tabs',
+            content: <TabsExamples />,
+          },
+          {
+            title: 'Toasts',
+            content: (
+              <ToastsContainer>
+                <ToastsExamples />,
+              </ToastsContainer>
+            ),
+          },
+        ]}
+      />
     </React.StrictMode>
   </div>,
   document.getElementById('root')

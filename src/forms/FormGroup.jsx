@@ -26,7 +26,7 @@ FormGroup.defaultProps = {
 };
 
 FormGroup.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
   feedback: PropTypes.bool,
   mockInvalidSibling: PropTypes.bool,
   name: PropTypes.string.isRequired,
