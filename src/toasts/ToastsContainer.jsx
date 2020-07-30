@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ToastsContext, toastPositions } from './toasts-helpers';
+import { ToastsContext, TOASTS_CLASSNAME_BY_POSITION } from './toasts-helpers';
 import { ToastsRegion } from './ToastsRegion';
-import { useToast } from './useToast';
+import { useToastState } from './useToastState';
 
 export function ToastsContainer({ children, unique, noStyle }) {
-  const toastsState = useToast({ unique });
+  const toastsState = useToastState({ unique });
 
   return (
     <ToastsContext.Provider value={toastsState}>
       {children}
 
       <div className="toast-container">
-        {toastPositions.map(({ name, className }) => (
+        {TOASTS_CLASSNAME_BY_POSITION.map(({ name, className }) => (
           <ToastsRegion key={name} name={name} className={className} toasts={toastsState.get(name)} noStyle={noStyle} />
         ))}
       </div>

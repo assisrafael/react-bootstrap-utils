@@ -2,7 +2,11 @@ import React from 'react';
 
 export const ToastsContext = React.createContext(null);
 
-export const toastPositions = [
+export const TOASTS_VALID_POSITIONS = ['TOP_LEFT', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_RIGHT'];
+
+export const TOASTS_VALID_TYPES = ['info', 'success', 'danger', 'warning'];
+
+export const TOASTS_CLASSNAME_BY_POSITION = [
   {
     name: 'TOP_LEFT',
     className: 'top-left',
@@ -21,7 +25,13 @@ export const toastPositions = [
   },
 ];
 
-export const toastsDefaultStylesByPosition = {
+export const TOASTS_DEFAULT_STYLE = {
+  position: 'fixed',
+  zIndex: 9999,
+  maxWidth: '50%',
+};
+
+export const TOASTS_DEFAULT_STYLES_BY_POSITION = {
   TOP_RIGHT: {
     top: '25px',
     right: '25px',
