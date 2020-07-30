@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.20.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.19.0...v0.20.0) (2020-07-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **toasts:** Toasts public interface relied on useContext hook, now it has its own hook interface:
+
+```javascript
+import { useToasts } from 'react-bootstrap-utils';
+
+function Component() {
+ const { showToast, closeAllToasts } = useToasts();
+ //...
+}
+```
+
+### Features
+
+* **toasts:** change toast interface ([4aed2e2](https://github.com/assisrafael/react-bootstrap-utils/commit/4aed2e2d10d1e8566ec580535d98b20746973749))
+
+
+### Bug Fixes
+
+* change children PropType to node or [node] ([cc5a54a](https://github.com/assisrafael/react-bootstrap-utils/commit/cc5a54aca892f6ac63bf89aba3dd90112656baa8))
+* **forms:** allow readOnly on FormInput and FormTextarea ([b33dfa0](https://github.com/assisrafael/react-bootstrap-utils/commit/b33dfa00d8a25c7e29918525f75fe95de1d72490))
+
 ## [0.19.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.18.1...v0.19.0) (2020-07-16)
 
 
