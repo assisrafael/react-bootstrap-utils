@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.0...v0.20.1) (2020-08-04)
+
+
+### Bug Fixes
+
+* **dialog:** prevent click propagation on ConfirmationDialog ([5a25b34](https://github.com/assisrafael/react-bootstrap-utils/commit/5a25b34a72b0b8ef56336742b63b22ab21096035))
+* change useSelectedItem error message ([6318959](https://github.com/assisrafael/react-bootstrap-utils/commit/631895994dd2aad0fda2e2e455315b45bc6e808c))
+
 ## [0.20.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.19.0...v0.20.0) (2020-07-30)
 
 
