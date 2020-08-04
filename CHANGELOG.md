@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.1...v0.20.2) (2020-08-04)
+
+
+### Bug Fixes
+
+* **tabs:** select the first tab instead of throwing an error ([b0d2cfe](https://github.com/assisrafael/react-bootstrap-utils/commit/b0d2cfe05687ebfddcd1b930dd13ffe6728ca7b5))
+
 ### [0.20.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.0...v0.20.1) (2020-08-04)
 
 
