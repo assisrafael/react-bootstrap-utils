@@ -25,6 +25,7 @@ export function TabsExamples() {
               { title: 'C', content: 'c' },
             ]}
             bordered={true}
+            activeTab={4}
           />
         </div>
       </div>

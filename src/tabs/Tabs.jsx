@@ -5,7 +5,9 @@ import { TabContent } from './TabContent';
 
 export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered, onSelect }) {
   if (activeTab >= tabs.length) {
-    throw new Error(`Invalid tab selected: ${activeTab}`);
+    // eslint-disable-next-line no-console
+    console.error(`Invalid tab selected: ${activeTab}`);
+    activeTab = 0;
   }
 
   return (
