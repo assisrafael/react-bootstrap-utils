@@ -151,6 +151,7 @@ FormGroupSelect.propTypes = {
     PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.string,
+        PropTypes.number,
         PropTypes.shape({
           value: PropTypes.any.isRequired,
           label: PropTypes.node.isRequired,

@@ -170,10 +170,13 @@ export function FormExamples() {
       </div>
 
       <div className="row">
-        <div className="col">
+        <div className="col-4">
           <FormGroupSelect name="selectField" label="Select field (list)" options={['A', 'B', 'C']} disabled />
         </div>
-        <div className="col">
+        <div className="col-4">
+          <FormGroupSelect name="selectNumberField" label="Select field (number list)" options={[1, 2, 3, 4]} />
+        </div>
+        <div className="col-4">
           <FormGroupSelect
             name="selectField2"
             label="Select field 2 (array of objects)"
@@ -185,7 +188,7 @@ export function FormExamples() {
             required
           />
         </div>
-        <div className="col">
+        <div className="col-4">
           <FormGroupSelect
             name="selectField3"
             label="Select field 3 (function)"
@@ -197,7 +200,7 @@ export function FormExamples() {
             placeholder="Select one value"
           />
         </div>
-        <div className="col">
+        <div className="col-4">
           <FormGroupSelect
             name="selectField4"
             label="Select field 4 (objects with trackBy)"

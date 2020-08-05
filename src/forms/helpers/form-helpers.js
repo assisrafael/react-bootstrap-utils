@@ -44,16 +44,10 @@ export function normalizeOptions(options, formData, extraData) {
     throw new Error('Select Options should be an array');
   }
 
-  return _options.map((option) => {
-    if (typeof option !== 'string') {
-      return option;
-    }
-
-    return {
-      value: option,
-      label: option,
-    };
-  });
+  return _options.map((option) => ({
+    value: option.value || option,
+    label: option.label || serializeValue(option),
+  }));
 }
 
 export function booleanOrFunction(property, formData) {
@@ -62,4 +56,32 @@ export function booleanOrFunction(property, formData) {
   }
 
   return property(formData);
+}
+
+export function serializeValue(value) {
+  if (typeof value !== 'object') {
+    return value.toString();
+  }
+
+  return JSON.stringify(value);
+}
+
+export function getSelectedOption(value, options, trackBy) {
+  let selectedValue = value;
+
+  if (trackBy) {
+    const selectedOption = options.find(
+      (option) => getValueByPath(option.value, trackBy) === getValueByPath(value, trackBy)
+    );
+
+    if (selectedOption) {
+      selectedValue = selectedOption.value;
+    }
+  }
+
+  return serializeValue(selectedValue);
+}
+
+export function getOptionsType(options) {
+  return options.length > 0 ? typeof options[0].value : undefined;
 }

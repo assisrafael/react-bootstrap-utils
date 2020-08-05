@@ -1,8 +1,13 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { getValueByPath } from '../utils/getters-setters';
-import { normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
+import {
+  normalizeOptions,
+  booleanOrFunction,
+  serializeValue,
+  getSelectedOption,
+  getOptionsType,
+} from './helpers/form-helpers';
 import { useFormControl } from './helpers/useFormControl';
 
 export function FormSelect({
@@ -32,7 +37,7 @@ export function FormSelect({
     <select
       {...attrs}
       className="custom-select"
-      onChange={handleOnChange}
+      onChange={(e) => handleOnChange(e, getOptionsType(normalizedOptions))}
       value={getSelectedOption(value, normalizedOptions, trackBy)}
       ref={registerRef}
     >
@@ -52,6 +57,7 @@ FormSelect.propTypes = {
     PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.string,
+        PropTypes.number,
         PropTypes.shape({ value: PropTypes.any.isRequired, label: PropTypes.string.isRequired }),
       ])
     ),
@@ -67,28 +73,4 @@ function renderOptions(options, trackBy) {
       {label}
     </option>
   ));
-}
-
-function getSelectedOption(value, options, trackBy) {
-  let selectedValue = value;
-
-  if (trackBy) {
-    const selectedOption = options.find(
-      (option) => getValueByPath(option.value, trackBy) === getValueByPath(value, trackBy)
-    );
-
-    if (selectedOption) {
-      selectedValue = selectedOption.value;
-    }
-  }
-
-  return serializeValue(selectedValue);
-}
-
-function serializeValue(value) {
-  if (typeof value !== 'object') {
-    return value;
-  }
-
-  return JSON.stringify(value);
 }

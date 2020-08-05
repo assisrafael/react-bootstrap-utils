@@ -21,10 +21,11 @@ export function useFormControl(name, type) {
   return {
     getValue: () => encode(formState.getValue(name), type),
     setValue,
-    handleOnChange: ({ target }) => {
+    handleOnChange: ({ target }, _type) => {
       const value = getTargetValue(target);
+      const decodedValue = decode(value, type || _type);
 
-      setValue(value);
+      setValue(decodedValue);
     },
     register,
     getFormData: () => formState.getFormData(),
@@ -57,6 +58,14 @@ function encode(value, type) {
 
   if (type === 'number' && isNaN(value)) {
     return;
+  }
+
+  return value;
+}
+
+function decode(value, type) {
+  if (type === 'number') {
+    return parseFloat(value);
   }
 
   return value;
