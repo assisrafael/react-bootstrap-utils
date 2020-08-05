@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.2...v0.20.3) (2020-08-05)
+
+
+### Bug Fixes
+
+* **forms:** allow jsx elements on input labels ([0ad9ae4](https://github.com/assisrafael/react-bootstrap-utils/commit/0ad9ae4b8e99ddd63c32e11aa0b79ec8045d1981))
+* **forms:** allow numbers as option value on select inputs ([349752f](https://github.com/assisrafael/react-bootstrap-utils/commit/349752f74c8ede0a93f3eb54716b3fc267bb92c7))
+* **tabs:** improve error log when activeTab is invalid ([3470b5f](https://github.com/assisrafael/react-bootstrap-utils/commit/3470b5fd991cbd80f5f087f0e4ee10129de65850))
+
 ### [0.20.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.1...v0.20.2) (2020-08-04)
 
 
