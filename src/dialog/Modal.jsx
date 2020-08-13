@@ -81,16 +81,16 @@ Modal.defaultProps = {
 };
 
 Modal.propTypes = {
-  body: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.func]),
+  body: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   centered: PropTypes.bool,
-  footer: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.func]),
+  footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   isOpen: PropTypes.bool,
   keyboard: PropTypes.bool,
   onClose: PropTypes.func,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
   staticBackdrop: PropTypes.bool,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  title: PropTypes.node,
 };
 
 function hideModal(modalRef) {
