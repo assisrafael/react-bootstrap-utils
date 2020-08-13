@@ -190,6 +190,17 @@ export function FormExamples() {
         </div>
         <div className="col-4">
           <FormGroupSelect
+            name="selectBooleanField"
+            label="Select boolean"
+            options={[
+              { label: 'Yes', value: true },
+              { label: 'No', value: false },
+            ]}
+            required
+          />
+        </div>
+        <div className="col-4">
+          <FormGroupSelect
             name="selectField3"
             label="Select field 3 (function)"
             options={(formData) =>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { getValueByPath } from '../../utils/getters-setters';
-import { isFunction } from '../../utils/types';
+import { isFunction, isUndefined } from '../../utils/types';
 
 export const FormContext = React.createContext(null);
 
@@ -45,8 +45,8 @@ export function normalizeOptions(options, formData, extraData) {
   }
 
   return _options.map((option) => ({
-    value: option.value || option,
-    label: option.label || serializeValue(option),
+    value: isUndefined(option.value) ? option : option.value,
+    label: isUndefined(option.label) ? serializeValue(option) : option.label,
   }));
 }
 

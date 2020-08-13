@@ -23,6 +23,7 @@ export function useFormControl(name, type) {
     setValue,
     handleOnChange: ({ target }, _type) => {
       const value = getTargetValue(target);
+
       const decodedValue = decode(value, type || _type);
 
       setValue(decodedValue);
@@ -66,6 +67,10 @@ function encode(value, type) {
 function decode(value, type) {
   if (type === 'number') {
     return parseFloat(value);
+  }
+
+  if (type === 'boolean') {
+    return value === 'true';
   }
 
   return value;
