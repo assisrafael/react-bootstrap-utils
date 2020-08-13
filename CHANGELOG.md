@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.3...v0.20.4) (2020-08-13)
+
+
+### Features
+
+* **forms:** allow booleans as select option values ([582f3dd](https://github.com/assisrafael/react-bootstrap-utils/commit/582f3dd0c2b91ea9c9e107a981e46a514aefa943))
+
 ### [0.20.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.2...v0.20.3) (2020-08-05)
 
 
