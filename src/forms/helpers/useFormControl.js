@@ -70,7 +70,7 @@ function decode(value, type) {
   }
 
   if (type === 'boolean') {
-    return value === 'true';
+    return typeof value === 'boolean' ? value : value === 'true';
   }
 
   return value;
