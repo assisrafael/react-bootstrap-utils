@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.4...v0.20.5) (2020-08-13)
+
+
+### Bug Fixes
+
+* **dialog:** improve code completion with props ([6e230d1](https://github.com/assisrafael/react-bootstrap-utils/commit/6e230d17fffad4104ca633a5b2b49d1b82fb7b3a))
+* **forms:** fix checkbox and switch toggle behavior ([7acef90](https://github.com/assisrafael/react-bootstrap-utils/commit/7acef900ca189289fedce00b2f2fdf5a071982cb))
+* **toasts:** improve code completion with jsdocs ([ef30a71](https://github.com/assisrafael/react-bootstrap-utils/commit/ef30a71f8676e318ef33db41590c1ef826fe49fb))
+
 ### [0.20.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.3...v0.20.4) (2020-08-13)
 
 
