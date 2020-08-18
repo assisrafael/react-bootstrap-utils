@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.5...v0.20.6) (2020-08-18)
+
+
+### Bug Fixes
+
+* **forms:** allow jsx elements on checkbox, radio and switch value labels ([891b2d3](https://github.com/assisrafael/react-bootstrap-utils/commit/891b2d366550c00c63c5c968a3f11d88f5b157f6))
+
 ### [0.20.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.4...v0.20.5) (2020-08-13)
 
 
