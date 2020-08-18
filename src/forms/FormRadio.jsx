@@ -41,5 +41,5 @@ FormRadio.propTypes = {
   inline: PropTypes.bool,
   name: PropTypes.string.isRequired,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  valueLabel: PropTypes.string,
+  valueLabel: PropTypes.node,
 };

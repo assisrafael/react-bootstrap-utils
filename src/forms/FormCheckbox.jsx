@@ -30,7 +30,7 @@ export function FormCheckbox({ id, name, required: _required, valueLabel, disabl
 FormCheckbox.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  valueLabel: PropTypes.string,
+  valueLabel: PropTypes.node,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

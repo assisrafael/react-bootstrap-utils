@@ -30,9 +30,9 @@ export function FormSwitch({ id, name, required: _required, trueLabel, falseLabe
 
 FormSwitch.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  falseLabel: PropTypes.string,
+  falseLabel: PropTypes.node,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  trueLabel: PropTypes.string,
+  trueLabel: PropTypes.node,
 };
