@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.7](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.6...v0.20.7) (2020-08-24)
+
+
+### Bug Fixes
+
+* change propTypes from element to node on most components ([85f340b](https://github.com/assisrafael/react-bootstrap-utils/commit/85f340bb7bdded2f2cdc8497cdf82ed34aa7bae1))
+
 ### [0.20.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.5...v0.20.6) (2020-08-18)
 
 
