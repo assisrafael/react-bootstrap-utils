@@ -26,9 +26,9 @@ AlertDialog.defaultProps = {
 };
 
 AlertDialog.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  message: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.node,
+  message: PropTypes.node,
   onClose: PropTypes.func,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  closeLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  title: PropTypes.node,
+  closeLabel: PropTypes.node,
 };

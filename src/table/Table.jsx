@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
 import { normalizeColumns } from './table-helpers';
+import { formatClasses } from '../utils/attributes';
 
 export function Table({
   docs,
@@ -21,14 +22,14 @@ export function Table({
 }) {
   const normalizedColumns = normalizeColumns(columns);
 
-  const tableClasses = [
+  const tableClasses = formatClasses([
     'table',
     striped && 'table-striped',
     bordered && 'table-bordered',
     hover && 'table-hover',
     small && 'table-sm',
     dark && 'table-dark',
-  ].join(' ');
+  ]);
 
   return (
     <div className="table-responsive">
@@ -57,7 +58,7 @@ Table.propTypes = {
   actionLabel: PropTypes.string,
   actions: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.object)]),
   bordered: PropTypes.bool,
-  caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  caption: PropTypes.node,
   columnHeaderFormat: PropTypes.func,
   columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   dark: PropTypes.bool,

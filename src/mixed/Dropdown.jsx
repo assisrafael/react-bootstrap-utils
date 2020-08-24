@@ -49,7 +49,7 @@ Dropdown.defaultProps = {
 };
 
 Dropdown.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   isOpen: PropTypes.bool,
   items: PropTypes.arrayOf(PropTypes.object),
   onMouseEnter: PropTypes.func,

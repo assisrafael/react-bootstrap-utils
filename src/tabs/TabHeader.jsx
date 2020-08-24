@@ -25,6 +25,6 @@ export function TabHeader({ index, isActive, title, onSelect }) {
 TabHeader.propTypes = {
   index: PropTypes.number,
   isActive: PropTypes.bool,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  title: PropTypes.node,
   onSelect: PropTypes.func,
 };

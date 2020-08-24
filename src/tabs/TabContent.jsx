@@ -16,5 +16,5 @@ export function TabContent({ isActive, content }) {
 
 TabContent.propTypes = {
   isActive: PropTypes.bool,
-  content: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  content: PropTypes.node,
 };

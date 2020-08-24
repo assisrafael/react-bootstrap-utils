@@ -47,12 +47,12 @@ ConfirmationDialog.defaultProps = {
 };
 
 ConfirmationDialog.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  message: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.node,
+  message: PropTypes.node,
   onCancel: PropTypes.func,
   onProceed: PropTypes.func,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  proceedLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  title: PropTypes.node,
+  cancelLabel: PropTypes.node,
+  proceedLabel: PropTypes.node,
   proceedType: PropTypes.oneOf(['primary', 'danger', 'success']),
 };
