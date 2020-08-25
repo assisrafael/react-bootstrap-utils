@@ -45,18 +45,23 @@ export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered,
 }
 
 Tabs.defaultProps = {
-  vertical: false,
-  bordered: false,
   activeTab: 0,
+  bordered: false,
   onlyRenderActiveTab: false,
   onSelect: () => {},
+  vertical: false,
 };
 
 Tabs.propTypes = {
-  vertical: PropTypes.bool,
-  tabs: PropTypes.arrayOf(PropTypes.object),
   activeTab: PropTypes.number,
-  onlyRenderActiveTab: PropTypes.bool,
   bordered: PropTypes.bool,
+  onlyRenderActiveTab: PropTypes.bool,
   onSelect: PropTypes.func,
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.node,
+      content: PropTypes.node,
+    })
+  ).isRequired,
+  vertical: PropTypes.bool,
 };
