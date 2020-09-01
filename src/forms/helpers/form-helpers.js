@@ -1,6 +1,6 @@
 import React from 'react';
+import { isFunction, isUndefined } from 'js-var-type';
 import { getValueByPath } from '../../utils/getters-setters';
-import { isFunction, isUndefined } from '../../utils/types';
 
 export const FormContext = React.createContext(null);
 

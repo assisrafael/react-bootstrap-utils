@@ -1,7 +1,7 @@
 import { useContext, useCallback } from 'react';
+import { isNull } from 'js-var-type';
 import { FormContext } from './form-helpers';
 import { toDatetimeLocal, fromDatetimeLocal } from '../../utils/formatters';
-import { isNull } from '../../utils/types';
 
 export function useFormControl(name, type) {
   const formState = useContext(FormContext);

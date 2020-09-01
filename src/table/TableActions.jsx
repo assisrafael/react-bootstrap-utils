@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isFunction } from 'js-var-type';
 
 import { safeClick, stopPropagation } from '../utils/event-handlers';
-import { isFunction } from '../utils/types';
 
 export function TableActions({ doc, docIndex, actions }) {
   if (!actions) {

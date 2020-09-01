@@ -1,12 +1,12 @@
 import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { isEmptyLike } from 'js-var-type';
 
 import { handleInputChange, normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
 import { formatClasses } from '../utils/attributes';
 import { useFormControl } from './helpers/useFormControl';
-import { isEmpty } from '../utils/types';
 
 export function FormAutocomplete({
   onSearch,
@@ -44,7 +44,7 @@ export function FormAutocomplete({
   }, [controlFeedback]);
 
   const clearSearchValue = useCallback(() => {
-    if (isEmpty(value) && !isFocused) {
+    if (isEmptyLike(value) && !isFocused) {
       setSearchValue('');
       setSelectedItem(null);
     }
@@ -80,7 +80,7 @@ export function FormAutocomplete({
   }, [open, openOnFocus]);
 
   const onSearchInputBlur = useCallback(() => {
-    if (isEmpty(searchValue) && value) {
+    if (isEmptyLike(searchValue) && value) {
       setValue('');
       setSelectedItem(null);
       updateSearchInputValidation();

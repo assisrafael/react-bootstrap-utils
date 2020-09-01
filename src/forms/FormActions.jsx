@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isFunction } from '../utils/types';
+import { isFunction } from 'js-var-type';
 
 export function FormActions({ submitLabel, cancelLabel, onCancel, isSubmiting, customActions }) {
   if (customActions) {
