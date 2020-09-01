@@ -1,9 +1,9 @@
-import { isISOString, isDate } from 'js-var-type';
+import { isDateISOString, isDate } from 'js-var-type';
 
 export function toDatetimeLocal(value) {
   let date = value;
 
-  if (isISOString(date)) {
+  if (isDateISOString(date)) {
     date = new Date(date);
   }
 
