@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.21.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.7...v0.21.0) (2020-09-01)
+
+
+### Bug Fixes
+
+* move type checking to external package ([7ea4458](https://github.com/assisrafael/react-bootstrap-utils/commit/7ea4458ab5fa217ab0499906f7228873fa2d512e))
+* **tabs:** fix propTypes with more specif rules ([0599041](https://github.com/assisrafael/react-bootstrap-utils/commit/059904180e517c18c8889a10cfb914f0730cec16))
+
 ### [0.20.7](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.6...v0.20.7) (2020-08-24)
 
 
