@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.21.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.21.0...v0.21.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* change isISOString to isDateISOString ([f28c737](https://github.com/assisrafael/react-bootstrap-utils/commit/f28c7372dc6f0a529bfc72d8c49064a77d6b8976))
+
 ## [0.21.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.7...v0.21.0) (2020-09-01)
 
 
