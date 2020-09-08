@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-export function ModalPortal({ children, isOpen }) {
+export function ModalPortal({ children, title, isOpen }) {
   const [container, setContainer] = useState();
 
   useEffect(() => {
-    const body = document.getElementsByTagName('body')[0];
+    const modalPortalsElem = getModalPortalsElem();
 
     if (!container) {
       const containerElem = document.createElement('div');
 
-      body.appendChild(containerElem);
+      containerElem.dataset.title = title;
+
+      modalPortalsElem.appendChild(containerElem);
       setContainer(containerElem);
     }
 
@@ -20,9 +22,9 @@ export function ModalPortal({ children, isOpen }) {
         return;
       }
 
-      body.removeChild(container);
+      modalPortalsElem.removeChild(container);
     };
-  }, [container]);
+  }, [container, title]);
 
   //FIXME: prop to define if modal will be always included into DOM
   if (!container || !isOpen) {
@@ -41,3 +43,17 @@ export function ModalPortal({ children, isOpen }) {
 ModalPortal.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
 };
+
+function getModalPortalsElem() {
+  let modalPortalsElem = document.querySelector('#modal-portals');
+
+  if (!modalPortalsElem) {
+    const body = document.getElementsByTagName('body')[0];
+
+    modalPortalsElem = document.createElement('div');
+    modalPortalsElem.id = 'modal-portals';
+    body.appendChild(modalPortalsElem);
+  }
+
+  return modalPortalsElem;
+}

@@ -12,7 +12,7 @@ export function Dialog({ children, ...props }) {
     <React.Fragment>
       <DialogTrigger open={open}>{children}</DialogTrigger>
 
-      <ModalPortal isOpen={isOpen()}>
+      <ModalPortal isOpen={isOpen()} title={props.title}>
         <Modal {...props} onClose={close} isOpen={isOpen()} />
       </ModalPortal>
     </React.Fragment>
