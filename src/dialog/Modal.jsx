@@ -96,15 +96,21 @@ Modal.propTypes = {
 function hideModal(modalRef) {
   const body = document.querySelector('body');
 
-  body.classList.remove('modal-open');
   modalRef.current.style.display = 'none';
   modalRef.current.classList.remove('show');
+
+  if (getModals().length === 0) {
+    hideModalBackdrop();
+    body.classList.remove('modal-open');
+  }
 }
 
 function showModal(modalRef) {
   const body = document.querySelector('body');
 
   body.classList.add('modal-open');
+  showModalBackdrop();
+
   modalRef.current.style.display = 'block';
   modalRef.current.classList.add('show');
   modalRef.current.focus();
@@ -116,4 +122,37 @@ function renderObjectOrFunction(content, params) {
   }
 
   return content;
+}
+
+function showModalBackdrop() {
+  const backdrop = getModalBackdrop();
+
+  backdrop.classList.remove('d-none');
+}
+
+function hideModalBackdrop() {
+  const backdrop = getModalBackdrop();
+
+  backdrop.classList.add('d-none');
+}
+
+function getModalBackdrop() {
+  const body = document.querySelector('body');
+  let backdrop = document.querySelector('.modal-backdrop');
+
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+
+    backdrop.classList.add('modal-backdrop');
+    backdrop.classList.add('fade');
+    backdrop.classList.add('show');
+    backdrop.classList.add('d-none');
+    body.appendChild(backdrop);
+  }
+
+  return backdrop;
+}
+
+function getModals() {
+  return document.querySelectorAll('#modal-portals .modal.show');
 }
