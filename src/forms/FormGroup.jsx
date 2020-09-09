@@ -9,13 +9,15 @@ import { FormSelect } from './FormSelect';
 import { FormSwitch } from './FormSwitch';
 import { FormTextarea } from './FormTextarea';
 import { FormValidationFeedback } from './FormValidationFeedback';
+import { FormHelp } from './FormHelp';
 
-export function FormGroup({ children, name, feedback, mockInvalidSibling, ...props }) {
+export function FormGroup({ children, name, feedback, mockInvalidSibling, help, ...props }) {
   return (
     <div className="form-group">
       <FormLabel {...props} />
       {children}
       {feedback && <FormValidationFeedback mockInvalidSibling={mockInvalidSibling} name={name} />}
+      {help && <FormHelp message={help} />}
     </div>
   );
 }
@@ -28,6 +30,7 @@ FormGroup.defaultProps = {
 FormGroup.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
   feedback: PropTypes.bool,
+  help: PropTypes.node,
   label: PropTypes.node.isRequired,
   mockInvalidSibling: PropTypes.bool,
   name: PropTypes.string.isRequired,
@@ -44,6 +47,7 @@ export function FormGroupAutocomplete(props) {
 FormGroupAutocomplete.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
+  help: PropTypes.node,
   id: PropTypes.string,
   label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
@@ -70,6 +74,7 @@ export function FormGroupCheckbox(props) {
 FormGroupCheckbox.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   falseLabel: PropTypes.node,
+  help: PropTypes.node,
   id: PropTypes.string.isRequired,
   label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
@@ -87,6 +92,7 @@ export function FormGroupInput(props) {
 
 FormGroupInput.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  help: PropTypes.node,
   id: PropTypes.string,
   label: PropTypes.node.isRequired,
   max: PropTypes.string,
@@ -126,6 +132,7 @@ FormGroupRadio.defaultProps = {
 
 FormGroupRadio.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  help: PropTypes.node,
   id: PropTypes.string,
   inline: PropTypes.bool,
   label: PropTypes.node.isRequired,
@@ -149,6 +156,7 @@ export function FormGroupSelect(props) {
 
 FormGroupSelect.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  help: PropTypes.node,
   id: PropTypes.string,
   label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
@@ -181,6 +189,7 @@ export function FormGroupSwitch(props) {
 FormGroupSwitch.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   falseLabel: PropTypes.node,
+  help: PropTypes.node,
   id: PropTypes.string.isRequired,
   label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
@@ -198,6 +207,7 @@ export function FormGroupTextarea(props) {
 
 FormGroupTextarea.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  help: PropTypes.node,
   id: PropTypes.string,
   label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,

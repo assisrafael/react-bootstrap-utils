@@ -105,7 +105,7 @@ export function FormExamples() {
     >
       <div className="row">
         <div className="col">
-          <FormGroupInput name="textField" label="Text field" disabled />
+          <FormGroupInput name="textField" label="Text field" disabled help="Text field help" />
         </div>
         <div className="col">
           <FormGroupInput name="textField2" label="Text field 2" required placeholder="Fill some value" />
@@ -131,13 +131,14 @@ export function FormExamples() {
             options={['1234', '2345', '3456']}
             placeholder="Type some numbers"
             disabled
+            help="Autocomplete help"
           />
         </div>
         <div className="col">
           <FormGroupAutocomplete
             name="autocompleteField2"
             label="Autocomplete that opens on focus"
-            options={(formData, searchValue) => {
+            options={(_, searchValue) => {
               if (searchValue.length < 2) {
                 return ['Abcde', 'Fghij', 'klmno'];
               }
@@ -171,7 +172,13 @@ export function FormExamples() {
 
       <div className="row">
         <div className="col-4">
-          <FormGroupSelect name="selectField" label="Select field (list)" options={['A', 'B', 'C']} disabled />
+          <FormGroupSelect
+            name="selectField"
+            label="Select field (list)"
+            options={['A', 'B', 'C']}
+            disabled
+            help="Select help"
+          />
         </div>
         <div className="col-4">
           <FormGroupSelect name="selectNumberField" label="Select field (number list)" options={[1, 2, 3, 4]} />
@@ -228,7 +235,14 @@ export function FormExamples() {
 
       <div className="row">
         <div className="col">
-          <FormGroupSwitch id="switchFieldId" name="switchField" label="Switch field" trueLabel="ON" falseLabel="OFF" />
+          <FormGroupSwitch
+            id="switchFieldId"
+            name="switchField"
+            label="Switch field"
+            trueLabel="ON"
+            falseLabel="OFF"
+            help="Switch help"
+          />
         </div>
         <div className="col">
           <FormGroupSwitch id="switchFieldId2" name="switchField2" label="Switch field 2" disabled />
@@ -239,6 +253,7 @@ export function FormExamples() {
             name="checkboxField"
             label="Checkbox field"
             valueLabel="Checkbox description"
+            help="Checkbox help"
           />
         </div>
         <div className="col">
@@ -263,6 +278,7 @@ export function FormExamples() {
                 label: 'C',
               },
             ]}
+            help="Radio help"
           />
         </div>
         <div className="col">
@@ -285,7 +301,7 @@ export function FormExamples() {
         </div>
       </div>
 
-      <FormGroupTextarea name="textareaField" label="Textarea field" />
+      <FormGroupTextarea name="textareaField" label="Textarea field" help="Textarea help" />
       <FormGroupTextarea name="textareaField2" label="Textarea field 2" disabled rows="1" />
 
       {[0, 1].map((index) => (
