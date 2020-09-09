@@ -127,6 +127,49 @@ export function DialogExamples() {
           </button>
         </Dialog>
       </div>
+      <div className="col-6">
+        <h1 className="h4 mt-3">Overlaping dialogs</h1>
+        <Dialog
+          title="First dialog"
+          size="lg"
+          body={
+            <>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem reprehenderit laudantium
+              facilis necessitatibus sed optio nihil fugiat numquam minus earum ipsum quam ab harum natus, velit libero
+              excepturi quae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium corrupti maxime,
+              magni possimus pariatur iste incidunt. Dolore adipisci quaerat nemo dicta voluptas beatae voluptates rem
+              neque veritatis, necessitatibus ipsam corporis?
+              <br />
+              <Dialog
+                title="Second dialog"
+                size="lg"
+                body={
+                  <>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem reprehenderit laudantium
+                    facilis necessitatibus sed optio nihil fugiat numquam minus earum ipsum quam ab harum natus, velit
+                    libero excepturi quae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium corrupti
+                    maxime, magni possimus pariatur iste incidunt. Dolore adipisci quaerat nemo dicta voluptas beatae
+                    voluptates rem neque veritatis, necessitatibus ipsam corporis?
+                    <AlertDialog message="Third dialog">
+                      <button type="button" className="btn btn-warning">
+                        Open third dialog
+                      </button>
+                    </AlertDialog>
+                  </>
+                }
+              >
+                <button type="button" className="btn btn-warning">
+                  Open second dialog
+                </button>
+              </Dialog>
+            </>
+          }
+        >
+          <button type="button" className="btn btn-warning">
+            Open first dialog
+          </button>
+        </Dialog>
+      </div>
     </div>
   );
 }
