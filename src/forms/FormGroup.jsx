@@ -28,6 +28,7 @@ FormGroup.defaultProps = {
 FormGroup.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
   feedback: PropTypes.bool,
+  label: PropTypes.node.isRequired,
   mockInvalidSibling: PropTypes.bool,
   name: PropTypes.string.isRequired,
 };
@@ -44,6 +45,7 @@ FormGroupAutocomplete.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   id: PropTypes.string,
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   onSearch: PropTypes.func,
   openOnFocus: PropTypes.bool,
@@ -69,6 +71,7 @@ FormGroupCheckbox.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   falseLabel: PropTypes.node,
   id: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   trueLabel: PropTypes.node,
@@ -85,6 +88,7 @@ export function FormGroupInput(props) {
 FormGroupInput.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
+  label: PropTypes.node.isRequired,
   max: PropTypes.string,
   maxLength: PropTypes.string,
   min: PropTypes.string,
@@ -124,6 +128,7 @@ FormGroupRadio.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
   inline: PropTypes.bool,
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
@@ -145,6 +150,7 @@ export function FormGroupSelect(props) {
 FormGroupSelect.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   options: PropTypes.oneOfType([
     PropTypes.func,
@@ -176,6 +182,7 @@ FormGroupSwitch.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   falseLabel: PropTypes.node,
   id: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   trueLabel: PropTypes.node,
@@ -192,6 +199,7 @@ export function FormGroupTextarea(props) {
 FormGroupTextarea.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,

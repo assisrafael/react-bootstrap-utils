@@ -16,6 +16,6 @@ export function FormLabel({ id, label, required: _required }) {
 
 FormLabel.propTypes = {
   id: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.node.isRequired,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };
