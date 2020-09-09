@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { useFormControl } from './helpers/useFormControl';
 import { booleanOrFunction } from './helpers/form-helpers';
+import { FormGroup } from './FormGroup';
 
 export function FormInput({ type, name, required: _required, disabled: _disabled, ..._attrs }) {
   const { getValue, handleOnChange, register, getFormData } = useFormControl(name, type);
@@ -34,6 +35,32 @@ FormInput.defaultProps = {
 FormInput.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
+  max: PropTypes.string,
+  maxLength: PropTypes.string,
+  min: PropTypes.string,
+  minLength: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  pattern: PropTypes.string,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  step: PropTypes.string,
+  type: PropTypes.string,
+};
+
+export function FormGroupInput(props) {
+  return (
+    <FormGroup {...props}>
+      <FormInput {...props} />
+    </FormGroup>
+  );
+}
+
+FormGroupInput.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  help: PropTypes.node,
+  id: PropTypes.string,
+  label: PropTypes.node.isRequired,
   max: PropTypes.string,
   maxLength: PropTypes.string,
   min: PropTypes.string,

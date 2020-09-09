@@ -7,6 +7,7 @@ import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
 import { formatClasses } from '../utils/attributes';
 import { useFormControl } from './helpers/useFormControl';
+import { FormGroup } from './FormGroup';
 
 export function FormAutocomplete({
   onSearch,
@@ -189,6 +190,33 @@ FormAutocomplete.propTypes = {
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   id: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onSearch: PropTypes.func,
+  openOnFocus: PropTypes.bool,
+  options: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
+  ]),
+  placeholder: PropTypes.string,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  template: PropTypes.func,
+  type: PropTypes.string,
+};
+
+export function FormGroupAutocomplete(props) {
+  return (
+    <FormGroup {...props}>
+      <FormAutocomplete {...props} />
+    </FormGroup>
+  );
+}
+
+FormGroupAutocomplete.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  filter: PropTypes.func,
+  help: PropTypes.node,
+  id: PropTypes.string,
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   onSearch: PropTypes.func,
   openOnFocus: PropTypes.bool,

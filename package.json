@@ -35,12 +35,15 @@
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "eslint": "^7.4.0",
+    "eslint-import-resolver-webpack": "^0.12.2",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
     "jest": "^26.1.0",
     "js-var-type": "^0.2.1",
     "lodash-es": "^4.17.15",
     "prettier": "^2.0.5",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
@@ -53,6 +56,8 @@
   },
   "peerDependencies": {
     "js-var-type": "^0.2.1",
+    "lodash-es": "^4.17.15",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }

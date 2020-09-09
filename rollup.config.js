@@ -1,3 +1,5 @@
+/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable import/no-default-export */
 import resolve from '@rollup/plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 

@@ -9,6 +9,7 @@ import {
   getOptionsType,
 } from './helpers/form-helpers';
 import { useFormControl } from './helpers/useFormControl';
+import { FormGroup } from './FormGroup';
 
 export function FormSelect({
   name,
@@ -59,6 +60,38 @@ FormSelect.propTypes = {
         PropTypes.string,
         PropTypes.number,
         PropTypes.shape({ value: PropTypes.any.isRequired, label: PropTypes.string.isRequired }),
+      ])
+    ),
+  ]),
+  placeholder: PropTypes.string,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  trackBy: PropTypes.string,
+};
+
+export function FormGroupSelect(props) {
+  return (
+    <FormGroup {...props}>
+      <FormSelect {...props} />
+    </FormGroup>
+  );
+}
+
+FormGroupSelect.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  help: PropTypes.node,
+  id: PropTypes.string,
+  label: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.shape({
+          value: PropTypes.any.isRequired,
+          label: PropTypes.node.isRequired,
+        }),
       ])
     ),
   ]),
