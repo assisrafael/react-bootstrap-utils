@@ -1,4 +1,4 @@
-# react-bootstrap-utils
+# react-bootstrap-utils ![Node.js CI](https://github.com/assisrafael/react-bootstrap-utils/workflows/Node.js%20CI/badge.svg?branch=master)
 
 [![NPM](https://nodei.co/npm/react-bootstrap-utils.png)](https://nodei.co/npm/react-bootstrap-utils/)
 
