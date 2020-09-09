@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rollup --config",
     "start": "webpack-dev-server --open --mode development",
+    "docs": "webpack --mode development",
     "release": "standard-version",
     "prepublishOnly": "npm run build",
     "eslint": "eslint {src,demo}\"/**/*.\"{js,jsx}",
