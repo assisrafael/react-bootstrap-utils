@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Dialog } from './Dialog';
 import { awaitForAsyncTask, safeClick } from '../utils/event-handlers';
+import { formatClasses } from '../utils/attributes';
 
 export function ConfirmationDialog({
   title,
@@ -24,7 +25,7 @@ export function ConfirmationDialog({
           </button>
           <button
             type="button"
-            className={`btn btn-${proceedType}`}
+            className={formatClasses(['btn', `btn-${proceedType}`])}
             onClick={safeClick(awaitForAsyncTask(onProceed, close))}
           >
             {proceedLabel}

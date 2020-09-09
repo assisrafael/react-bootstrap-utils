@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { isFunction } from 'js-var-type';
 import { stopPropagation } from '../utils/event-handlers';
+import { formatClasses } from '../utils/attributes';
 
 const ESCAPE_KEYCODE = 27;
 
@@ -52,9 +53,12 @@ export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, sc
       }}
     >
       <div
-        className={`modal-dialog ${scrollable ? 'modal-dialog-scrollable' : ''} ${
-          centered ? 'modal-dialog-centered' : ''
-        } ${size ? `modal-${size}` : ''}`}
+        className={formatClasses([
+          'modal-dialog',
+          scrollable && 'modal-dialog-scrollable',
+          centered && 'modal-dialog-centered',
+          size && `modal-${size}`,
+        ])}
         role="document"
         onClick={stopPropagation}
       >

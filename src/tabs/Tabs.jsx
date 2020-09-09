@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TabHeader } from './TabHeader';
 import { TabContent } from './TabContent';
+import { formatClasses } from '../utils/attributes';
 
 export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered, onSelect }) {
   if (activeTab >= tabs.length) {
@@ -11,9 +12,13 @@ export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered,
   }
 
   return (
-    <div className={`custom-tabs-container ${vertical ? 'd-flex' : ''}`}>
+    <div className={formatClasses(['custom-tabs-container', vertical && 'd-flex'])}>
       <div className="tabs-navigation">
-        <ul className={`nav ${vertical ? 'nav-pills flex-column' : 'nav-tabs'}`} id="myTab" role="tablist">
+        <ul
+          className={formatClasses(['nav', vertical ? 'nav-pills flex-column' : 'nav-tabs'])}
+          id="myTab"
+          role="tablist"
+        >
           {tabs.map((tab, tabIndex) => (
             <TabHeader
               key={tabIndex}
@@ -27,9 +32,10 @@ export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered,
       </div>
 
       <div
-        className={`tab-content ${
-          vertical ? 'flex-fill ml-3' : `${bordered ? 'border-left border-right border-bottom p-2' : 'py-2'}`
-        }`}
+        className={formatClasses([
+          'tab-content',
+          vertical ? 'flex-fill ml-3' : bordered ? 'border-left border-right border-bottom p-2' : 'py-2',
+        ])}
         // id="myTabContent"
       >
         {onlyRenderActiveTab ? (
