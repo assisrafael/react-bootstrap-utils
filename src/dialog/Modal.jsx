@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { isFunction } from 'js-var-type';
 import { stopPropagation } from '../utils/event-handlers';
 
 const ESCAPE_KEYCODE = 27;
@@ -94,46 +95,62 @@ Modal.propTypes = {
 };
 
 function hideModal(modalRef) {
-  const body = document.querySelector('body');
-
   modalRef.current.style.display = 'none';
   modalRef.current.classList.remove('show');
 
-  if (getModals().length === 0) {
-    hideModalBackdrop();
-    body.classList.remove('modal-open');
+  hideModalBackdrop();
+  enableBodyScroll();
+
+  if (modalRef.current.style.zIndex) {
+    modalRef.current.style.zIndex = null;
   }
 }
 
-function showModal(modalRef) {
+function enableBodyScroll() {
   const body = document.querySelector('body');
 
-  body.classList.add('modal-open');
+  body.classList.remove('modal-open');
+}
+
+function showModal(modalRef) {
+  disableBodyScroll();
   showModalBackdrop();
+
+  if (countModals() > 0) {
+    modalRef.current.style.zIndex = getZIndex(modalRef.current) + countModals() * 20;
+  }
 
   modalRef.current.style.display = 'block';
   modalRef.current.classList.add('show');
+
   modalRef.current.focus();
 }
 
 function renderObjectOrFunction(content, params) {
-  if (typeof content === 'function') {
-    return content(params);
-  }
-
-  return content;
+  return isFunction(content) ? content(params) : content;
 }
 
 function showModalBackdrop() {
   const backdrop = getModalBackdrop();
 
   backdrop.classList.remove('d-none');
+
+  if (countModals() > 0) {
+    backdrop.style.zIndex = getZIndex(backdrop) + 20;
+  }
 }
 
 function hideModalBackdrop() {
   const backdrop = getModalBackdrop();
 
-  backdrop.classList.add('d-none');
+  if (backdrop.style.zIndex) {
+    backdrop.style.zIndex -= 20;
+  }
+
+  if (countModals() === 0) {
+    backdrop.classList.add('d-none');
+    backdrop.style.zIndex = null;
+  }
 }
 
 function getModalBackdrop() {
@@ -143,16 +160,28 @@ function getModalBackdrop() {
   if (!backdrop) {
     backdrop = document.createElement('div');
 
-    backdrop.classList.add('modal-backdrop');
-    backdrop.classList.add('fade');
-    backdrop.classList.add('show');
-    backdrop.classList.add('d-none');
+    backdrop.classList.add('modal-backdrop', 'fade', 'show', 'd-none');
+
     body.appendChild(backdrop);
   }
 
   return backdrop;
 }
 
-function getModals() {
-  return document.querySelectorAll('#modal-portals .modal.show');
+function countModals() {
+  return document.querySelectorAll('#modal-portals .modal.show').length;
+}
+
+function disableBodyScroll() {
+  if (countModals() != 0) {
+    return;
+  }
+
+  const body = document.querySelector('body');
+
+  body.classList.add('modal-open');
+}
+
+function getZIndex(elem) {
+  return parseInt(window.getComputedStyle(elem).zIndex, 10);
 }
