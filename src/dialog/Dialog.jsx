@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalPortal } from './ModalPortal';
 import { Modal } from './Modal';
