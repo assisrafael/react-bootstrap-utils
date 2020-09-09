@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isBoolean } from 'js-var-type';
 
 export function FormLabel({ id, label, required: _required }) {
-  const required = typeof _required === 'boolean';
+  const required = isBoolean(_required) && _required;
 
   return (
     <label htmlFor={id}>

@@ -1,5 +1,5 @@
 import { useContext, useCallback } from 'react';
-import { isNull } from 'js-var-type';
+import { isEmptyStringLike, isBoolean } from 'js-var-type';
 import { FormContext } from './form-helpers';
 import { toDatetimeLocal, fromDatetimeLocal } from '../../utils/formatters';
 
@@ -49,7 +49,7 @@ function getEmptyValue(type) {
 }
 
 function encode(value, type) {
-  if (typeof value === 'undefined' || isNull(value)) {
+  if (isEmptyStringLike(value)) {
     return getEmptyValue(type);
   }
 
@@ -70,7 +70,7 @@ function decode(value, type) {
   }
 
   if (type === 'boolean') {
-    return typeof value === 'boolean' ? value : value === 'true';
+    return isBoolean(value) ? value : value === 'true';
   }
 
   return value;

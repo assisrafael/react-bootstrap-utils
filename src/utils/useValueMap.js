@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { isFunction } from 'js-var-type';
 
 export function useValueMap() {
   const [valueMap, updateValueMap] = useState({});
@@ -7,7 +8,7 @@ export function useValueMap() {
     updateValueMap((prevValueMap) => {
       let value = _value;
 
-      if (typeof value === 'function') {
+      if (isFunction(value)) {
         value = value(prevValueMap[key]);
       }
 

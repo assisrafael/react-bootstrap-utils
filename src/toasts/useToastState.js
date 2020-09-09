@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { isNumber } from 'js-var-type';
 import { useArrayValueMap } from '../utils/useValueMap';
 import { TOASTS_VALID_TYPES, TOASTS_VALID_POSITIONS } from './toasts-helpers';
 
@@ -32,13 +33,12 @@ export function useToastState({ unique }) {
         closeControl: !autoClose,
       });
 
-      if (typeof autoClose === 'number' && !isNaN(autoClose)) {
+      if (isNumber(autoClose) && !isNaN(autoClose)) {
         const timeoutId = setTimeout(() => {
           close(position, toastId);
         }, autoClose);
 
         timeoutRefs.current[toastId] = { timeoutId, position };
-        // setToastTimeout(toastId, timeout);
       }
 
       setNextId((prevId) => prevId + 1);

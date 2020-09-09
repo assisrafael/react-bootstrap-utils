@@ -1,5 +1,5 @@
 import React from 'react';
-import { isFunction, isUndefined } from 'js-var-type';
+import { isFunction, isUndefined, isArray, isObject } from 'js-var-type';
 import { getValueByPath } from '../../utils/getters-setters';
 
 export const FormContext = React.createContext(null);
@@ -38,9 +38,9 @@ export function handleInputChange(formState, event) {
 }
 
 export function normalizeOptions(options, formData, extraData) {
-  const _options = typeof options === 'function' ? options(formData, extraData) : options;
+  const _options = isFunction(options) ? options(formData, extraData) : options;
 
-  if (!Array.isArray(_options)) {
+  if (!isArray(_options)) {
     throw new Error('Select Options should be an array');
   }
 
@@ -59,7 +59,7 @@ export function booleanOrFunction(property, formData) {
 }
 
 export function serializeValue(value) {
-  if (typeof value !== 'object') {
+  if (!isObject(value)) {
     return value.toString();
   }
 
