@@ -2,7 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// eslint-disable-next-line import/no-unresolved
 import { StatefulTabs, Pagination, ToastsContainer } from '../dist/main';
+
 import { FormExamples } from './FormExamples';
 import { TableExamples } from './TableExamples';
 import { TabsExamples } from './TabsExamples';

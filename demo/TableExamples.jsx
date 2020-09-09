@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
+// eslint-disable-next-line import/no-unresolved
 import { Table, Form, FormCheckbox } from '../dist/main';
 import { stopPropagation } from '../src/utils/event-handlers';
 

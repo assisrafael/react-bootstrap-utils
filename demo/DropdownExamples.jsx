@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+// eslint-disable-next-line import/no-unresolved
 import { Dropdown } from '../dist/main';
 
 const items = [

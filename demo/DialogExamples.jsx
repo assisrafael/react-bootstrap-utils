@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 
+// eslint-disable-next-line import/no-unresolved
 import { Dialog, Form, FormGroupInput } from '../dist/main';
 import { ConfirmationDialog, AlertDialog } from '../src/dialog';
 

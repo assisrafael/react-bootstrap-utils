@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line import/no-unresolved
 import { useToasts } from '../dist/main';
 
 export function ToastsExamples() {
