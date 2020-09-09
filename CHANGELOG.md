@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.22.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.21.1...v0.22.0) (2020-09-09)
+
+
+### Features
+
+* **forms:** include form help ([63fa2aa](https://github.com/assisrafael/react-bootstrap-utils/commit/63fa2aa3293155ac5d0aa6ee3dfaa576f8ad7e1d))
+
+
+### Bug Fixes
+
+* **forms:** allow jsx elements on form label ([f58b4e6](https://github.com/assisrafael/react-bootstrap-utils/commit/f58b4e656b6ec4f05a44d8d7b82327c566127c25))
+* **modals:** allow overlapping dialogs with proper modal backdrop ([010aedd](https://github.com/assisrafael/react-bootstrap-utils/commit/010aedd032b6e448f5ffad534dda1b18c755d951))
+* **modals:** create only one modal backdrop ([bff23cf](https://github.com/assisrafael/react-bootstrap-utils/commit/bff23cfc4ed053908cd1fc02225a249db2e0ce6b))
+* **modals:** group all modal portals into one parent node ([2d8d870](https://github.com/assisrafael/react-bootstrap-utils/commit/2d8d870479a91e2c76559214f0a7fc637ab3eaab))
+
 ### [0.21.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.21.0...v0.21.1) (2020-09-01)
 
 
