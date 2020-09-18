@@ -65,6 +65,8 @@ export function DialogExamples() {
               Close from footer
             </button>
           )}
+          staticBackdrop={true}
+          useTimesClose={false}
         >
           <a href="">&amp;</a>
         </Dialog>

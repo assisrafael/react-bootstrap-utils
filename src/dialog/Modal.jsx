@@ -6,7 +6,19 @@ import { formatClasses } from '../utils/attributes';
 
 const ESCAPE_KEYCODE = 27;
 
-export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, scrollable, centered, size, keyboard }) {
+export function Modal({
+  body,
+  centered,
+  footer,
+  isOpen,
+  keyboard,
+  onClose,
+  scrollable,
+  size,
+  staticBackdrop,
+  title,
+  useTimesClose,
+}) {
   const modalRef = useRef(null);
   const closeAndHide = useCallback(() => {
     hideModal(modalRef);
@@ -65,9 +77,11 @@ export function Modal({ title, body, onClose, isOpen, footer, staticBackdrop, sc
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">{title}</h5>
-            <button type="button" className="close" onClick={closeAndHide} aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            {useTimesClose && (
+              <button type="button" className="close" onClick={closeAndHide} aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            )}
           </div>
           <div className="modal-body">{renderObjectOrFunction(body, { close: closeAndHide })}</div>
           {footer && <div className="modal-footer">{renderObjectOrFunction(footer, { close: closeAndHide })}</div>}
@@ -83,6 +97,7 @@ Modal.defaultProps = {
   scrollable: false,
   size: '',
   staticBackdrop: false,
+  useTimesClose: true,
 };
 
 Modal.propTypes = {
@@ -96,6 +111,7 @@ Modal.propTypes = {
   size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
   staticBackdrop: PropTypes.bool,
   title: PropTypes.node,
+  useTimesClose: PropTypes.bool,
 };
 
 function hideModal(modalRef) {

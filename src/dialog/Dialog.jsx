@@ -29,6 +29,7 @@ Dialog.propTypes = {
   size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
   staticBackdrop: PropTypes.bool,
   title: PropTypes.node,
+  useTimesClose: PropTypes.bool,
 };
 
 function DialogTrigger({ children, open }) {
