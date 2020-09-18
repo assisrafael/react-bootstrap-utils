@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.0...v0.22.1) (2020-09-18)
+
+
+### Features
+
+* **dialog:** allow the removal of close icon on modal header ([994db53](https://github.com/assisrafael/react-bootstrap-utils/commit/994db537dbe0ae94e6404e0179966893ac85737d))
+
 ## [0.22.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.21.1...v0.22.0) (2020-09-09)
 
 
