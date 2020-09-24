@@ -115,13 +115,15 @@ Modal.propTypes = {
 };
 
 function hideModal(modalRef) {
-  modalRef.current.style.display = 'none';
-  modalRef.current.classList.remove('show');
+  if (modalRef.current) {
+    modalRef.current.style.display = 'none';
+    modalRef.current.classList.remove('show');
+  }
 
   hideModalBackdrop();
   enableBodyScroll();
 
-  if (modalRef.current.style.zIndex) {
+  if (modalRef.current && modalRef.current.style.zIndex) {
     modalRef.current.style.zIndex = null;
   }
 }
@@ -133,6 +135,10 @@ function enableBodyScroll() {
 }
 
 function showModal(modalRef) {
+  if (!modalRef.current) {
+    return;
+  }
+
   disableBodyScroll();
   showModalBackdrop();
 
