@@ -12,7 +12,6 @@ import { useFormControl } from './helpers/useFormControl';
 import { FormGroup } from './FormGroup';
 
 export function FormSelect({
-  afterChange,
   name,
   options,
   required: _required,
@@ -21,7 +20,7 @@ export function FormSelect({
   disabled: _disabled,
   ..._attrs
 }) {
-  const { getFormData, getValue, handleOnChange, register } = useFormControl(name, '', afterChange);
+  const { getFormData, getValue, handleOnChange, register } = useFormControl(name);
   const registerRef = useCallback(register, [register]);
   const value = getValue();
   const normalizedOptions = normalizeOptions(options, getFormData());
@@ -51,7 +50,6 @@ export function FormSelect({
 }
 
 FormSelect.propTypes = {
-  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
   name: PropTypes.string.isRequired,

@@ -193,10 +193,6 @@ export function FormExamples() {
               { label: 'B', value: 'b' },
               { label: 'C', value: 'd' },
             ]}
-            afterChange={(value) => {
-              console.log('teste after change');
-              console.log('value :>> ', value);
-            }}
             required
           />
         </div>

@@ -1,15 +1,17 @@
 import { useContext, useCallback } from 'react';
-import { isEmptyStringLike, isBoolean } from 'js-var-type';
+import { isEmptyStringLike, isBoolean, isFunction } from 'js-var-type';
 import { FormContext } from './form-helpers';
 import { toDatetimeLocal, fromDatetimeLocal } from '../../utils/formatters';
 
-export function useFormControl(name, type, afterChange) {
+export function useFormControl(name, type, hooks) {
   const formState = useContext(FormContext);
+
+  const { afterChange } = hooks;
 
   function setValue(value) {
     formState.update(name, value);
 
-    if (afterChange && typeof afterChange === 'function') {
+    if (isFunction(afterChange)) {
       afterChange(value);
     }
   }
