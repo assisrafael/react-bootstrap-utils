@@ -51,6 +51,7 @@ export function FormSelect({
 }
 
 FormSelect.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
