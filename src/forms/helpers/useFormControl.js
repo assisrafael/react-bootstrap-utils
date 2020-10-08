@@ -8,6 +8,10 @@ export function useFormControl(name, type, afterChange) {
 
   function setValue(value) {
     formState.update(name, value);
+
+    if (afterChange && typeof afterChange === 'function') {
+      afterChange(value);
+    }
   }
 
   const register = useCallback(
@@ -24,20 +28,9 @@ export function useFormControl(name, type, afterChange) {
     handleOnChange: ({ target }, _type) => {
       const value = getTargetValue(target);
 
-<<<<<<< HEAD
-      setValue(value);
-
-      if (afterChange && typeof afterChange === 'function') {
-        afterChange(value);
-      }
-    },
-    register: (ref) => {
-      formState.register(name, ref);
-=======
       const decodedValue = decode(value, type || _type);
 
       setValue(decodedValue);
->>>>>>> upstream/master
     },
     register,
     getFormData: () => formState.getFormData(),

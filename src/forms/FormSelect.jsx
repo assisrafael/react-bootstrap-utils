@@ -12,6 +12,7 @@ import { useFormControl } from './helpers/useFormControl';
 import { FormGroup } from './FormGroup';
 
 export function FormSelect({
+  afterChange,
   name,
   options,
   required: _required,
@@ -20,7 +21,7 @@ export function FormSelect({
   disabled: _disabled,
   ..._attrs
 }) {
-  const { getFormData, getValue, handleOnChange, register } = useFormControl(name);
+  const { getFormData, getValue, handleOnChange, register } = useFormControl(name, _, afterChange);
   const registerRef = useCallback(register, [register]);
   const value = getValue();
   const normalizedOptions = normalizeOptions(options, getFormData());
