@@ -21,7 +21,7 @@ export function FormSelect({
   disabled: _disabled,
   ..._attrs
 }) {
-  const { getFormData, getValue, handleOnChange, register } = useFormControl(name, _, afterChange);
+  const { getFormData, getValue, handleOnChange, register } = useFormControl(name, '', afterChange);
   const registerRef = useCallback(register, [register]);
   const value = getValue();
   const normalizedOptions = normalizeOptions(options, getFormData());

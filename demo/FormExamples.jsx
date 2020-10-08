@@ -177,10 +177,6 @@ export function FormExamples() {
             name="selectField"
             label="Select field (list)"
             options={['A', 'B', 'C']}
-            afterChange={(value) => {
-              console.log('teste after change');
-              console.log('value :>> ', value);
-            }}
             disabled
             help="Select help"
           />
@@ -197,6 +193,10 @@ export function FormExamples() {
               { label: 'B', value: 'b' },
               { label: 'C', value: 'd' },
             ]}
+            afterChange={(value) => {
+              console.log('teste after change');
+              console.log('value :>> ', value);
+            }}
             required
           />
         </div>
