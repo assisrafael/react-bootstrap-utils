@@ -1,14 +1,26 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useFormControl } from './helpers/useFormControl';
 
-export function FormTextarea({ id, name, required, placeholder, rows }) {
-  const { getValue, handleOnChange, register } = useFormControl(name);
-  const registerRef = useCallback(register, []);
+import { useFormControl } from './helpers/useFormControl';
+import { booleanOrFunction } from './helpers/form-helpers';
+import { FormGroup } from './FormGroup';
+
+export function FormTextarea({ name, required: _required, disabled: _disabled, ..._attrs }) {
+  const { getValue, handleOnChange, register, getFormData } = useFormControl(name);
+  const registerRef = useCallback(register, [register]);
+  const disabled = booleanOrFunction(_disabled, getFormData());
+  const required = booleanOrFunction(_required, getFormData());
+
+  const attrs = {
+    ..._attrs,
+    disabled,
+    name,
+    required,
+  };
 
   return (
     <textarea
-      {...{ required, name, id, placeholder, rows }}
+      {...attrs}
       className="form-control"
       onChange={handleOnChange}
       value={getValue()}
@@ -22,9 +34,31 @@ FormTextarea.defaultProps = {
 };
 
 FormTextarea.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  required: PropTypes.any,
-  rows: PropTypes.number,
+  readOnly: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+};
+
+export function FormGroupTextarea(props) {
+  return (
+    <FormGroup {...props}>
+      <FormTextarea {...props} />
+    </FormGroup>
+  );
+}
+
+FormGroupTextarea.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  help: PropTypes.node,
+  id: PropTypes.string,
+  label: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };

@@ -2,6 +2,356 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.1...v0.22.2) (2020-09-24)
+
+
+### Bug Fixes
+
+* **modals:** check if modal is mounted before updating style ([c4e0e39](https://github.com/assisrafael/react-bootstrap-utils/commit/c4e0e390f96b00ef3acba7bb1ee78e16d915cfc7))
+
+### [0.22.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.0...v0.22.1) (2020-09-18)
+
+
+### Features
+
+* **dialog:** allow the removal of close icon on modal header ([994db53](https://github.com/assisrafael/react-bootstrap-utils/commit/994db537dbe0ae94e6404e0179966893ac85737d))
+
+## [0.22.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.21.1...v0.22.0) (2020-09-09)
+
+
+### Features
+
+* **forms:** include form help ([63fa2aa](https://github.com/assisrafael/react-bootstrap-utils/commit/63fa2aa3293155ac5d0aa6ee3dfaa576f8ad7e1d))
+
+
+### Bug Fixes
+
+* **forms:** allow jsx elements on form label ([f58b4e6](https://github.com/assisrafael/react-bootstrap-utils/commit/f58b4e656b6ec4f05a44d8d7b82327c566127c25))
+* **modals:** allow overlapping dialogs with proper modal backdrop ([010aedd](https://github.com/assisrafael/react-bootstrap-utils/commit/010aedd032b6e448f5ffad534dda1b18c755d951))
+* **modals:** create only one modal backdrop ([bff23cf](https://github.com/assisrafael/react-bootstrap-utils/commit/bff23cfc4ed053908cd1fc02225a249db2e0ce6b))
+* **modals:** group all modal portals into one parent node ([2d8d870](https://github.com/assisrafael/react-bootstrap-utils/commit/2d8d870479a91e2c76559214f0a7fc637ab3eaab))
+
+### [0.21.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.21.0...v0.21.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* change isISOString to isDateISOString ([f28c737](https://github.com/assisrafael/react-bootstrap-utils/commit/f28c7372dc6f0a529bfc72d8c49064a77d6b8976))
+
+## [0.21.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.7...v0.21.0) (2020-09-01)
+
+
+### Bug Fixes
+
+* move type checking to external package ([7ea4458](https://github.com/assisrafael/react-bootstrap-utils/commit/7ea4458ab5fa217ab0499906f7228873fa2d512e))
+* **tabs:** fix propTypes with more specif rules ([0599041](https://github.com/assisrafael/react-bootstrap-utils/commit/059904180e517c18c8889a10cfb914f0730cec16))
+
+### [0.20.7](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.6...v0.20.7) (2020-08-24)
+
+
+### Bug Fixes
+
+* change propTypes from element to node on most components ([85f340b](https://github.com/assisrafael/react-bootstrap-utils/commit/85f340bb7bdded2f2cdc8497cdf82ed34aa7bae1))
+
+### [0.20.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.5...v0.20.6) (2020-08-18)
+
+
+### Bug Fixes
+
+* **forms:** allow jsx elements on checkbox, radio and switch value labels ([891b2d3](https://github.com/assisrafael/react-bootstrap-utils/commit/891b2d366550c00c63c5c968a3f11d88f5b157f6))
+
+### [0.20.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.4...v0.20.5) (2020-08-13)
+
+
+### Bug Fixes
+
+* **dialog:** improve code completion with props ([6e230d1](https://github.com/assisrafael/react-bootstrap-utils/commit/6e230d17fffad4104ca633a5b2b49d1b82fb7b3a))
+* **forms:** fix checkbox and switch toggle behavior ([7acef90](https://github.com/assisrafael/react-bootstrap-utils/commit/7acef900ca189289fedce00b2f2fdf5a071982cb))
+* **toasts:** improve code completion with jsdocs ([ef30a71](https://github.com/assisrafael/react-bootstrap-utils/commit/ef30a71f8676e318ef33db41590c1ef826fe49fb))
+
+### [0.20.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.3...v0.20.4) (2020-08-13)
+
+
+### Features
+
+* **forms:** allow booleans as select option values ([582f3dd](https://github.com/assisrafael/react-bootstrap-utils/commit/582f3dd0c2b91ea9c9e107a981e46a514aefa943))
+
+### [0.20.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.2...v0.20.3) (2020-08-05)
+
+
+### Bug Fixes
+
+* **forms:** allow jsx elements on input labels ([0ad9ae4](https://github.com/assisrafael/react-bootstrap-utils/commit/0ad9ae4b8e99ddd63c32e11aa0b79ec8045d1981))
+* **forms:** allow numbers as option value on select inputs ([349752f](https://github.com/assisrafael/react-bootstrap-utils/commit/349752f74c8ede0a93f3eb54716b3fc267bb92c7))
+* **tabs:** improve error log when activeTab is invalid ([3470b5f](https://github.com/assisrafael/react-bootstrap-utils/commit/3470b5fd991cbd80f5f087f0e4ee10129de65850))
+
+### [0.20.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.1...v0.20.2) (2020-08-04)
+
+
+### Bug Fixes
+
+* **tabs:** select the first tab instead of throwing an error ([b0d2cfe](https://github.com/assisrafael/react-bootstrap-utils/commit/b0d2cfe05687ebfddcd1b930dd13ffe6728ca7b5))
+
+### [0.20.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.20.0...v0.20.1) (2020-08-04)
+
+
+### Bug Fixes
+
+* **dialog:** prevent click propagation on ConfirmationDialog ([5a25b34](https://github.com/assisrafael/react-bootstrap-utils/commit/5a25b34a72b0b8ef56336742b63b22ab21096035))
+* change useSelectedItem error message ([6318959](https://github.com/assisrafael/react-bootstrap-utils/commit/631895994dd2aad0fda2e2e455315b45bc6e808c))
+
+## [0.20.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.19.0...v0.20.0) (2020-07-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **toasts:** Toasts public interface relied on useContext hook, now it has its own hook interface:
+
+```javascript
+import { useToasts } from 'react-bootstrap-utils';
+
+function Component() {
+ const { showToast, closeAllToasts } = useToasts();
+ //...
+}
+```
+
+### Features
+
+* **toasts:** change toast interface ([4aed2e2](https://github.com/assisrafael/react-bootstrap-utils/commit/4aed2e2d10d1e8566ec580535d98b20746973749))
+
+
+### Bug Fixes
+
+* change children PropType to node or [node] ([cc5a54a](https://github.com/assisrafael/react-bootstrap-utils/commit/cc5a54aca892f6ac63bf89aba3dd90112656baa8))
+* **forms:** allow readOnly on FormInput and FormTextarea ([b33dfa0](https://github.com/assisrafael/react-bootstrap-utils/commit/b33dfa00d8a25c7e29918525f75fe95de1d72490))
+
+## [0.19.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.18.1...v0.19.0) (2020-07-16)
+
+
+### Features
+
+* **forms:** allow "required" prop to be a function ([79bb221](https://github.com/assisrafael/react-bootstrap-utils/commit/79bb22164036fb13bc393d1adcd2b5c86969dc73))
+
+### [0.18.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.18.0...v0.18.1) (2020-07-16)
+
+
+### Bug Fixes
+
+* **forms:** allow the reset of a FormAutocomplete selected value ([144d223](https://github.com/assisrafael/react-bootstrap-utils/commit/144d2239ff7432467b007cccdf61e4ee9464e70f))
+* **forms:** only call onChange after the form was modified by the user ([294898d](https://github.com/assisrafael/react-bootstrap-utils/commit/294898d9d832cdaa0b75ceb8e23b5f2011c9c58d))
+
+## [0.18.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.17.1...v0.18.0) (2020-07-06)
+
+
+### Features
+
+* **table:** allow custom action definition ([0ff6972](https://github.com/assisrafael/react-bootstrap-utils/commit/0ff6972d6e0dc4ccd86b092a9e7ba4243e8d1bbb))
+
+### [0.17.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.17.0...v0.17.1) (2020-07-03)
+
+
+### Bug Fixes
+
+* **forms:** allow autocomplete customization based on css selectors ([c4fadc5](https://github.com/assisrafael/react-bootstrap-utils/commit/c4fadc55f43f92308bf6840c1fdf3f51fa6ac19e))
+
+## [0.17.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.16.0...v0.17.0) (2020-06-29)
+
+
+### Features
+
+* **dropdown:** add "isDisabled" attribute for dropdown items ([1564184](https://github.com/assisrafael/react-bootstrap-utils/commit/1564184aa091345afeebf827062ab77efa0d2989))
+
+## [0.16.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.6...v0.16.0) (2020-06-23)
+
+
+### Bug Fixes
+
+* **forms:** fix selected item on FormAutocomplete when options is a dynamic array ([bd6b345](https://github.com/assisrafael/react-bootstrap-utils/commit/bd6b3455566452bccfd8ab1ef526e3d388cf82f3))
+* **forms:** reset FormAutocomplete internal state when value is empty ([8821b1d](https://github.com/assisrafael/react-bootstrap-utils/commit/8821b1d80b1b48e89e93629d37f7c01c3737a5bc))
+
+### [0.15.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.5...v0.15.6) (2020-06-10)
+
+
+### Bug Fixes
+
+* **forms:** FormAutocomplete options function now receive searchValue as an argument ([0924a41](https://github.com/assisrafael/react-bootstrap-utils/commit/0924a417de3e6a99a6718d8b6ef6ad1a6c7c9835))
+
+### [0.15.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.4...v0.15.5) (2020-06-05)
+
+
+### Bug Fixes
+
+* **forms:** remove duplicated cancelLabel from form actions ([c62251c](https://github.com/assisrafael/react-bootstrap-utils/commit/c62251c9acaa2d3ca6a603ba353a3d3eb1ff601a))
+
+### [0.15.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.3...v0.15.4) (2020-05-29)
+
+
+### Features
+
+* **forms:** disabled action buttons while submiting data ([5dba43f](https://github.com/assisrafael/react-bootstrap-utils/commit/5dba43f17ca9bcd38fbf36c4f5e1cc1f2187a231))
+* **table:** allow row click with "onRowClick" prop ([214bc7c](https://github.com/assisrafael/react-bootstrap-utils/commit/214bc7c4b1c7837235100d8075d2657ffa3fe063))
+
+### [0.15.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.2...v0.15.3) (2020-05-27)
+
+
+### Bug Fixes
+
+* **forms:** show visual indication of required fields ([4095743](https://github.com/assisrafael/react-bootstrap-utils/commit/40957434fb3a91db6457d31bf59b963f877921cb))
+
+### [0.15.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.1...v0.15.2) (2020-05-27)
+
+
+### Bug Fixes
+
+* **forms:** only validate an element if the element exists ([38eaedc](https://github.com/assisrafael/react-bootstrap-utils/commit/38eaedcb0ba29f0cbf1a505632f9ac5ec8d7c0b7))
+
+### [0.15.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.15.0...v0.15.1) (2020-05-18)
+
+
+### Bug Fixes
+
+* **getValueByPath:** handle null objects ([48c4b23](https://github.com/assisrafael/react-bootstrap-utils/commit/48c4b23d4c0b145de220bfde731de1b0a140cc1b))
+
+## [0.15.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.7...v0.15.0) (2020-04-28)
+
+
+### Features
+
+* **forms:** allow input disable (with boolean or function that returns boolean) ([39cb627](https://github.com/assisrafael/react-bootstrap-utils/commit/39cb62724bd1d7fd1d619086ddf0cb9139ed11c4))
+* **table:** allow paths as attributes values on column definition ([ddeff7b](https://github.com/assisrafael/react-bootstrap-utils/commit/ddeff7bac73012069f952860ef0ab7760d2c6220))
+
+
+### Bug Fixes
+
+* **dialog:** always remove .modal-open class from body after closing the dialog ([341dec3](https://github.com/assisrafael/react-bootstrap-utils/commit/341dec38d085fbd59cee57319480f3f321652175))
+
+### [0.14.7](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.6...v0.14.7) (2020-04-15)
+
+
+### Bug Fixes
+
+* **forms:** allow 0 to be filled into input[type=number] again ([e5e7a70](https://github.com/assisrafael/react-bootstrap-utils/commit/e5e7a70d2d38617efdcf08747c98502ab12a4bf5))
+
+### [0.14.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.5...v0.14.6) (2020-04-14)
+
+
+### Bug Fixes
+
+* **forms:** check if value is null before rendering input controls ([ddb7b71](https://github.com/assisrafael/react-bootstrap-utils/commit/ddb7b714783477aaa23f9539936025dc571e747b))
+
+### [0.14.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.4...v0.14.5) (2020-04-14)
+
+
+### Bug Fixes
+
+* **forms:** fix date parsing when default value is provided ([e2df77b](https://github.com/assisrafael/react-bootstrap-utils/commit/e2df77b39af31879c54a45025a1a6426fa185505))
+* **forms:** fix number inputs to throw NaN errors when empty ([c663463](https://github.com/assisrafael/react-bootstrap-utils/commit/c66346388133b45c8c7891957dfcc93ed5e5793a))
+
+### [0.14.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.3...v0.14.4) (2020-04-13)
+
+
+### Bug Fixes
+
+* **forms:** fix number input default value to allow 0 to be stored in state ([16905bd](https://github.com/assisrafael/react-bootstrap-utils/commit/16905bd9cca928ec7221041cd3042aa42bd3efc7))
+
+### [0.14.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.2...v0.14.3) (2020-04-13)
+
+
+### Features
+
+* **forms:** include value parsing from type prop ([8d7b56e](https://github.com/assisrafael/react-bootstrap-utils/commit/8d7b56edb706924361176d5f4710cf6c4574691e))
+
+### [0.14.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.1...v0.14.2) (2020-04-13)
+
+
+### Bug Fixes
+
+* **forms:** fix FormCheckbox and FormSwitch value initialization ([cb324be](https://github.com/assisrafael/react-bootstrap-utils/commit/cb324be15fb9e051c0ee57dbed1f98663c176dce))
+
+### [0.14.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.14.0...v0.14.1) (2020-04-13)
+
+
+### Bug Fixes
+
+* **forms:** fix broken forms when onChange was not defined ([9fc3975](https://github.com/assisrafael/react-bootstrap-utils/commit/9fc3975bc6f50c381c062e81efb489cbdfe54ef4))
+
+## [0.14.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.13.0...v0.14.0) (2020-04-12)
+
+
+### Bug Fixes
+
+* **forms:** change form transform and onChange calls to reduce excessive calls ([d93d1a9](https://github.com/assisrafael/react-bootstrap-utils/commit/d93d1a93e4243eefbc83a4cc3051c144faae950a))
+
+## [0.13.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.12.0...v0.13.0) (2020-04-12)
+
+
+### Bug Fixes
+
+* **demo:** fix form examples initial value select input with trackby ([7baff72](https://github.com/assisrafael/react-bootstrap-utils/commit/7baff72c2febed1c8c52b28cb26468a97bfe657c))
+* **forms:** async and debounced call of transform function ([31968c3](https://github.com/assisrafael/react-bootstrap-utils/commit/31968c3376d962a3f0f35e641b3f55ba75b20e7b))
+
+## [0.12.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.4...v0.12.0) (2020-04-10)
+
+
+### Features
+
+* **forms:** allow objects as FormSelect value ([d45adfd](https://github.com/assisrafael/react-bootstrap-utils/commit/d45adfd38efc72ea8249c3758636423bb46f82a9))
+
+
+### Bug Fixes
+
+* **forms:** fix FormAutocomplete selecting the wrong item ([a688b87](https://github.com/assisrafael/react-bootstrap-utils/commit/a688b87bf400c85516c89d28586758618cd65ba8))
+* **forms:** limit FormAutocomplete options window size ([e05a70f](https://github.com/assisrafael/react-bootstrap-utils/commit/e05a70fe8986466dea05468d342291e6cca865fd))
+* **modal:** do not remove container from body if it has not been included yet ([575bab9](https://github.com/assisrafael/react-bootstrap-utils/commit/575bab96f644a766de0082ff0b65a636f59690b6))
+
+### [0.11.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.3...v0.11.4) (2020-04-07)
+
+
+### Features
+
+* **forms:** allow form data transformation after each input change ([41ea647](https://github.com/assisrafael/react-bootstrap-utils/commit/41ea64780c04dc6a04e5c3a0b95197b296c1d23d))
+
+### [0.11.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.2...v0.11.3) (2020-04-07)
+
+
+### Features
+
+* **forms:** allow useFormControl to receive type === "array" ([15003d9](https://github.com/assisrafael/react-bootstrap-utils/commit/15003d9ccb8dc3669a56a1b237a897af367a2a05))
+
+
+### Bug Fixes
+
+* **FormAutocomplete:** fix normalizeOptions argument ([2186117](https://github.com/assisrafael/react-bootstrap-utils/commit/2186117bcd66691c72260fc364849d6f43f961a8))
+
+### [0.11.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.1...v0.11.2) (2020-04-07)
+
+
+### Features
+
+* **forms:** export useFormData hook to access formData from outside ([9575798](https://github.com/assisrafael/react-bootstrap-utils/commit/9575798f6031a7866323bad78d55f5d2b35d8678))
+
+### [0.11.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.11.0...v0.11.1) (2020-04-06)
+
+
+### Bug Fixes
+
+* **utils:** exports utils ([ee052e7](https://github.com/assisrafael/react-bootstrap-utils/commit/ee052e7b59e6a155b51b7221cf39f8fae0184a3c))
+
+## [0.11.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.10.0...v0.11.0) (2020-04-06)
+
+
+### Features
+
+* **forms:** allow data change monitoring events ([85d65cd](https://github.com/assisrafael/react-bootstrap-utils/commit/85d65cd2a1a53dda810e2825b208063ec486e9c6))
+
+
+### Bug Fixes
+
+* **list-group:** include item index on template function argument list ([c2c32c4](https://github.com/assisrafael/react-bootstrap-utils/commit/c2c32c4146f6ba469ec17a342973bb2d657e0fa6))
+* **list-group:** include item object into "onSelect" argument list ([5d35c6c](https://github.com/assisrafael/react-bootstrap-utils/commit/5d35c6c671a4fb665b59fa51b748c9cca9877de0))
+* **modal:** always remove .modal-open on body classList after onClose ([75b3fd7](https://github.com/assisrafael/react-bootstrap-utils/commit/75b3fd77e5eafb42914651fbfb6551e9185ec58b))
+
 ## [0.10.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.9.0...v0.10.0) (2020-03-27)
 
 

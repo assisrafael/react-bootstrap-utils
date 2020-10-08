@@ -1,8 +1,9 @@
+import { isString } from 'js-var-type';
 import { formatClasses } from '../utils/attributes';
 
 export function normalizeColumns(columns) {
   return columns.map((column) => {
-    if (typeof column !== 'string') {
+    if (!isString(column)) {
       return column;
     }
 

@@ -4,7 +4,13 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -16,14 +22,106 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "react-hooks", "import"],
   "settings": {
     "react": {
       "version": "detect"
-    }
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".mjs", ".js", ".json"]
+      },
+      "webpack": {
+        "config": {
+          "resolve": {
+            "extensions": [".js", ".jsx"]
+          }
+        }
+      }
+    },
+    "import/extensions": [".js", ".mjs", ".jsx", ".json"]
   },
   "rules": {
+    "accessor-pairs": "error",
     "arrow-body-style": "error",
+    "import/default": "error",
+    "import/dynamic-import-chunkname": [
+      "error",
+      {
+        "importFunctions": [],
+        "webpackChunknameFormat": "[0-9a-zA-Z-_/.]+"
+      }
+    ],
+    "import/export": "error",
+    "import/extensions": ["error", "never", { "json": true }],
+    "import/first": "error",
+    "import/imports-first": "error",
+    "import/max-dependencies": ["error", { "max": 10 }],
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/newline-after-import": "error",
+    "import/no-absolute-path": "error",
+    "import/no-amd": "error",
+    "import/no-anonymous-default-export": [
+      "error",
+      {
+        "allowArray": false,
+        "allowArrowFunction": false,
+        "allowAnonymousClass": false,
+        "allowAnonymousFunction": false,
+        "allowLiteral": false,
+        "allowObject": false
+      }
+    ],
+    "import/no-commonjs": "error",
+    "import/no-cycle": ["error", { "maxDepth": "∞" }],
+    "import/no-default-export": "error",
+    "import/no-deprecated": "error",
+    "import/no-duplicates": "error",
+    "import/no-dynamic-require": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "test/**", // tape, common npm pattern
+          "tests/**", // also common npm pattern
+          "spec/**", // mocha, rspec-like pattern
+          "**/__tests__/**", // jest pattern
+          "**/__mocks__/**", // jest pattern
+          "test.{js,jsx}", // repos with a single test file
+          "test-*.{js,jsx}", // repos with multiple top-level test files
+          "**/*{.,_}{test,spec}.{js,jsx}", // tests where the extension or filename suffix denotes that it is a test
+          "**/jest.config.js", // jest config
+          "**/jest.setup.js", // jest setup
+          "**/vue.config.js", // vue-cli config
+          "**/webpack.config.js", // webpack config
+          "**/webpack.config.*.js", // webpack config
+          "**/rollup.config.js", // rollup config
+          "**/rollup.config.*.js", // rollup config
+          "**/gulpfile.js", // gulp config
+          "**/gulpfile.*.js", // gulp config
+          "**/Gruntfile{,.js}", // grunt config
+          "**/protractor.conf.js", // protractor config
+          "**/protractor.conf.*.js", // protractor config
+          "**/karma.conf.js" // karma config
+        ],
+        "optionalDependencies": false
+      }
+    ],
+    "import/no-mutable-exports": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-named-as-default": "error",
+    "import/no-named-default": "error",
+    "import/no-namespace": "error",
+    "import/no-nodejs-modules": "error",
+    "import/no-restricted-paths": "error",
+    "import/no-self-import": "error",
+    "import/no-unassigned-import": "error",
+    "import/no-unresolved": ["error", { "commonjs": true, "caseSensitive": true }],
+    "import/no-useless-path-segments": ["error", { "commonjs": true }],
+    "import/no-webpack-loader-syntax": "error",
+    "import/order": ["error", { "groups": [["builtin", "external", "internal"]] }],
+    "import/unambiguous": "error",
     "no-console": "error",
     "no-else-return": ["error", { "allowElseIf": false }],
     "no-plusplus": "error",
@@ -40,6 +138,7 @@
     "prefer-const": "error",
     "prefer-template": "error",
     "quote-props": "off",
-    "quotes": "off"
+    "quotes": "off",
+    "react/no-unused-prop-types": "error"
   }
 }

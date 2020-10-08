@@ -1,13 +1,13 @@
-# react-bootstrap-utils
+# react-bootstrap-utils ![Node.js CI](https://github.com/assisrafael/react-bootstrap-utils/workflows/Node.js%20CI/badge.svg?branch=master)
 
 [![NPM](https://nodei.co/npm/react-bootstrap-utils.png)](https://nodei.co/npm/react-bootstrap-utils/)
 
 A React implementation of Boostrap v4 components.
 
+Docs and demo: https://assisrafael.github.io/react-bootstrap-utils/
+
 ## Roadmap
 
-- [] UrlLinkedTabs
-- [] UrlLinkedPagination
 - [] Smartable
 - [] Form Range
 - [] Form generation based on a configuration option
@@ -17,10 +17,8 @@ A React implementation of Boostrap v4 components.
 - [] Input groups
 - [] Hide/show form inputs
 - [] Keyboard navigation on FormAutocomplete
-- [] Forms with array of fields
 - [] Automatic input id
 - [] Subforms
-- [] Button with loading/saving state
 - [] Sidebar
 - [] Stepper
 - [] Tree

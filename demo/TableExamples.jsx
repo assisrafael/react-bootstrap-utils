@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import { Table } from '../dist/main';
+// eslint-disable-next-line import/no-unresolved
+import { Table, Form, FormCheckbox } from '../dist/main';
+import { stopPropagation } from '../src/utils/event-handlers';
 
 export function TableExamples() {
   const [sortState, setSortState] = useState({ sortBy: 'a', sortOrder: 'ASC' });
@@ -51,11 +53,11 @@ export function TableExamples() {
         <div className="col mb-3">
           <h1 className="h4">Simple Table</h1>
           <Table
-            columns={['a', 'b', 'c']}
+            columns={['a', 'b', 'c.d']}
             docs={[
-              { a: 1, b: 2, c: 3 },
-              { a: 4, b: 5, c: 6 },
-              { a: 7, b: 8, c: 9 },
+              { a: 1, b: 2, c: { d: 3 } },
+              { a: 4, b: 5, c: { d: 6 } },
+              { a: 7, b: 8, c: { d: 9 } },
             ]}
           />
         </div>
@@ -73,48 +75,55 @@ export function TableExamples() {
               { a: 4, b: 5, c: 6 },
               { a: 7, b: 8, c: 9 },
             ]}
+            onRowClick={console.log}
           />
         </div>
 
         <div className="col mb-3">
-          <h1 className="h4">Table with formatted values </h1>
-          <Table
-            columns={[
-              {
-                attribute: 'selected',
-                label: '#',
-                format() {
-                  return <input type="checkbox" />;
+          <h1 className="h4">Table with formatted values and form </h1>
+          <Form initialValues={{}} onSubmit={console.info}>
+            <Table
+              columns={[
+                {
+                  attribute: 'selected',
+                  label: '#',
+                  format(_, __, index) {
+                    return (
+                      <div onClick={stopPropagation}>
+                        <FormCheckbox name={`selected[${index}].isSelected`} id={`selected[${index}].isSelected`} />
+                      </div>
+                    );
+                  },
                 },
-              },
-              {
-                attribute: 'a',
-                label: 'A',
-                format(v) {
-                  return `${v}*`;
+                {
+                  attribute: 'a',
+                  label: 'A',
+                  format(v) {
+                    return `${v}*`;
+                  },
                 },
-              },
-              {
-                attribute: 'b',
-                label: 'B',
-                format(v, doc) {
-                  return v + doc.a;
+                {
+                  attribute: 'b',
+                  label: 'B',
+                  format(v, doc) {
+                    return v + doc.a;
+                  },
                 },
-              },
-              {
-                attribute: 'c',
-                label: 'C',
-                format(_, __, docIndex) {
-                  return <strong>{docIndex + 1}</strong>;
+                {
+                  attribute: 'c',
+                  label: 'C',
+                  format(_, __, docIndex) {
+                    return <strong>{docIndex + 1}</strong>;
+                  },
                 },
-              },
-            ]}
-            docs={[
-              { a: 1, b: 2, c: 3 },
-              { a: 4, b: 5, c: 6 },
-              { a: 7, b: 8, c: 9 },
-            ]}
-          />
+              ]}
+              docs={[
+                { a: 1, b: 2, c: 3 },
+                { a: 4, b: 5, c: 6 },
+                { a: 7, b: 8, c: 9 },
+              ]}
+            />
+          </Form>
         </div>
       </div>
 
@@ -150,6 +159,7 @@ export function TableExamples() {
               { a: 4, b: 5, c: 6 },
               { a: 7, b: 8, c: 9 },
             ]}
+            onRowClick={console.info}
             actions={[
               {
                 title: 'View details',
@@ -198,6 +208,16 @@ export function TableExamples() {
               ],
               sortState
             )}
+            actions={(doc, docIndex) => [
+              {
+                title: 'Add',
+                content: <span>{doc.b + docIndex}?</span>,
+              },
+              {
+                title: 'Subtract',
+                content: <span>{doc.b - docIndex}?</span>,
+              },
+            ]}
           />
         </div>
       </div>

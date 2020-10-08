@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
+// eslint-disable-next-line import/no-unresolved
 import { StatefulTabs, Tabs } from '../dist/main';
 
 export function TabsExamples() {
@@ -25,6 +26,7 @@ export function TabsExamples() {
               { title: 'C', content: 'c' },
             ]}
             bordered={true}
+            activeTab={4}
           />
         </div>
       </div>

@@ -12,7 +12,7 @@ export function Dialog({ children, ...props }) {
     <React.Fragment>
       <DialogTrigger open={open}>{children}</DialogTrigger>
 
-      <ModalPortal isOpen={isOpen()}>
+      <ModalPortal isOpen={isOpen()} title={props.title}>
         <Modal {...props} onClose={close} isOpen={isOpen()} />
       </ModalPortal>
     </React.Fragment>
@@ -20,8 +20,16 @@ export function Dialog({ children, ...props }) {
 }
 
 Dialog.propTypes = {
-  content: PropTypes.any,
-  children: PropTypes.any,
+  children: PropTypes.node,
+  body: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  centered: PropTypes.bool,
+  footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  keyboard: PropTypes.bool,
+  scrollable: PropTypes.bool,
+  size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
+  staticBackdrop: PropTypes.bool,
+  title: PropTypes.node,
+  useTimesClose: PropTypes.bool,
 };
 
 function DialogTrigger({ children, open }) {

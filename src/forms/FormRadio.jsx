@@ -1,16 +1,22 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useFormControl } from './helpers/useFormControl';
 
-export function FormRadio({ id, name, required, checkedValue, valueLabel, inline }) {
-  const { getValue, handleOnChange, register } = useFormControl(name, 'boolean');
-  const registerRef = useCallback(register, []);
+import { useFormControl } from './helpers/useFormControl';
+import { booleanOrFunction } from './helpers/form-helpers';
+import { formatClasses } from '../utils/attributes';
+import { FormGroup } from './FormGroup';
+
+export function FormRadio({ id, name, required: _required, checkedValue, valueLabel, inline, disabled: _disabled }) {
+  const { getValue, handleOnChange, register, getFormData } = useFormControl(name, 'boolean');
+  const registerRef = useCallback(register, [register]);
   const value = getValue();
+  const disabled = booleanOrFunction(_disabled, getFormData());
+  const required = booleanOrFunction(_required, getFormData());
 
   return (
-    <div className={`custom-control custom-radio ${inline ? 'custom-control-inline' : ''}`}>
+    <div className={formatClasses([`custom-control`, `custom-radio`, inline && 'custom-control-inline'])}>
       <input
-        {...{ required, name, id }}
+        {...{ required, name, id, disabled }}
         type="radio"
         className="custom-control-input"
         onChange={handleOnChange}
@@ -31,9 +37,48 @@ FormRadio.defaultProps = {
 
 FormRadio.propTypes = {
   checkedValue: PropTypes.any,
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string.isRequired,
   inline: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  required: PropTypes.any,
-  valueLabel: PropTypes.string,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  valueLabel: PropTypes.node,
+};
+
+export function FormGroupRadio({ options, id, ...props }) {
+  return (
+    <FormGroup mockInvalidSibling={true} {...props}>
+      <div>
+        {options.map((option, index) => (
+          <FormRadio
+            key={index}
+            {...props}
+            checkedValue={option.value}
+            valueLabel={option.label}
+            id={`${id}-${index}`}
+          />
+        ))}
+      </div>
+    </FormGroup>
+  );
+}
+
+FormGroupRadio.defaultProps = {
+  inline: true,
+};
+
+FormGroupRadio.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  help: PropTypes.node,
+  id: PropTypes.string,
+  inline: PropTypes.bool,
+  label: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.any.isRequired,
+      label: PropTypes.node.isRequired,
+    })
+  ),
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };

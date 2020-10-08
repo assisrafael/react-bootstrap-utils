@@ -5,3 +5,4 @@ export * from './mixed';
 export * from './table';
 export * from './tabs';
 export * from './toasts';
+export * from './utils';

@@ -9,7 +9,7 @@ export function useSelectedItem(defaultIndex, collectionSize) {
     },
     select(index) {
       if (index >= collectionSize) {
-        throw new Error('Invalid tab');
+        throw new Error('Invalid selected item');
       }
 
       setSelectedItem(index);

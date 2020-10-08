@@ -1,5 +1,5 @@
 import React from 'react';
-
+// eslint-disable-next-line import/no-unresolved
 import { ListGroup, StatefulListGroup } from '../dist/main';
 
 const items = [
@@ -28,12 +28,15 @@ export function ListGroupExamples() {
         <h1 className="h4">Simple list group</h1>
         <ListGroup
           items={items}
-          template={(item) => (
+          template={(item, index) => (
             <>
+              <em>{index + 1} </em>
               <strong>{item.title}</strong> <br />
               {item.description}
             </>
           )}
+          // eslint-disable-next-line no-console
+          onSelect={console.warn}
         />
       </div>
       <div className="col-6 mb-3">

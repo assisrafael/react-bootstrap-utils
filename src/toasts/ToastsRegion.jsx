@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Toast } from './Toast';
-import { toastsDefaultStylesByPosition } from './toasts-helpers';
+import { TOASTS_DEFAULT_STYLES_BY_POSITION, TOASTS_DEFAULT_STYLE } from './toasts-helpers';
 
 export function ToastsRegion({ name, className, toasts, noStyle }) {
   return (
@@ -12,10 +12,8 @@ export function ToastsRegion({ name, className, toasts, noStyle }) {
         noStyle
           ? null
           : {
-              position: 'fixed',
-              zIndex: 9999,
-              maxWidth: '50%',
-              ...toastsDefaultStylesByPosition[name],
+              ...TOASTS_DEFAULT_STYLE,
+              ...TOASTS_DEFAULT_STYLES_BY_POSITION[name],
             }
       }
     >

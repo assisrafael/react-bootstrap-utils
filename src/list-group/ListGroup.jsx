@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { formatClasses } from '../utils/attributes';
 import { ListGroupItem } from './ListGroupItem';
 
 export function ListGroup({ items, active, linked, bordered, horizontal, template, isDisabled, onSelect }) {
+  const classes = formatClasses(['list-group', !bordered && 'list-group-flush', horizontal && 'list-group-horizontal']);
+
   const content = items.map((item, index) => (
     <ListGroupItem
       key={index}
@@ -13,13 +17,9 @@ export function ListGroup({ items, active, linked, bordered, horizontal, templat
       linked={linked}
       onSelect={onSelect}
     >
-      {template(item)}
+      {template(item, index)}
     </ListGroupItem>
   ));
-
-  const classes = ['list-group', !bordered && 'list-group-flush', horizontal && 'list-group-horizontal']
-    .filter((v) => v)
-    .join(' ');
 
   if (linked) {
     return <div className={classes}>{content}</div>;

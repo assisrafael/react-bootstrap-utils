@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { safeClick } from '../utils/event-handlers';
+import { formatClasses } from '../utils/attributes';
 
 export function Pagination({
   actualPage,
@@ -32,7 +33,7 @@ export function Pagination({
     <nav aria-label={ariaLabel}>
       <ul className="pagination">
         {showPreviousNavigation && (
-          <React.Fragment>
+          <>
             <li className="page-item">
               <a className="page-link" href="" onClick={select(1)} aria-label={firstLabel}>
                 <span aria-hidden="true">&laquo;</span>
@@ -46,11 +47,11 @@ export function Pagination({
                 <span className="sr-only">{previousLabel}</span>
               </a>
             </li>
-          </React.Fragment>
+          </>
         )}
 
         {pages.map((page) => (
-          <li key={`pages-${page}`} className={`page-item${actualPage === page ? ' active' : ''}`}>
+          <li key={`pages-${page}`} className={formatClasses(['page-item', actualPage === page && 'active'])}>
             <a className="page-link" href="" onClick={select(page)}>
               {page}
             </a>
@@ -58,7 +59,7 @@ export function Pagination({
         ))}
 
         {startPage < lastStartPage && (
-          <React.Fragment>
+          <>
             <li className="page-item">
               <a className="page-link" href="" onClick={select(actualPage + 1)} aria-label={nextLabel}>
                 <span aria-hidden="true">&rsaquo;</span>
@@ -72,7 +73,7 @@ export function Pagination({
                 <span className="sr-only">{lastLabel}</span>
               </a>
             </li>
-          </React.Fragment>
+          </>
         )}
       </ul>
     </nav>

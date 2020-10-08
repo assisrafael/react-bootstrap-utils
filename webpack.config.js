@@ -28,7 +28,7 @@ module.exports = [
   {
     entry: './demo/demo.jsx',
     output: {
-      path: __dirname + '/demo',
+      path: `${__dirname}/demo`,
       filename: 'demo.js',
     },
     devServer: {
@@ -36,6 +36,13 @@ module.exports = [
       hot: true,
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
+  },
+  {
+    entry: './docs/docs.jsx',
+    output: {
+      path: `${__dirname}/docs`,
+      filename: 'scripts.js',
+    },
   },
 ].map((setup) => ({
   ...setup,

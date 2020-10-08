@@ -41,6 +41,7 @@ test('getValueByPath should get path value of complex objects', () => {
   expect(getValueByPath({}, '[0]')).toBe(undefined);
   expect(getValueByPath([1, 'h'], '[1]')).toBe('h');
   expect(getValueByPath([{ a: 'h' }], '[0].a')).toBe('h');
+  expect(getValueByPath([{ a: null }], '[0].a.c')).toBe(undefined);
   expect(getValueByPath({}, 'a.b')).toBe(undefined);
   expect(getValueByPath({ a: [6] }, 'a[0]')).toBe(6);
   expect(getValueByPath({ a: { '0': 6 } }, 'a[0]')).toBe(6);

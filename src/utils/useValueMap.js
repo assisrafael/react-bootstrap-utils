@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import { isFunction } from 'js-var-type';
 
 export function useValueMap() {
   const [valueMap, updateValueMap] = useState({});
 
-  function setValue(key, _value) {
+  const setValue = useCallback((key, _value) => {
     updateValueMap((prevValueMap) => {
       let value = _value;
 
-      if (typeof value === 'function') {
+      if (isFunction(value)) {
         value = value(prevValueMap[key]);
       }
 
@@ -16,11 +17,9 @@ export function useValueMap() {
         [key]: value,
       };
     });
-  }
+  }, []);
 
-  function getValue(key) {
-    return valueMap[key];
-  }
+  const getValue = useCallback((key) => valueMap[key], [valueMap]);
 
   return {
     setValue,
@@ -33,11 +32,17 @@ export function useValueMap() {
         setValue(key, value);
       }
     },
+    unsetKey(key) {
+      updateValueMap(({ [key]: _, ...prevValueMap }) => prevValueMap);
+    },
+    reset() {
+      updateValueMap({});
+    },
   };
 }
 
 export function useArrayValueMap({ unique = true, equalityComparator = (a) => (b) => a === b } = {}) {
-  const { getAllKeys, getValue, setValue } = useValueMap();
+  const { getAllKeys, getValue, setValue, reset } = useValueMap();
 
   return {
     push(key, value) {
@@ -56,9 +61,10 @@ export function useArrayValueMap({ unique = true, equalityComparator = (a) => (b
       });
     },
     unset(key, filterfn) {
-      setValue(key, (prevValues) => prevValues.filter(filterfn));
+      setValue(key, (prevValues) => prevValues && prevValues.filter(filterfn));
     },
     get: getValue,
     getAllKeys,
+    reset,
   };
 }

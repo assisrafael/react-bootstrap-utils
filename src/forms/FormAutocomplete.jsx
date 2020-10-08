@@ -1,76 +1,138 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { handleInputChange, normalizeOptions } from './helpers/form-helpers';
+import { isEmptyLike } from 'js-var-type';
+
+import { handleInputChange, normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
+import { formatClasses } from '../utils/attributes';
 import { useFormControl } from './helpers/useFormControl';
+import { FormGroup } from './FormGroup';
 
 export function FormAutocomplete({
   onSearch,
   options,
-  required,
+  required: _required,
   id,
   placeholder,
   name,
   openOnFocus,
   template,
   filter,
+  disabled: _disabled,
 }) {
+  const { getValue, setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(name);
+  const value = getValue();
+
   const [searchValue, setSearchValue] = useState('');
+  const items = normalizeOptions(options, getFormData(), searchValue);
+  const _selectedItem = items.find((item) => item.value === value);
+
+  const [selectedItem, setSelectedItem] = useState(_selectedItem);
   const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
   const [isFocused, setFocus] = useState(false);
-  const { getValue, setValue, register, isValid, getFormSubmitedAttempted } = useFormControl(name);
-  const registerRef = useCallback(register, []);
   const searchInputRef = useRef(null);
 
-  const items = normalizeOptions(options, FormData);
-  const value = getValue();
-  const selectedItem = items.find((item) => item.value === value);
+  const registerRef = useCallback(register, [register]);
+  const disabled = booleanOrFunction(_disabled, getFormData());
+  const required = booleanOrFunction(_required, getFormData());
 
-  const controlFeedback = `${getFormSubmitedAttempted() ? (isValid() ? 'is-valid' : 'is-invalid') : ''}`;
+  const controlFeedback = getFormSubmitedAttempted() ? (isValid() ? 'is-valid' : 'is-invalid') : '';
 
-  useEffect(() => {
+  const updateSearchInputValidation = useCallback(() => {
     searchInputRef.current.setCustomValidity(controlFeedback === 'is-invalid' ? 'invalid' : '');
   }, [controlFeedback]);
+
+  const clearSearchValue = useCallback(() => {
+    if (isEmptyLike(value) && !isFocused) {
+      setSearchValue('');
+      setSelectedItem(null);
+    }
+  }, [isFocused, value]);
+
+  const onSearchInputType = useCallback(
+    (_, nextSearchValue) => {
+      setSearchValue(nextSearchValue);
+      onSearch(nextSearchValue);
+      open();
+
+      if (nextSearchValue && value) {
+        setValue(null);
+      }
+    },
+    [onSearch, open, setValue, value]
+  );
+
+  const inputHandleChange = useMemo(
+    () =>
+      handleInputChange.bind(null, {
+        update: onSearchInputType,
+      }),
+    [onSearchInputType]
+  );
+
+  const onSearchInputFocus = useCallback(() => {
+    if (openOnFocus) {
+      setTimeout(() => {
+        open();
+      }, 100);
+    }
+  }, [open, openOnFocus]);
+
+  const onSearchInputBlur = useCallback(() => {
+    if (isEmptyLike(searchValue) && value) {
+      setValue('');
+      setSelectedItem(null);
+      updateSearchInputValidation();
+    }
+
+    if (ignoreBlur) {
+      searchInputRef.current.focus();
+    } else {
+      close();
+      setFocus(false);
+    }
+  }, [close, ignoreBlur, searchValue, setValue, updateSearchInputValidation, value]);
+
+  const enableSearchInput = useCallback(() => {
+    if (disabled) {
+      return;
+    }
+
+    setFocus(true);
+    setTimeout(() => {
+      searchInputRef.current.focus();
+    });
+  }, [disabled]);
+
+  const onSelectItem = useCallback(
+    ({ value, label }) => {
+      setValue(value);
+      setSearchValue(label);
+      setSelectedItem({ value, label });
+      setIgnoreBlur(false);
+      setTimeout(() => {
+        setFocus(false);
+        close();
+      }, 60);
+    },
+    [close, setValue]
+  );
+
+  useEffect(updateSearchInputValidation, [updateSearchInputValidation]);
+  useEffect(clearSearchValue, [clearSearchValue]);
 
   return (
     <>
       <input
-        {...{ placeholder }}
-        type="text"
+        {...{ placeholder, disabled }}
+        type="search"
         ref={searchInputRef}
-        className={`form-control ${isFocused ? '' : 'd-none'} ${controlFeedback}`}
-        onChange={handleInputChange.bind(null, {
-          update(_, value) {
-            setSearchValue(value);
-            onSearch(value);
-            open();
-
-            if (value) {
-              setValue(null);
-            }
-          },
-        })}
-        onFocus={() => {
-          if (openOnFocus) {
-            setTimeout(() => {
-              open();
-            }, 250);
-          }
-        }}
-        onBlur={() => {
-          if (!value) {
-            setSearchValue('');
-          }
-
-          if (ignoreBlur) {
-            searchInputRef.current.focus();
-          } else {
-            close();
-            setFocus(false);
-          }
-        }}
+        className={formatClasses(['form-control form-autocomplete-search', isFocused ? '' : 'd-none', controlFeedback])}
+        onChange={inputHandleChange}
+        onFocus={onSearchInputFocus}
+        onBlur={onSearchInputBlur}
         value={searchValue}
         role="combobox"
         aria-autocomplete="list"
@@ -80,13 +142,9 @@ export function FormAutocomplete({
 
       {!isFocused && (
         <div
-          className={`form-control ${controlFeedback} `}
-          onClick={() => {
-            setFocus(true);
-            setTimeout(() => {
-              searchInputRef.current.focus();
-            });
-          }}
+          className={formatClasses(['form-control form-autocomplete-selected', controlFeedback])}
+          disabled={disabled}
+          onClick={enableSearchInput}
         >
           {selectedItem ? (template ? template(selectedItem.label) : selectedItem.label) : placeholder}
         </div>
@@ -94,25 +152,20 @@ export function FormAutocomplete({
 
       <input
         type="text"
-        className={`form-control d-none`}
+        className={formatClasses(['form-control', 'd-none'])}
         {...{ name, required, id }}
         onChange={() => {}}
         value={getValue()}
         ref={registerRef}
       />
+
       <Dropdown
+        className="form-autocomplete-dropdown"
         isOpen={isOpen()}
         items={items.filter(filter(searchValue))}
-        onSelect={({ value, label }) => {
-          setValue(value);
-          setSearchValue(label);
-          setIgnoreBlur(false);
-          setTimeout(() => {
-            setFocus(false);
-            close();
-          }, 250);
-        }}
+        onSelect={onSelectItem}
         template={template}
+        onClick={(e) => e.stopPropation()}
         onTouchStart={() => setIgnoreBlur(true)}
         onMouseEnter={() => setIgnoreBlur(true)}
         onMouseLeave={() => setIgnoreBlur(false)}
@@ -130,9 +183,11 @@ FormAutocomplete.defaultProps = {
 
     return itemValue.includes(searchValue);
   },
+  template: (x) => x,
 };
 
 FormAutocomplete.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -143,7 +198,34 @@ FormAutocomplete.propTypes = {
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   ]),
   placeholder: PropTypes.string,
-  required: PropTypes.any,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  template: PropTypes.func,
+  type: PropTypes.string,
+};
+
+export function FormGroupAutocomplete(props) {
+  return (
+    <FormGroup {...props}>
+      <FormAutocomplete {...props} />
+    </FormGroup>
+  );
+}
+
+FormGroupAutocomplete.propTypes = {
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  filter: PropTypes.func,
+  help: PropTypes.node,
+  id: PropTypes.string,
+  label: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
+  onSearch: PropTypes.func,
+  openOnFocus: PropTypes.bool,
+  options: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
+  ]),
+  placeholder: PropTypes.string,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   template: PropTypes.func,
   type: PropTypes.string,
 };

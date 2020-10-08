@@ -1,12 +1,58 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { debounce } from 'lodash-es';
 import { useArrayValueMap } from '../../utils/useValueMap';
 import { setValueByPath, deepClone, getValueByPath } from '../../utils/getters-setters';
 import { validateFormElement } from './form-helpers';
 
-export function useForm(initialState, validations) {
+function useFormState(initialState, { onChange, transform }) {
   const [formState, setFormState] = useState(initialState);
+  const [isDirty, setIsDirty] = useState(false);
+  const onChangeRef = useRef(debounce(onChange, 1000));
+  const transformRef = useRef(
+    debounce(
+      (nextFormState, name) =>
+        transform(nextFormState, name, (state) => {
+          setFormState(state);
+        }),
+      500
+    )
+  );
+
+  useEffect(() => {
+    if (isDirty) {
+      onChangeRef.current(formState);
+    }
+  }, [formState, isDirty]);
+
+  return {
+    getState() {
+      return formState;
+    },
+    updateState(name, value) {
+      setIsDirty(true);
+      setFormState((prevFormState) => {
+        const nextFormState = nextState(prevFormState, name, value);
+
+        setTimeout(() => {
+          transformRef.current(nextFormState, name);
+        });
+
+        return nextFormState;
+      });
+    },
+    resetState() {
+      setIsDirty(false);
+      setFormState(initialState);
+    },
+  };
+}
+
+export function useForm(initialState, { validations, onChange, transform }) {
+  const { getState, updateState, resetState } = useFormState(initialState, { onChange, transform });
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const { getAllKeys: getElementNames, get: getElementRefs, push: registerElementRef } = useArrayValueMap();
+
+  const formState = getState();
 
   return {
     register(name, elementRef) {
@@ -22,7 +68,7 @@ export function useForm(initialState, validations) {
       }
     },
     update(name, value) {
-      setFormState((prevFormState) => nextState(prevFormState, name, value));
+      updateState(name, value);
 
       if (validations) {
         this.validateForm(nextState(formState, name, value));
@@ -35,7 +81,7 @@ export function useForm(initialState, validations) {
       return getValueByPath(formState, name);
     },
     reset() {
-      setFormState(initialState);
+      resetState();
       setSubmitAttempted(false);
     },
     setSubmitedAttempted() {

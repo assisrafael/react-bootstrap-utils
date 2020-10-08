@@ -1,3 +1,5 @@
+import { isUndefined, isNull, isObject, isArray, isFunction } from 'js-var-type';
+
 export function splitPath(path) {
   return path
     .replace(/]/g, '')
@@ -17,7 +19,7 @@ export function getValueByPath(obj, objPath) {
   const paths = splitPath(objPath);
 
   return paths.reduce((cursor, { path }) => {
-    if (typeof cursor === 'undefined') {
+    if (isUndefined(cursor) || isNull(cursor)) {
       return;
     }
 
@@ -59,21 +61,17 @@ export function setValueByPath(obj, objPath, value) {
 }
 
 export function deepClone(item) {
-  // null, undefined values check
-  if (!item) {
+  // null, undefined values check and literals
+  if (!item || !isObject(item)) {
     return item;
   }
 
-  if (Object.prototype.toString.call(item) === '[object Array]') {
+  if (isArray(item)) {
     return item.map(deepClone);
   }
 
-  if (typeof item != 'object') {
-    return item;
-  }
-
   // testing that this is DOM
-  if (item.nodeType && typeof item.cloneNode == 'function') {
+  if (item.nodeType && isFunction(item.cloneNode)) {
     return item.cloneNode(true);
   }
 

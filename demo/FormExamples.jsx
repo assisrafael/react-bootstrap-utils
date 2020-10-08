@@ -9,21 +9,44 @@ import {
   FormGroupRadio,
   FormGroupTextarea,
   FormGroupAutocomplete,
+  // eslint-disable-next-line import/no-unresolved
 } from '../dist/main';
 
 export function FormExamples() {
   return (
     <Form
-      initialValues={{ textField: 'abc' }}
-      onSubmit={(formData, reset) => {
-        console.log('onSubmit', formData);
-        // return Promise.resolve();
-        reset();
+      initialValues={{
+        textField: 'abc',
+        autocompleteField1: '2345',
+        selectField4: { e: 2, c: 'b' },
+        switchField2: true,
+        checkboxField2: true,
+        radioField2: 'b',
+        numberField: null,
+        dateField: new Date().toISOString(),
       }}
-      onCancel={() => console.log('onCancel')}
+      onChange={console.info}
+      onSubmit={(formData) => {
+        console.log('onSubmit', formData);
+
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, 1000);
+        });
+      }}
+      transform={(formData, _, update) => {
+        formData.__v = formData.__v ? formData.__v + 1 : 1;
+
+        update(formData);
+      }}
+      onCancel={(resetForm) => {
+        console.log('onCancel');
+        resetForm();
+      }}
       customValidation={true}
       validations={{
-        textField3: [
+        numberField: [
           {
             message: 'Must be filled if textField is not empty',
             validate(value, formData) {
@@ -33,9 +56,9 @@ export function FormExamples() {
         ],
         autocompleteField1: [
           {
-            message: 'Must be filled if textField3 is empty',
+            message: 'Must be filled if numberField is empty',
             validate(value, formData) {
-              return formData.textField3 || value;
+              return formData.numberField || value;
             },
           },
         ],
@@ -83,13 +106,21 @@ export function FormExamples() {
     >
       <div className="row">
         <div className="col">
-          <FormGroupInput name="textField" label="Text field" />
+          <FormGroupInput name="textField" label="Text field" disabled help="Text field help" />
         </div>
         <div className="col">
           <FormGroupInput name="textField2" label="Text field 2" required placeholder="Fill some value" />
         </div>
         <div className="col">
-          <FormGroupInput name="textField3" label="Text field 3" type="number" />
+          <FormGroupInput
+            name="numberField"
+            label="Number field"
+            type="number"
+            disabled={({ textField2 }) => textField2 === 'ABC'}
+          />
+        </div>
+        <div className="col">
+          <FormGroupInput name="dateField" label="Date field" type="datetime-local" />
         </div>
       </div>
 
@@ -100,48 +131,48 @@ export function FormExamples() {
             label="Autocomplete"
             options={['1234', '2345', '3456']}
             placeholder="Type some numbers"
-            required
+            disabled
+            help="Autocomplete help"
           />
         </div>
         <div className="col">
           <FormGroupAutocomplete
             name="autocompleteField2"
             label="Autocomplete that opens on focus"
-            options={['Abcde', 'Fghij', 'klmno']}
+            options={(_, searchValue) => {
+              if (searchValue.length < 2) {
+                return ['Abcde', 'Fghij', 'klmno'];
+              }
+
+              return ['1234', '2345', '3456'];
+            }}
+            onSearch={console.log}
             placeholder="Type some letters"
             openOnFocus={true}
+            required={() => true}
           />
         </div>
         <div className="col">
           <FormGroupAutocomplete
             name="autocompleteField3"
             label="Autocomplete with item template"
-            options={[
-              {
-                value: 1,
-                label: '1234',
-              },
-              {
-                value: 2,
-                label: '2345',
-              },
-              {
-                value: 3,
-                label: '3456',
-              },
-            ]}
+            options={Array.from({ length: 10 }).map((_, index) => ({
+              value: index + 1,
+              label: `${index + 1}${index + 2}${index + 3}${index + 4}`,
+            }))}
             placeholder="Type some numbers"
             template={(option) => (
               <>
                 <strong>{option}</strong> - {option}
               </>
             )}
+            required={() => false}
           />
         </div>
       </div>
 
       <div className="row">
-        <div className="col">
+        <div className="col-4">
           <FormGroupSelect
             name="selectField"
             label="Select field (list)"
@@ -150,21 +181,37 @@ export function FormExamples() {
               console.log('teste after change');
               console.log('value :>> ', value);
             }}
+            disabled
+            help="Select help"
           />
         </div>
-        <div className="col">
+        <div className="col-4">
+          <FormGroupSelect name="selectNumberField" label="Select field (number list)" options={[1, 2, 3, 4]} />
+        </div>
+        <div className="col-4">
           <FormGroupSelect
             name="selectField2"
             label="Select field 2 (array of objects)"
             options={[
               { label: 'A', value: 'a' },
               { label: 'B', value: 'b' },
-              { label: 'C', value: 'c' },
+              { label: 'C', value: 'd' },
             ]}
             required
           />
         </div>
-        <div className="col">
+        <div className="col-4">
+          <FormGroupSelect
+            name="selectBooleanField"
+            label="Select boolean"
+            options={[
+              { label: 'Yes', value: true },
+              { label: 'No', value: false },
+            ]}
+            required
+          />
+        </div>
+        <div className="col-4">
           <FormGroupSelect
             name="selectField3"
             label="Select field 3 (function)"
@@ -176,25 +223,34 @@ export function FormExamples() {
             placeholder="Select one value"
           />
         </div>
-        <div className="col">
+        <div className="col-4">
           <FormGroupSelect
             name="selectField4"
-            label="Select field 4 (function)"
-            options={(formData) =>
-              Object.entries(formData)
-                .filter(([key]) => key !== 'selectField4')
-                .map(([key, value]) => ({
-                  label: key,
-                  value,
-                }))
-            }
+            label="Select field 4 (objects with trackBy)"
+            options={[
+              { label: 'A', value: { c: 'a', e: 1 } },
+              { label: 'B', value: { c: 'b', e: 2 } },
+              { label: 'C', value: { c: 'd', e: 3 } },
+            ]}
+            trackBy="c"
+            required
           />
         </div>
       </div>
 
       <div className="row">
         <div className="col">
-          <FormGroupSwitch id="switchFieldId" name="switchField" label="Switch field" trueLabel="ON" falseLabel="OFF" />
+          <FormGroupSwitch
+            id="switchFieldId"
+            name="switchField"
+            label="Switch field"
+            trueLabel="ON"
+            falseLabel="OFF"
+            help="Switch help"
+          />
+        </div>
+        <div className="col">
+          <FormGroupSwitch id="switchFieldId2" name="switchField2" label="Switch field 2" disabled />
         </div>
         <div className="col">
           <FormGroupCheckbox
@@ -202,7 +258,11 @@ export function FormExamples() {
             name="checkboxField"
             label="Checkbox field"
             valueLabel="Checkbox description"
+            help="Checkbox help"
           />
+        </div>
+        <div className="col">
+          <FormGroupCheckbox id="checkboxFieldId2" name="checkboxField2" label="Checkbox field 2" disabled />
         </div>
         <div className="col">
           <FormGroupRadio
@@ -223,11 +283,31 @@ export function FormExamples() {
                 label: 'C',
               },
             ]}
+            help="Radio help"
+          />
+        </div>
+        <div className="col">
+          <FormGroupRadio
+            id="radioFieldId2"
+            name="radioField2"
+            label="Radio field 2"
+            options={[
+              {
+                value: 'a',
+                label: 'A',
+              },
+              {
+                value: 'b',
+                label: 'B',
+              },
+            ]}
+            disabled
           />
         </div>
       </div>
 
-      <FormGroupTextarea name="textareaField" label="Textarea field" />
+      <FormGroupTextarea name="textareaField" label="Textarea field" help="Textarea help" />
+      <FormGroupTextarea name="textareaField2" label="Textarea field 2" disabled rows="1" />
 
       {[0, 1].map((index) => (
         <div className="row" key={index}>
