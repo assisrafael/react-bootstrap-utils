@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { normalizeOptions } from './helpers/form-helpers';
 import { useFormControl } from './helpers/useFormControl';
 
-export function FormSelect({ id, name, options, required, placeholder }) {
-  const { getFormData, getValue, handleOnChange, register } = useFormControl(name);
+export function FormSelect({ id, name, options, required, placeholder, afterChange }) {
+  const { getFormData, getValue, handleOnChange, register } = useFormControl(name, '', afterChange);
   const registerRef = useCallback(register, []);
 
   return (
@@ -23,6 +23,7 @@ export function FormSelect({ id, name, options, required, placeholder }) {
 }
 
 FormSelect.propTypes = {
+  afterChange: PropTypes.func,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   options: PropTypes.oneOfType([

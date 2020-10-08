@@ -142,7 +142,15 @@ export function FormExamples() {
 
       <div className="row">
         <div className="col">
-          <FormGroupSelect name="selectField" label="Select field (list)" options={['A', 'B', 'C']} />
+          <FormGroupSelect
+            name="selectField"
+            label="Select field (list)"
+            options={['A', 'B', 'C']}
+            afterChange={(value) => {
+              console.log('teste after change');
+              console.log('value :>> ', value);
+            }}
+          />
         </div>
         <div className="col">
           <FormGroupSelect

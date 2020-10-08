@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { FormContext } from './form-helpers';
 
-export function useFormControl(name, type) {
+export function useFormControl(name, type, afterChange) {
   const formState = useContext(FormContext);
 
   function setValue(value) {
@@ -15,6 +15,10 @@ export function useFormControl(name, type) {
       const value = target.type === 'checkbox' ? target.checked : target.value;
 
       setValue(value);
+
+      if (afterChange && typeof afterChange === 'function') {
+        afterChange(value);
+      }
     },
     register: (ref) => {
       formState.register(name, ref);
