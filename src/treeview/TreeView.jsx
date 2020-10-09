@@ -23,7 +23,15 @@ function TreeNodes({ childrenPath, depth, draggable, nodes, template }) {
   return (
     <>
       {nodes.map((node, index) => (
-        <TreeNode key={index} node={node} index={index} template={template} childrenPath={childrenPath} depth={depth} />
+        <TreeNode
+          key={index}
+          node={node}
+          index={index}
+          template={template}
+          childrenPath={childrenPath}
+          depth={depth}
+          draggable={draggable}
+        />
       ))}
     </>
   );

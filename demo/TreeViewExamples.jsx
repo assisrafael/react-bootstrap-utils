@@ -50,5 +50,7 @@ export function TreeViewExamples() {
     },
   ];
 
-  return <TreeView nodes={nodes} template={(item, index) => <em>{item.attrA}</em>} childrenPath={'children'} draggable={true} />;
+  return (
+    <TreeView nodes={nodes} template={(item) => <em>{item.attrA}</em>} childrenPath={'children'} draggable={true} />
+  );
 }
