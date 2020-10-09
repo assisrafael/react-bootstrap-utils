@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.3...v0.22.4) (2020-10-09)
+
+
+### Features
+
+* **forms:** implement proper afterChange callback ([d44abed](https://github.com/assisrafael/react-bootstrap-utils/commit/d44abed1065c7d039d647d4b0da920cd86f268d8))
+
+
+### Bug Fixes
+
+* remove afterChange hook on useFormControl ([0891fd6](https://github.com/assisrafael/react-bootstrap-utils/commit/0891fd6a8ee621fb4e8a59de2f83df31f94f15b5))
+
 ### [0.22.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.2...v0.22.3) (2020-10-09)
 
 
