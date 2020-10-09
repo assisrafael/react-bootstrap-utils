@@ -7,7 +7,7 @@ import { formatClasses } from '../utils/attributes';
 import { FormGroup } from './FormGroup';
 
 export function FormRadio({ id, name, required: _required, checkedValue, valueLabel, inline, disabled: _disabled }) {
-  const { getValue, handleOnChange, register, getFormData } = useFormControl(name, 'boolean');
+  const { getValue, handleOnChange, register, getFormData } = useFormControl(name);
   const registerRef = useCallback(register, [register]);
   const value = getValue();
   const disabled = booleanOrFunction(_disabled, getFormData());
