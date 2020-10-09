@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.2...v0.22.3) (2020-10-09)
+
+
+### Features
+
+* **forms:** include an afterChange callback to useFormControl ([#33](https://github.com/assisrafael/react-bootstrap-utils/issues/33)) ([3b6f13f](https://github.com/assisrafael/react-bootstrap-utils/commit/3b6f13f5079c41738baee5fa22ebd0a7cdf7d565))
+* **treeview:** include an initial version of the TreeView component ([0d01881](https://github.com/assisrafael/react-bootstrap-utils/commit/0d018816eb7f9381bf91aa7e3db0d6ab3ef8b39f))
+
+
+### Bug Fixes
+
+* **forms:** fix radio input value selection ([66dc6d0](https://github.com/assisrafael/react-bootstrap-utils/commit/66dc6d0987c9fae1eeac53a4d97513dcc4b1173f))
+* **forms:** remove noop default value for afterChange callback ([0fcdb8f](https://github.com/assisrafael/react-bootstrap-utils/commit/0fcdb8fea231c59348a6958b682bbf43ca1b3cb9))
+* **forms:** stop event propagation on form submit ([bc80f7a](https://github.com/assisrafael/react-bootstrap-utils/commit/bc80f7a273ff0dad36e47678b86e34676cdefa1e))
+
 ### [0.22.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.1...v0.22.2) (2020-09-24)
 
 

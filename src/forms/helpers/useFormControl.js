@@ -3,7 +3,7 @@ import { isEmptyStringLike, isBoolean, isFunction } from 'js-var-type';
 import { FormContext } from './form-helpers';
 import { toDatetimeLocal, fromDatetimeLocal } from '../../utils/formatters';
 
-export function useFormControl(name, type, hooks = { afterChange: () => {} }) {
+export function useFormControl(name, type, hooks = {}) {
   const formState = useContext(FormContext);
 
   function setValue(value) {
