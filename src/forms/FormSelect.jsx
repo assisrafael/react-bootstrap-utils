@@ -18,9 +18,10 @@ export function FormSelect({
   placeholder,
   trackBy,
   disabled: _disabled,
+  afterChange,
   ..._attrs
 }) {
-  const { getFormData, getValue, handleOnChange, register } = useFormControl(name);
+  const { getFormData, getValue, handleOnChangeFactory, register } = useFormControl(name);
   const registerRef = useCallback(register, [register]);
   const value = getValue();
   const normalizedOptions = normalizeOptions(options, getFormData());
@@ -38,7 +39,7 @@ export function FormSelect({
     <select
       {...attrs}
       className="custom-select"
-      onChange={(e) => handleOnChange(e, getOptionsType(normalizedOptions))}
+      onChange={handleOnChangeFactory(afterChange, getOptionsType(normalizedOptions))}
       value={getSelectedOption(value, normalizedOptions, trackBy)}
       ref={registerRef}
     >
@@ -50,6 +51,7 @@ export function FormSelect({
 }
 
 FormSelect.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -77,6 +79,7 @@ export function FormGroupSelect(props) {
 }
 
 FormGroupSelect.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   help: PropTypes.node,
   id: PropTypes.string,

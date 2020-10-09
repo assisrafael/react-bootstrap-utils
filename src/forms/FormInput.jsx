@@ -5,8 +5,8 @@ import { useFormControl } from './helpers/useFormControl';
 import { booleanOrFunction } from './helpers/form-helpers';
 import { FormGroup } from './FormGroup';
 
-export function FormInput({ type, name, required: _required, disabled: _disabled, ..._attrs }) {
-  const { getValue, handleOnChange, register, getFormData } = useFormControl(name, type);
+export function FormInput({ type, name, required: _required, disabled: _disabled, afterChange, ..._attrs }) {
+  const { getValue, handleOnChangeFactory, register, getFormData } = useFormControl(name, type);
   const registerRef = useCallback(register, [register]);
   const disabled = booleanOrFunction(_disabled, getFormData());
   const required = booleanOrFunction(_required, getFormData());
@@ -25,7 +25,7 @@ export function FormInput({ type, name, required: _required, disabled: _disabled
     attrs.value = getValue();
   }
 
-  return <input {...attrs} className="form-control" onChange={handleOnChange} ref={registerRef} />;
+  return <input {...attrs} className="form-control" onChange={handleOnChangeFactory(afterChange)} ref={registerRef} />;
 }
 
 FormInput.defaultProps = {
@@ -33,6 +33,7 @@ FormInput.defaultProps = {
 };
 
 FormInput.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
   max: PropTypes.string,
@@ -57,6 +58,7 @@ export function FormGroupInput(props) {
 }
 
 FormGroupInput.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   help: PropTypes.node,
   id: PropTypes.string,

@@ -109,7 +109,13 @@ export function FormExamples() {
           <FormGroupInput name="textField" label="Text field" disabled help="Text field help" />
         </div>
         <div className="col">
-          <FormGroupInput name="textField2" label="Text field 2" required placeholder="Fill some value" />
+          <FormGroupInput
+            name="textField2"
+            label="Text field 2"
+            required
+            placeholder="Fill some value"
+            afterChange={console.log.bind(console, 'afterChange input')}
+          />
         </div>
         <div className="col">
           <FormGroupInput
@@ -150,6 +156,7 @@ export function FormExamples() {
             placeholder="Type some letters"
             openOnFocus={true}
             required={() => true}
+            afterChange={console.log.bind(console, 'afterChange autocomplete')}
           />
         </div>
         <div className="col">
@@ -182,7 +189,12 @@ export function FormExamples() {
           />
         </div>
         <div className="col-4">
-          <FormGroupSelect name="selectNumberField" label="Select field (number list)" options={[1, 2, 3, 4]} />
+          <FormGroupSelect
+            name="selectNumberField"
+            label="Select field (number list)"
+            afterChange={console.log.bind(console, 'afterChange select')}
+            options={[1, 2, 3, 4]}
+          />
         </div>
         <div className="col-4">
           <FormGroupSelect
@@ -243,6 +255,7 @@ export function FormExamples() {
             trueLabel="ON"
             falseLabel="OFF"
             help="Switch help"
+            afterChange={console.log.bind(console, 'afterChange switch')}
           />
         </div>
         <div className="col">
@@ -255,6 +268,7 @@ export function FormExamples() {
             label="Checkbox field"
             valueLabel="Checkbox description"
             help="Checkbox help"
+            afterChange={console.log.bind(console, 'afterChange checkbox')}
           />
         </div>
         <div className="col">
@@ -280,6 +294,7 @@ export function FormExamples() {
               },
             ]}
             help="Radio help"
+            afterChange={console.log.bind(console, 'afterChange radio')}
           />
         </div>
         <div className="col">
@@ -302,7 +317,12 @@ export function FormExamples() {
         </div>
       </div>
 
-      <FormGroupTextarea name="textareaField" label="Textarea field" help="Textarea help" />
+      <FormGroupTextarea
+        name="textareaField"
+        label="Textarea field"
+        help="Textarea help"
+        afterChange={console.log.bind(console, 'afterChange textarea')}
+      />
       <FormGroupTextarea name="textareaField2" label="Textarea field 2" disabled rows="1" />
 
       {[0, 1].map((index) => (
