@@ -1,3 +1,4 @@
+/* eslint-disable import/max-dependencies */
 /* eslint-disable no-console */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,6 +13,7 @@ import { DialogExamples } from './DialogExamples';
 import { ListGroupExamples } from './ListGroupExamples';
 import { ToastsExamples } from './ToastsExamples';
 import { DropdownExamples } from './DropdownExamples';
+import { TreeViewExamples } from './TreeViewExamples';
 
 ReactDOM.render(
   <div className="mt-3">
@@ -19,7 +21,7 @@ ReactDOM.render(
       <StatefulTabs
         vertical={true}
         onlyRenderActiveTab={true}
-        initialTab={0}
+        initialTab={8}
         tabs={[
           {
             title: 'Dialog',
@@ -56,6 +58,10 @@ ReactDOM.render(
                 <ToastsExamples />,
               </ToastsContainer>
             ),
+          },
+          {
+            title: 'TreeView',
+            content: <TreeViewExamples />,
           },
         ]}
       />
