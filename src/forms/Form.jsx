@@ -28,6 +28,7 @@ export function Form({
 
   function handleSubmit(e) {
     e.preventDefault();
+    e.stopPropagation();
 
     formState.setSubmitedAttempted();
 
