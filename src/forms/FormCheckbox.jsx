@@ -5,8 +5,8 @@ import { useFormControl } from './helpers/useFormControl';
 import { booleanOrFunction } from './helpers/form-helpers';
 import { FormGroup } from './FormGroup';
 
-export function FormCheckbox({ id, name, required: _required, valueLabel, disabled: _disabled }) {
-  const { getValue, handleOnChange, register, getFormData } = useFormControl(name, 'boolean');
+export function FormCheckbox({ id, name, required: _required, valueLabel, disabled: _disabled, afterChange }) {
+  const { getValue, handleOnChangeFactory, register, getFormData } = useFormControl(name, 'boolean');
   const registerRef = useCallback(register, [register]);
   const disabled = booleanOrFunction(_disabled, getFormData());
   const required = booleanOrFunction(_required, getFormData());
@@ -17,7 +17,7 @@ export function FormCheckbox({ id, name, required: _required, valueLabel, disabl
         {...{ required, name, id, disabled }}
         type="checkbox"
         className="custom-control-input"
-        onChange={handleOnChange}
+        onChange={handleOnChangeFactory(afterChange)}
         checked={getValue()}
         ref={registerRef}
       />
@@ -29,11 +29,12 @@ export function FormCheckbox({ id, name, required: _required, valueLabel, disabl
 }
 
 FormCheckbox.propTypes = {
+  afterChange: PropTypes.func,
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  valueLabel: PropTypes.node,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  valueLabel: PropTypes.node,
 };
 
 export function FormGroupCheckbox(props) {
@@ -45,6 +46,7 @@ export function FormGroupCheckbox(props) {
 }
 
 FormGroupCheckbox.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   falseLabel: PropTypes.node,
   help: PropTypes.node,

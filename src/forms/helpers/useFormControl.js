@@ -3,16 +3,15 @@ import { isEmptyStringLike, isBoolean, isFunction } from 'js-var-type';
 import { FormContext } from './form-helpers';
 import { toDatetimeLocal, fromDatetimeLocal } from '../../utils/formatters';
 
-export function useFormControl(name, type, hooks = {}) {
+export function useFormControl(name, type) {
   const formState = useContext(FormContext);
 
-  function setValue(value) {
-    formState.update(name, value);
-
-    if (isFunction(hooks.afterChange)) {
-      hooks.afterChange(value);
-    }
-  }
+  const setValue = useCallback(
+    (value) => {
+      formState.update(name, value);
+    },
+    [formState, name]
+  );
 
   const register = useCallback(
     (ref) => {
@@ -22,16 +21,30 @@ export function useFormControl(name, type, hooks = {}) {
     [name]
   );
 
-  return {
-    getValue: () => encode(formState.getValue(name), type),
-    setValue,
-    handleOnChange: ({ target }, _type) => {
+  const handleOnChange = useCallback(
+    ({ target }, _type) => {
       const value = getTargetValue(target);
 
       const decodedValue = decode(value, type || _type);
 
       setValue(decodedValue);
+
+      return decodedValue;
     },
+    [setValue, type]
+  );
+
+  return {
+    getValue: () => encode(formState.getValue(name), type),
+    setValue,
+    handleOnChangeFactory: (afterChange, type) => (e) => {
+      const newValue = handleOnChange(e, type);
+
+      if (isFunction(afterChange)) {
+        afterChange(newValue);
+      }
+    },
+    handleOnChange,
     register,
     getFormData: () => formState.getFormData(),
     isValid: () => formState.getValidationMessage(name) === '',

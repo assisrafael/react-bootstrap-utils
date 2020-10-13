@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { isEmptyLike } from 'js-var-type';
+import { isEmptyLike, isFunction } from 'js-var-type';
 
 import { handleInputChange, normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
@@ -20,9 +20,22 @@ export function FormAutocomplete({
   template,
   filter,
   disabled: _disabled,
+  afterChange,
 }) {
-  const { getValue, setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(name);
+  const { getValue, setValue: _setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(
+    name
+  );
   const value = getValue();
+
+  const setValue = useCallback(
+    (v) => {
+      _setValue(v);
+      if (isFunction(afterChange)) {
+        afterChange(v);
+      }
+    },
+    [_setValue, afterChange]
+  );
 
   const [searchValue, setSearchValue] = useState('');
   const items = normalizeOptions(options, getFormData(), searchValue);
@@ -187,6 +200,7 @@ FormAutocomplete.defaultProps = {
 };
 
 FormAutocomplete.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   id: PropTypes.string,
@@ -212,6 +226,7 @@ export function FormGroupAutocomplete(props) {
 }
 
 FormGroupAutocomplete.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   help: PropTypes.node,

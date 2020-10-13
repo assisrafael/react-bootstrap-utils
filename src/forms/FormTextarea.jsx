@@ -5,8 +5,8 @@ import { useFormControl } from './helpers/useFormControl';
 import { booleanOrFunction } from './helpers/form-helpers';
 import { FormGroup } from './FormGroup';
 
-export function FormTextarea({ name, required: _required, disabled: _disabled, ..._attrs }) {
-  const { getValue, handleOnChange, register, getFormData } = useFormControl(name);
+export function FormTextarea({ name, required: _required, disabled: _disabled, afterChange, ..._attrs }) {
+  const { getValue, handleOnChangeFactory, register, getFormData } = useFormControl(name);
   const registerRef = useCallback(register, [register]);
   const disabled = booleanOrFunction(_disabled, getFormData());
   const required = booleanOrFunction(_required, getFormData());
@@ -22,7 +22,7 @@ export function FormTextarea({ name, required: _required, disabled: _disabled, .
     <textarea
       {...attrs}
       className="form-control"
-      onChange={handleOnChange}
+      onChange={handleOnChangeFactory(afterChange)}
       value={getValue()}
       ref={registerRef}
     ></textarea>
@@ -34,6 +34,7 @@ FormTextarea.defaultProps = {
 };
 
 FormTextarea.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -52,6 +53,7 @@ export function FormGroupTextarea(props) {
 }
 
 FormGroupTextarea.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   help: PropTypes.node,
   id: PropTypes.string,

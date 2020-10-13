@@ -6,8 +6,17 @@ import { booleanOrFunction } from './helpers/form-helpers';
 import { formatClasses } from '../utils/attributes';
 import { FormGroup } from './FormGroup';
 
-export function FormRadio({ id, name, required: _required, checkedValue, valueLabel, inline, disabled: _disabled }) {
-  const { getValue, handleOnChange, register, getFormData } = useFormControl(name);
+export function FormRadio({
+  id,
+  name,
+  required: _required,
+  checkedValue,
+  valueLabel,
+  inline,
+  disabled: _disabled,
+  afterChange,
+}) {
+  const { getValue, handleOnChangeFactory, register, getFormData } = useFormControl(name);
   const registerRef = useCallback(register, [register]);
   const value = getValue();
   const disabled = booleanOrFunction(_disabled, getFormData());
@@ -19,7 +28,7 @@ export function FormRadio({ id, name, required: _required, checkedValue, valueLa
         {...{ required, name, id, disabled }}
         type="radio"
         className="custom-control-input"
-        onChange={handleOnChange}
+        onChange={handleOnChangeFactory(afterChange)}
         checked={value === checkedValue}
         value={checkedValue}
         ref={registerRef}
@@ -36,6 +45,7 @@ FormRadio.defaultProps = {
 };
 
 FormRadio.propTypes = {
+  afterChange: PropTypes.func,
   checkedValue: PropTypes.any,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string.isRequired,
@@ -68,6 +78,7 @@ FormGroupRadio.defaultProps = {
 };
 
 FormGroupRadio.propTypes = {
+  afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   help: PropTypes.node,
   id: PropTypes.string,
