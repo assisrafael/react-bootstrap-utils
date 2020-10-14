@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isArray, isFunction } from 'js-var-type';
 import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
 import { normalizeColumns } from './table-helpers';
@@ -31,11 +32,13 @@ export function Table({
     dark && 'table-dark',
   ]);
 
+  const hasActions = isFunction(actions) || (isArray(actions) && actions.length > 0);
+
   return (
     <div className="table-responsive">
       <table className={tableClasses}>
         {caption && <caption>{caption}</caption>}
-        <TableHead {...{ actionLabel, columnHeaderFormat, hasActions: Boolean(actions) }} columns={normalizedColumns} />
+        <TableHead {...{ actionLabel, columnHeaderFormat, hasActions }} columns={normalizedColumns} />
         <TableBody {...{ docs, rowClass, actions, onRowClick }} columns={normalizedColumns} />
       </table>
     </div>

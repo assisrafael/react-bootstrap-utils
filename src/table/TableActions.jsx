@@ -11,6 +11,10 @@ export function TableActions({ doc, docIndex, actions }) {
 
   const normalizedActions = normalizeAction(actions, doc, docIndex);
 
+  if (normalizedActions.length === 0) {
+    return null;
+  }
+
   return (
     <td className="text-center">
       {normalizedActions.map((action, actionIndex) => (
