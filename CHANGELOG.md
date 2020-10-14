@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.4...v0.22.5) (2020-10-14)
+
+
+### Bug Fixes
+
+* **table:** only renders the action column when function or non empty array as actions prop ([790ed0a](https://github.com/assisrafael/react-bootstrap-utils/commit/790ed0a040f0583c5c0728e9392c4e77bca0dd1c))
+
 ### [0.22.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.3...v0.22.4) (2020-10-09)
 
 
