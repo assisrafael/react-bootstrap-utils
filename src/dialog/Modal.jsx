@@ -13,6 +13,7 @@ export function Modal({
   isOpen,
   keyboard,
   onClose,
+  onOpen,
   scrollable,
   size,
   staticBackdrop,
@@ -45,11 +46,12 @@ export function Modal({
 
   useEffect(() => {
     if (isOpen) {
+      onOpen();
       showModal(modalRef);
     } else {
       hideModal(modalRef);
     }
-  }, [isOpen]);
+  }, [isOpen, onOpen]);
 
   return (
     <div
@@ -94,6 +96,7 @@ export function Modal({
 Modal.defaultProps = {
   centered: true,
   keyboard: true,
+  onOpen: () => {},
   scrollable: false,
   size: '',
   staticBackdrop: false,
@@ -107,6 +110,7 @@ Modal.propTypes = {
   isOpen: PropTypes.bool,
   keyboard: PropTypes.bool,
   onClose: PropTypes.func,
+  onOpen: PropTypes.func,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
   staticBackdrop: PropTypes.bool,
