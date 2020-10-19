@@ -20,6 +20,7 @@ export function Dialog({ children, ...props }) {
 }
 
 Dialog.propTypes = {
+  afterOpen: PropTypes.func,
   children: PropTypes.node,
   body: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   centered: PropTypes.bool,
