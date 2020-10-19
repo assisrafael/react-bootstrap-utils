@@ -7,13 +7,13 @@ import { formatClasses } from '../utils/attributes';
 const ESCAPE_KEYCODE = 27;
 
 export function Modal({
+  afterOpen,
   body,
   centered,
   footer,
   isOpen,
   keyboard,
   onClose,
-  onOpen,
   scrollable,
   size,
   staticBackdrop,
@@ -46,12 +46,12 @@ export function Modal({
 
   useEffect(() => {
     if (isOpen) {
-      onOpen();
       showModal(modalRef);
+      afterOpen();
     } else {
       hideModal(modalRef);
     }
-  }, [isOpen, onOpen]);
+  }, [afterOpen, isOpen]);
 
   return (
     <div
@@ -94,9 +94,9 @@ export function Modal({
 }
 
 Modal.defaultProps = {
+  afterOpen: () => {},
   centered: true,
   keyboard: true,
-  onOpen: () => {},
   scrollable: false,
   size: '',
   staticBackdrop: false,
@@ -104,13 +104,13 @@ Modal.defaultProps = {
 };
 
 Modal.propTypes = {
+  afterOpen: PropTypes.func,
   body: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   centered: PropTypes.bool,
   footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   isOpen: PropTypes.bool,
   keyboard: PropTypes.bool,
   onClose: PropTypes.func,
-  onOpen: PropTypes.func,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
   staticBackdrop: PropTypes.bool,

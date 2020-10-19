@@ -20,12 +20,12 @@ export function Dialog({ children, ...props }) {
 }
 
 Dialog.propTypes = {
+  afterOpen: PropTypes.func,
   children: PropTypes.node,
   body: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   centered: PropTypes.bool,
   footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   keyboard: PropTypes.bool,
-  onOpen: PropTypes.func,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
   staticBackdrop: PropTypes.bool,
