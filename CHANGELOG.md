@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.5...v0.22.6) (2020-10-19)
+
+
+### Features
+
+* **dialog:** include afterOpen callback into Dialog ([#36](https://github.com/assisrafael/react-bootstrap-utils/issues/36)) ([5c896b7](https://github.com/assisrafael/react-bootstrap-utils/commit/5c896b791aa35a3e543c37c83197bfc3433fa254))
+
+### [0.22.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.4...v0.22.5) (2020-10-14)
+
+
+### Bug Fixes
+
+* **table:** only renders the action column when function or non empty array as actions prop ([790ed0a](https://github.com/assisrafael/react-bootstrap-utils/commit/790ed0a040f0583c5c0728e9392c4e77bca0dd1c))
+
 ### [0.22.4](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.3...v0.22.4) (2020-10-09)
 
 

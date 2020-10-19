@@ -143,6 +143,7 @@ export function TableExamples() {
             striped={false}
             bordered={true}
             rowClass={(doc) => (doc.b % 2 === 1 ? 'table-primary' : '')}
+            actions={[]}
           />
         </div>
 
