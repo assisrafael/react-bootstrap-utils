@@ -22,7 +22,10 @@ export function Form({
   const [isSubmiting, setIsSubmiting] = useState(false);
 
   function resetForm() {
-    formRef.current.classList.remove('was-validated');
+    if (formRef.current && formRef.current.classList) {
+      formRef.current.classList.remove('was-validated');
+    }
+
     formState.reset();
   }
 
