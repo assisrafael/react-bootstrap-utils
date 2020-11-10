@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.7](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.6...v0.22.7) (2020-10-30)
+
+
+### Bug Fixes
+
+* **treeview:** include parentNode on template function ([163543a](https://github.com/assisrafael/react-bootstrap-utils/commit/163543a4367e87fa070513e439ad2ede2b4c2298))
+
+### [0.22.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.5...v0.22.6) (2020-10-19)
+
+
+### Features
+
+* **dialog:** include afterOpen callback into Dialog ([#36](https://github.com/assisrafael/react-bootstrap-utils/issues/36)) ([5c896b7](https://github.com/assisrafael/react-bootstrap-utils/commit/5c896b791aa35a3e543c37c83197bfc3433fa254))
+
 ### [0.22.5](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.4...v0.22.5) (2020-10-14)
 
 
