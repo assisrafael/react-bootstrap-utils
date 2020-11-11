@@ -14,6 +14,7 @@ import { ListGroupExamples } from './ListGroupExamples';
 import { ToastsExamples } from './ToastsExamples';
 import { DropdownExamples } from './DropdownExamples';
 import { TreeViewExamples } from './TreeViewExamples';
+import { Form2Examples } from './Form2Examples';
 
 ReactDOM.render(
   <div className="mt-3">
@@ -21,7 +22,7 @@ ReactDOM.render(
       <StatefulTabs
         vertical={true}
         onlyRenderActiveTab={true}
-        initialTab={8}
+        initialTab={3}
         tabs={[
           {
             title: 'Dialog',
@@ -34,6 +35,10 @@ ReactDOM.render(
           {
             title: 'Forms',
             content: <FormExamples />,
+          },
+          {
+            title: 'Forms',
+            content: <Form2Examples />,
           },
           {
             title: 'List groups',

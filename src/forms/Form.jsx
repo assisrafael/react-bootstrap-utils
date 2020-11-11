@@ -82,7 +82,8 @@ Form.defaultProps = {
   customValidation: false,
   submitLabel: 'Submit',
   onChange: () => {},
-  transform: (data) => data,
+  transform: (data, _, update) => update(data),
+  transformSync: (data) => data,
 };
 
 Form.propTypes = {
