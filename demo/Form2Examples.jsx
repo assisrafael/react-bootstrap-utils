@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { Form2, FormInput2, FormSelect2, FormSwitch2 } from '../dist/main';
+import { Form2, FormInput2, FormSelect2, FormSwitch2, useFormControl2 } from '../dist/main';
 
 export function Form2Examples() {
   return (
@@ -31,8 +31,18 @@ export function Form2Examples() {
           <label htmlFor="">AttrD</label>
           <FormSwitch2 name="attrD" id="attrD" />
         </div>
+        <div className="form-group">
+          <label htmlFor="">Version</label>
+          <FormVersion />
+        </div>
         <button className="btn btn-success">Submit</button>
       </Form2>
     </div>
   );
+}
+
+function FormVersion() {
+  const { getValue } = useFormControl2('__v');
+
+  return <div>{getValue() || ''}</div>;
 }
