@@ -4,7 +4,7 @@ import { useArrayValueMap } from '../../utils/useValueMap';
 import { setValueByPath, deepClone, getValueByPath } from '../../utils/getters-setters';
 import { validateFormElement } from './form-helpers';
 
-function useFormState(initialState, { onChange, transform }) {
+function useFormState(initialState, { onChange, transform, transformSync }) {
   const [formState, setFormState] = useState(initialState);
   const [isDirty, setIsDirty] = useState(false);
   const onChangeRef = useRef(debounce(onChange, 1000));
@@ -12,7 +12,7 @@ function useFormState(initialState, { onChange, transform }) {
     debounce(
       (nextFormState, name) =>
         transform(nextFormState, name, (state) => {
-          setFormState(state);
+          setFormState(() => state);
         }),
       500
     )
@@ -20,9 +20,12 @@ function useFormState(initialState, { onChange, transform }) {
 
   useEffect(() => {
     if (isDirty) {
+      console.log('isDirty', isDirty);
+
       onChangeRef.current(formState);
+      setFormState(transformSync(formState));
     }
-  }, [formState, isDirty]);
+  }, [formState, isDirty, transformSync]);
 
   return {
     getState() {
@@ -33,9 +36,7 @@ function useFormState(initialState, { onChange, transform }) {
       setFormState((prevFormState) => {
         const nextFormState = nextState(prevFormState, name, value);
 
-        setTimeout(() => {
-          transformRef.current(nextFormState, name);
-        });
+        transformRef.current(nextFormState, name);
 
         return nextFormState;
       });
@@ -47,8 +48,8 @@ function useFormState(initialState, { onChange, transform }) {
   };
 }
 
-export function useForm(initialState, { validations, onChange, transform }) {
-  const { getState, updateState, resetState } = useFormState(initialState, { onChange, transform });
+export function useForm(initialState, { validations, onChange, transform, transformSync }) {
+  const { getState, updateState, resetState } = useFormState(initialState, { onChange, transform, transformSync });
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const { getAllKeys: getElementNames, get: getElementRefs, push: registerElementRef } = useArrayValueMap();
 

@@ -9,6 +9,7 @@ import {
   FormGroupRadio,
   FormGroupTextarea,
   FormGroupAutocomplete,
+  useFormControl,
   // eslint-disable-next-line import/no-unresolved
 } from '../dist/main';
 
@@ -35,7 +36,14 @@ export function FormExamples() {
           }, 1000);
         });
       }}
+      transformSync={(formData) => {
+        console.log('transformSync called');
+        formData.__vSync = formData.__vSync ? formData.__vSync + 1 : 1;
+
+        return formData;
+      }}
       transform={(formData, _, update) => {
+        console.log('transform called');
         formData.__v = formData.__v ? formData.__v + 1 : 1;
 
         update(formData);
@@ -317,6 +325,8 @@ export function FormExamples() {
         </div>
       </div>
 
+      <FormVersion />
+
       <FormGroupTextarea
         name="textareaField"
         label="Textarea field"
@@ -340,5 +350,27 @@ export function FormExamples() {
         </div>
       ))}
     </Form>
+  );
+}
+
+function FormVersion() {
+  const { getValue } = useFormControl('__v');
+  const { getValue: getValueSync } = useFormControl('__vSync');
+
+  return (
+    <div className="form-row">
+      <div className="col">
+        <div className="form-group">
+          <div>Version Sync</div>
+          <strong>{getValueSync() || '-'}</strong>
+        </div>
+      </div>
+      <div className="col">
+        <div className="form-group">
+          <div>Version</div>
+          <strong>{getValue() || '-'}</strong>
+        </div>
+      </div>
+    </div>
   );
 }
