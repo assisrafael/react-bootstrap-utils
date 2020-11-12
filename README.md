@@ -33,15 +33,15 @@ Docs and demo: https://assisrafael.github.io/react-bootstrap-utils/
 - [] Table with sticky columns
 - [] Table with sticky header
 
-## Instructions to run
+## How to to run
 
-Build the application
+Build the library
 
 ```bash
 npm run build
 ```
 
-After build, execute the command
+Starting demo app
 
 ```bash
 npm run start
