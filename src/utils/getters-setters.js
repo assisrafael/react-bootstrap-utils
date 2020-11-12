@@ -105,22 +105,18 @@ export function deepClone(item) {
 }
 
 export function flattenObject(data, prefix = '') {
-  if (isPrimitive(data)) {
+  if (isArray(data)) {
+    return data.reduce((result, v, index) => ({ ...result, ...flattenObject(v, `${prefix}[${index}]`) }), {});
+  }
+
+  if (isPrimitive(data) || !isPlainObject(data)) {
     if (prefix.length === 0) {
-      throw new Error('cannot flatten primitive types without a prefix');
+      throw new Error('cannot flatten type without a prefix');
     }
 
     return {
       [prefix]: data,
     };
-  }
-
-  if (isArray(data)) {
-    return data.reduce((result, v, index) => ({ ...result, ...flattenObject(v, `${prefix}[${index}]`) }), {});
-  }
-
-  if (!isPlainObject(data)) {
-    throw new Error('unknow type');
   }
 
   return Object.entries(data).reduce((result, [key, value]) => {
@@ -142,5 +138,5 @@ export function flattenObject(data, prefix = '') {
 }
 
 function isPrimitive(v) {
-  return isString(v) || isNumber(v) || isBoolean(v);
+  return isString(v) || isNumber(v) || isBoolean(v) || isNull(v) || isUndefined(v);
 }

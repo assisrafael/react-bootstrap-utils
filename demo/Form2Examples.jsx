@@ -18,6 +18,8 @@ export function Form2Examples() {
             w: {
               z: formData.__v ? formData.__v * 2 : 1,
             },
+            t: formData.__v % 2 ? null : undefined,
+            u: new Date(),
           },
           arr: formData.arr.map((v) => parseFloat(v) + 1),
           arrObj: formData.arrObj.map((v) => {
