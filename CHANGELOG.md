@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.10](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.9...v0.22.10) (2020-11-12)
+
+
+### Bug Fixes
+
+* **forms2:** flatten form data before updating form controls ([aa8ba37](https://github.com/assisrafael/react-bootstrap-utils/commit/aa8ba37f751d22344584ddff3ee654da184bcff8))
+
 ### [0.22.9](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.8...v0.22.9) (2020-11-12)
 
 
