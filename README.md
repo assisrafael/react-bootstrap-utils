@@ -35,7 +35,7 @@ Docs and demo: https://assisrafael.github.io/react-bootstrap-utils/
 
 ## How to to run
 
-Build the library
+Building the library
 
 ```bash
 npm run build
