@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.9](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.8...v0.22.9) (2020-11-12)
+
+
+### Bug Fixes
+
+* **forms:** export useFormControl2 ([e9db767](https://github.com/assisrafael/react-bootstrap-utils/commit/e9db76798dc434b3c2499ba932ec07c87ff993ce))
+
 ### [0.22.8](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.7...v0.22.8) (2020-11-12)
 
 
