@@ -14,7 +14,7 @@
     "ci": "npm run prettier -- --list-different && npm run eslint",
     "lint": "npm run eslint -- --fix",
     "format": "npm run prettier -- --write",
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "repository": {
     "type": "git",

@@ -29,9 +29,9 @@ test('setValueByPath should set values inside complex objects', () => {
   expect(setValueByPath({}, 'a', 4)).toStrictEqual({ a: 4 });
   expect(setValueByPath({}, 'a.b', 5)).toStrictEqual({ a: { b: 5 } });
   expect(setValueByPath({}, 'a[0]', 6)).toStrictEqual({ a: [6] });
-  expect(setValueByPath({ a: {} }, 'a[0]', 6)).toStrictEqual({ a: { '0': 6 } });
+  expect(setValueByPath({ a: {} }, 'a[0]', 6)).toStrictEqual({ a: { 0: 6 } });
   expect(setValueByPath({}, 'a[0].b', 6)).toStrictEqual({ a: [{ b: 6 }] });
-  expect(setValueByPath({}, '[1]', 'abc')).toStrictEqual({ '1': 'abc' });
+  expect(setValueByPath({}, '[1]', 'abc')).toStrictEqual({ 1: 'abc' });
   // eslint-disable-next-line no-sparse-arrays
   expect(setValueByPath(null, '[1]', 'abc')).toStrictEqual([, 'abc']);
 });
@@ -44,7 +44,7 @@ test('getValueByPath should get path value of complex objects', () => {
   expect(getValueByPath([{ a: null }], '[0].a.c')).toBe(undefined);
   expect(getValueByPath({}, 'a.b')).toBe(undefined);
   expect(getValueByPath({ a: [6] }, 'a[0]')).toBe(6);
-  expect(getValueByPath({ a: { '0': 6 } }, 'a[0]')).toBe(6);
+  expect(getValueByPath({ a: { 0: 6 } }, 'a[0]')).toBe(6);
   expect(getValueByPath({ a: [2, { b: [3, 4, 5, { c: { d: 'efg' } }] }] }, 'a[1].b.3.c')).toStrictEqual({ d: 'efg' });
 });
 
@@ -67,5 +67,5 @@ test('deepClone should not result in a shallow copy', () => {
   expect(dest.anotherObj.a).toBe(33);
   source.arr.push(5);
   expect(source.arr[4]).toBe(5);
-  expect(dest.arr[4]).toBe(undefined);
+  expect(dest.arr[5]).toBe(undefined);
 });
