@@ -6,8 +6,6 @@ import { useFormHelper, FormContext } from './helpers/useFormHelper';
 export function Form2({ children, initialValues, onSubmit, onChange, transform, debounceWait }) {
   const formHelper = useFormHelper(initialValues, { debounceWait, transform, onChange });
 
-  console.log('rendering form');
-
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();

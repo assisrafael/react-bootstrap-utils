@@ -20,7 +20,6 @@ export function FormSelect2({
   afterChange,
   ..._attrs
 }) {
-  console.log('rendering select', name);
   const { getFormData, getValue, handleOnChangeFactory } = useFormControl2(name);
   const value = getValue();
 

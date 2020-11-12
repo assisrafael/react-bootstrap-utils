@@ -5,7 +5,6 @@ import { useFormControl2 } from './helpers/useFormControl';
 import { booleanOrFunction } from '../forms/helpers/form-helpers';
 
 export function FormInput2({ type, name, required: _required, disabled: _disabled, afterChange, ..._attrs }) {
-  console.log('rendering input', name);
   const { getValue, handleOnChangeFactory, getFormData } = useFormControl2(name);
 
   const disabled = booleanOrFunction(_disabled, getFormData());

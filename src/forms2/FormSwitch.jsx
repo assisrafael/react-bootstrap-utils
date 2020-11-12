@@ -13,7 +13,6 @@ export function FormSwitch2({
   disabled: _disabled,
   afterChange,
 }) {
-  console.log('rendering switch', name);
   const { getValue, handleOnChangeFactory, getFormData } = useFormControl2(name, 'boolean');
 
   const value = getValue();

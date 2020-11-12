@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { Form2, FormInput2, FormSelect2, FormSwitch2 } from '../dist/main';
 
@@ -9,14 +10,10 @@ export function Form2Examples() {
         initialValues={{ attrA: 'ABC' }}
         onSubmit={console.info.bind(console, 'onSubmit')}
         onChange={console.info.bind(console, 'onChange')}
-        transform={(formData) =>
-          // console.log('transform called');
-
-          ({
-            __v: formData.__v ? formData.__v + 1 : 1,
-            attrB: `${formData.attrB || ''}A`,
-          })
-        }
+        transform={(formData) => ({
+          __v: formData.__v ? formData.__v + 1 : 1,
+          attrB: `${formData.attrB || ''}A`,
+        })}
       >
         <div className="form-group">
           <label htmlFor="">AttrA</label>
