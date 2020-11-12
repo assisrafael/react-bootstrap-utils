@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.11](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.10...v0.22.11) (2020-11-12)
+
+
+### Bug Fixes
+
+* improve primitive types handling on flattenObject ([f0842dd](https://github.com/assisrafael/react-bootstrap-utils/commit/f0842dd7b7ef2ad4ed0bb891eee075fb7a253d8d))
+
 ### [0.22.10](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.9...v0.22.10) (2020-11-12)
 
 
