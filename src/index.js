@@ -1,5 +1,6 @@
 export * from './dialog';
 export * from './forms';
+export * from './forms2';
 export * from './list-group';
 export * from './mixed';
 export * from './table';
