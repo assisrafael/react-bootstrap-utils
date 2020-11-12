@@ -37,7 +37,7 @@ ReactDOM.render(
             content: <FormExamples />,
           },
           {
-            title: 'Forms',
+            title: 'Forms2',
             content: <Form2Examples />,
           },
           {
