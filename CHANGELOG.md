@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.8](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.7...v0.22.8) (2020-11-12)
+
+
+### Features
+
+* **forms2:** experimental new approach to form state ([#38](https://github.com/assisrafael/react-bootstrap-utils/issues/38)) ([ff3b94c](https://github.com/assisrafael/react-bootstrap-utils/commit/ff3b94c535100beba3903ea05db109c34f9e0dcb))
+
+
+### Bug Fixes
+
+* **form:** check form reference before removing "was-validated" className ([#37](https://github.com/assisrafael/react-bootstrap-utils/issues/37)) ([60d4dcd](https://github.com/assisrafael/react-bootstrap-utils/commit/60d4dcd63f7971483a8525a246218099190badd3))
+
 ### [0.22.7](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.6...v0.22.7) (2020-10-30)
 
 
