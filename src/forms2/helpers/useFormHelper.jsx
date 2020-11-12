@@ -1,12 +1,11 @@
 import React, { useRef } from 'react';
 import { debounce } from 'lodash-es';
-import { getValueByPath, setValueByPath } from '../../utils/getters-setters';
+import { flattenObject, getValueByPath, setValueByPath } from '../../utils/getters-setters';
 
 export const FormContext = React.createContext(null);
 
 export class FormHelper {
   constructor(initialValues, debounceWait) {
-    // console.log('new form Helper');
     this.initialValues = initialValues;
     this.formData = { ...initialValues };
     this.formControls = new Map();
@@ -14,7 +13,6 @@ export class FormHelper {
   }
 
   register(name, formControl) {
-    // console.log('registering', name, formControl);
     const value = getValueByPath(this.formData, name);
 
     if (value) {
@@ -25,13 +23,14 @@ export class FormHelper {
   }
 
   notify(name, value, hooks) {
-    // console.log('notify :>> ', name, value);
     setValueByPath(this.formData, name, value);
     this.callHooks(hooks);
   }
 
   updateFormData(data) {
-    Object.entries(data).forEach(([name, value]) => {
+    const flattenedData = flattenObject(data);
+
+    Object.entries(flattenedData).forEach(([name, value]) => {
       setValueByPath(this.formData, name, value);
 
       const formControl = this.formControls.get(name);
@@ -55,7 +54,6 @@ export function useFormHelper(initialValues, { debounceWait, transform, onChange
     },
     notify(name, value) {
       formHelper.current.notify(name, value, (formData) => {
-        // console.log('debounced hooks');
         if (transform) {
           const transformedData = transform(formData, name);
 
