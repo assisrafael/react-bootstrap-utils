@@ -3,6 +3,7 @@
   "version": "0.22.11",
   "description": "React bootstrap library",
   "main": "dist/main.js",
+  "type": "module",
   "scripts": {
     "build": "rollup --config",
     "start": "webpack-dev-server --open --mode development",
