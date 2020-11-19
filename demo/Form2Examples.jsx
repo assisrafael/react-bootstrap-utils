@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form2, FormInput2, FormSelect2, FormSwitch2, useFormControl2 } from '../dist/main';
 
 export function Form2Examples() {
@@ -10,24 +10,28 @@ export function Form2Examples() {
         initialValues={{ attrA: 'ABC', Obj: { x: 'X' }, arr: [1, 2, 3], arrObj: [{ o: 1 }, { o: 2 }, { o: 3 }] }}
         onSubmit={console.info.bind(console, 'onSubmit')}
         onChange={console.info.bind(console, 'onChange')}
-        transform={(formData) => ({
-          __v: formData.__v ? formData.__v + 1 : 1,
-          attrB: `${formData.attrB || ''}A`,
-          Obj: {
-            y: `${formData.Obj.y || ''}X`,
-            w: {
-              z: formData.__v ? formData.__v * 2 : 1,
-            },
-            t: formData.__v % 2 ? null : undefined,
-            u: new Date(),
-          },
-          arr: formData.arr.map((v) => parseFloat(v) + 1),
-          arrObj: formData.arrObj.map((v) => {
-            v.o = parseFloat(v.o) ** 2;
+        transform={(formData) => {
+          console.log('transform', formData);
 
-            return v;
-          }),
-        })}
+          return {
+            __v: formData.__v ? formData.__v + 1 : 1,
+            attrB: `${formData.attrB || ''}A`,
+            Obj: {
+              y: `${formData.Obj.y || ''}X`,
+              w: {
+                z: formData.__v ? formData.__v * 2 : 1,
+              },
+              t: formData.__v % 2 ? null : undefined,
+              u: new Date(),
+            },
+            arr: formData.arr.map((v) => parseFloat(v) + 1),
+            arrObj: formData.arrObj.map((v) => {
+              v.o = parseFloat(v.o) ** 2;
+
+              return v;
+            }),
+          };
+        }}
       >
         <div className="form-group">
           <label htmlFor="">Obj</label>
@@ -81,7 +85,15 @@ function FormVersion() {
 }
 
 function FormArray() {
-  const { getValue } = useFormControl2('arr');
+  const { getValue, setValue } = useFormControl2('arr');
+
+  useEffect(() => {
+    setValue((prev) => {
+      console.log('useEffect.setValue [arr] :>> ', prev, getValue());
+
+      return prev;
+    });
+  }, [getValue, setValue]);
 
   return (getValue() || []).map((v, index) => <FormInput2 key={index} name={`arr[${index}]`} />);
 }

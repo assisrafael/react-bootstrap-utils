@@ -9,8 +9,15 @@ export function useFormControl2(name, type) {
 
   const setValue = useCallback(
     (newValue) => {
-      _setValue(newValue);
-      formHelper.notify(name, newValue);
+      const newValueFn = isFunction(newValue) ? newValue : () => newValue;
+
+      _setValue((prevValue) => {
+        const nextValue = newValueFn(prevValue);
+
+        formHelper.notify(name, nextValue);
+
+        return nextValue;
+      });
     },
     [formHelper, name]
   );
