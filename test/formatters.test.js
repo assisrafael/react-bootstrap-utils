@@ -42,9 +42,9 @@ test('toDatetimeLocal should format date object into YYYY-MM-DDThh:mm', () =>{
         hour.toString().padStart(2, '0') + ':00');
 
     // invalid parameter
-    expect(() => toDatetimeLocal(2020)).toThrow(Error)
-    expect(() => toDatetimeLocal('2020')).toThrow(Error)
-    expect(() => toDatetimeLocal('19/11/2020')).toThrow(Error)
-    expect(() => toDatetimeLocal(undefined)).toThrow(Error)
-    expect(() => toDatetimeLocal(-1)).toThrow(Error)
+    expect(() => toDatetimeLocal(2020)).toThrow(Error);
+    expect(() => toDatetimeLocal('2020')).toThrow(Error);
+    expect(() => toDatetimeLocal('19/11/2020')).toThrow(Error);
+    expect(() => toDatetimeLocal(undefined)).toThrow(Error);
+    expect(() => toDatetimeLocal(-1)).toThrow(Error);
 })
