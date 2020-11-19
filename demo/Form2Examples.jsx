@@ -85,15 +85,15 @@ function FormVersion() {
 }
 
 function FormArray() {
-  const { getValue, setValue } = useFormControl2('arr');
+  const { getValue, setValue, isRegistered } = useFormControl2('arr');
 
   useEffect(() => {
-    setValue((prev) => {
-      console.log('useEffect.setValue [arr] :>> ', prev, getValue());
-
-      return prev;
-    });
-  }, [getValue, setValue]);
+    if (isRegistered()) {
+      console.log('initialized value [arr] :>> ', getValue());
+    } else {
+      console.log('uninitialized value [arr] :>> ', getValue());
+    }
+  }, [getValue, setValue, isRegistered]);
 
   return (getValue() || []).map((v, index) => <FormInput2 key={index} name={`arr[${index}]`} />);
 }

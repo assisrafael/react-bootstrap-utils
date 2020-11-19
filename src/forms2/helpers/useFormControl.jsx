@@ -6,6 +6,7 @@ import { FormContext } from './useFormHelper';
 export function useFormControl2(name, type) {
   const formHelper = useContext(FormContext);
   const [value, _setValue] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const setValue = useCallback(
     (newValue) => {
@@ -39,6 +40,7 @@ export function useFormControl2(name, type) {
     formHelper.register(name, {
       setValue: _setValue,
     });
+    setIsRegistered(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -47,6 +49,9 @@ export function useFormControl2(name, type) {
       return value;
     },
     setValue,
+    isRegistered() {
+      return isRegistered;
+    },
     handleOnChangeFactory: (afterChange, type) => (e) => {
       const newValue = handleOnChange(e, type);
 
