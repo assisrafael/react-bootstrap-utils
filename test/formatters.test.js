@@ -23,9 +23,23 @@ test('toDatetimeLocal should format date object into YYYY-MM-DDThh:mm', () =>{
     }
     
     // common strings
-    let dateString = '2020-11-19T16:35:00.000Z'
+    let day = 15;
+    let hour = 12;
+    let dateString = '2020-06-'+ day.toString() + 'T' +
+         hour.toString().padStart(2, '0') + ':00:00.000Z';
+    var offset = new Date().getTimezoneOffset() / 60;
+    hour += -offset;
+    if(hour >= 24){
+        day++;
+        hour -= 24;
+    }
+    else if(hour < 0){
+        day--;
+        hour += 24;
+    }
     let dateFormat = toDatetimeLocal(dateString);
-    expect(dateFormat).toBe('2020-11-19T13:35'); // GMT -03:00 because of the timezone
+    expect(dateFormat).toBe('2020-06-'+ day.toString() + 'T' + 
+        hour.toString().padStart(2, '0') + ':00');
 
     // invalid parameter
     expect(() => toDatetimeLocal(2020)).toThrow(Error)
