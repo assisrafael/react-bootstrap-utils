@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.12](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.11...v0.22.12) (2020-11-19)
+
+
+### Features
+
+* **forms:** include isRegistered flag on useFormControl2 ([da420f1](https://github.com/assisrafael/react-bootstrap-utils/commit/da420f1a80b6bca2e313fa39d327a4cb0828eabf))
+
+
+### Bug Fixes
+
+* **forms2:** allow update functions on useFormControl2 setValue ([ce5ea8e](https://github.com/assisrafael/react-bootstrap-utils/commit/ce5ea8e1f89dd250522d85a4f2d27ce3c65df1e7))
+
 ### [0.22.11](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.10...v0.22.11) (2020-11-12)
 
 
