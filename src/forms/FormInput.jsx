@@ -25,6 +25,10 @@ export function FormInput({ type, name, required: _required, disabled: _disabled
     attrs.value = getValue();
   }
 
+  if (type === 'number' && !_attrs.step) {
+    attrs.step = 'any';
+  }
+
   return <input {...attrs} className="form-control" onChange={handleOnChangeFactory(afterChange)} ref={registerRef} />;
 }
 
