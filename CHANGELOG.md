@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.23.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.13...v0.23.0) (2020-11-24)
+
+
+### Features
+
+* **forms2:** include form data observer custom hook ([f6f25ff](https://github.com/assisrafael/react-bootstrap-utils/commit/f6f25ff7df64769123c0db03768f281272d54998))
+
 ### [0.22.13](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.12...v0.22.13) (2020-11-24)
 
 
