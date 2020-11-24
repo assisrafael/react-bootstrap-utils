@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.13](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.12...v0.22.13) (2020-11-24)
+
+
+### Bug Fixes
+
+* handle 0 as a valid initial value ([a731477](https://github.com/assisrafael/react-bootstrap-utils/commit/a731477cef6b7df2ce3808f93d244b783baac888))
+
 ### [0.22.12](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.11...v0.22.12) (2020-11-19)
 
 
