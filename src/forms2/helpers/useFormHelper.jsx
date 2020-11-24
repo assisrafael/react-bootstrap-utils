@@ -11,6 +11,8 @@ export class FormHelper {
     this.formData = { ...initialValues };
     this.formControls = new Map();
     this.callHooks = debounce((fn) => fn(this.formData), debounceWait);
+    this.listeners = [];
+    this.nextListenerId = 0;
   }
 
   register(name, formControl) {
@@ -25,7 +27,18 @@ export class FormHelper {
 
   notify(name, value, hooks) {
     setValueByPath(this.formData, name, value);
-    this.callHooks(hooks);
+    this.callHooks((formData) => {
+      hooks(formData);
+      this.notifyListeners(formData);
+    });
+  }
+
+  notifyListeners(formData) {
+    for (const listener of this.listeners) {
+      setTimeout(() => {
+        listener.observerFn(formData);
+      }, 0);
+    }
   }
 
   updateFormData(data) {
@@ -40,6 +53,25 @@ export class FormHelper {
         formControl.setValue(value);
       }
     });
+  }
+
+  unsubscribe(listenerId) {
+    this.listeners = this.listeners.filter(({ id }) => id !== listenerId);
+  }
+
+  subscribe(observerFn) {
+    const listenerId = this.nextListenerId;
+
+    this.nextListenerId += 1;
+
+    this.listeners.push({
+      id: listenerId,
+      observerFn,
+    });
+
+    return () => {
+      this.unsubscribe(listenerId);
+    };
   }
 }
 
@@ -66,6 +98,9 @@ export function useFormHelper(initialValues, { debounceWait, transform, onChange
     },
     register(name, formControl) {
       formHelper.current.register(name, formControl);
+    },
+    subscribe(observerFn) {
+      return formHelper.current.subscribe(observerFn);
     },
   };
 }

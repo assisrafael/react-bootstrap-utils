@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import React, { useEffect } from 'react';
-import { Form2, FormInput2, FormSelect2, FormSwitch2, useFormControl2 } from '../dist/main';
+import React, { useEffect, useState } from 'react';
+import { Form2, FormInput2, FormSelect2, FormSwitch2, useFormControl2, useFormEffect } from '../dist/main';
 
 export function Form2Examples() {
   return (
@@ -75,6 +75,11 @@ export function Form2Examples() {
           <label htmlFor="">Version</label>
           <FormVersion />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="">Observer</label>
+          <FormObserver />
+        </div>
         <button className="btn btn-success">Submit</button>
       </Form2>
     </div>
@@ -105,4 +110,15 @@ function FormArrayOfObjects() {
   const { getValue } = useFormControl2('arrObj');
 
   return (getValue() || []).map((v, index) => <FormInput2 key={index} name={`arrObj[${index}].o`} />);
+}
+
+function FormObserver() {
+  const [state, setState] = useState(0);
+
+  useFormEffect((formData) => {
+    console.log('FormObserver.formData :>> ', formData);
+    setState((p) => p + 1);
+  });
+
+  return <div>{state}</div>;
 }
