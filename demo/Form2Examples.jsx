@@ -115,8 +115,8 @@ function FormArrayOfObjects() {
 function FormObserver() {
   const [state, setState] = useState(0);
 
-  useFormEffect((formData) => {
-    console.log('FormObserver.formData :>> ', formData);
+  useFormEffect('Obj', (data) => {
+    console.log('FormObserver :>> ', data);
     setState((p) => p + 1);
   });
 
