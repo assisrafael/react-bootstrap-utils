@@ -1,4 +1,4 @@
-import { isFunction } from 'js-var-type';
+import { isDefined, isFunction } from 'js-var-type';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { decode, getTargetValue } from '../../forms/helpers/form-helpers';
 import { FormContext } from './useFormHelper';
@@ -17,7 +17,7 @@ export function useFormControl2(name, type) {
 
         formHelper.notify(name, nextValue);
 
-        return nextValue;
+        return isDefined(nextValue) ? nextValue : '';
       });
     },
     [formHelper, name]

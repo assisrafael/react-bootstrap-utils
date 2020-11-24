@@ -7,9 +7,9 @@ export function Form2Examples() {
     <div>
       Alternative Form implementation
       <Form2
-        initialValues={{ attrA: 'ABC', Obj: { x: 'X' }, arr: [1, 2, 3], arrObj: [{ o: 1 }, { o: 2 }, { o: 3 }] }}
-        onSubmit={console.info.bind(console, 'onSubmit')}
-        onChange={console.info.bind(console, 'onChange')}
+        initialValues={{ attrA: 'ABC', Obj: { x: 'X', z: 0 }, arr: [1, 2, 3], arrObj: [{ o: 1 }, { o: 2 }, { o: 3 }] }}
+        onSubmit={(data) => console.log('onSubmit', data)}
+        onChange={(data) => console.log('onChange', data)}
         transform={(formData) => {
           console.log('transform', formData);
 
@@ -41,6 +41,9 @@ export function Form2Examples() {
             </div>
             <div className="col">
               <FormInput2 name="Obj.y" />
+            </div>
+            <div className="col">
+              <FormInput2 name="Obj.z" type="number" step="0.1" />
             </div>
           </div>
         </div>

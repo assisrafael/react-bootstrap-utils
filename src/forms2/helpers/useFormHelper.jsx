@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { debounce } from 'lodash-es';
+import { isDefined } from 'js-var-type';
 import { flattenObject, getValueByPath, setValueByPath } from '../../utils/getters-setters';
 
 export const FormContext = React.createContext(null);
@@ -15,7 +16,7 @@ export class FormHelper {
   register(name, formControl) {
     const value = getValueByPath(this.formData, name);
 
-    if (value) {
+    if (isDefined(value)) {
       formControl.setValue(value);
     }
 
