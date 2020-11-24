@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.23.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.23.0...v0.23.1) (2020-11-24)
+
+
+### Features
+
+* **forms2:** useFormEffect allows a "name" argument for watching data changes ([e94f961](https://github.com/assisrafael/react-bootstrap-utils/commit/e94f9613ef90686ed33e9313f56f0e7ae8cafb0a))
+
 ## [0.23.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.13...v0.23.0) (2020-11-24)
 
 
