@@ -176,6 +176,15 @@ export function FormExamples() {
             required={() => false}
           />
         </div>
+        <div className="col">
+          <FormGroupAutocomplete
+            name="autocompleteField4"
+            label="Autocomplete that allows custom user input"
+            options={['1234', '2345', '3456']}
+            placeholder="Type some numbers"
+            allowCustomInput={true}
+          />
+        </div>
       </div>
 
       <div className="row">

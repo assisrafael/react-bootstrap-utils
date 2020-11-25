@@ -21,6 +21,7 @@ export function FormAutocomplete({
   filter,
   disabled: _disabled,
   afterChange,
+  allowCustomInput,
 }) {
   const { getValue, setValue: _setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(
     name
@@ -98,6 +99,8 @@ export function FormAutocomplete({
       setValue('');
       setSelectedItem(null);
       updateSearchInputValidation();
+    } else if (isEmptyLike(selectedItem) && !isEmptyLike(searchValue) && allowCustomInput) {
+      onSelectItem({ value: searchValue, label: searchValue });
     }
 
     if (ignoreBlur) {
@@ -106,7 +109,7 @@ export function FormAutocomplete({
       close();
       setFocus(false);
     }
-  }, [close, ignoreBlur, searchValue, setValue, updateSearchInputValidation, value]);
+  }, [close, ignoreBlur, searchValue, setValue, updateSearchInputValidation, value, onSelectItem]);
 
   const enableSearchInput = useCallback(() => {
     if (disabled) {
