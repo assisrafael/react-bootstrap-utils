@@ -109,7 +109,7 @@ export function FormAutocomplete({
       close();
       setFocus(false);
     }
-  }, [close, ignoreBlur, searchValue, setValue, updateSearchInputValidation, value, onSelectItem]);
+  }, [close, ignoreBlur, searchValue, setValue, updateSearchInputValidation, value, onSelectItem, allowCustomInput]);
 
   const enableSearchInput = useCallback(() => {
     if (disabled) {
