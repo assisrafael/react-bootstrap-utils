@@ -204,6 +204,7 @@ FormAutocomplete.defaultProps = {
 
 FormAutocomplete.propTypes = {
   afterChange: PropTypes.func,
+  allowCustomInput: PropTypes.bool,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   id: PropTypes.string,
@@ -230,6 +231,7 @@ export function FormGroupAutocomplete(props) {
 
 FormGroupAutocomplete.propTypes = {
   afterChange: PropTypes.func,
+  allowCustomInput: PropTypes.bool,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   help: PropTypes.node,
