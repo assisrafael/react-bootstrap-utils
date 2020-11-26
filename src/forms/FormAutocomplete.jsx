@@ -21,7 +21,7 @@ export function FormAutocomplete({
   filter,
   disabled: _disabled,
   afterChange,
-  allowCustomInput,
+  allowUnlistedValue,
 }) {
   const { getValue, setValue: _setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(
     name
@@ -99,7 +99,7 @@ export function FormAutocomplete({
       setValue('');
       setSelectedItem(null);
       updateSearchInputValidation();
-    } else if (isEmptyLike(selectedItem) && !isEmptyLike(searchValue) && allowCustomInput) {
+    } else if (isEmptyLike(selectedItem) && !isEmptyLike(searchValue) && allowUnlistedValue) {
       onSelectItem({ value: searchValue, label: searchValue });
     }
 
@@ -109,7 +109,17 @@ export function FormAutocomplete({
       close();
       setFocus(false);
     }
-  }, [close, ignoreBlur, searchValue, setValue, updateSearchInputValidation, value, onSelectItem, allowCustomInput]);
+  }, [
+    close,
+    ignoreBlur,
+    searchValue,
+    setValue,
+    updateSearchInputValidation,
+    value,
+    onSelectItem,
+    allowUnlistedValue,
+    selectedItem,
+  ]);
 
   const enableSearchInput = useCallback(() => {
     if (disabled) {
@@ -204,7 +214,7 @@ FormAutocomplete.defaultProps = {
 
 FormAutocomplete.propTypes = {
   afterChange: PropTypes.func,
-  allowCustomInput: PropTypes.bool,
+  allowUnlistedValue: PropTypes.bool,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   id: PropTypes.string,
@@ -231,7 +241,7 @@ export function FormGroupAutocomplete(props) {
 
 FormGroupAutocomplete.propTypes = {
   afterChange: PropTypes.func,
-  allowCustomInput: PropTypes.bool,
+  allowUnlistedValue: PropTypes.bool,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   help: PropTypes.node,

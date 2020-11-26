@@ -182,7 +182,7 @@ export function FormExamples() {
             label="Autocomplete that allows custom user input"
             options={['1234', '2345', '3456']}
             placeholder="Type some numbers"
-            allowCustomInput={true}
+            allowUnlistedValue={true}
           />
         </div>
       </div>
