@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.23.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.23.1...v0.23.2) (2020-11-30)
+
+
+### Features
+
+* **autocomplete:** new parameter to allow custom user input ([#44](https://github.com/assisrafael/react-bootstrap-utils/issues/44)) ([9f48d93](https://github.com/assisrafael/react-bootstrap-utils/commit/9f48d93a19da66dbe83fd63ba5b53489c803791c))
+
 ### [0.23.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.23.0...v0.23.1) (2020-11-24)
 
 
