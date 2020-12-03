@@ -1,14 +1,4 @@
-import {
-  isUndefined,
-  isNull,
-  isObject,
-  isArray,
-  isFunction,
-  isString,
-  isNumber,
-  isBoolean,
-  isPlainObject,
-} from 'js-var-type';
+import { isObject, isArray, isFunction, isPrimitive, isPlainObject, isNullLike } from 'js-var-type';
 
 export function splitPath(path) {
   return path
@@ -29,7 +19,7 @@ export function getValueByPath(obj, objPath) {
   const paths = splitPath(objPath);
 
   return paths.reduce((cursor, { path }) => {
-    if (isUndefined(cursor) || isNull(cursor)) {
+    if (isNullLike(cursor)) {
       return;
     }
 
@@ -135,8 +125,4 @@ export function flattenObject(data, prefix = '') {
       ...flattenedValue,
     };
   }, {});
-}
-
-function isPrimitive(v) {
-  return isString(v) || isNumber(v) || isBoolean(v) || isNull(v) || isUndefined(v);
 }
