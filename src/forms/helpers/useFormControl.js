@@ -1,5 +1,6 @@
 import { useContext, useCallback } from 'react';
 import { isFunction } from 'js-var-type';
+
 import { FormContext, getTargetValue, decode, encode } from './form-helpers';
 
 export function useFormControl(name, type) {

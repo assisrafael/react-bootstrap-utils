@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+
 import { formatClasses } from '../utils/attributes';
+
 import { ToastsContext } from './toasts-helpers';
 
 export function Toast({ id, type, message, closeControl, position, noStyle }) {

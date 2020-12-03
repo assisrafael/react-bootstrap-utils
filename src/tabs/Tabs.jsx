@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { formatClasses } from '../utils/attributes';
+
 import { TabHeader } from './TabHeader';
 import { TabContent } from './TabContent';
-import { formatClasses } from '../utils/attributes';
 
 export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered, onSelect }) {
   if (activeTab >= tabs.length) {

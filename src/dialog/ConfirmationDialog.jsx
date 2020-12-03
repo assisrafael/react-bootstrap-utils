@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dialog } from './Dialog';
+
 import { awaitForAsyncTask, safeClick } from '../utils/event-handlers';
 import { formatClasses } from '../utils/attributes';
+
+import { Dialog } from './Dialog';
 
 export function ConfirmationDialog({
   title,

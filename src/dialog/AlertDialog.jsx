@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dialog } from './Dialog';
+
 import { awaitForAsyncTask } from '../utils/event-handlers';
+
+import { Dialog } from './Dialog';
 
 export function AlertDialog({ title, message, children, onClose, closeLabel }) {
   return (

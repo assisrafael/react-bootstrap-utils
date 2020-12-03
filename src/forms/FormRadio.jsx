@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
+import { formatClasses } from '../utils/attributes';
+
 import { useFormControl } from './helpers/useFormControl';
 import { booleanOrFunction } from './helpers/form-helpers';
-import { formatClasses } from '../utils/attributes';
 import { FormGroup } from './FormGroup';
 
 export function FormRadio({

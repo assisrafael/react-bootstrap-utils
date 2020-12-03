@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useFormControl2 } from './helpers/useFormControl';
 import { booleanOrFunction } from '../forms/helpers/form-helpers';
+
+import { useFormControl2 } from './helpers/useFormControl';
 
 export function FormSwitch2({
   id,

@@ -2,10 +2,11 @@ import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types';
 import { isEmptyLike, isFunction } from 'js-var-type';
 
-import { handleInputChange, normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
 import { formatClasses } from '../utils/attributes';
+
+import { handleInputChange, normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
 import { useFormControl } from './helpers/useFormControl';
 import { FormGroup } from './FormGroup';
 

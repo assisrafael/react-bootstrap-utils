@@ -1,6 +1,8 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { isNumber } from 'js-var-type';
+
 import { useArrayValueMap } from '../utils/useValueMap';
+
 import { TOASTS_VALID_TYPES, TOASTS_VALID_POSITIONS } from './toasts-helpers';
 
 export function useToastState({ unique }) {

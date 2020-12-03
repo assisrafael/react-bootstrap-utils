@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { safeClick } from '../utils/event-handlers';
 import { formatClasses } from '../utils/attributes';
 

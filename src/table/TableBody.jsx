@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getColumnClass } from './table-helpers';
+
 import { safeClick } from '../utils/event-handlers';
 import { getValueByPath } from '../utils/getters-setters';
+
+import { getColumnClass } from './table-helpers';
 import { TableActions } from './TableActions';
 
 export function TableBody({ columns, docs, rowClass, actions, onRowClick }) {
