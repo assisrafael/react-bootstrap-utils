@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isArray, isFunction } from 'js-var-type';
+
+import { formatClasses } from '../utils/attributes';
+
 import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
 import { normalizeColumns } from './table-helpers';
-import { formatClasses } from '../utils/attributes';
 
 export function Table({
   docs,

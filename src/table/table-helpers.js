@@ -1,4 +1,5 @@
 import { isString } from 'js-var-type';
+
 import { formatClasses } from '../utils/attributes';
 
 export function normalizeColumns(columns) {

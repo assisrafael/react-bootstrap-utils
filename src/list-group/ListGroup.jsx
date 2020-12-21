@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { formatClasses } from '../utils/attributes';
+
 import { ListGroupItem } from './ListGroupItem';
 
 export function ListGroup({ items, active, linked, bordered, horizontal, template, isDisabled, onSelect }) {

@@ -2,10 +2,11 @@ import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types';
 import { isEmptyLike, isFunction } from 'js-var-type';
 
-import { handleInputChange, normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
 import { formatClasses } from '../utils/attributes';
+
+import { handleInputChange, normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
 import { useFormControl } from './helpers/useFormControl';
 import { FormGroup } from './FormGroup';
 
@@ -21,6 +22,7 @@ export function FormAutocomplete({
   filter,
   disabled: _disabled,
   afterChange,
+  allowUnlistedValue,
 }) {
   const { getValue, setValue: _setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(
     name
@@ -98,6 +100,8 @@ export function FormAutocomplete({
       setValue('');
       setSelectedItem(null);
       updateSearchInputValidation();
+    } else if (isEmptyLike(selectedItem) && !isEmptyLike(searchValue) && allowUnlistedValue) {
+      onSelectItem({ value: searchValue, label: searchValue });
     }
 
     if (ignoreBlur) {
@@ -106,7 +110,17 @@ export function FormAutocomplete({
       close();
       setFocus(false);
     }
-  }, [close, ignoreBlur, searchValue, setValue, updateSearchInputValidation, value]);
+  }, [
+    close,
+    ignoreBlur,
+    searchValue,
+    setValue,
+    updateSearchInputValidation,
+    value,
+    onSelectItem,
+    allowUnlistedValue,
+    selectedItem,
+  ]);
 
   const enableSearchInput = useCallback(() => {
     if (disabled) {
@@ -201,6 +215,7 @@ FormAutocomplete.defaultProps = {
 
 FormAutocomplete.propTypes = {
   afterChange: PropTypes.func,
+  allowUnlistedValue: PropTypes.bool,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   id: PropTypes.string,
@@ -227,6 +242,7 @@ export function FormGroupAutocomplete(props) {
 
 FormGroupAutocomplete.propTypes = {
   afterChange: PropTypes.func,
+  allowUnlistedValue: PropTypes.bool,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   filter: PropTypes.func,
   help: PropTypes.node,

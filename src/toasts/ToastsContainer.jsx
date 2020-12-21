@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { ToastsContext, TOASTS_CLASSNAME_BY_POSITION } from './toasts-helpers';
 import { ToastsRegion } from './ToastsRegion';
 import { useToastState } from './useToastState';

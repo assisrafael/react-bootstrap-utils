@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { useOpenState } from '../utils/useOpenState';
+
+import { safeClick } from '../utils/event-handlers';
+
 import { ModalPortal } from './ModalPortal';
 import { Modal } from './Modal';
-import { useOpenState } from '../utils/useOpenState';
-import { safeClick } from '../utils/event-handlers';
 
 export function Dialog({ children, ...props }) {
   const { isOpen, open, close } = useOpenState();

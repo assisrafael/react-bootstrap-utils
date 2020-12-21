@@ -1,4 +1,4 @@
-import { isUndefined, isNull, isObject, isArray, isFunction } from 'js-var-type';
+import { isObject, isArray, isFunction, isPrimitive, isPlainObject, isNullLike } from 'js-var-type';
 
 export function splitPath(path) {
   return path
@@ -19,7 +19,7 @@ export function getValueByPath(obj, objPath) {
   const paths = splitPath(objPath);
 
   return paths.reduce((cursor, { path }) => {
-    if (isUndefined(cursor) || isNull(cursor)) {
+    if (isNullLike(cursor)) {
       return;
     }
 
@@ -92,4 +92,37 @@ export function deepClone(item) {
   }
 
   return item;
+}
+
+export function flattenObject(data, prefix = '') {
+  if (isArray(data)) {
+    return data.reduce((result, v, index) => ({ ...result, ...flattenObject(v, `${prefix}[${index}]`) }), {});
+  }
+
+  if (isPrimitive(data) || !isPlainObject(data)) {
+    if (prefix.length === 0) {
+      throw new Error('cannot flatten type without a prefix');
+    }
+
+    return {
+      [prefix]: data,
+    };
+  }
+
+  return Object.entries(data).reduce((result, [key, value]) => {
+    const prefixedKey = `${prefix ? `${prefix}.` : ''}${key}`;
+
+    if (isPrimitive(value)) {
+      result[prefixedKey] = value;
+
+      return result;
+    }
+
+    const flattenedValue = flattenObject(value, prefixedKey);
+
+    return {
+      ...result,
+      ...flattenedValue,
+    };
+  }, {});
 }

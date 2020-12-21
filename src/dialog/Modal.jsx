@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { isFunction } from 'js-var-type';
+
 import { stopPropagation } from '../utils/event-handlers';
 import { formatClasses } from '../utils/attributes';
 

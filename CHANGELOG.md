@@ -2,6 +2,90 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.24.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.24.0...v0.24.1) (2020-12-03)
+
+## [0.24.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.23.2...v0.24.0) (2020-12-03)
+
+### [0.23.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.23.1...v0.23.2) (2020-11-30)
+
+
+### Features
+
+* **autocomplete:** new parameter to allow custom user input ([#44](https://github.com/assisrafael/react-bootstrap-utils/issues/44)) ([9f48d93](https://github.com/assisrafael/react-bootstrap-utils/commit/9f48d93a19da66dbe83fd63ba5b53489c803791c))
+
+### [0.23.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.23.0...v0.23.1) (2020-11-24)
+
+
+### Features
+
+* **forms2:** useFormEffect allows a "name" argument for watching data changes ([e94f961](https://github.com/assisrafael/react-bootstrap-utils/commit/e94f9613ef90686ed33e9313f56f0e7ae8cafb0a))
+
+## [0.23.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.13...v0.23.0) (2020-11-24)
+
+
+### Features
+
+* **forms2:** include form data observer custom hook ([f6f25ff](https://github.com/assisrafael/react-bootstrap-utils/commit/f6f25ff7df64769123c0db03768f281272d54998))
+
+### [0.22.13](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.12...v0.22.13) (2020-11-24)
+
+
+### Bug Fixes
+
+* handle 0 as a valid initial value ([a731477](https://github.com/assisrafael/react-bootstrap-utils/commit/a731477cef6b7df2ce3808f93d244b783baac888))
+
+### [0.22.12](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.11...v0.22.12) (2020-11-19)
+
+
+### Features
+
+* **forms:** include isRegistered flag on useFormControl2 ([da420f1](https://github.com/assisrafael/react-bootstrap-utils/commit/da420f1a80b6bca2e313fa39d327a4cb0828eabf))
+
+
+### Bug Fixes
+
+* **forms2:** allow update functions on useFormControl2 setValue ([ce5ea8e](https://github.com/assisrafael/react-bootstrap-utils/commit/ce5ea8e1f89dd250522d85a4f2d27ce3c65df1e7))
+
+### [0.22.11](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.10...v0.22.11) (2020-11-12)
+
+
+### Bug Fixes
+
+* improve primitive types handling on flattenObject ([f0842dd](https://github.com/assisrafael/react-bootstrap-utils/commit/f0842dd7b7ef2ad4ed0bb891eee075fb7a253d8d))
+
+### [0.22.10](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.9...v0.22.10) (2020-11-12)
+
+
+### Bug Fixes
+
+* **forms2:** flatten form data before updating form controls ([aa8ba37](https://github.com/assisrafael/react-bootstrap-utils/commit/aa8ba37f751d22344584ddff3ee654da184bcff8))
+
+### [0.22.9](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.8...v0.22.9) (2020-11-12)
+
+
+### Bug Fixes
+
+* **forms:** export useFormControl2 ([e9db767](https://github.com/assisrafael/react-bootstrap-utils/commit/e9db76798dc434b3c2499ba932ec07c87ff993ce))
+
+### [0.22.8](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.7...v0.22.8) (2020-11-12)
+
+
+### Features
+
+* **forms2:** experimental new approach to form state ([#38](https://github.com/assisrafael/react-bootstrap-utils/issues/38)) ([ff3b94c](https://github.com/assisrafael/react-bootstrap-utils/commit/ff3b94c535100beba3903ea05db109c34f9e0dcb))
+
+
+### Bug Fixes
+
+* **form:** check form reference before removing "was-validated" className ([#37](https://github.com/assisrafael/react-bootstrap-utils/issues/37)) ([60d4dcd](https://github.com/assisrafael/react-bootstrap-utils/commit/60d4dcd63f7971483a8525a246218099190badd3))
+
+### [0.22.7](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.6...v0.22.7) (2020-10-30)
+
+
+### Bug Fixes
+
+* **treeview:** include parentNode on template function ([163543a](https://github.com/assisrafael/react-bootstrap-utils/commit/163543a4367e87fa070513e439ad2ede2b4c2298))
+
 ### [0.22.6](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.22.5...v0.22.6) (2020-10-19)
 
 

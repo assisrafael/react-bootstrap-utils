@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { useSelectedItem } from '../utils/useSelectedItem';
+
 import { Tabs } from './Tabs';
 
 export function StatefulTabs({ initialTab, tabs, ...props }) {

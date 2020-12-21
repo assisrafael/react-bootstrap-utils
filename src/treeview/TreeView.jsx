@@ -19,13 +19,14 @@ TreeView.propTypes = {
   template: PropTypes.func.isRequired,
 };
 
-function TreeNodes({ childrenPath, depth, draggable, nodes, template }) {
+function TreeNodes({ childrenPath, depth, draggable, nodes, parentNode, template }) {
   return (
     <>
       {nodes.map((node, index) => (
         <TreeNode
           key={index}
           node={node}
+          parentNode={parentNode}
           index={index}
           template={template}
           childrenPath={childrenPath}
@@ -42,26 +43,34 @@ TreeNodes.propTypes = {
   depth: PropTypes.number,
   draggable: PropTypes.bool,
   nodes: PropTypes.array,
+  parentNode: PropTypes.object,
   template: PropTypes.func,
 };
 
-function TreeNode({ node, index, template, childrenPath, depth, draggable }) {
+function TreeNode({ node, parentNode, index, template, childrenPath, depth, draggable }) {
   const childrenNodes = getValueByPath(node, childrenPath);
 
   return (
     <div draggable={draggable}>
       <li className="list-group-item" style={{ marginLeft: `${depth * 20}px`, borderTopWidth: '1px' }}>
-        {template(node, index)}
+        {template(node, index, parentNode)}
       </li>
 
       {childrenNodes && (
-        <TreeNodes nodes={childrenNodes} template={template} childrenPath={childrenPath} depth={depth + 1} />
+        <TreeNodes
+          nodes={childrenNodes}
+          parentNode={node}
+          template={template}
+          childrenPath={childrenPath}
+          depth={depth + 1}
+        />
       )}
     </div>
   );
 }
 TreeNode.propTypes = {
   node: PropTypes.object,
+  parentNode: PropTypes.object,
   index: PropTypes.number,
   template: PropTypes.func,
   childrenPath: PropTypes.string,
