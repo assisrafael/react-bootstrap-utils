@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.24.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.24.1...v0.24.2) (2021-02-19)
+
+
+### Features
+
+* **tabs:** "justified" and "fill" options ([a465b84](https://github.com/assisrafael/react-bootstrap-utils/commit/a465b8481d3727299ed509965f74956d7e68d072))
+
 ### [0.24.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.24.0...v0.24.1) (2020-12-03)
 
 ## [0.24.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.23.2...v0.24.0) (2020-12-03)
