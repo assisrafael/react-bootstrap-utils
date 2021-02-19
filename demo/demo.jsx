@@ -22,7 +22,7 @@ ReactDOM.render(
       <StatefulTabs
         vertical={true}
         onlyRenderActiveTab={true}
-        initialTab={3}
+        initialTab={7}
         tabs={[
           {
             title: 'Dialog',

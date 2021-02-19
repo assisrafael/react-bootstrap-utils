@@ -6,7 +6,7 @@ import { formatClasses } from '../utils/attributes';
 import { TabHeader } from './TabHeader';
 import { TabContent } from './TabContent';
 
-export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered, onSelect }) {
+export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered, onSelect, justified, fill }) {
   if (activeTab >= tabs.length) {
     // eslint-disable-next-line no-console
     console.error(`Invalid tab selected: ${activeTab}. The first tab will be selected instead.`);
@@ -17,7 +17,12 @@ export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered,
     <div className={formatClasses(['custom-tabs-container', vertical && 'd-flex'])}>
       <div className="tabs-navigation">
         <ul
-          className={formatClasses(['nav', vertical ? 'nav-pills flex-column' : 'nav-tabs'])}
+          className={formatClasses([
+            'nav',
+            vertical ? 'nav-pills flex-column' : 'nav-tabs',
+            justified && 'nav-justified',
+            fill && 'nav-fill',
+          ])}
           id="myTab"
           role="tablist"
         >
@@ -55,6 +60,8 @@ export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered,
 Tabs.defaultProps = {
   activeTab: 0,
   bordered: false,
+  fill: false,
+  justified: false,
   onlyRenderActiveTab: false,
   onSelect: () => {},
   vertical: false,
@@ -63,6 +70,8 @@ Tabs.defaultProps = {
 Tabs.propTypes = {
   activeTab: PropTypes.number,
   bordered: PropTypes.bool,
+  fill: PropTypes.bool,
+  justified: PropTypes.bool,
   onlyRenderActiveTab: PropTypes.bool,
   onSelect: PropTypes.func,
   tabs: PropTypes.arrayOf(
