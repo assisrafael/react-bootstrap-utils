@@ -26,6 +26,22 @@ export function DialogExamples() {
         </Dialog>
       </div>
       <div className="col-6">
+        <h1 className="h4">No header Dialog</h1>
+        <Dialog
+          body={
+            <div>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam sequi vero sapiente delectus error
+              sunt, a eveniet nobis est ex magni nesciunt magnam. Eaque eius hic eligendi dolorum ut quas?
+            </div>
+          }
+          keyboard={false}
+        >
+          <a href="" className="btn btn-primary">
+            No header Dialog
+          </a>
+        </Dialog>
+      </div>
+      <div className="col-6">
         <h1 className="h4 mt-3">Scrolling long content Dialog</h1>
         <Dialog
           title="Long content dialog"

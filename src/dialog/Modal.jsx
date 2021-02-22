@@ -78,14 +78,16 @@ export function Modal({
         onClick={stopPropagation}
       >
         <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">{title}</h5>
-            {useTimesClose && (
-              <button type="button" className="close" onClick={closeAndHide} aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            )}
-          </div>
+          {title && (
+            <div className="modal-header">
+              <h5 className="modal-title">{title}</h5>
+              {useTimesClose && (
+                <button type="button" className="close" onClick={closeAndHide} aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              )}
+            </div>
+          )}
           <div className="modal-body">{renderObjectOrFunction(body, { close: closeAndHide })}</div>
           {footer && <div className="modal-footer">{renderObjectOrFunction(footer, { close: closeAndHide })}</div>}
         </div>
