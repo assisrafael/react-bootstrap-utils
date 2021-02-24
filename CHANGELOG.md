@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.26.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.25.1...v0.26.0) (2021-02-24)
+
+
+### Features
+
+* **dialog:** open dialogs with hooks (useAlertDialog, useConfirmationDialog and useDialog) ([2b6dba6](https://github.com/assisrafael/react-bootstrap-utils/commit/2b6dba60641c5615963f7bf383a10060d53cb465))
+
 ### [0.25.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.25.0...v0.25.1) (2021-02-22)
 
 
