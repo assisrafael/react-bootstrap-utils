@@ -20,6 +20,7 @@ export function Modal({
   staticBackdrop,
   title,
   useTimesClose,
+  dialogBodyProps,
 }) {
   const modalRef = useRef(null);
   const closeAndHide = useCallback(() => {
@@ -88,7 +89,7 @@ export function Modal({
               )}
             </div>
           )}
-          <div className="modal-body">{renderObjectOrFunction(body, { close: closeAndHide })}</div>
+          <div className="modal-body">{renderObjectOrFunction(body, { ...dialogBodyProps, close: closeAndHide })}</div>
           {footer && <div className="modal-footer">{renderObjectOrFunction(footer, { close: closeAndHide })}</div>}
         </div>
       </div>
@@ -99,6 +100,7 @@ export function Modal({
 Modal.defaultProps = {
   afterOpen: () => {},
   centered: true,
+  dialogBodyProps: {},
   keyboard: true,
   scrollable: false,
   size: '',
@@ -110,6 +112,7 @@ Modal.propTypes = {
   afterOpen: PropTypes.func,
   body: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   centered: PropTypes.bool,
+  dialogBodyProps: PropTypes.object,
   footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   isOpen: PropTypes.bool,
   keyboard: PropTypes.bool,
