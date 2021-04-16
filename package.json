@@ -5,7 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "rollup --config",
-    "start": "webpack serve --mode development",
+    "start": "webpack-dev-server --mode development",
     "docs": "webpack --mode development",
     "release": "standard-version",
     "prepublishOnly": "npm run build",
