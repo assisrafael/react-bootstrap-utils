@@ -28,7 +28,7 @@ module.exports = [
   {
     entry: './demo/demo.jsx',
     output: {
-      path: `${__dirname}/demo`,
+      path: `${__dirname}/`,
       filename: 'demo.js',
     },
     devServer: {

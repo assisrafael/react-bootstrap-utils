@@ -53,9 +53,9 @@ export function TreeViewExamples() {
   return (
     <TreeView
       nodes={nodes}
-      template={(item, index, parentItem) => (
+      template={(item, index, parentItem, relativePath) => (
         <em>
-          {item.attrA} (index: {index} parent: {parentItem?.attrA || <em>None</em>})
+          {item.attrA} (index: {index} parent: {parentItem?.attrA || <em>None</em>})<p>Path: {relativePath}</p>
         </em>
       )}
       childrenPath={'children'}
