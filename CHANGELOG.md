@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.26.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.25.1...v0.26.0) (2021-02-24)
+
+
+### Features
+
+* **dialog:** open dialogs with hooks (useAlertDialog, useConfirmationDialog and useDialog) ([2b6dba6](https://github.com/assisrafael/react-bootstrap-utils/commit/2b6dba60641c5615963f7bf383a10060d53cb465))
+
+### [0.25.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.25.0...v0.25.1) (2021-02-22)
+
+
+### Bug Fixes
+
+* **dialog:** hide header if title is empty ([05381cd](https://github.com/assisrafael/react-bootstrap-utils/commit/05381cd77e25911c359878468b25895519df9730))
+
+## [0.25.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.24.1...v0.25.0) (2021-02-19)
+
+
+### Features
+
+* **tabs:** "justified" and "fill" options ([84c1e0b](https://github.com/assisrafael/react-bootstrap-utils/commit/84c1e0b00fb2a845b658fbb50bc2b79bf51446b3))
+
 ### [0.24.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.24.0...v0.24.1) (2020-12-03)
 
 ## [0.24.0](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.23.2...v0.24.0) (2020-12-03)

@@ -2,10 +2,42 @@
 import React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
-import { Dialog, Form, FormGroupInput } from '../dist/main';
-import { ConfirmationDialog, AlertDialog } from '../src/dialog';
+import {
+  AlertDialog,
+  ConfirmationDialog,
+  Dialog,
+  Form,
+  FormGroupInput,
+  useAlertDialog,
+  useConfirmationDialog,
+  useDialog,
+} from '../dist/main';
 
 export function DialogExamples() {
+  const { showDialog, DialogPortal } = useDialog({
+    title: 'useDialog',
+    body: ({ foo, bar }) => (
+      <div>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam sequi vero sapiente delectus error sunt, a
+        eveniet nobis est ex magni nesciunt magnam. Eaque eius hic eligendi dolorum ut quas?
+        <p>
+          Extra props: {foo} {bar}
+        </p>
+      </div>
+    ),
+  });
+  const { showDialog: showConfirmationDialog, DialogPortal: ConfirmationDialogPortal } = useConfirmationDialog({
+    title: 'useConfirmationDialog',
+    message: ({ foo }) => <em>Opened by useConfirmationDialog. Extra props: {foo}</em>,
+    onProceed: () => console.info('onProceed'),
+    onCancel: () => console.warn('onCancel'),
+  });
+  const { showDialog: showAlertDialog, DialogPortal: AlertDialogPortal } = useAlertDialog({
+    title: 'useAlertDialog',
+    message: ({ bar }) => <em>Opened by useAlertDialog. Extra props: {bar}</em>,
+    onClose: () => console.warn('onClose'),
+  });
+
   return (
     <div className="row">
       <div className="col-6">
@@ -22,6 +54,22 @@ export function DialogExamples() {
         >
           <a href="" className="btn btn-primary">
             Simple Dialog
+          </a>
+        </Dialog>
+      </div>
+      <div className="col-6">
+        <h1 className="h4">No header Dialog</h1>
+        <Dialog
+          body={
+            <div>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam sequi vero sapiente delectus error
+              sunt, a eveniet nobis est ex magni nesciunt magnam. Eaque eius hic eligendi dolorum ut quas?
+            </div>
+          }
+          keyboard={false}
+        >
+          <a href="" className="btn btn-primary">
+            No header Dialog
           </a>
         </Dialog>
       </div>
@@ -79,7 +127,7 @@ export function DialogExamples() {
           onProceed={() => console.info('onProceed')}
           onCancel={() => console.warn('onCancel')}
         >
-          <button type="button" className="btn btn-info">
+          <button type="button" className="btn btn-warning">
             Do something
           </button>
         </ConfirmationDialog>
@@ -161,17 +209,33 @@ export function DialogExamples() {
                   </>
                 }
               >
-                <button type="button" className="btn btn-warning">
+                <button type="button" className="btn btn-info">
                   Open second dialog
                 </button>
               </Dialog>
             </>
           }
         >
-          <button type="button" className="btn btn-warning">
+          <button type="button" className="btn btn-secondary">
             Open first dialog
           </button>
         </Dialog>
+      </div>
+      <div className="col-6">
+        <h1 className="h4 mt-3">Open a dialog programmatically</h1>
+
+        <DialogPortal />
+        <button type="button" className="btn btn-primary" onClick={() => showDialog({ foo: 'Foo', bar: 'Bar' })}>
+          useDialog
+        </button>
+        <ConfirmationDialogPortal />
+        <button type="button" className="btn btn-warning ml-2" onClick={() => showConfirmationDialog({ foo: 'FOO' })}>
+          useConfirmationDialog
+        </button>
+        <AlertDialogPortal />
+        <button type="button" className="btn btn-info ml-2" onClick={() => showAlertDialog({ bar: 'BAR' })}>
+          useAlertDialog
+        </button>
       </div>
     </div>
   );

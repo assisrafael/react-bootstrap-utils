@@ -20,6 +20,7 @@ export function Modal({
   staticBackdrop,
   title,
   useTimesClose,
+  dialogBodyProps,
 }) {
   const modalRef = useRef(null);
   const closeAndHide = useCallback(() => {
@@ -78,15 +79,17 @@ export function Modal({
         onClick={stopPropagation}
       >
         <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">{title}</h5>
-            {useTimesClose && (
-              <button type="button" className="close" onClick={closeAndHide} aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            )}
-          </div>
-          <div className="modal-body">{renderObjectOrFunction(body, { close: closeAndHide })}</div>
+          {title && (
+            <div className="modal-header">
+              <h5 className="modal-title">{title}</h5>
+              {useTimesClose && (
+                <button type="button" className="close" onClick={closeAndHide} aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              )}
+            </div>
+          )}
+          <div className="modal-body">{renderObjectOrFunction(body, { ...dialogBodyProps, close: closeAndHide })}</div>
           {footer && <div className="modal-footer">{renderObjectOrFunction(footer, { close: closeAndHide })}</div>}
         </div>
       </div>
@@ -97,6 +100,7 @@ export function Modal({
 Modal.defaultProps = {
   afterOpen: () => {},
   centered: true,
+  dialogBodyProps: {},
   keyboard: true,
   scrollable: false,
   size: '',
@@ -108,6 +112,7 @@ Modal.propTypes = {
   afterOpen: PropTypes.func,
   body: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   centered: PropTypes.bool,
+  dialogBodyProps: PropTypes.object,
   footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   isOpen: PropTypes.bool,
   keyboard: PropTypes.bool,
