@@ -32,7 +32,7 @@ module.exports = [
       filename: 'demo.js',
     },
     devServer: {
-      contentBase: './demo',
+      contentBase: `${__dirname}/demo`,
       hot: true,
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
