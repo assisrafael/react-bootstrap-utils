@@ -46,6 +46,7 @@ TreeNodes.propTypes = {
   nodes: PropTypes.array,
   parentNode: PropTypes.object,
   template: PropTypes.func,
+  relativePath: PropTypes.string,
 };
 
 function TreeNode({ node, parentNode, index, template, childrenPath, depth, draggable, relativePath }) {
@@ -78,4 +79,5 @@ TreeNode.propTypes = {
   childrenPath: PropTypes.string,
   depth: PropTypes.number,
   draggable: PropTypes.bool,
+  relativePath: PropTypes.string,
 };
