@@ -7,14 +7,7 @@ export function TreeView({ childrenPath, draggable, nodes, template }) {
   return (
     <div className="rbu-treeview">
       <ul className="list-group">
-        <TreeNodes
-          depth={0}
-          nodes={nodes}
-          template={template}
-          childrenPath={childrenPath}
-          draggable={draggable}
-          relativePath={`${childrenPath}`}
-        />
+        <TreeNodes depth={0} nodes={nodes} template={template} childrenPath={childrenPath} draggable={draggable} />
       </ul>
     </div>
   );
@@ -39,7 +32,7 @@ function TreeNodes({ childrenPath, depth, draggable, nodes, parentNode, template
           childrenPath={childrenPath}
           depth={depth}
           draggable={draggable}
-          relativePath={`${relativePath}[${index}]`}
+          relativePath={relativePath ? `${relativePath}[${index}]` : `[${index}]`}
         />
       ))}
     </>
