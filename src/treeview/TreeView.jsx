@@ -19,7 +19,7 @@ TreeView.propTypes = {
   template: PropTypes.func.isRequired,
 };
 
-function TreeNodes({ childrenPath, depth, draggable, nodes, parentNode, template, relativePath }) {
+function TreeNodes({ childrenPath, depth, draggable, nodes, parentNode, template, nodePath }) {
   return (
     <>
       {nodes.map((node, index) => (
@@ -32,7 +32,7 @@ function TreeNodes({ childrenPath, depth, draggable, nodes, parentNode, template
           childrenPath={childrenPath}
           depth={depth}
           draggable={draggable}
-          relativePath={relativePath ? `${relativePath}[${index}]` : `[${index}]`}
+          nodePath={nodePath ? `${nodePath}[${index}]` : `[${index}]`}
         />
       ))}
     </>
@@ -46,16 +46,16 @@ TreeNodes.propTypes = {
   nodes: PropTypes.array,
   parentNode: PropTypes.object,
   template: PropTypes.func,
-  relativePath: PropTypes.string,
+  nodePath: PropTypes.string,
 };
 
-function TreeNode({ node, parentNode, index, template, childrenPath, depth, draggable, relativePath }) {
+function TreeNode({ node, parentNode, index, template, childrenPath, depth, draggable, nodePath }) {
   const childrenNodes = getValueByPath(node, childrenPath);
 
   return (
     <div draggable={draggable}>
       <li className="list-group-item" style={{ marginLeft: `${depth * 20}px`, borderTopWidth: '1px' }}>
-        {template(node, index, parentNode, relativePath)}
+        {template(node, index, parentNode, nodePath)}
       </li>
 
       {childrenNodes && (
@@ -65,7 +65,7 @@ function TreeNode({ node, parentNode, index, template, childrenPath, depth, drag
           template={template}
           childrenPath={childrenPath}
           depth={depth + 1}
-          relativePath={`${relativePath}.${childrenPath}`}
+          nodePath={`${nodePath}.${childrenPath}`}
         />
       )}
     </div>
@@ -79,5 +79,5 @@ TreeNode.propTypes = {
   childrenPath: PropTypes.string,
   depth: PropTypes.number,
   draggable: PropTypes.bool,
-  relativePath: PropTypes.string,
+  nodePath: PropTypes.string,
 };
