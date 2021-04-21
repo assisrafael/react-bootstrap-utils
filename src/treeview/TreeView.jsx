@@ -32,12 +32,16 @@ function TreeNodes({ childrenPath, depth, draggable, nodes, parentNode, template
           childrenPath={childrenPath}
           depth={depth}
           draggable={draggable}
-          nodePath={nodePath ? `${nodePath}[${index}]` : `[${index}]`}
+          nodePath={`${nodePath}[${index}]`}
         />
       ))}
     </>
   );
 }
+
+TreeNodes.defaultProps = {
+  nodePath: '',
+};
 
 TreeNodes.propTypes = {
   childrenPath: PropTypes.string,
