@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.26.2...v0.26.3) (2021-04-21)
+
+
+### Features
+
+* include nodePath as argument to template functions in TreeView nodes  ([#48](https://github.com/assisrafael/react-bootstrap-utils/issues/48)) ([1beb583](https://github.com/assisrafael/react-bootstrap-utils/commit/1beb58307d1cde80321cf783eb7e49b4a3bd1377))
+
 ### [0.26.2](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.26.1...v0.26.2) (2021-04-20)
 
 ### [0.26.1](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.26.0...v0.26.1) (2021-04-19)
