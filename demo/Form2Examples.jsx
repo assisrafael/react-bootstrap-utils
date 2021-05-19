@@ -53,30 +53,21 @@ export function Form2Examples() {
             </div>
           </div>
         </div>
+
+        <FormArray />
+
+        <FormArrayOfObjects />
+
+        <FormGroupInput2 name="attrA" label="AttrA" />
+
+        <FormGroupInput2 name="attrB" label="AttrB" />
+
+        <FormGroupSelect2 name="attrC" options={[1, 2, 3]} label="AttrC" />
+
+        <FormGroupSwitch2 name="attrD" id="attrD" label="AttrD" />
+
         <div className="form-group">
-          <FormArray />
-        </div>
-        <div className="form-group">
-          <FormArrayOfObjects />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">AttrA</label>
-          <FormGroupInput2 name="attrA" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">AttrB</label>
-          <FormGroupInput2 name="attrB" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">AttrC</label>
-          <FormGroupSelect2 name="attrC" options={[1, 2, 3]} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">AttrD</label>
-          <FormGroupSwitch2 name="attrD" id="attrD" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">Version</label>
+          <label htmlFor=""></label>
           <FormVersion />
         </div>
 
