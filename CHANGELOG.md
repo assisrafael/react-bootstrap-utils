@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.4](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.3...v0.26.4) (2021-07-09)
+
+
+### Features
+
+* allow input masks functions on forminput2 ([afaa1ce](https://github.com/geolaborapp/react-bootstrap-utils/commit/afaa1cea773ea9abedd8ffaa4e827b0e14b22ea0))
+* allow input masks functions on forminput2 ([049b214](https://github.com/geolaborapp/react-bootstrap-utils/commit/049b21484b7b00dec2f91f9c775b6a18ef9ea264))
+
+
+### Bug Fixes
+
+* check if an element is descendant before remove ([a1eb85d](https://github.com/geolaborapp/react-bootstrap-utils/commit/a1eb85d56cbd0142673e2a35394821a5a4a19874))
+
 ### [0.26.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.26.2...v0.26.3) (2021-04-21)
 
 
