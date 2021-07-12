@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isFunction } from 'js-var-type';
 
 import { safeClick } from '../utils/event-handlers';
 import { getValueByPath } from '../utils/getters-setters';
@@ -7,11 +8,14 @@ import { getValueByPath } from '../utils/getters-setters';
 import { getColumnClass } from './table-helpers';
 import { TableActions } from './TableActions';
 
-export function TableBody({ columns, docs, rowClass, actions, onRowClick }) {
+export function TableBody({ columns, docs, rowRole, rowClass, actions, onRowClick }) {
+  const trRole = rowRole ?? isFunction(onRowClick) ? 'button' : 'row';
+  const trOnClick = isFunction(onRowClick) ? onRowClick : () => {};
+
   return (
     <tbody>
       {docs.map((doc, docIndex) => (
-        <tr key={docIndex} className={rowClass(doc)} role="button" onClick={safeClick(onRowClick, doc, docIndex)}>
+        <tr key={docIndex} className={rowClass(doc)} role={trRole} onClick={safeClick(trOnClick, doc, docIndex)}>
           {columns.map((column, columnIndex) => (
             <td key={columnIndex} className={getColumnClass(column)}>
               {getColumnValue(doc, column, docIndex)}
@@ -29,6 +33,7 @@ TableBody.propTypes = {
   actions: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.object)]),
   columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   docs: PropTypes.arrayOf(PropTypes.object),
+  rowRole: PropTypes.string,
   rowClass: PropTypes.func,
   onRowClick: PropTypes.func,
 };

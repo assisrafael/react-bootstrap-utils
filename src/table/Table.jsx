@@ -55,7 +55,6 @@ Table.defaultProps = {
   dark: false,
   actionLabel: 'Actions',
   rowClass: () => '',
-  onRowClick: () => {},
   columnHeaderFormat: (label) => label,
 };
 
