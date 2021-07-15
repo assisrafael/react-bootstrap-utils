@@ -7,9 +7,9 @@ export function TableHead({ columns, hasActions, actionLabel, columnHeaderFormat
   return (
     <thead>
       <tr>
-        {columns.map((column, columnIndex) => (
+        {columns?.map((column, columnIndex) => (
           <th key={columnIndex} className={getColumnClass(column)}>
-            {columnHeaderFormat(column.label, column.attribute)}
+            {columnHeaderFormat(column.label, column.attribute, column)}
           </th>
         ))}
         {hasActions && <th className="text-center">{actionLabel}</th>}

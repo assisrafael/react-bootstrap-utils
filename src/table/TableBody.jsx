@@ -14,9 +14,9 @@ export function TableBody({ columns, docs, rowRole, rowClass, actions, onRowClic
 
   return (
     <tbody>
-      {docs.map((doc, docIndex) => (
+      {docs?.map((doc, docIndex) => (
         <tr key={docIndex} className={rowClass(doc)} role={trRole} onClick={safeClick(trOnClick, doc, docIndex)}>
-          {columns.map((column, columnIndex) => (
+          {columns?.map((column, columnIndex) => (
             <td key={columnIndex} className={getColumnClass(column)}>
               {getColumnValue(doc, column, docIndex)}
             </td>
