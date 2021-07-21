@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { Table, Form, FormCheckbox } from '../dist/main';
+import { Table, SortableTable, Form, FormCheckbox } from '../dist/main';
 import { stopPropagation } from '../src/utils/event-handlers';
 
 export function TableExamples() {
@@ -218,6 +218,106 @@ export function TableExamples() {
                 title: 'Subtract',
                 content: <span>{doc.b - docIndex}?</span>,
               },
+            ]}
+          />
+        </div>
+        <div className="col-6 mb-3">
+          <h1 className="h4">Sortable Table</h1>
+
+          <SortableTable
+            defaultSortOption={{ sortBy: 'c', sortOrder: 'DESC' }}
+            columns={[
+              {
+                attribute: 'a',
+                label: 'A',
+              },
+              {
+                attribute: 'b',
+                label: 'B',
+                isSortable: false,
+              },
+              {
+                attribute: 'c',
+                label: 'C',
+              },
+            ]}
+            docs={[
+              { a: 'B', b: 'G', c: 'Y' },
+              { a: 'C', b: 'I', c: 'Z' },
+              { a: 'A', b: 'H', c: 'X' },
+              { a: 'D', b: 'L', c: 'T' },
+            ]}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-6 mb-3">
+          <h1 className="h4">Sortable Table with Custom Header</h1>
+
+          <SortableTable
+            defaultSortOption={{ sortBy: 'c' }}
+            columnHeaderFormat={(label, attribute, column, { sortBy, sortOrder }) =>
+              column?.isSortable !== false ? (
+                sortBy === attribute ? (
+                  sortOrder === 'ASC' ? (
+                    <i className="bi bi-emoji-smile"></i>
+                  ) : (
+                    <i className="bi bi-emoji-smile-upside-down"></i>
+                  )
+                ) : (
+                  <i className="bi bi-circle"></i>
+                )
+              ) : (
+                label
+              )
+            }
+            columns={[
+              {
+                attribute: 'a',
+                label: 'A',
+              },
+              {
+                attribute: 'b',
+                label: 'B',
+                isSortable: false,
+              },
+              {
+                attribute: 'c',
+                label: 'C',
+              },
+            ]}
+            docs={[
+              { a: 'B', b: 'G', c: 'Y' },
+              { a: 'C', b: 'I', c: 'Z' },
+              { a: 'A', b: 'H', c: 'X' },
+              { a: 'D', b: 'L', c: 'T' },
+            ]}
+          />
+        </div>
+        <div className="col-6 mb-3">
+          <h1 className="h4">Sortable Table with no default sorting</h1>
+
+          <SortableTable
+            columns={[
+              {
+                attribute: 'a',
+                label: 'A',
+              },
+              {
+                attribute: 'b',
+                label: 'B',
+                isSortable: false,
+              },
+              {
+                attribute: 'c',
+                label: 'C',
+              },
+            ]}
+            docs={[
+              { a: 'B', b: 'G', c: 'Y' },
+              { a: 'C', b: 'I', c: 'Z' },
+              { a: 'A', b: 'H', c: 'X' },
+              { a: 'D', b: 'L', c: 'T' },
             ]}
           />
         </div>
