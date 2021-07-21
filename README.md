@@ -46,3 +46,26 @@ Starting demo app
 ```bash
 npm run start
 ```
+
+## How to Publish a New Version
+
+Make sure the master branch is updated (git pull) and make sure all new commits (or expected commits) are included. 
+Suggested log visualization:
+
+```bash
+git log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s - %C(blue)%an%Creset, %C(white)%ar%Creset'
+```
+
+On the terminal, run the command:
+
+```bash
+npm run release
+```
+
+followed by:
+
+```bash
+git push --follow-tags origin master && npm publish
+```
+
+Check the repository on Github, verifying the newly created tag
