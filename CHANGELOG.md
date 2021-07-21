@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.6](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.5...v0.26.6) (2021-07-21)
+
+
+### Features
+
+* adiciona componente SortableTable ([320feab](https://github.com/geolaborapp/react-bootstrap-utils/commit/320feab1af4e9a9339a6ac36e48551de17026ebe))
+
+
+### Bug Fixes
+
+* flexibiliza papel das linhas de uma tabela ([dd39fa7](https://github.com/geolaborapp/react-bootstrap-utils/commit/dd39fa7988f62fd43870ea78c34c4e3cd504aae2))
+
 ### [0.26.5](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.3...v0.26.5) (2021-07-09)
 
 
