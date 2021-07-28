@@ -133,11 +133,20 @@ export function FormExamples() {
       <div className="row">
         <div className="col">
           <FormGroupAutocomplete
+            name="disabledAutocompleteField"
+            label="Disabled Autocomplete"
+            options={['1234', '2345', '3456']}
+            placeholder="Type some numbers"
+            help="Disabled autocomplete"
+            disabled
+          />
+        </div>
+        <div className="col">
+          <FormGroupAutocomplete
             name="autocompleteField1"
             label="Autocomplete"
             options={['1234', '2345', '3456']}
             placeholder="Type some numbers"
-            disabled
             help="Autocomplete help"
           />
         </div>
