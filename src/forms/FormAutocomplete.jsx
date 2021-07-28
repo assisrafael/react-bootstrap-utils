@@ -24,9 +24,14 @@ export function FormAutocomplete({
   afterChange,
   allowUnlistedValue,
 }) {
-  const { getValue, setValue: _setValue, register, isValid, getFormSubmitedAttempted, getFormData } = useFormControl(
-    name
-  );
+  const {
+    getValue,
+    setValue: _setValue,
+    register,
+    isValid,
+    getFormSubmitedAttempted,
+    getFormData,
+  } = useFormControl(name);
   const value = getValue();
 
   const setValue = useCallback(
@@ -149,6 +154,12 @@ export function FormAutocomplete({
 
   useEffect(updateSearchInputValidation, [updateSearchInputValidation]);
   useEffect(clearSearchValue, [clearSearchValue]);
+  useEffect(() => {
+    if (selectedItem?.label) {
+      setSearchValue(selectedItem?.label);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

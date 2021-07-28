@@ -137,7 +137,6 @@ export function FormExamples() {
             label="Autocomplete"
             options={['1234', '2345', '3456']}
             placeholder="Type some numbers"
-            disabled
             help="Autocomplete help"
           />
         </div>
