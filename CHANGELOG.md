@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.7](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.6...v0.26.7) (2021-07-28)
+
+
+### Bug Fixes
+
+* set the selected value as initial search in autocomplete ([07c4369](https://github.com/geolaborapp/react-bootstrap-utils/commit/07c4369ec0585b426500824e65bb0599f9befee1))
+* set the selected value as initial search in autocomplete ([bd3be74](https://github.com/geolaborapp/react-bootstrap-utils/commit/bd3be741cba33fc0ad3583beaff63a57bed388ee))
+
 ### [0.26.6](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.5...v0.26.6) (2021-07-21)
 
 
