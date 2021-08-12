@@ -1,6 +1,7 @@
 export * from './Form';
 export * from './FormAutocomplete';
 export * from './FormCheckbox';
+export * from './FormDropdownSelect';
 export * from './FormGroup';
 export * from './FormInput';
 export * from './FormRadio';

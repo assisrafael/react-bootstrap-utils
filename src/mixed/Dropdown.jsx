@@ -14,6 +14,7 @@ export function Dropdown({
   onMouseLeave,
   template,
   className,
+  itemClassName,
 }) {
   return (
     <div
@@ -32,7 +33,7 @@ export function Dropdown({
             <a
               key={index}
               href="#"
-              className={formatClasses(['dropdown-item', isDisabled && 'disabled'])}
+              className={formatClasses(['dropdown-item', isDisabled && 'disabled', itemClassName])}
               onClick={safeClick(onSelect, { value, index, label })}
             >
               {template(label)}
@@ -59,4 +60,5 @@ Dropdown.propTypes = {
   onTouchStart: PropTypes.func,
   template: PropTypes.func,
   className: PropTypes.string,
+  itemClassName: PropTypes.string,
 };
