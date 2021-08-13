@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -8,7 +9,7 @@ import { safeClick } from '../utils/event-handlers';
 import { ModalPortal } from './ModalPortal';
 import { Modal } from './Modal';
 
-export function useDialog(props) {
+export function useDialog({ onlyRenderContentIfIsOpen = true, ...props }) {
   const { isOpen, open, close } = useOpenState();
   const [dialogBodyProps, setDialogBodyProps] = useState({});
 
@@ -18,7 +19,9 @@ export function useDialog(props) {
       open();
     },
     DialogPortal() {
-      return (
+      return onlyRenderContentIfIsOpen && !isOpen() ? (
+        <></>
+      ) : (
         <ModalPortal isOpen={isOpen()} title={props.title}>
           <Modal {...props} dialogBodyProps={dialogBodyProps} onClose={close} isOpen={isOpen()} />
         </ModalPortal>
@@ -27,19 +30,27 @@ export function useDialog(props) {
   };
 }
 
-export function Dialog({ children, ...props }) {
+export function Dialog({ children, onlyRenderContentIfIsOpen, ...props }) {
   const { isOpen, open, close } = useOpenState();
 
   return (
     <React.Fragment>
       <DialogTrigger open={open}>{children}</DialogTrigger>
 
-      <ModalPortal isOpen={isOpen()} title={props.title}>
-        <Modal {...props} onClose={close} isOpen={isOpen()} />
-      </ModalPortal>
+      {onlyRenderContentIfIsOpen && !isOpen() ? (
+        <></>
+      ) : (
+        <ModalPortal isOpen={isOpen()} title={props.title}>
+          <Modal {...props} onClose={close} isOpen={isOpen()} />
+        </ModalPortal>
+      )}
     </React.Fragment>
   );
 }
+
+Dialog.defaultProps = {
+  onlyRenderContentIfIsOpen: true,
+};
 
 Dialog.propTypes = {
   afterOpen: PropTypes.func,
@@ -48,6 +59,7 @@ Dialog.propTypes = {
   centered: PropTypes.bool,
   footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   keyboard: PropTypes.bool,
+  onlyRenderContentIfIsOpen: PropTypes.bool,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
   staticBackdrop: PropTypes.bool,
