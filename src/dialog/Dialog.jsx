@@ -23,7 +23,7 @@ export function useDialog({ onlyRenderContentIfIsOpen = true, ...props }) {
         <></>
       ) : (
         <ModalPortal isOpen={isOpen()} title={props.title}>
-          <Modal {...props} onClose={close} isOpen={isOpen()} />
+          <Modal {...props} dialogBodyProps={dialogBodyProps} onClose={close} isOpen={isOpen()} />
         </ModalPortal>
       );
     },
