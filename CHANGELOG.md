@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.8](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.7...v0.26.8) (2021-08-13)
+
+
+### Features
+
+* include prop to hide closed modals content ([4099fdc](https://github.com/geolaborapp/react-bootstrap-utils/commit/4099fdcd86e9e1caafa539a7659d7edc82200dd7))
+* include prop to hide closed modals content ([82a00d6](https://github.com/geolaborapp/react-bootstrap-utils/commit/82a00d638671990edff1bcca602950364943cb00))
+
 ### [0.26.7](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.6...v0.26.7) (2021-07-28)
 
 
