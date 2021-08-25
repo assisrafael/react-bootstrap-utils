@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.9](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.8...v0.26.9) (2021-08-25)
+
+
+### Features
+
+* new dropdown selection component ([#6](https://github.com/geolaborapp/react-bootstrap-utils/issues/6)) ([60fae42](https://github.com/geolaborapp/react-bootstrap-utils/commit/60fae42059ece24817b61f293aeaa12842e85742))
+
 ### [0.26.8](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.7...v0.26.8) (2021-08-13)
 
 
