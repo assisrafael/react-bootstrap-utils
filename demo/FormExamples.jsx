@@ -9,6 +9,7 @@ import {
   FormGroupRadio,
   FormGroupTextarea,
   FormGroupAutocomplete,
+  FormGroupDropdown,
   // eslint-disable-next-line import/no-unresolved
 } from '../dist/main';
 
@@ -24,6 +25,10 @@ export function FormExamples() {
         radioField2: 'b',
         numberField: null,
         dateField: new Date().toISOString(),
+        dropdownField1: {
+          title: 'Title two',
+        },
+        dropdownField2: '03',
       }}
       onChange={console.info}
       onSubmit={(formData) => {
@@ -357,6 +362,78 @@ export function FormExamples() {
           </div>
         </div>
       ))}
+
+      <FormGroupDropdown
+        name="dropdownField1"
+        label="Dropdown using object as value"
+        options={[
+          {
+            value: {
+              title: 'Title one',
+              subtitle: 'subtitle one',
+            },
+            label: (
+              <div>
+                <h5>Title one</h5>
+                <p>Subtitle one</p>
+              </div>
+            ),
+          },
+          {
+            value: {
+              title: 'Title two',
+              subtitle: 'subtitle two',
+            },
+            label: (
+              <div>
+                <h5>Title two</h5>
+                <p>Subtitle two</p>
+              </div>
+            ),
+          },
+          {
+            value: {
+              title: 'Title three',
+              subtitle: 'subtitle three',
+            },
+            label: (
+              <div>
+                <h5>Title three</h5>
+                <p>Subtitle three</p>
+              </div>
+            ),
+          },
+        ]}
+        help="dropdown help"
+        placeholder="Select one value"
+        afterChange={() => console.log('afterChange dropdown')}
+        template={(label) => <div>{label}</div>}
+        itemClassName="border-bottom"
+        childClassName="text-muted"
+        trackBy="title"
+      />
+
+      <FormGroupDropdown
+        name="dropdownField2"
+        label="Dropdown using string as value"
+        options={[
+          {
+            value: '01',
+            label: <p>Value one</p>,
+          },
+          {
+            value: '02',
+            label: <p>Value two</p>,
+          },
+          {
+            value: '03',
+            label: <p>Value three</p>,
+          },
+        ]}
+        placeholder="Select one value"
+        includeEmptyItem={false}
+        menuClassName="p-4 w-100"
+      />
     </Form>
   );
 }

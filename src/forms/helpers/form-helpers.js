@@ -97,12 +97,18 @@ export function serializeValue(value) {
 }
 
 export function getSelectedOption(value, options, trackBy) {
+  if (!trackBy) {
+    return options.find((option) => option.value === value);
+  }
+
+  return options.find((option) => getValueByPath(option.value, trackBy) === getValueByPath(value, trackBy));
+}
+
+export function getSelectedValue(value, options, trackBy) {
   let selectedValue = value;
 
   if (trackBy) {
-    const selectedOption = options.find(
-      (option) => getValueByPath(option.value, trackBy) === getValueByPath(value, trackBy)
-    );
+    const selectedOption = getSelectedOption(value, options, trackBy);
 
     if (selectedOption) {
       selectedValue = selectedOption.value;

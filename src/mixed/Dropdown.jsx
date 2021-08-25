@@ -14,6 +14,8 @@ export function Dropdown({
   onMouseLeave,
   template,
   className,
+  itemClassName,
+  menuClassName,
 }) {
   return (
     <div
@@ -24,7 +26,7 @@ export function Dropdown({
 
       {items.length > 0 && (
         <div
-          className={formatClasses(['dropdown-menu', isOpen && 'show'])}
+          className={formatClasses(['dropdown-menu', menuClassName, isOpen && 'show'])}
           // aria-labelledby="dropdownMenuButton"
           style={{ maxHeight: '200px', overflowY: 'auto' }}
         >
@@ -32,7 +34,7 @@ export function Dropdown({
             <a
               key={index}
               href="#"
-              className={formatClasses(['dropdown-item', isDisabled && 'disabled'])}
+              className={formatClasses(['dropdown-item', isDisabled && 'disabled', itemClassName])}
               onClick={safeClick(onSelect, { value, index, label })}
             >
               {template(label)}
@@ -59,4 +61,6 @@ Dropdown.propTypes = {
   onTouchStart: PropTypes.func,
   template: PropTypes.func,
   className: PropTypes.string,
+  itemClassName: PropTypes.string,
+  menuClassName: PropTypes.string,
 };

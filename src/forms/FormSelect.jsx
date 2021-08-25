@@ -5,7 +5,7 @@ import {
   normalizeOptions,
   booleanOrFunction,
   serializeValue,
-  getSelectedOption,
+  getSelectedValue,
   getOptionsType,
 } from './helpers/form-helpers';
 import { useFormControl } from './helpers/useFormControl';
@@ -40,7 +40,7 @@ export function FormSelect({
       {...attrs}
       className="custom-select"
       onChange={handleOnChangeFactory(afterChange, getOptionsType(normalizedOptions))}
-      value={getSelectedOption(value, normalizedOptions, trackBy)}
+      value={getSelectedValue(value, normalizedOptions, trackBy)}
       ref={registerRef}
     >
       <option value="">{placeholder}</option>
