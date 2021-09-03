@@ -37,7 +37,7 @@ export function Dropdown({
               className={formatClasses(['dropdown-item', isDisabled && 'disabled', itemClassName])}
               onClick={safeClick(onSelect, { value, index, label })}
             >
-              {template(label)}
+              {template(label, value, index)}
             </a>
           ))}
         </div>

@@ -369,48 +369,51 @@ export function FormExamples() {
         options={[
           {
             value: {
+              firstValue: 'Title one',
+              secondValue: 1,
+            },
+            label: {
               title: 'Title one',
               subtitle: 'subtitle one',
             },
-            label: (
-              <div>
-                <h5>Title one</h5>
-                <p>Subtitle one</p>
-              </div>
-            ),
           },
           {
             value: {
+              firstValue: 'Title two',
+              secondValue: 2,
+            },
+            label: {
               title: 'Title two',
               subtitle: 'subtitle two',
             },
-            label: (
-              <div>
-                <h5>Title two</h5>
-                <p>Subtitle two</p>
-              </div>
-            ),
           },
           {
             value: {
+              firstValue: 'Title three',
+              secondValue: 3,
+            },
+            label: {
               title: 'Title three',
               subtitle: 'subtitle three',
             },
-            label: (
-              <div>
-                <h5>Title three</h5>
-                <p>Subtitle three</p>
-              </div>
-            ),
           },
         ]}
         help="dropdown help"
         placeholder="Select one value"
         afterChange={() => console.log('afterChange dropdown')}
-        template={(label) => <div>{label}</div>}
+        template={(label, value) => {
+          return value ? (
+            <div>
+              <strong>{label.title ?? '-'}</strong>
+              <p className="m-0">{label.subtitle ?? '-'}</p>
+            </div>
+          ) : (
+            label
+          );
+        }}
         itemClassName="border-bottom"
         childClassName="text-muted"
-        trackBy="title"
+        trackBy="secondValue"
       />
 
       <FormGroupDropdown

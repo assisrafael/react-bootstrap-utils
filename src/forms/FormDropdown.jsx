@@ -57,7 +57,7 @@ export const FormDropdown = ({
   const toggleDropdown = useCallback(() => (isOpen ? close() : open()), [close, isOpen, open]);
 
   useEffect(() => {
-   /* The logic in this effect allows the user to close the dropdown menu when they click outside of the component. */
+    /* The logic in this effect allows the user to close the dropdown menu when they click outside of the component. */
     const pageClickEvent = (e) => {
       if (dropdownRef.current !== null && !dropdownRef.current.contains(e.target)) {
         if (isOpen) {
@@ -92,7 +92,7 @@ export const FormDropdown = ({
           className={formatClasses(['input-group justify-content-between form-control h-auto', childClassName])}
           onClick={toggleDropdown}
         >
-          {selectedItem ? template(selectedItem.label) : <div className="text-muted">{placeholder}</div>}
+          {selectedItem ? template(selectedItem.label, selectedItem.value) : <div className="text-muted">{placeholder}</div>}
           {toggleIcon(isOpen)}
         </div>
       </Dropdown>
