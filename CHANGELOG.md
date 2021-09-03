@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.10](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.9...v0.26.10) (2021-09-03)
+
+
+### Features
+
+* makes the use of "template" more flexible for Dropdown and FormDropdown ([#9](https://github.com/geolaborapp/react-bootstrap-utils/issues/9)) ([24a2d86](https://github.com/geolaborapp/react-bootstrap-utils/commit/24a2d865811edadd94e82c3835da46f6bded4edc))
+
 ### [0.26.9](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.8...v0.26.9) (2021-08-25)
 
 
