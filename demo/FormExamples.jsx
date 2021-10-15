@@ -19,6 +19,7 @@ export function FormExamples() {
       initialValues={{
         textField: 'abc',
         autocompleteField1: '2345',
+        autocompleteField4: 'unlisted item',
         selectField4: { e: 2, c: 'b' },
         switchField2: true,
         checkboxField2: true,

@@ -10,6 +10,14 @@ import { handleInputChange, normalizeOptions, booleanOrFunction } from './helper
 import { useFormControl } from './helpers/useFormControl';
 import { FormGroup } from './FormGroup';
 
+function getSelectedItem(selectedItem, value, allowUnlistedValue) {
+  if (isEmptyLike(selectedItem) && !isEmptyLike(value) && allowUnlistedValue) {
+    return { value: value, label: value };
+  }
+
+  return selectedItem;
+}
+
 export function FormAutocomplete({
   onSearch,
   options,
@@ -48,7 +56,7 @@ export function FormAutocomplete({
   const items = normalizeOptions(options, getFormData(), searchValue);
   const _selectedItem = items.find((item) => item.value === value);
 
-  const [selectedItem, setSelectedItem] = useState(_selectedItem);
+  const [selectedItem, setSelectedItem] = useState(getSelectedItem(_selectedItem, value, allowUnlistedValue));
   const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
   const [isFocused, setFocus] = useState(false);
@@ -105,7 +113,7 @@ export function FormAutocomplete({
       setValue('');
       setSelectedItem(null);
       updateSearchInputValidation();
-    } else if (isEmptyLike(selectedItem) && !isEmptyLike(searchValue) && allowUnlistedValue) {
+    } else if (selectedItem?.value !== searchValue && !isEmptyLike(searchValue) && allowUnlistedValue) {
       onSelectItem({ value: searchValue, label: searchValue });
     }
 
