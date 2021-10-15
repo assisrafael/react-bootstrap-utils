@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.11](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.10...v0.26.11) (2021-10-15)
+
+
+### Bug Fixes
+
+* load of an unlisted value in the form autocomplete ([85b5a80](https://github.com/geolaborapp/react-bootstrap-utils/commit/85b5a80efa7865d32dd25f6740b45328f5c7af0f))
+* load of an unlisted value in the form autocomplete ([c0c84d1](https://github.com/geolaborapp/react-bootstrap-utils/commit/c0c84d175c2ed8143d87b2087fa76da2136faa50))
+
 ### [0.26.10](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.9...v0.26.10) (2021-09-03)
 
 
