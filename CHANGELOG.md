@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.12](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.11...v0.26.12) (2021-10-20)
+
+
+### Bug Fixes
+
+* define default value in align helper function ([2f216a4](https://github.com/geolaborapp/react-bootstrap-utils/commit/2f216a4a308fc95332285692c75b84d7fedaecbd))
+
 ### [0.26.11](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.10...v0.26.11) (2021-10-15)
 
 
