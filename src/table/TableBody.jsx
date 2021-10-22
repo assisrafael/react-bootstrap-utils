@@ -11,12 +11,13 @@ import { TableActions } from './TableActions';
 export function TableBody({ columns, docs, rowRole, rowClass, actions, onRowClick }) {
   const trRole = rowRole ?? isFunction(onRowClick) ? 'button' : 'row';
   const trOnClick = isFunction(onRowClick) ? onRowClick : () => {};
+  const filteredColumns = columns.filter((column) => !column.hideIf?.());
 
   return (
     <tbody>
       {docs?.map((doc, docIndex) => (
         <tr key={docIndex} className={rowClass(doc)} role={trRole} onClick={safeClick(trOnClick, doc, docIndex)}>
-          {columns?.map((column, columnIndex) => (
+          {filteredColumns?.map((column, columnIndex) => (
             <td key={columnIndex} className={getColumnClass(column)}>
               {getColumnValue(doc, column, docIndex)}
             </td>
