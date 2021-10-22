@@ -2,6 +2,89 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.12](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.11...v0.26.12) (2021-10-20)
+
+
+### Bug Fixes
+
+* define default value in align helper function ([2f216a4](https://github.com/geolaborapp/react-bootstrap-utils/commit/2f216a4a308fc95332285692c75b84d7fedaecbd))
+
+### [0.26.11](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.10...v0.26.11) (2021-10-15)
+
+
+### Bug Fixes
+
+* load of an unlisted value in the form autocomplete ([85b5a80](https://github.com/geolaborapp/react-bootstrap-utils/commit/85b5a80efa7865d32dd25f6740b45328f5c7af0f))
+* load of an unlisted value in the form autocomplete ([c0c84d1](https://github.com/geolaborapp/react-bootstrap-utils/commit/c0c84d175c2ed8143d87b2087fa76da2136faa50))
+
+### [0.26.10](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.9...v0.26.10) (2021-09-03)
+
+
+### Features
+
+* makes the use of "template" more flexible for Dropdown and FormDropdown ([#9](https://github.com/geolaborapp/react-bootstrap-utils/issues/9)) ([24a2d86](https://github.com/geolaborapp/react-bootstrap-utils/commit/24a2d865811edadd94e82c3835da46f6bded4edc))
+
+### [0.26.9](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.8...v0.26.9) (2021-08-25)
+
+
+### Features
+
+* new dropdown selection component ([#6](https://github.com/geolaborapp/react-bootstrap-utils/issues/6)) ([60fae42](https://github.com/geolaborapp/react-bootstrap-utils/commit/60fae42059ece24817b61f293aeaa12842e85742))
+
+### [0.26.8](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.7...v0.26.8) (2021-08-13)
+
+
+### Features
+
+* include prop to hide closed modals content ([4099fdc](https://github.com/geolaborapp/react-bootstrap-utils/commit/4099fdcd86e9e1caafa539a7659d7edc82200dd7))
+* include prop to hide closed modals content ([82a00d6](https://github.com/geolaborapp/react-bootstrap-utils/commit/82a00d638671990edff1bcca602950364943cb00))
+
+### [0.26.7](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.6...v0.26.7) (2021-07-28)
+
+
+### Bug Fixes
+
+* set the selected value as initial search in autocomplete ([07c4369](https://github.com/geolaborapp/react-bootstrap-utils/commit/07c4369ec0585b426500824e65bb0599f9befee1))
+* set the selected value as initial search in autocomplete ([bd3be74](https://github.com/geolaborapp/react-bootstrap-utils/commit/bd3be741cba33fc0ad3583beaff63a57bed388ee))
+
+### [0.26.6](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.5...v0.26.6) (2021-07-21)
+
+
+### Features
+
+* adiciona componente SortableTable ([320feab](https://github.com/geolaborapp/react-bootstrap-utils/commit/320feab1af4e9a9339a6ac36e48551de17026ebe))
+
+
+### Bug Fixes
+
+* flexibiliza papel das linhas de uma tabela ([dd39fa7](https://github.com/geolaborapp/react-bootstrap-utils/commit/dd39fa7988f62fd43870ea78c34c4e3cd504aae2))
+
+### [0.26.5](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.3...v0.26.5) (2021-07-09)
+
+
+### Features
+
+* allow input masks functions on forminput2 ([afaa1ce](https://github.com/geolaborapp/react-bootstrap-utils/commit/afaa1cea773ea9abedd8ffaa4e827b0e14b22ea0))
+* allow input masks functions on forminput2 ([049b214](https://github.com/geolaborapp/react-bootstrap-utils/commit/049b21484b7b00dec2f91f9c775b6a18ef9ea264))
+
+
+### Bug Fixes
+
+* check if an element is descendant before remove ([a1eb85d](https://github.com/geolaborapp/react-bootstrap-utils/commit/a1eb85d56cbd0142673e2a35394821a5a4a19874))
+
+### [0.26.4](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.3...v0.26.4) (2021-07-09)
+
+
+### Features
+
+* allow input masks functions on forminput2 ([afaa1ce](https://github.com/geolaborapp/react-bootstrap-utils/commit/afaa1cea773ea9abedd8ffaa4e827b0e14b22ea0))
+* allow input masks functions on forminput2 ([049b214](https://github.com/geolaborapp/react-bootstrap-utils/commit/049b21484b7b00dec2f91f9c775b6a18ef9ea264))
+
+
+### Bug Fixes
+
+* check if an element is descendant before remove ([a1eb85d](https://github.com/geolaborapp/react-bootstrap-utils/commit/a1eb85d56cbd0142673e2a35394821a5a4a19874))
+
 ### [0.26.3](https://github.com/assisrafael/react-bootstrap-utils/compare/v0.26.2...v0.26.3) (2021-04-21)
 
 

@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { getColumnClass } from './table-helpers';
 
 export function TableHead({ columns, hasActions, actionLabel, columnHeaderFormat }) {
+  const filteredColumns = columns.filter((column) => !column.hideIf?.());
+
   return (
     <thead>
       <tr>
-        {columns.map((column, columnIndex) => (
+        {filteredColumns?.map((column, columnIndex) => (
           <th key={columnIndex} className={getColumnClass(column)}>
-            {columnHeaderFormat(column.label, column.attribute)}
+            {columnHeaderFormat(column.label, column.attribute, column)}
           </th>
         ))}
         {hasActions && <th className="text-center">{actionLabel}</th>}

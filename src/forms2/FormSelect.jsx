@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
   booleanOrFunction,
   getOptionsType,
-  getSelectedOption,
+  getSelectedValue,
   normalizeOptions,
   serializeValue,
 } from '../forms/helpers/form-helpers';
@@ -40,7 +40,7 @@ export function FormSelect2({
       {...attrs}
       className="custom-select"
       onChange={handleOnChangeFactory(afterChange, getOptionsType(normalizedOptions))}
-      value={getSelectedOption(value, normalizedOptions, trackBy)}
+      value={getSelectedValue(value, normalizedOptions, trackBy)}
     >
       <option value="">{placeholder}</option>
       {renderOptions(normalizedOptions, trackBy)}

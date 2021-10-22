@@ -22,7 +22,11 @@ export function ModalPortal({ children, title, isOpen }) {
         return;
       }
 
-      modalPortalsElem.removeChild(container);
+      const isDescendant = modalPortalsElem.contains(container);
+
+      if (isDescendant) {
+        modalPortalsElem.removeChild(container);
+      }
     };
   }, [container, title]);
 

@@ -15,6 +15,6 @@ export function normalizeColumns(columns) {
   });
 }
 
-export function getColumnClass({ align }) {
+export function getColumnClass({ align } = {}) {
   return formatClasses([align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : '']);
 }

@@ -1,6 +1,6 @@
 {
-  "name": "react-bootstrap-utils",
-  "version": "0.26.3",
+  "name": "@geolaborapp/react-bootstrap-utils",
+  "version": "0.26.12",
   "description": "React bootstrap library",
   "main": "dist/main.js",
   "scripts": {
@@ -18,15 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assisrafael/react-bootstrap-utils.git"
+    "url": "git+https://github.com/geolaborapp/react-bootstrap-utils.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/geolaborapp"
   },
   "keywords": [],
-  "author": "Igor Rafael <igor.rafael@gmail.com>",
+  "author": "João Vitor <joaoassisb@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/assisrafael/react-bootstrap-utils/issues"
-  },
-  "homepage": "https://github.com/assisrafael/react-bootstrap-utils#readme",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",

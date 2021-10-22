@@ -9,6 +9,7 @@ import {
   FormGroupRadio,
   FormGroupTextarea,
   FormGroupAutocomplete,
+  FormGroupDropdown,
   // eslint-disable-next-line import/no-unresolved
 } from '../dist/main';
 
@@ -18,12 +19,17 @@ export function FormExamples() {
       initialValues={{
         textField: 'abc',
         autocompleteField1: '2345',
+        autocompleteField4: 'unlisted item',
         selectField4: { e: 2, c: 'b' },
         switchField2: true,
         checkboxField2: true,
         radioField2: 'b',
         numberField: null,
         dateField: new Date().toISOString(),
+        dropdownField1: {
+          title: 'Title two',
+        },
+        dropdownField2: '03',
       }}
       onChange={console.info}
       onSubmit={(formData) => {
@@ -133,11 +139,20 @@ export function FormExamples() {
       <div className="row">
         <div className="col">
           <FormGroupAutocomplete
+            name="disabledAutocompleteField"
+            label="Disabled Autocomplete"
+            options={['1234', '2345', '3456']}
+            placeholder="Type some numbers"
+            help="Disabled autocomplete"
+            disabled
+          />
+        </div>
+        <div className="col">
+          <FormGroupAutocomplete
             name="autocompleteField1"
             label="Autocomplete"
             options={['1234', '2345', '3456']}
             placeholder="Type some numbers"
-            disabled
             help="Autocomplete help"
           />
         </div>
@@ -348,6 +363,81 @@ export function FormExamples() {
           </div>
         </div>
       ))}
+
+      <FormGroupDropdown
+        name="dropdownField1"
+        label="Dropdown using object as value"
+        options={[
+          {
+            value: {
+              firstValue: 'Title one',
+              secondValue: 1,
+            },
+            label: {
+              title: 'Title one',
+              subtitle: 'subtitle one',
+            },
+          },
+          {
+            value: {
+              firstValue: 'Title two',
+              secondValue: 2,
+            },
+            label: {
+              title: 'Title two',
+              subtitle: 'subtitle two',
+            },
+          },
+          {
+            value: {
+              firstValue: 'Title three',
+              secondValue: 3,
+            },
+            label: {
+              title: 'Title three',
+              subtitle: 'subtitle three',
+            },
+          },
+        ]}
+        help="dropdown help"
+        placeholder="Select one value"
+        afterChange={() => console.log('afterChange dropdown')}
+        template={(label, value) => {
+          return value ? (
+            <div>
+              <strong>{label.title ?? '-'}</strong>
+              <p className="m-0">{label.subtitle ?? '-'}</p>
+            </div>
+          ) : (
+            label
+          );
+        }}
+        itemClassName="border-bottom"
+        childClassName="text-muted"
+        trackBy="secondValue"
+      />
+
+      <FormGroupDropdown
+        name="dropdownField2"
+        label="Dropdown using string as value"
+        options={[
+          {
+            value: '01',
+            label: <p>Value one</p>,
+          },
+          {
+            value: '02',
+            label: <p>Value two</p>,
+          },
+          {
+            value: '03',
+            label: <p>Value three</p>,
+          },
+        ]}
+        placeholder="Select one value"
+        includeEmptyItem={false}
+        menuClassName="p-4 w-100"
+      />
     </Form>
   );
 }
