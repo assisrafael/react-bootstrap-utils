@@ -321,6 +321,33 @@ export function TableExamples() {
             ]}
           />
         </div>
+        <div className="col-6 mb-3">
+          <h1 className="h4">Table with column hideIf</h1>
+
+          <Table
+            columns={[
+              {
+                attribute: 'a',
+                label: 'A',
+                hideIf: () => true,
+              },
+              {
+                attribute: 'b',
+                label: 'B',
+              },
+              {
+                attribute: 'c',
+                label: 'C',
+              },
+            ]}
+            docs={[
+              { a: 'B', b: 'G', c: 'Y' },
+              { a: 'C', b: 'I', c: 'Z' },
+              { a: 'A', b: 'H', c: 'X' },
+              { a: 'D', b: 'L', c: 'T' },
+            ]}
+          />
+        </div>
       </div>
     </div>
   );
