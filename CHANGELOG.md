@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.13](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.12...v0.26.13) (2021-10-25)
+
+
+### Features
+
+* allow to conditionally hide table columns  ([fa0f0dd](https://github.com/geolaborapp/react-bootstrap-utils/commit/fa0f0dd8a246def007eb4ffbdede1f0e83ee1cb8))
+
 ### [0.26.12](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.11...v0.26.12) (2021-10-20)
 
 

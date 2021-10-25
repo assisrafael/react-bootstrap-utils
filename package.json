@@ -1,6 +1,6 @@
 {
   "name": "@geolaborapp/react-bootstrap-utils",
-  "version": "0.26.12",
+  "version": "0.26.13",
   "description": "React bootstrap library",
   "main": "dist/main.js",
   "scripts": {
