@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isUndefined } from 'js-var-type';
 
 import { getColumnClass } from './table-helpers';
 
@@ -10,7 +11,11 @@ export function TableHead({ columns, hasActions, actionLabel, columnHeaderFormat
     <thead>
       <tr>
         {filteredColumns?.map((column, columnIndex) => (
-          <th key={columnIndex} className={getColumnClass(column)}>
+          <th
+            key={columnIndex}
+            className={getColumnClass(column)}
+            data-testid={isUndefined(column.dataTest) ? '' : column.dataTest}
+          >
             {columnHeaderFormat(column.label, column.attribute, column)}
           </th>
         ))}
