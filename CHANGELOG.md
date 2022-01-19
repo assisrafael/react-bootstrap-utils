@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.14](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.13...v0.26.14) (2022-01-19)
+
+
+### Features
+
+* :rewind: retira data-test do header da tabela ([f4654b3](https://github.com/geolaborapp/react-bootstrap-utils/commit/f4654b3f54f558ef2f6d1b07f048874b78302a01))
+* :sparkles: adiciona data-testid para Table ([0558d08](https://github.com/geolaborapp/react-bootstrap-utils/commit/0558d0820118c1ed904391ea8c6c6a4a98664f75))
+* adiciona data-testid para Table ([2b0ca94](https://github.com/geolaborapp/react-bootstrap-utils/commit/2b0ca949c14fdcfde2611a9d31fae70f552f3cdb))
+* includes form-group2 files ([d9f9462](https://github.com/geolaborapp/react-bootstrap-utils/commit/d9f94620e5d78542f9a9289f71622b8f3423478c))
+* includes form-group2 files ([07b7305](https://github.com/geolaborapp/react-bootstrap-utils/commit/07b73052b012db568cdda4cab3428bf615b1ba6f))
+
 ### [0.26.13](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.12...v0.26.13) (2021-10-25)
 
 
