@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isFunction, isUndefined } from 'js-var-type';
+import { isEmptyLike, isFunction } from 'js-var-type';
 
 import { safeClick } from '../utils/event-handlers';
 import { getValueByPath } from '../utils/getters-setters';
@@ -27,7 +27,7 @@ export function TableBody({ columns, docs, rowRole, rowClass, actions, onRowClic
             <td
               key={columnIndex}
               className={getColumnClass(column)}
-              data-testid={isUndefined(column.dataTestId) ? '' : column.dataTestId}
+              data-testid={isEmptyLike(column.dataTestId) ? '' : column.dataTestId}
             >
               {getColumnValue(doc, column, docIndex)}
             </td>
