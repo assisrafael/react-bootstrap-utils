@@ -21,13 +21,13 @@ export function TableBody({ columns, docs, rowRole, rowClass, actions, onRowClic
           className={rowClass(doc)}
           role={trRole}
           onClick={safeClick(trOnClick, doc, docIndex)}
-          data-testid={`tr[${docIndex}]`}
+          data-testid={`tr-${docIndex}`}
         >
           {filteredColumns?.map((column, columnIndex) => (
             <td
               key={columnIndex}
               className={getColumnClass(column)}
-              data-testid={isUndefined(column.dataTest) ? '' : column.dataTest}
+              data-testid={isUndefined(column.dataTestId) ? '' : column.dataTestId}
             >
               {getColumnValue(doc, column, docIndex)}
             </td>

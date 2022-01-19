@@ -356,17 +356,17 @@ export function TableExamples() {
               {
                 attribute: 'a',
                 label: 'A',
-                dataTest: 'testA',
+                dataTestId: 'testA',
               },
               {
                 attribute: 'b',
                 label: 'B',
-                dataTest: 'testB',
+                dataTestId: 'testB',
               },
               {
                 attribute: 'c',
                 label: 'C',
-                dataTest: 'testC',
+                dataTestId: 'testC',
               },
             ]}
             docs={[
