@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isFunction } from 'js-var-type';
+import { isEmptyLike, isFunction } from 'js-var-type';
 
 import { safeClick } from '../utils/event-handlers';
 import { getValueByPath } from '../utils/getters-setters';
@@ -16,9 +16,19 @@ export function TableBody({ columns, docs, rowRole, rowClass, actions, onRowClic
   return (
     <tbody>
       {docs?.map((doc, docIndex) => (
-        <tr key={docIndex} className={rowClass(doc)} role={trRole} onClick={safeClick(trOnClick, doc, docIndex)}>
+        <tr
+          key={docIndex}
+          className={rowClass(doc)}
+          role={trRole}
+          onClick={safeClick(trOnClick, doc, docIndex)}
+          data-testid={`tr-${docIndex}`}
+        >
           {filteredColumns?.map((column, columnIndex) => (
-            <td key={columnIndex} className={getColumnClass(column)}>
+            <td
+              key={columnIndex}
+              className={getColumnClass(column)}
+              data-testid={isEmptyLike(column.dataTestId) ? '' : column.dataTestId}
+            >
               {getColumnValue(doc, column, docIndex)}
             </td>
           ))}
