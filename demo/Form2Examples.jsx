@@ -1,6 +1,15 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
-import { Form2, FormInput2, FormSelect2, FormSwitch2, useFormControl2, useFormEffect } from '../dist/main';
+import {
+  Form2,
+  FormGroupInput2,
+  FormGroupSelect2,
+  FormGroupSwitch2,
+  FormGroupTextarea2,
+  FormInput2,
+  useFormControl2,
+  useFormEffect,
+} from '../dist/main';
 
 export function Form2Examples() {
   return (
@@ -13,6 +22,8 @@ export function Form2Examples() {
           arr: [1, 2, 3],
           arrObj: [{ o: 1 }, { o: 2 }, { o: 3 }],
           masks: {},
+          textarea1:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque praesentium quisquam reiciendis expedita. Ad quod voluptas aliquid illum veniam odio? Nulla sed, illum eligendi amet fuga optio officia itaque nisi',
         }}
         onSubmit={(data) => console.log('onSubmit', data)}
         onChange={(data) => console.log('onChange', data)}
@@ -61,26 +72,17 @@ export function Form2Examples() {
           <label htmlFor="">Array of objects</label>
           <FormArrayOfObjects />
         </div>
-        <div className="form-group">
-          <label htmlFor="">AttrA</label>
-          <FormInput2 name="attrA" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">AttrB</label>
-          <FormInput2 name="attrB" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">AttrC</label>
-          <FormSelect2 name="attrC" options={[1, 2, 3]} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">AttrD</label>
-          <FormSwitch2 name="attrD" id="attrD" />
-        </div>
+        <FormGroupInput2 label="AttrA" name="attrA"></FormGroupInput2>
+        <FormGroupInput2 label="AttrB" name="attrB"></FormGroupInput2>
+        <FormGroupSelect2 label="AttrC" name="attrC" options={[1, 2, 3]}></FormGroupSelect2>
+        <FormGroupSwitch2 id="attrD" label="AttrD" name="attrD"></FormGroupSwitch2>
+
         <div className="form-group">
           <label htmlFor="">Version</label>
           <FormVersion />
         </div>
+
+        <FormGroupTextarea2 label="Textarea" name="textarea1" rows="5" />
 
         <FormMasked />
 
@@ -187,20 +189,11 @@ function FormMasked() {
   return (
     <div>
       <strong>Masked Inputs</strong>
-      <div className="form-group">
-        <label htmlFor="">Masked Date</label>
-        <FormInput2 name="masks.date" maxLength="10" maskFunction={dateMask} />
-      </div>
+      <FormGroupInput2 label="Masked Date" name="masks.date" maxLength="10" maskFunction={dateMask} />
 
-      <div className="form-group">
-        <label htmlFor="">Masked Hour</label>
-        <FormInput2 name="masks.hour" maxLength="5" maskFunction={hourMask} />
-      </div>
+      <FormGroupInput2 label="Masked Hour" name="masks.hour" maxLength="5" maskFunction={hourMask} />
 
-      <div className="form-group">
-        <label htmlFor="">Masked 3 decimals Number</label>
-        <FormInput2 name="masks.decimal" maskFunction={decimalMask} />
-      </div>
+      <FormGroupInput2 label="Masked 3 decimals Number" name="masks.decimal" maskFunction={decimalMask} />
 
       <div className="form-group">
         <label htmlFor="">Percentage Mask % </label>
@@ -215,10 +208,7 @@ function FormMasked() {
         <FormInput2 type="number" name="masks.percentageValue" style={{ display: 'none' }} />
       </div>
 
-      <div className="form-group">
-        <label htmlFor="">currency</label>
-        <FormInput2 name="masks.currency" maskFunction={currency} />
-      </div>
+      <FormGroupInput2 label="Currency" name="masks.currency" maskFunction={currency} />
     </div>
   );
 }
