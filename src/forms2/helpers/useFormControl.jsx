@@ -68,7 +68,7 @@ export function useFormControl2(name, type) {
       }
     },
     getFormData() {
-      return formHelper.getFormData();
+      return formHelper?.getFormData?.();
     },
   };
 }
