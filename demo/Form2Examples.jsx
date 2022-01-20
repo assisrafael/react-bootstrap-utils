@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   Form2,
+  FormGroupCheckbox2,
   FormGroupInput2,
   FormGroupSelect2,
   FormGroupSwitch2,
@@ -13,7 +14,7 @@ import {
 
 export function Form2Examples() {
   return (
-    <div>
+    <div className="pb-4">
       Alternative Form implementation
       <Form2
         initialValues={{
@@ -49,6 +50,17 @@ export function Form2Examples() {
             }),
           };
         }}
+        customValidation={true}
+        validations={{
+          attrB: [
+            {
+              message: 'Must be filled if AttrA is not empty',
+              validate(value, formData) {
+                return !formData.attrA || value;
+              },
+            },
+          ],
+        }}
       >
         <div className="form-group">
           <label htmlFor="">Obj</label>
@@ -77,6 +89,16 @@ export function Form2Examples() {
         <FormGroupSelect2 label="AttrC" name="attrC" options={[1, 2, 3]}></FormGroupSelect2>
         <FormGroupSwitch2 id="attrD" label="AttrD" name="attrD"></FormGroupSwitch2>
 
+        <FormGroupCheckbox2
+          id="checkboxFieldId"
+          name="checkboxField"
+          label="Checkbox field"
+          valueLabel="Checkbox description"
+          help="Checkbox help"
+        />
+
+        <FormGroupCheckbox2 id="checkboxFieldId2" name="checkboxField2" label="Checkbox field 2" disabled />
+
         <div className="form-group">
           <label htmlFor="">Version</label>
           <FormVersion />
@@ -90,7 +112,6 @@ export function Form2Examples() {
           <label htmlFor="">Observer</label>
           <FormObserver />
         </div>
-        <button className="btn btn-success">Submit</button>
       </Form2>
     </div>
   );

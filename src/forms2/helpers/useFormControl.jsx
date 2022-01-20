@@ -1,7 +1,7 @@
 import { isDefined, isFunction } from 'js-var-type';
 import { useCallback, useContext, useEffect, useState } from 'react';
 
-import { decode, getTargetValue } from '../../forms/helpers/form-helpers';
+import { decode, getTargetValue, encode } from './form-helpers';
 
 import { FormContext } from './useFormHelper';
 
@@ -52,9 +52,17 @@ export function useFormControl2(name, type) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const registerInputRef = useCallback(
+    (ref) => {
+      formHelper.registerRef(name, ref);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [name]
+  );
+
   return {
     getValue() {
-      return value;
+      return encode(value, type);
     },
     setValue,
     isRegistered() {
@@ -70,5 +78,8 @@ export function useFormControl2(name, type) {
     getFormData() {
       return formHelper?.getFormData?.();
     },
+    getFormSubmitedAttempted: () => formHelper.getFormSubmitedAttempted,
+    isValid: () => formHelper.getValidationMessage(name) === '',
+    registerInputRef,
   };
 }

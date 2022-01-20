@@ -1,69 +1,95 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { booleanOrFunction } from './helpers/form-helpers';
+import { formatClasses } from '../utils/attributes';
 
 import { useFormControl2 } from './helpers/useFormControl';
+import { booleanOrFunction } from './helpers/form-helpers';
 import { FormGroup2 } from './FormGroup';
 
-export function FormSwitch2({
+export function FormRadio2({
   id,
   name,
   required: _required,
-  trueLabel,
-  falseLabel,
+  checkedValue,
+  valueLabel,
+  inline,
   disabled: _disabled,
   afterChange,
 }) {
-  const { getValue, handleOnChangeFactory, getFormData, registerInputRef } = useFormControl2(name, 'boolean');
-
+  const { getValue, handleOnChangeFactory, registerInputRef, getFormData } = useFormControl2(name);
   const value = getValue();
   const disabled = booleanOrFunction(_disabled, getFormData());
   const required = booleanOrFunction(_required, getFormData());
 
   return (
-    <div className="custom-control custom-switch">
+    <div className={formatClasses([`custom-control`, `custom-radio`, inline && 'custom-control-inline'])}>
       <input
         {...{ required, name, id, disabled }}
-        type="checkbox"
+        type="radio"
         className="custom-control-input"
         onChange={handleOnChangeFactory(afterChange)}
-        checked={value}
+        checked={value === checkedValue}
+        value={checkedValue}
         ref={registerInputRef}
       />
       <label className="custom-control-label" htmlFor={id}>
-        {(trueLabel || falseLabel) && (value ? trueLabel : falseLabel)}
+        {valueLabel}
       </label>
     </div>
   );
 }
 
-FormSwitch2.propTypes = {
-  afterChange: PropTypes.func,
-  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  falseLabel: PropTypes.node,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  trueLabel: PropTypes.node,
+FormRadio2.defaultProps = {
+  inline: false,
 };
 
-export function FormGroupSwitch2(props) {
+FormRadio2.propTypes = {
+  afterChange: PropTypes.func,
+  checkedValue: PropTypes.any,
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  id: PropTypes.string.isRequired,
+  inline: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  valueLabel: PropTypes.node,
+};
+
+export function FormGroupRadio2({ options, id, ...props }) {
   return (
     <FormGroup2 mockInvalidSibling={true} {...props}>
-      <FormSwitch2 {...props} />
+      <div>
+        {options.map((option, index) => (
+          <FormRadio2
+            key={index}
+            {...props}
+            checkedValue={option.value}
+            valueLabel={option.label}
+            id={`${id}-${index}`}
+          />
+        ))}
+      </div>
     </FormGroup2>
   );
 }
 
-FormGroupSwitch2.propTypes = {
+FormGroupRadio2.defaultProps = {
+  inline: true,
+};
+
+FormGroupRadio2.propTypes = {
   afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  falseLabel: PropTypes.node,
   help: PropTypes.node,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  inline: PropTypes.bool,
   label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.any.isRequired,
+      label: PropTypes.node.isRequired,
+    })
+  ),
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  trueLabel: PropTypes.node,
 };

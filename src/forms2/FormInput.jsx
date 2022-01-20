@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { booleanOrFunction } from '../forms/helpers/form-helpers';
+import { booleanOrFunction } from './helpers/form-helpers';
 
 import { useFormControl2 } from './helpers/useFormControl';
 import { FormGroup2 } from './FormGroup';
@@ -15,7 +15,7 @@ export function FormInput2({
   maskFunction,
   ..._attrs
 }) {
-  const { getValue, handleOnChangeFactory, getFormData } = useFormControl2(name);
+  const { getValue, handleOnChangeFactory, getFormData, registerInputRef } = useFormControl2(name, type);
 
   const disabled = booleanOrFunction(_disabled, getFormData());
   const required = booleanOrFunction(_required, getFormData());
@@ -29,13 +29,18 @@ export function FormInput2({
   };
 
   if (type === 'datetime-local') {
-    attrs.defaultValue = getValue();
+    attrs.defaultValue = getValue() ?? '';
   } else {
-    attrs.value = getValue();
+    attrs.value = getValue() ?? '';
   }
 
   return (
-    <input {...attrs} className="form-control" onChange={handleOnChangeFactory(afterChange, type, maskFunction)} />
+    <input
+      {...attrs}
+      className="form-control"
+      onChange={handleOnChangeFactory(afterChange, type, maskFunction)}
+      ref={registerInputRef}
+    />
   );
 }
 
