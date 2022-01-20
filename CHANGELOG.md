@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.15](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.14...v0.26.15) (2022-01-20)
+
+
+### Features
+
+* add actions and custom validations in form2 ([cc19aac](https://github.com/geolaborapp/react-bootstrap-utils/commit/cc19aaccf7ae3893c605e8dbb57041f2070b4800))
+* adds form checkbox,radio,autocomplete and dropdown ([8407bd6](https://github.com/geolaborapp/react-bootstrap-utils/commit/8407bd64b01fe27d58e7b5aaacf2e35a6fe98246))
+* adds missing form2 props and components ([ea612dd](https://github.com/geolaborapp/react-bootstrap-utils/commit/ea612dd909def649ea61617155ebf8e8e7d63f43))
+
 ### [0.26.14](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.13...v0.26.14) (2022-01-19)
 
 
