@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   Form2,
+  FormGroupCheckbox2,
   FormGroupInput2,
   FormGroupSelect2,
   FormGroupSwitch2,
@@ -87,6 +88,16 @@ export function Form2Examples() {
         <FormGroupInput2 label="AttrB" name="attrB"></FormGroupInput2>
         <FormGroupSelect2 label="AttrC" name="attrC" options={[1, 2, 3]}></FormGroupSelect2>
         <FormGroupSwitch2 id="attrD" label="AttrD" name="attrD"></FormGroupSwitch2>
+
+        <FormGroupCheckbox2
+          id="checkboxFieldId"
+          name="checkboxField"
+          label="Checkbox field"
+          valueLabel="Checkbox description"
+          help="Checkbox help"
+        />
+
+        <FormGroupCheckbox2 id="checkboxFieldId2" name="checkboxField2" label="Checkbox field 2" disabled />
 
         <div className="form-group">
           <label htmlFor="">Version</label>

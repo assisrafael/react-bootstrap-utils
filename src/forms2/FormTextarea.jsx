@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { booleanOrFunction } from '../forms/helpers/form-helpers';
+import { booleanOrFunction } from './helpers/form-helpers';
 
 import { FormGroup2 } from './FormGroup';
 

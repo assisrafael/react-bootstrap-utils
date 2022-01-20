@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -7,7 +7,7 @@ import {
   getSelectedValue,
   normalizeOptions,
   serializeValue,
-} from '../forms/helpers/form-helpers';
+} from './helpers/form-helpers';
 
 import { useFormControl2 } from './helpers/useFormControl';
 import { FormGroup2 } from './FormGroup';

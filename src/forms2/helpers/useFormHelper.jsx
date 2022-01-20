@@ -4,7 +4,8 @@ import { isDefined } from 'js-var-type';
 
 import { flattenObject, getValueByPath, setValueByPath } from '../../utils/getters-setters';
 import { useArrayValueMap } from '../../utils/useValueMap';
-import { validateFormElement } from '../../forms/helpers/form-helpers';
+
+import { validateFormElement } from './form-helpers';
 
 export const FormContext = React.createContext(null);
 
