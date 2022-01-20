@@ -6,15 +6,7 @@ import { booleanOrFunction } from './helpers/form-helpers';
 import { useFormControl2 } from './helpers/useFormControl';
 import { FormGroup2 } from './FormGroup';
 
-export function FormInput2({
-  type,
-  name,
-  required: _required,
-  disabled: _disabled,
-  afterChange,
-  maskFunction,
-  ..._attrs
-}) {
+export function FormInput2({ type, name, required: _required, disabled: _disabled, afterChange, ..._attrs }) {
   const { getValue, handleOnChangeFactory, getFormData, registerInputRef } = useFormControl2(name, type);
 
   const disabled = booleanOrFunction(_disabled, getFormData());
@@ -38,7 +30,7 @@ export function FormInput2({
     <input
       {...attrs}
       className="form-control"
-      onChange={handleOnChangeFactory(afterChange, type, maskFunction)}
+      onChange={handleOnChangeFactory(afterChange, type)}
       ref={registerInputRef}
     />
   );
@@ -52,7 +44,6 @@ FormInput2.propTypes = {
   afterChange: PropTypes.func,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   id: PropTypes.string,
-  maskFunction: PropTypes.func,
   max: PropTypes.string,
   maxLength: PropTypes.string,
   min: PropTypes.string,

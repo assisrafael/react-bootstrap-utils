@@ -22,7 +22,6 @@ export function Form2Examples() {
           Obj: { x: 'X', z: 0 },
           arr: [1, 2, 3],
           arrObj: [{ o: 1 }, { o: 2 }, { o: 3 }],
-          masks: {},
           textarea1:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque praesentium quisquam reiciendis expedita. Ad quod voluptas aliquid illum veniam odio? Nulla sed, illum eligendi amet fuga optio officia itaque nisi',
         }}
@@ -106,8 +105,6 @@ export function Form2Examples() {
 
         <FormGroupTextarea2 label="Textarea" name="textarea1" rows="5" />
 
-        <FormMasked />
-
         <div className="form-group">
           <label htmlFor="">Observer</label>
           <FormObserver />
@@ -152,84 +149,4 @@ function FormObserver() {
   });
 
   return <div>{state}</div>;
-}
-
-function FormMasked() {
-  const percentageFormControl = useFormControl2('masks.percentageValue');
-
-  const decimalMask = function (v) {
-    let maskedValue = String(v);
-
-    maskedValue = maskedValue.replace(/\D/g, '');
-    maskedValue = maskedValue.replace(/(\d)(\d{3})$/, '$1.$2');
-
-    return maskedValue;
-  };
-
-  const dateMask = function (v) {
-    let maskedValue = v;
-
-    maskedValue = maskedValue.replace(/\D/g, '');
-
-    maskedValue = maskedValue.replace(/(\d{2})(\d)/, '$1/$2');
-    maskedValue = maskedValue.replace(/(\d{2})(\d)/, '$1/$2');
-
-    return maskedValue;
-  };
-
-  const hourMask = function (v) {
-    let maskedValue = v;
-
-    maskedValue = maskedValue.replace(/\D/g, '');
-    maskedValue = maskedValue.replace(/(\d{2})(\d)/, '$1:$2');
-
-    return maskedValue;
-  };
-
-  const currency = function (v) {
-    let maskedValue = v;
-
-    maskedValue = maskedValue.replace(/\D/g, '');
-    maskedValue = maskedValue.replace(/(\d)(\d{2})$/, '$1,$2');
-    maskedValue = maskedValue.replace(/(?=(\d{3})+(\D))\B/g, '.');
-
-    return maskedValue;
-  };
-
-  const percentageMask = function (v) {
-    let maskedValue = v;
-    maskedValue = maskedValue.replace(/[^0-9\.]/g, '');
-
-    if (!maskedValue) {
-      return '';
-    }
-
-    return `${maskedValue}%`;
-  };
-
-  return (
-    <div>
-      <strong>Masked Inputs</strong>
-      <FormGroupInput2 label="Masked Date" name="masks.date" maxLength="10" maskFunction={dateMask} />
-
-      <FormGroupInput2 label="Masked Hour" name="masks.hour" maxLength="5" maskFunction={hourMask} />
-
-      <FormGroupInput2 label="Masked 3 decimals Number" name="masks.decimal" maskFunction={decimalMask} />
-
-      <div className="form-group">
-        <label htmlFor="">Percentage Mask % </label>
-        <FormInput2
-          name="masks.percentage"
-          maskFunction={percentageMask}
-          afterChange={(value) => {
-            const rawValue = value.replace(/\%/, '');
-            percentageFormControl.setValue(Number(rawValue) / 100);
-          }}
-        />
-        <FormInput2 type="number" name="masks.percentageValue" style={{ display: 'none' }} />
-      </div>
-
-      <FormGroupInput2 label="Currency" name="masks.currency" maskFunction={currency} />
-    </div>
-  );
 }
