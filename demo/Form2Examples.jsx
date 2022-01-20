@@ -13,7 +13,7 @@ import {
 
 export function Form2Examples() {
   return (
-    <div>
+    <div className="pb-4">
       Alternative Form implementation
       <Form2
         initialValues={{
@@ -48,6 +48,17 @@ export function Form2Examples() {
               return v;
             }),
           };
+        }}
+        customValidation={true}
+        validations={{
+          attrB: [
+            {
+              message: 'Must be filled if AttrA is not empty',
+              validate(value, formData) {
+                return !formData.attrA || value;
+              },
+            },
+          ],
         }}
       >
         <div className="form-group">
@@ -90,7 +101,6 @@ export function Form2Examples() {
           <label htmlFor="">Observer</label>
           <FormObserver />
         </div>
-        <button className="btn btn-success">Submit</button>
       </Form2>
     </div>
   );

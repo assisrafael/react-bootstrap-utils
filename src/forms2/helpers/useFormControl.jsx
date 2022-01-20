@@ -52,6 +52,14 @@ export function useFormControl2(name, type) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const registerInputRef = useCallback(
+    (ref) => {
+      formHelper.registerRef(name, ref);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [name]
+  );
+
   return {
     getValue() {
       return value;
@@ -70,5 +78,6 @@ export function useFormControl2(name, type) {
     getFormData() {
       return formHelper?.getFormData?.();
     },
+    registerInputRef,
   };
 }

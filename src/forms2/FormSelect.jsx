@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -22,7 +22,7 @@ export function FormSelect2({
   afterChange,
   ..._attrs
 }) {
-  const { getFormData, getValue, handleOnChangeFactory } = useFormControl2(name);
+  const { getFormData, getValue, handleOnChangeFactory, registerInputRef } = useFormControl2(name);
   const value = getValue();
 
   const normalizedOptions = normalizeOptions(options, getFormData());
@@ -42,6 +42,7 @@ export function FormSelect2({
       className="custom-select"
       onChange={handleOnChangeFactory(afterChange, getOptionsType(normalizedOptions))}
       value={getSelectedValue(value, normalizedOptions, trackBy)}
+      ref={registerInputRef}
     >
       <option value="">{placeholder}</option>
       {renderOptions(normalizedOptions, trackBy)}

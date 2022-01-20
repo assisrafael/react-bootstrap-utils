@@ -15,7 +15,7 @@ export function FormSwitch2({
   disabled: _disabled,
   afterChange,
 }) {
-  const { getValue, handleOnChangeFactory, getFormData } = useFormControl2(name, 'boolean');
+  const { getValue, handleOnChangeFactory, getFormData, registerInputRef } = useFormControl2(name, 'boolean');
 
   const value = getValue();
   const disabled = booleanOrFunction(_disabled, getFormData());
@@ -29,6 +29,7 @@ export function FormSwitch2({
         className="custom-control-input"
         onChange={handleOnChangeFactory(afterChange)}
         checked={value}
+        ref={registerInputRef}
       />
       <label className="custom-control-label" htmlFor={id}>
         {(trueLabel || falseLabel) && (value ? trueLabel : falseLabel)}

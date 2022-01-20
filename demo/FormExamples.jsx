@@ -1,21 +1,21 @@
 /* eslint-disable no-console */
 import React from 'react';
 import {
-  Form,
-  FormGroupInput,
-  FormGroupSelect,
-  FormGroupSwitch,
-  FormGroupCheckbox,
-  FormGroupRadio,
-  FormGroupTextarea,
-  FormGroupAutocomplete,
-  FormGroupDropdown,
+  Form2,
+  FormGroupInput2,
+  FormGroupSelect2,
+  FormGroupSwitch2,
+  // FormGroupCheckbox2,
+  // FormGroupRadio2,
+  FormGroupTextarea2,
+  // FormGroupAutocomplete2,
+  // FormGroupDropdown2,
   // eslint-disable-next-line import/no-unresolved
 } from '../dist/main';
 
 export function FormExamples() {
   return (
-    <Form
+    <Form2
       initialValues={{
         textField: 'abc',
         autocompleteField1: '2345',
@@ -112,10 +112,10 @@ export function FormExamples() {
     >
       <div className="row">
         <div className="col">
-          <FormGroupInput name="textField" label="Text field" disabled help="Text field help" />
+          <FormGroupInput2 name="textField" label="Text field" disabled help="Text field help" />
         </div>
         <div className="col">
-          <FormGroupInput
+          <FormGroupInput2
             name="textField2"
             label="Text field 2"
             required
@@ -124,7 +124,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupInput
+          <FormGroupInput2
             name="numberField"
             label="Number field"
             type="number"
@@ -132,13 +132,13 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupInput name="dateField" label="Date field" type="datetime-local" />
+          <FormGroupInput2 name="dateField" label="Date field" type="datetime-local" />
         </div>
       </div>
 
-      <div className="row">
+      {/* <div className="row">
         <div className="col">
-          <FormGroupAutocomplete
+          <FormGroupAutocomplete2
             name="disabledAutocompleteField"
             label="Disabled Autocomplete"
             options={['1234', '2345', '3456']}
@@ -148,7 +148,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupAutocomplete
+          <FormGroupAutocomplete2
             name="autocompleteField1"
             label="Autocomplete"
             options={['1234', '2345', '3456']}
@@ -157,7 +157,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupAutocomplete
+          <FormGroupAutocomplete2
             name="autocompleteField2"
             label="Autocomplete that opens on focus"
             options={(_, searchValue) => {
@@ -175,7 +175,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupAutocomplete
+          <FormGroupAutocomplete2
             name="autocompleteField3"
             label="Autocomplete with item template"
             options={Array.from({ length: 10 }).map((_, index) => ({
@@ -192,7 +192,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupAutocomplete
+          <FormGroupAutocomplete2
             name="autocompleteField4"
             label="Autocomplete that allows custom user input"
             options={['1234', '2345', '3456']}
@@ -200,11 +200,11 @@ export function FormExamples() {
             allowUnlistedValue={true}
           />
         </div>
-      </div>
+      </div> */}
 
       <div className="row">
         <div className="col-4">
-          <FormGroupSelect
+          <FormGroupSelect2
             name="selectField"
             label="Select field (list)"
             options={['A', 'B', 'C']}
@@ -213,7 +213,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col-4">
-          <FormGroupSelect
+          <FormGroupSelect2
             name="selectNumberField"
             label="Select field (number list)"
             afterChange={console.log.bind(console, 'afterChange select')}
@@ -221,7 +221,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col-4">
-          <FormGroupSelect
+          <FormGroupSelect2
             name="selectField2"
             label="Select field 2 (array of objects)"
             options={[
@@ -233,7 +233,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col-4">
-          <FormGroupSelect
+          <FormGroupSelect2
             name="selectBooleanField"
             label="Select boolean"
             options={[
@@ -244,7 +244,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col-4">
-          <FormGroupSelect
+          <FormGroupSelect2
             name="selectField3"
             label="Select field 3 (function)"
             options={(formData) =>
@@ -256,7 +256,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col-4">
-          <FormGroupSelect
+          <FormGroupSelect2
             name="selectField4"
             label="Select field 4 (objects with trackBy)"
             options={[
@@ -272,7 +272,7 @@ export function FormExamples() {
 
       <div className="row">
         <div className="col">
-          <FormGroupSwitch
+          <FormGroupSwitch2
             id="switchFieldId"
             name="switchField"
             label="Switch field"
@@ -283,10 +283,10 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupSwitch id="switchFieldId2" name="switchField2" label="Switch field 2" disabled />
+          <FormGroupSwitch2 id="switchFieldId2" name="switchField2" label="Switch field 2" disabled />
         </div>
-        <div className="col">
-          <FormGroupCheckbox
+        {/* <div className="col">
+          <FormGroupCheckbox2
             id="checkboxFieldId"
             name="checkboxField"
             label="Checkbox field"
@@ -296,10 +296,10 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupCheckbox id="checkboxFieldId2" name="checkboxField2" label="Checkbox field 2" disabled />
+          <FormGroupCheckbox2 id="checkboxFieldId2" name="checkboxField2" label="Checkbox field 2" disabled />
         </div>
-        <div className="col">
-          <FormGroupRadio
+         <div className="col">
+          <FormGroupRadio2
             id="radioFieldId"
             name="radioField"
             label="Radio field"
@@ -322,7 +322,7 @@ export function FormExamples() {
           />
         </div>
         <div className="col">
-          <FormGroupRadio
+          <FormGroupRadio2
             id="radioFieldId2"
             name="radioField2"
             label="Radio field 2"
@@ -338,24 +338,24 @@ export function FormExamples() {
             ]}
             disabled
           />
-        </div>
+        </div> */}
       </div>
 
-      <FormGroupTextarea
+      <FormGroupTextarea2
         name="textareaField"
         label="Textarea field"
         help="Textarea help"
         afterChange={console.log.bind(console, 'afterChange textarea')}
       />
-      <FormGroupTextarea name="textareaField2" label="Textarea field 2" disabled rows="1" />
+      <FormGroupTextarea2 name="textareaField2" label="Textarea field 2" disabled rows="1" />
 
       {[0, 1].map((index) => (
         <div className="row" key={index}>
           <div className="col">
-            <FormGroupInput name={`array[${index}].data.text`} label={`Array text ${index}`} />
+            <FormGroupInput2 name={`array[${index}].data.text`} label={`Array text ${index}`} />
           </div>
           <div className="col">
-            <FormGroupSelect
+            <FormGroupSelect2
               name={`array[${index}].data.select`}
               label={`Array select ${index}`}
               options={['Yes', 'No']}
@@ -364,7 +364,7 @@ export function FormExamples() {
         </div>
       ))}
 
-      <FormGroupDropdown
+      {/* <FormGroupDropdown2
         name="dropdownField1"
         label="Dropdown using object as value"
         options={[
@@ -417,7 +417,7 @@ export function FormExamples() {
         trackBy="secondValue"
       />
 
-      <FormGroupDropdown
+      <FormGroupDropdown2
         name="dropdownField2"
         label="Dropdown using string as value"
         options={[
@@ -437,7 +437,7 @@ export function FormExamples() {
         placeholder="Select one value"
         includeEmptyItem={false}
         menuClassName="p-4 w-100"
-      />
-    </Form>
+      /> */}
+    </Form2>
   );
 }

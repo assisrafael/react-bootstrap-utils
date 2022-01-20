@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { debounce } from 'lodash-es';
 import { isDefined } from 'js-var-type';
 
 import { flattenObject, getValueByPath, setValueByPath } from '../../utils/getters-setters';
+import { useArrayValueMap } from '../../utils/useValueMap';
+import { validateFormElement } from '../../forms/helpers/form-helpers';
 
 export const FormContext = React.createContext(null);
 
@@ -14,6 +16,7 @@ export class FormHelper {
     this.callHooks = debounce((fn) => fn(this.formData), debounceWait);
     this.listeners = [];
     this.nextListenerId = 0;
+    this.submitAttempted = false;
   }
 
   register(name, formControl) {
@@ -83,10 +86,23 @@ export class FormHelper {
       this.unsubscribe(listenerId);
     };
   }
+
+  resetState() {
+    const resetedState = {};
+
+    for (const key of Object.keys(this.formData)) {
+      resetedState[key] = this.initialValues[key] ?? '';
+    }
+
+    this.updateFormData(resetedState);
+  }
 }
 
-export function useFormHelper(initialValues, { debounceWait, transform, onChange }) {
+export function useFormHelper(initialValues, { debounceWait, transform, onChange, validations } = {}) {
   const formHelper = useRef(new FormHelper(initialValues, debounceWait));
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+  const { getAllKeys: getElementNames, get: getElementRefs, push: registerElementRef } = useArrayValueMap();
+  const formState = formHelper.current.formData;
 
   return {
     getFormData() {
@@ -94,13 +110,15 @@ export function useFormHelper(initialValues, { debounceWait, transform, onChange
     },
     updateFormData(newData) {
       formHelper.current.updateFormData(newData);
+
+      if (validations) {
+        this.validateForm(newData);
+      }
     },
     notify(name, value) {
       formHelper.current.notify(name, value, (formData) => {
         if (transform) {
-          const transformedData = transform(formData, name);
-
-          formHelper.current.updateFormData(transformedData);
+          transform(formData, name, this.updateFormData.bind(this));
         }
 
         onChange(formData);
@@ -109,8 +127,55 @@ export function useFormHelper(initialValues, { debounceWait, transform, onChange
     register(name, formControl) {
       formHelper.current.register(name, formControl);
     },
+    registerRef(name, inputRef) {
+      registerElementRef(name, inputRef);
+
+      if (validations) {
+        validateFormElement({
+          name,
+          formData: formState,
+          validations: validations[name],
+          elementRefs: [inputRef],
+        });
+      }
+    },
     subscribe(name, observerFn) {
       return formHelper.current.subscribe(name, observerFn);
+    },
+    validateForm(_formData) {
+      const elementNames = getElementNames();
+      let isFormValid = true;
+      const formData = _formData || formState;
+
+      for (const name of elementNames) {
+        const isElementValid = !validateFormElement({
+          name,
+          formData,
+          validations: validations[name],
+          elementRefs: getElementRefs(name),
+        });
+
+        if (!isElementValid) {
+          isFormValid = false;
+        }
+      }
+
+      return isFormValid;
+    },
+    reset() {
+      formHelper.current.resetState();
+      setSubmitAttempted(false);
+    },
+    setSubmitedAttempted() {
+      setSubmitAttempted(true);
+    },
+    getSubmitedAttempted() {
+      return submitAttempted;
+    },
+    getValidationMessage(name) {
+      const elementRefs = getElementRefs(name);
+
+      return elementRefs && elementRefs[0] ? elementRefs[0].validationMessage : '';
     },
   };
 }

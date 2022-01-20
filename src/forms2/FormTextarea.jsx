@@ -8,7 +8,7 @@ import { FormGroup2 } from './FormGroup';
 import { useFormControl2 } from './helpers/useFormControl';
 
 export function FormTextarea2({ name, required: _required, disabled: _disabled, afterChange, ..._attrs }) {
-  const { handleOnChangeFactory, getFormData, getValue } = useFormControl2(name);
+  const { handleOnChangeFactory, getFormData, getValue, registerInputRef } = useFormControl2(name);
 
   const disabled = booleanOrFunction(_disabled, getFormData());
   const required = booleanOrFunction(_required, getFormData());
@@ -21,7 +21,13 @@ export function FormTextarea2({ name, required: _required, disabled: _disabled, 
   };
 
   return (
-    <textarea {...attrs} className="form-control" onChange={handleOnChangeFactory(afterChange)} value={getValue()} />
+    <textarea
+      {...attrs}
+      className="form-control"
+      onChange={handleOnChangeFactory(afterChange)}
+      value={getValue()}
+      ref={registerInputRef}
+    />
   );
 }
 
