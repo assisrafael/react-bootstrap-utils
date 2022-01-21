@@ -4,6 +4,7 @@ export * from './FormCheckbox';
 export * from './FormDropdown';
 export * from './FormGroup';
 export * from './FormInput';
+export * from './FormInputMask';
 export * from './FormRadio';
 export * from './FormSelect';
 export * from './FormSwitch';

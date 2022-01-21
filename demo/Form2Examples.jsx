@@ -4,12 +4,14 @@ import {
   Form2,
   FormGroupCheckbox2,
   FormGroupInput2,
+  FormGroupInputMask2,
   FormGroupSelect2,
   FormGroupSwitch2,
   FormGroupTextarea2,
   FormInput2,
   useFormControl2,
   useFormEffect,
+  NumberMask,
 } from '../dist/main';
 
 export function Form2Examples() {
@@ -109,6 +111,48 @@ export function Form2Examples() {
           <label htmlFor="">Observer</label>
           <FormObserver />
         </div>
+
+        <FormGroupInputMask2
+          name="decimalMask"
+          label="Masked 3 decimal with"
+          mask={{
+            parse: decimalMask,
+            format: (value) => value,
+          }}
+        />
+
+        <FormGroupInputMask2
+          name="dateMask"
+          inputAttrs={{
+            maxLength: '10',
+          }}
+          label="Masked date"
+          mask={{
+            parse: dateMask,
+            format: (value) => value,
+          }}
+        />
+
+        <FormGroupInputMask2
+          name="hourMask"
+          inputAttrs={{
+            maxLength: '5',
+          }}
+          label="Hour mask"
+          mask={{
+            parse: hourMask,
+            format: (value) => value,
+          }}
+        />
+
+        <FormGroupInputMask2
+          name="currencyMask"
+          label="Currency mask"
+          mask={{
+            parse: currencyMask,
+            format: (value) => value,
+          }}
+        />
       </Form2>
     </div>
   );
@@ -149,4 +193,51 @@ function FormObserver() {
   });
 
   return <div>{state}</div>;
+}
+
+function decimalMask(value) {
+  const number = parseFloat(value);
+  let maskedValue = String(value);
+
+  maskedValue = maskedValue.replace(/\D/g, '');
+  maskedValue = maskedValue.replace(/(\d)(\d{3})$/, '$1.$2');
+
+  return {
+    rawValue: number,
+    maskedValue,
+  };
+}
+
+function dateMask(value) {
+  let maskedValue = String(value);
+
+  maskedValue = maskedValue.replace(/\D/g, '');
+
+  maskedValue = maskedValue.replace(/(\d{2})(\d)/, '$1/$2');
+  maskedValue = maskedValue.replace(/(\d{2})(\d)/, '$1/$2');
+
+  return {
+    rawValue: maskedValue,
+    maskedValue,
+  };
+}
+
+function hourMask(v) {
+  let maskedValue = v;
+
+  maskedValue = maskedValue.replace(/\D/g, '');
+  maskedValue = maskedValue.replace(/(\d{2})(\d)/, '$1:$2');
+
+  return { rawValue: maskedValue, maskedValue };
+}
+
+function currencyMask(v) {
+  const rawValue = parseFloat(v);
+  let maskedValue = v;
+
+  maskedValue = maskedValue.replace(/\D/g, '');
+  maskedValue = maskedValue.replace(/(\d)(\d{2})$/, '$1.$2');
+  maskedValue = maskedValue.replace(/(?=(\d{3})+(\D))\B/g, ',');
+
+  return { maskedValue, rawValue };
 }
