@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.16](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.15...v0.26.16) (2022-01-21)
+
+
+### Features
+
+* add FormInputMask ([#17](https://github.com/geolaborapp/react-bootstrap-utils/issues/17)) ([4c3e688](https://github.com/geolaborapp/react-bootstrap-utils/commit/4c3e688c23754ecbfbce45b472aebc4fdde06f58))
+
 ### [0.26.15](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.14...v0.26.15) (2022-01-20)
 
 
