@@ -6,31 +6,39 @@ import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
 import { formatClasses } from '../utils/attributes';
 
-import { handleInputChange, normalizeOptions, booleanOrFunction } from './helpers/form-helpers';
+import {
+  booleanOrFunction,
+  valuesAreEqual,
+  getSelectedOption,
+  handleInputChange,
+  normalizeOptions,
+} from './helpers/form-helpers';
 import { useFormControl } from './helpers/useFormControl';
 import { FormGroup } from './FormGroup';
 
-function getSelectedItem(selectedItem, value, allowUnlistedValue) {
+function getSelectedItem(value, items, allowUnlistedValue, trackBy) {
+  const selectedItem = getSelectedOption(value, items, trackBy);
+
   if (isEmptyLike(selectedItem) && !isEmptyLike(value) && allowUnlistedValue) {
     return { value: value, label: value };
   }
 
   return selectedItem;
 }
-
 export function FormAutocomplete({
-  onSearch,
-  options,
-  required: _required,
-  id,
-  placeholder,
-  name,
-  openOnFocus,
-  template,
-  filter,
-  disabled: _disabled,
   afterChange,
   allowUnlistedValue,
+  disabled: _disabled,
+  filter,
+  id,
+  name,
+  onSearch,
+  openOnFocus,
+  options,
+  placeholder,
+  required: _required,
+  template,
+  trackBy,
 }) {
   const {
     getValue,
@@ -54,9 +62,8 @@ export function FormAutocomplete({
 
   const [searchValue, setSearchValue] = useState('');
   const items = normalizeOptions(options, getFormData(), searchValue);
-  const _selectedItem = items.find((item) => item.value === value);
 
-  const [selectedItem, setSelectedItem] = useState(getSelectedItem(_selectedItem, value, allowUnlistedValue));
+  const [selectedItem, setSelectedItem] = useState(getSelectedItem(value, items, allowUnlistedValue, trackBy));
   const { isOpen, open, close } = useOpenState();
   const [ignoreBlur, setIgnoreBlur] = useState(false);
   const [isFocused, setFocus] = useState(false);
@@ -113,7 +120,7 @@ export function FormAutocomplete({
       setValue('');
       setSelectedItem(null);
       updateSearchInputValidation();
-    } else if (selectedItem?.value !== searchValue && !isEmptyLike(searchValue) && allowUnlistedValue) {
+    } else if (selectedItem?.label !== searchValue && !isEmptyLike(searchValue) && allowUnlistedValue) {
       onSelectItem({ value: searchValue, label: searchValue });
     }
 
@@ -169,6 +176,20 @@ export function FormAutocomplete({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    /* Handles case when a useFormControl.setValue is used. Without this logic,
+     * selectedItem would not be updated. */
+    if (!valuesAreEqual(selectedItem?.value, value, trackBy)) {
+      const item = getSelectedItem(value, items, allowUnlistedValue, trackBy);
+
+      setSelectedItem(item);
+
+      if (item?.label) {
+        setSearchValue(item?.label);
+      }
+    }
+  }, [allowUnlistedValue, items, selectedItem?.value, trackBy, value]);
+
   return (
     <>
       <input
@@ -188,7 +209,11 @@ export function FormAutocomplete({
 
       {!isFocused && (
         <div
-          className={formatClasses(['form-control form-autocomplete-selected', controlFeedback])}
+          className={formatClasses([
+            'form-control form-autocomplete-selected',
+            controlFeedback,
+            disabled ? 'bg-light text-muted' : '',
+          ])}
           disabled={disabled}
           onClick={enableSearchInput}
         >
@@ -248,6 +273,7 @@ FormAutocomplete.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   template: PropTypes.func,
+  trackBy: PropTypes.string,
   type: PropTypes.string,
 };
 
@@ -277,5 +303,6 @@ FormGroupAutocomplete.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   template: PropTypes.func,
+  trackBy: PropTypes.string,
   type: PropTypes.string,
 };

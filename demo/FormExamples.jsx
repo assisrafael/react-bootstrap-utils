@@ -10,6 +10,7 @@ import {
   FormGroupTextarea,
   FormGroupAutocomplete,
   FormGroupDropdown,
+  useFormControl,
   // eslint-disable-next-line import/no-unresolved
 } from '../dist/main';
 
@@ -18,7 +19,7 @@ export function FormExamples() {
     <Form
       initialValues={{
         textField: 'abc',
-        autocompleteField1: '2345',
+        autocompleteField1: { _id: '2345', name: '2345 name' },
         autocompleteField4: 'unlisted item',
         selectField4: { e: 2, c: 'b' },
         switchField2: true,
@@ -150,10 +151,16 @@ export function FormExamples() {
         <div className="col">
           <FormGroupAutocomplete
             name="autocompleteField1"
-            label="Autocomplete"
-            options={['1234', '2345', '3456']}
+            label="Autocomplete Object Options"
+            options={[
+              { value: { _id: '1234', name: '1234 name' }, label: '1234 Label' },
+              { value: { _id: '2345', name: '2345 name' }, label: '2345 Label' },
+              { value: { _id: '3456', name: '3456 name' }, label: '3456 Label' },
+            ]}
             placeholder="Type some numbers"
+            trackBy="_id"
             help="Autocomplete help"
+            allowUnlistedValue
           />
         </div>
         <div className="col">
@@ -170,7 +177,6 @@ export function FormExamples() {
             onSearch={console.log}
             placeholder="Type some letters"
             openOnFocus={true}
-            required={() => true}
             afterChange={console.log.bind(console, 'afterChange autocomplete')}
           />
         </div>
@@ -272,7 +278,7 @@ export function FormExamples() {
 
       <div className="row">
         <div className="col">
-          <FormGroupSwitch
+          <FormSwitchExample
             id="switchFieldId"
             name="switchField"
             label="Switch field"
@@ -441,3 +447,29 @@ export function FormExamples() {
     </Form>
   );
 }
+
+const FormSwitchExample = () => {
+  const autocompleteField1FormControl = useFormControl('autocompleteField1');
+
+  const afterChange = (value) => {
+    console.log('afterChange switch');
+
+    if (value) {
+      autocompleteField1FormControl.setValue({ _id: '3456', name: '3456 name' });
+    } else {
+      autocompleteField1FormControl.setValue(null);
+    }
+  };
+
+  return (
+    <FormGroupSwitch
+      id="switchFieldId"
+      name="switchField"
+      label="Switch field"
+      trueLabel="ON"
+      falseLabel="OFF"
+      help="Switch Autocomplete Object Options Value"
+      afterChange={afterChange}
+    />
+  );
+};
