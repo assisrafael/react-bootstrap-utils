@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.17](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.16...v0.26.17) (2022-02-17)
+
+
+### Bug Fixes
+
+* fixes selected item in FormAutocomplete after useFormControl setValue and when values are objects ([#19](https://github.com/geolaborapp/react-bootstrap-utils/issues/19)) ([4daac7b](https://github.com/geolaborapp/react-bootstrap-utils/commit/4daac7bc29ee0d7e2c6a81aa63554ff034be2380))
+
 ### [0.26.16](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.15...v0.26.16) (2022-01-21)
 
 
