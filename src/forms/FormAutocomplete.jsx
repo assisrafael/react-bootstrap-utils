@@ -12,6 +12,7 @@ import {
   getSelectedOption,
   handleInputChange,
   normalizeOptions,
+  serializeValue,
 } from './helpers/form-helpers';
 import { useFormControl } from './helpers/useFormControl';
 import { FormGroup } from './FormGroup';
@@ -20,11 +21,12 @@ function getSelectedItem(value, items, allowUnlistedValue, trackBy) {
   const selectedItem = getSelectedOption(value, items, trackBy);
 
   if (isEmptyLike(selectedItem) && !isEmptyLike(value) && allowUnlistedValue) {
-    return { value: value, label: value };
+    return { value: value, label: serializeValue(value) };
   }
 
   return selectedItem;
 }
+
 export function FormAutocomplete({
   afterChange,
   allowUnlistedValue,
