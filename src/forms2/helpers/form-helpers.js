@@ -162,3 +162,10 @@ export function decode(value, type) {
 
   return value;
 }
+
+export function valuesAreEqual(value1, value2, trackBy) {
+  const _value1 = value1 && isObject(value1) && trackBy ? getValueByPath(value1, trackBy) : value1;
+  const _value2 = value2 && isObject(value2) && trackBy ? getValueByPath(value2, trackBy) : value2;
+
+  return _value1 === _value2;
+}

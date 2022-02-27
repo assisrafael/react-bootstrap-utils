@@ -1,10 +1,11 @@
 import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { isEmptyLike, isFunction } from 'js-var-type';
+import { isEmptyLike, isFunction, isObject } from 'js-var-type';
 
 import { Dropdown } from '../mixed/Dropdown';
 import { useOpenState } from '../utils/useOpenState';
 import { formatClasses } from '../utils/attributes';
+import { getValueByPath } from '../utils/getters-setters';
 
 import {
   booleanOrFunction,
@@ -21,7 +22,9 @@ function getSelectedItem(value, items, allowUnlistedValue, trackBy) {
   const selectedItem = getSelectedOption(value, items, trackBy);
 
   if (isEmptyLike(selectedItem) && !isEmptyLike(value) && allowUnlistedValue) {
-    return { value: value, label: serializeValue(value) };
+    const _label = trackBy && isObject(value) ? getValueByPath(value, trackBy) : serializeValue(value);
+
+    return { value: value, label: _label };
   }
 
   return selectedItem;
