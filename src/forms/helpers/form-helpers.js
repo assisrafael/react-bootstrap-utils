@@ -153,7 +153,9 @@ export function encode(value, type) {
 
 export function decode(value, type) {
   if (type === 'number') {
-    return parseFloat(value);
+    const parsedValue = parseFloat(value);
+
+    return isNaN(parsedValue) ? getEmptyValue(type) : parsedValue;
   }
 
   if (type === 'boolean') {
