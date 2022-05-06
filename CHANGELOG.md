@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.20](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.19...v0.26.20) (2022-05-06)
+
+
+### Bug Fixes
+
+* fixes NaN values for FormInput ([#23](https://github.com/geolaborapp/react-bootstrap-utils/issues/23)) ([8ffea8e](https://github.com/geolaborapp/react-bootstrap-utils/commit/8ffea8e49e0e130cfa3b07808b35d4966a5f6e53))
+
 ### [0.26.19](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.18...v0.26.19) (2022-02-27)
 
 
