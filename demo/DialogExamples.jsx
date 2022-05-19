@@ -77,6 +77,7 @@ export function DialogExamples() {
         <h1 className="h4 mt-3">Scrolling long content Dialog</h1>
         <Dialog
           title="Long content dialog"
+          contentClassName="h-25"
           body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur optio sequi dicta quia quaerat natus quisquam minus molestiae ipsa accusantium, hic amet quis aliquam dolor. Odit, error placeat! Magni, voluptatum!
         Ut esse iusto quae quod in quas minus aliquid cum veniam, eius, ipsa corrupti dolorem quaerat, recusandae voluptatibus necessitatibus ea unde exercitationem? Est quod in corrupti porro nam necessitatibus suscipit!
         Optio voluptate, pariatur officia voluptates perferendis, consectetur saepe iste nobis ea accusamus, et quia eum eligendi earum expedita possimus vero! Optio adipisci minus debitis nostrum asperiores alias fugit tempora dicta.

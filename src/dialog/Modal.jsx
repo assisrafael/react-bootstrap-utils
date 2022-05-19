@@ -11,6 +11,7 @@ export function Modal({
   afterOpen,
   body,
   centered,
+  contentClassName,
   footer,
   isOpen,
   keyboard,
@@ -78,7 +79,7 @@ export function Modal({
         role="document"
         onClick={stopPropagation}
       >
-        <div className="modal-content">
+        <div className={formatClasses(["modal-content", contentClassName])}>
           {title && (
             <div className="modal-header">
               <h5 className="modal-title">{title}</h5>
@@ -112,6 +113,7 @@ Modal.propTypes = {
   afterOpen: PropTypes.func,
   body: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   centered: PropTypes.bool,
+  contentClassName: PropTypes.string,
   dialogBodyProps: PropTypes.object,
   footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   isOpen: PropTypes.bool,
