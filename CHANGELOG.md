@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.22](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.21...v0.26.22) (2022-05-19)
+
+
+### Features
+
+* allows custom class in modal ([#25](https://github.com/geolaborapp/react-bootstrap-utils/issues/25)) ([b9c5a02](https://github.com/geolaborapp/react-bootstrap-utils/commit/b9c5a02d522d1608753d80de9bfd0c2aaaea7330))
+
 ### [0.26.21](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.20...v0.26.21) (2022-05-06)
 
 ### [0.26.20](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.19...v0.26.20) (2022-05-06)
