@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isBoolean } from 'js-var-type';
+
+import { booleanOrFunction } from './helpers/form-helpers';
+import { useFormControl } from './helpers/useFormControl';
 
 export function FormLabel({ id, label, required: _required }) {
-  const required = isBoolean(_required) && _required;
+  const { getFormData } = useFormControl();
+  const required = booleanOrFunction(_required, getFormData());
 
   return (
     <label htmlFor={id}>

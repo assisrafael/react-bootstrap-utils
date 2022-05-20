@@ -161,6 +161,7 @@ export function FormExamples() {
             trackBy="_id"
             help="Autocomplete help"
             allowUnlistedValue
+            required={(formData) => formData.textField2}
           />
         </div>
         <div className="col">

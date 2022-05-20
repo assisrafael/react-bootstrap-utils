@@ -82,6 +82,7 @@ export function FormGroupInputMask2(props) {
 }
 
 FormGroupInputMask2.propTypes = {
+  label: PropTypes.node.isRequired,
   mask: PropTypes.shape({
     format: PropTypes.func.isRequired,
     parse: PropTypes.func.isRequired,
@@ -92,7 +93,6 @@ FormGroupInputMask2.propTypes = {
     disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     help: PropTypes.node,
     id: PropTypes.string,
-    label: PropTypes.node.isRequired,
     max: PropTypes.string,
     maxLength: PropTypes.string,
     min: PropTypes.string,
