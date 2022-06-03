@@ -14,15 +14,15 @@ export function useFormControl2(name, type) {
     (newValue) => {
       const newValueFn = isFunction(newValue) ? newValue : () => newValue;
 
-      _setValue((prevValue) => {
-        const nextValue = newValueFn(prevValue);
+      const nextValue = newValueFn(value);
 
-        formHelper.notify(name, nextValue);
-
-        return isDefined(nextValue) ? nextValue : '';
-      });
+      // utilizar o setState como função trouxe problemas na ficha de ensaio
+      // não foi possível identificar o motivo, porém o callback não era acionado e o valor não era atualizado
+      // e nem era enviada a notificação de alteração para o form-helper
+      _setValue(isDefined(nextValue) ? nextValue : '');
+      formHelper.notify(name, nextValue);
     },
-    [formHelper, name]
+    [formHelper, name, value]
   );
 
   const handleOnChange = useCallback(

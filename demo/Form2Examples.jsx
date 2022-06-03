@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Form2,
   FormGroupCheckbox2,
@@ -22,7 +22,7 @@ export function Form2Examples() {
         initialValues={{
           attrA: 'ABC',
           Obj: { x: 'X', z: 0 },
-          arr: [1, 2, 3],
+          arr: [1, 2, 3, 4, 5],
           arrObj: [{ o: 1 }, { o: 2 }, { o: 3 }],
           textarea1:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque praesentium quisquam reiciendis expedita. Ad quod voluptas aliquid illum veniam odio? Nulla sed, illum eligendi amet fuga optio officia itaque nisi',
@@ -165,7 +165,8 @@ function FormVersion() {
 }
 
 function FormArray() {
-  const { getValue, setValue, isRegistered } = useFormControl2('arr');
+  const { getValue, setValue, isRegistered } = useFormControl2('arr', 'array');
+  const [refresh, shouldRefresh] = useState(false);
 
   useEffect(() => {
     if (isRegistered()) {
@@ -175,7 +176,48 @@ function FormArray() {
     }
   }, [getValue, setValue, isRegistered]);
 
-  return (getValue() || []).map((v, index) => <FormInput2 key={index} name={`arr[${index}]`} />);
+  const remove = useCallback((index) => {
+    const newArray = [...getValue()];
+
+    newArray.splice(index, 1);
+
+    setValue(newArray);
+
+    shouldRefresh(true);
+
+    setTimeout(() => {
+      shouldRefresh(false);
+    }, 100);
+  });
+
+  const newElement = useCallback(() => {
+    setValue((prevValue) => [...prevValue, Math.max(...prevValue) + 1]);
+  });
+
+  if (refresh) {
+    return <></>;
+  }
+
+  return (
+    <>
+      {(getValue() || []).map((v, index) => (
+        <div className="input-group mb-2">
+          <FormInput2 key={index} name={`arr[${index}]`} />
+          <div className="input-group-append">
+            <button className="btn btn-danger" onClick={() => remove(index)}>
+              Remove
+            </button>
+          </div>
+        </div>
+      ))}
+
+      <div>
+        <button className="btn btn-success" onClick={newElement}>
+          New
+        </button>
+      </div>
+    </>
+  );
 }
 
 function FormArrayOfObjects() {
