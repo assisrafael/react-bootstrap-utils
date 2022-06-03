@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.23](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.22...v0.26.23) (2022-06-03)
+
+
+### Bug Fixes
+
+* fix setvalue in form2 ([#26](https://github.com/geolaborapp/react-bootstrap-utils/issues/26)) ([5cc39b1](https://github.com/geolaborapp/react-bootstrap-utils/commit/5cc39b10ed3f8b806dc6294b8ffa993f96cd9260))
+* fixes FormLabel when required prop is a function ([#24](https://github.com/geolaborapp/react-bootstrap-utils/issues/24)) ([fc4b1ef](https://github.com/geolaborapp/react-bootstrap-utils/commit/fc4b1ef31b8287e82ddd6f02f9873378a60b5637))
+
 ### [0.26.22](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.21...v0.26.22) (2022-05-19)
 
 
