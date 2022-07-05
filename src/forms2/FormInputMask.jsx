@@ -39,6 +39,8 @@ export function FormInputMask2({ mask, name, inputAttrs }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const { afterChange, ..._inputAttrs } = inputAttrs;
+
   return (
     <>
       <input
@@ -54,15 +56,20 @@ export function FormInputMask2({ mask, name, inputAttrs }) {
 
           e.target.value = maskedValue;
           formControl.setValue(rawValue);
+          afterChange?.(rawValue);
         }}
         onKeyDown={handleKeyDown}
         disabled={inputAttrs?.disabled}
-        {...inputAttrs}
+        {..._inputAttrs}
       />
       <FormInput2 name={name} style={{ display: 'none' }} />
     </>
   );
 }
+
+FormInputMask2.defaultProps = {
+  inputAttrs: {},
+};
 
 FormInputMask2.propTypes = {
   mask: PropTypes.shape({

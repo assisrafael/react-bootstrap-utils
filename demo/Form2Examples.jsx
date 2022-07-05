@@ -119,6 +119,11 @@ export function Form2Examples() {
             parse: decimalMask,
             format: (value) => value,
           }}
+          inputAttrs={{
+            afterChange(newValue) {
+              console.log('afterChange in decimalMask :>> ', newValue);
+            },
+          }}
         />
 
         <FormGroupInputMask2
