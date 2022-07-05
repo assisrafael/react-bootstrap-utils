@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.24](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.23...v0.26.24) (2022-07-05)
+
+
+### Bug Fixes
+
+* corrects call of afterChange function in FormInputMask ([#27](https://github.com/geolaborapp/react-bootstrap-utils/issues/27)) ([e451cc8](https://github.com/geolaborapp/react-bootstrap-utils/commit/e451cc858ad3391d76993a3462590b786d09bfae))
+
 ### [0.26.23](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.22...v0.26.23) (2022-06-03)
 
 
