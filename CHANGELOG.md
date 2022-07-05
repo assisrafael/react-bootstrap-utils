@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.25](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.24...v0.26.25) (2022-07-05)
+
+
+### Features
+
+* add setFormData in useFormControl2 ([094b37d](https://github.com/geolaborapp/react-bootstrap-utils/commit/094b37d4be9111400f87068a1593a8f27f002dd9))
+
 ### [0.26.24](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.23...v0.26.24) (2022-07-05)
 
 
