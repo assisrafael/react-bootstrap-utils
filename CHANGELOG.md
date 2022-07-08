@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.26](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.25...v0.26.26) (2022-07-08)
+
+
+### Features
+
+* return onCloseDialog function in useDialog hook ([#28](https://github.com/geolaborapp/react-bootstrap-utils/issues/28)) ([eddaada](https://github.com/geolaborapp/react-bootstrap-utils/commit/eddaadae5b3abc1fb1646b5dfafe5aa374088d08))
+
 ### [0.26.25](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.24...v0.26.25) (2022-07-05)
 
 
