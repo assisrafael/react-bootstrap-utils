@@ -26,6 +26,16 @@ export function DialogExamples() {
       </div>
     ),
   });
+  const {
+    showDialog: showAutoCloseDialog,
+    closeDialog: close,
+    DialogPortal: AutoCloseDialogPortal,
+  } = useDialog({
+    title: 'autoCloseDialog',
+    body: ({}) => {
+      return <div>This dialog will close after 5 seconds, and it will close regardless of the user interation</div>;
+    },
+  });
   const { showDialog: showConfirmationDialog, DialogPortal: ConfirmationDialogPortal } = useConfirmationDialog({
     title: 'useConfirmationDialog',
     message: ({ foo }) => <em>Opened by useConfirmationDialog. Extra props: {foo}</em>,
@@ -228,6 +238,19 @@ export function DialogExamples() {
         <DialogPortal />
         <button type="button" className="btn btn-primary" onClick={() => showDialog({ foo: 'Foo', bar: 'Bar' })}>
           useDialog
+        </button>
+        <AutoCloseDialogPortal />
+        <button
+          type="button"
+          className="btn btn-primary ml-2"
+          onClick={() => {
+            showAutoCloseDialog();
+            setTimeout(() => {
+              close();
+            }, 5000);
+          }}
+        >
+          autoCloseDialog
         </button>
         <ConfirmationDialogPortal />
         <button type="button" className="btn btn-warning ml-2" onClick={() => showConfirmationDialog({ foo: 'FOO' })}>

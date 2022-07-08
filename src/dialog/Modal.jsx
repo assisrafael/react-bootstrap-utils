@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { isFunction } from 'js-var-type';
 
 import { stopPropagation } from '../utils/event-handlers';
 import { formatClasses } from '../utils/attributes';
+
+import { renderObjectOrFunction, showModal } from './helpers';
 
 const ESCAPE_KEYCODE = 27;
 
@@ -15,6 +16,7 @@ export function Modal({
   footer,
   isOpen,
   keyboard,
+  modalRef,
   onClose,
   scrollable,
   size,
@@ -23,18 +25,13 @@ export function Modal({
   useTimesClose,
   dialogBodyProps,
 }) {
-  const modalRef = useRef(null);
-  const closeAndHide = useCallback(() => {
-    hideModal(modalRef);
-    onClose();
-  }, [onClose]);
   const closeIfEscape = useCallback(
     (event) => {
       if (keyboard && event.which === ESCAPE_KEYCODE) {
-        closeAndHide();
+        onClose();
       }
     },
-    [keyboard, closeAndHide]
+    [keyboard, onClose]
   );
 
   useEffect(() => {
@@ -52,9 +49,9 @@ export function Modal({
       showModal(modalRef);
       afterOpen();
     } else {
-      hideModal(modalRef);
+      onClose();
     }
-  }, [afterOpen, isOpen]);
+  }, [afterOpen, isOpen, modalRef, onClose]);
 
   return (
     <div
@@ -65,7 +62,7 @@ export function Modal({
       onClick={(e) => {
         e.stopPropagation();
         if (!staticBackdrop) {
-          closeAndHide();
+          onClose();
         }
       }}
     >
@@ -79,19 +76,19 @@ export function Modal({
         role="document"
         onClick={stopPropagation}
       >
-        <div className={formatClasses(["modal-content", contentClassName])}>
+        <div className={formatClasses(['modal-content', contentClassName])}>
           {title && (
             <div className="modal-header">
               <h5 className="modal-title">{title}</h5>
               {useTimesClose && (
-                <button type="button" className="close" onClick={closeAndHide} aria-label="Close">
+                <button type="button" className="close" onClick={onClose} aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               )}
             </div>
           )}
-          <div className="modal-body">{renderObjectOrFunction(body, { ...dialogBodyProps, close: closeAndHide })}</div>
-          {footer && <div className="modal-footer">{renderObjectOrFunction(footer, { close: closeAndHide })}</div>}
+          <div className="modal-body">{renderObjectOrFunction(body, { ...dialogBodyProps, close: onClose })}</div>
+          {footer && <div className="modal-footer">{renderObjectOrFunction(footer, { close: onClose })}</div>}
         </div>
       </div>
     </div>
@@ -118,6 +115,7 @@ Modal.propTypes = {
   footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   isOpen: PropTypes.bool,
   keyboard: PropTypes.bool,
+  modalRef: PropTypes.any.isRequired,
   onClose: PropTypes.func,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
@@ -125,101 +123,3 @@ Modal.propTypes = {
   title: PropTypes.node,
   useTimesClose: PropTypes.bool,
 };
-
-function hideModal(modalRef) {
-  if (modalRef.current) {
-    modalRef.current.style.display = 'none';
-    modalRef.current.classList.remove('show');
-  }
-
-  hideModalBackdrop();
-  enableBodyScroll();
-
-  if (modalRef.current && modalRef.current.style.zIndex) {
-    modalRef.current.style.zIndex = null;
-  }
-}
-
-function enableBodyScroll() {
-  const body = document.querySelector('body');
-
-  body.classList.remove('modal-open');
-}
-
-function showModal(modalRef) {
-  if (!modalRef.current) {
-    return;
-  }
-
-  disableBodyScroll();
-  showModalBackdrop();
-
-  if (countModals() > 0) {
-    modalRef.current.style.zIndex = getZIndex(modalRef.current) + countModals() * 20;
-  }
-
-  modalRef.current.style.display = 'block';
-  modalRef.current.classList.add('show');
-
-  modalRef.current.focus();
-}
-
-function renderObjectOrFunction(content, params) {
-  return isFunction(content) ? content(params) : content;
-}
-
-function showModalBackdrop() {
-  const backdrop = getModalBackdrop();
-
-  backdrop.classList.remove('d-none');
-
-  if (countModals() > 0) {
-    backdrop.style.zIndex = getZIndex(backdrop) + 20;
-  }
-}
-
-function hideModalBackdrop() {
-  const backdrop = getModalBackdrop();
-
-  if (backdrop.style.zIndex) {
-    backdrop.style.zIndex -= 20;
-  }
-
-  if (countModals() === 0) {
-    backdrop.classList.add('d-none');
-    backdrop.style.zIndex = null;
-  }
-}
-
-function getModalBackdrop() {
-  const body = document.querySelector('body');
-  let backdrop = document.querySelector('.modal-backdrop');
-
-  if (!backdrop) {
-    backdrop = document.createElement('div');
-
-    backdrop.classList.add('modal-backdrop', 'fade', 'show', 'd-none');
-
-    body.appendChild(backdrop);
-  }
-
-  return backdrop;
-}
-
-function countModals() {
-  return document.querySelectorAll('#modal-portals .modal.show').length;
-}
-
-function disableBodyScroll() {
-  if (countModals() != 0) {
-    return;
-  }
-
-  const body = document.querySelector('body');
-
-  body.classList.add('modal-open');
-}
-
-function getZIndex(elem) {
-  return parseInt(window.getComputedStyle(elem).zIndex, 10);
-}
