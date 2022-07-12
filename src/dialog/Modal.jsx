@@ -51,6 +51,10 @@ export function Modal({
     } else {
       onClose();
     }
+
+    return () => {
+      onClose();
+    };
   }, [afterOpen, isOpen, modalRef, onClose]);
 
   return (
