@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import {
@@ -14,9 +14,6 @@ import {
 } from '../dist/main';
 
 export function DialogExamples() {
-  const [hideModal, toggleHideModal] = useState(false);
-  const [mockData, setMockData] = useState('empty');
-  console.log('mockData >>> ', mockData);
   const { showDialog, DialogPortal } = useDialog({
     title: 'useDialog',
     body: ({ foo, bar }) => (
@@ -98,39 +95,30 @@ export function DialogExamples() {
       </div>
       <div className="col-6">
         <h1 className="h4 mt-3">Close dialog from body/footer</h1>
-        {!hideModal && (
-          <Dialog
-            title="Custom footer dialog"
-            body={({ close }) => (
-              <>
-                <strong>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam amet rerum ducimus maiores deleniti
-                  ullam necessitatibus, minus dolore maxime repellat provident perspiciatis veritatis eum sunt? Nam quo
-                  vel quia qui.
-                </strong>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => {
-                    toggleHideModal(true);
-                    close();
-                  }}
-                >
-                  Close from body
-                </button>
-              </>
-            )}
-            footer={({ close }) => (
+        <Dialog
+          title="Custom footer dialog"
+          body={({ close }) => (
+            <>
+              <strong>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam amet rerum ducimus maiores deleniti
+                ullam necessitatibus, minus dolore maxime repellat provident perspiciatis veritatis eum sunt? Nam quo
+                vel quia qui.
+              </strong>
               <button type="button" className="btn btn-primary" onClick={close}>
-                Close from footer
+                Close from body
               </button>
-            )}
-            staticBackdrop={true}
-            useTimesClose={false}
-          >
-            <a href="">&amp;</a>
-          </Dialog>
-        )}
+            </>
+          )}
+          footer={({ close }) => (
+            <button type="button" className="btn btn-primary" onClick={close}>
+              Close from footer
+            </button>
+          )}
+          staticBackdrop={true}
+          useTimesClose={false}
+        >
+          <a href="">&amp;</a>
+        </Dialog>
       </div>
       <div className="col-6">
         <h1 className="h4 mt-3">Confirmation dialog</h1>
@@ -163,12 +151,8 @@ export function DialogExamples() {
           body={({ close }) => (
             <Form
               initialValues={{}}
-              onSubmit={async (data) => {
+              onSubmit={(data) => {
                 console.info('submit', data);
-
-                await new Promise((resolve) => setTimeout(resolve, 1000));
-                setMockData(data);
-
                 close();
               }}
               onCancel={() => {
