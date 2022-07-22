@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { FormContext } from './helpers/form-helpers';
@@ -71,13 +71,6 @@ export function Form({
   if (customValidation) {
     formProps.noValidate = true;
   }
-
-  // eslint-disable-next-line arrow-body-style
-  useEffect(() => {
-    return () => {
-      setIsSubmiting(false)
-    };
-  }, []);
 
   return (
     <form {...formProps}>
