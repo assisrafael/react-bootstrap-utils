@@ -55,8 +55,10 @@ export function FormInputMask2({ mask, name, inputAttrs }) {
           };
 
           e.target.value = maskedValue;
+          const previousValue = formControl.getValue();
+
           formControl.setValue(rawValue);
-          afterChange?.(rawValue);
+          afterChange?.(rawValue, previousValue);
         }}
         onKeyDown={handleKeyDown}
         disabled={inputAttrs?.disabled}

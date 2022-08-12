@@ -37,13 +37,15 @@ export const FormDropdown = ({
 
   const setValue = useCallback(
     (v) => {
+      const previousValue = getValue();
+
       _setValue(v);
 
       if (isFunction(afterChange)) {
-        afterChange(v);
+        afterChange(v, previousValue);
       }
     },
-    [_setValue, afterChange]
+    [_setValue, afterChange, getValue]
   );
 
   const onSelectItem = useCallback(
@@ -92,7 +94,11 @@ export const FormDropdown = ({
           className={formatClasses(['input-group justify-content-between form-control h-auto', childClassName])}
           onClick={toggleDropdown}
         >
-          {selectedItem ? template(selectedItem.label, selectedItem.value) : <div className="text-muted">{placeholder}</div>}
+          {selectedItem ? (
+            template(selectedItem.label, selectedItem.value)
+          ) : (
+            <div className="text-muted">{placeholder}</div>
+          )}
           {toggleIcon(isOpen)}
         </div>
       </Dropdown>

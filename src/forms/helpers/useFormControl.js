@@ -38,10 +38,11 @@ export function useFormControl(name, type) {
     getValue: () => encode(formState.getValue(name), type),
     setValue,
     handleOnChangeFactory: (afterChange, type) => (e) => {
+      const previousValue = encode(formState.getValue(name), type);
       const newValue = handleOnChange(e, type);
 
       if (isFunction(afterChange)) {
-        afterChange(newValue);
+        afterChange(newValue, previousValue);
       }
     },
     handleOnChange,

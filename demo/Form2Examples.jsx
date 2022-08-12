@@ -105,7 +105,14 @@ export function Form2Examples() {
           <FormVersion />
         </div>
 
-        <FormGroupTextarea2 label="Textarea" name="textarea1" rows="5" />
+        <FormGroupTextarea2
+          label="Textarea"
+          name="textarea1"
+          rows="5"
+          afterChange={(newValue, oldValue) => {
+            console.log(oldValue, ' changed to  :>> ', newValue);
+          }}
+        />
 
         <div className="form-group">
           <label htmlFor="">Observer</label>
@@ -120,7 +127,9 @@ export function Form2Examples() {
             format: (value) => value,
           }}
           inputAttrs={{
-            afterChange(newValue) {
+            afterChange(newValue, oldValue) {
+              console.log(oldValue, ' changed to  :>> ', newValue);
+
               console.log('afterChange in decimalMask :>> ', newValue);
             },
           }}

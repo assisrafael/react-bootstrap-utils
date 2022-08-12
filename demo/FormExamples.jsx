@@ -205,6 +205,9 @@ export function FormExamples() {
             options={['1234', '2345', '3456']}
             placeholder="Type some numbers"
             allowUnlistedValue={true}
+            afterChange={(newValue, oldValue) => {
+              console.log(oldValue, ' changed to  :>> ', newValue);
+            }}
           />
         </div>
       </div>

@@ -65,7 +65,7 @@ export function useFormControl2(name, type) {
       const newValue = handleOnChange(e, type);
 
       if (isFunction(afterChange)) {
-        afterChange(newValue);
+        afterChange(newValue, value);
       }
     },
     getFormData() {

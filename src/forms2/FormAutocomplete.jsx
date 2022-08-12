@@ -56,12 +56,14 @@ export function FormAutocomplete2({
 
   const setValue = useCallback(
     (v) => {
+      const previousValue = getValue();
+
       _setValue(v);
       if (isFunction(afterChange)) {
-        afterChange(v);
+        afterChange(v, previousValue);
       }
     },
-    [_setValue, afterChange]
+    [_setValue, afterChange, getValue]
   );
 
   const [searchValue, setSearchValue] = useState('');
