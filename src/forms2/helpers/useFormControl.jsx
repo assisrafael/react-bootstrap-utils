@@ -74,7 +74,7 @@ export function useFormControl2(name, type) {
     setFormData(newFormData) {
       return formHelper.updateFormData(newFormData);
     },
-    getFormSubmitedAttempted: () => formHelper.getFormSubmitedAttempted,
+    getFormSubmitedAttempted: () => formHelper.getSubmitedAttempted(),
     isValid: () => formHelper.getValidationMessage(name) === '',
     registerInputRef,
   };

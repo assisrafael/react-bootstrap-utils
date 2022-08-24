@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Form,
   FormGroupInput,
@@ -15,6 +15,7 @@ import {
 } from '../dist/main';
 
 export function FormExamples() {
+  const [bootstrapFormValidation, setBootstrapFormValidation] = useState(false);
   return (
     <Form
       initialValues={{
@@ -51,7 +52,7 @@ export function FormExamples() {
         console.log('onCancel');
         resetForm();
       }}
-      customValidation={true}
+      customValidation={bootstrapFormValidation}
       validations={{
         numberField: [
           {
@@ -61,11 +62,11 @@ export function FormExamples() {
             },
           },
         ],
-        autocompleteField1: [
+        autocompleteField: [
           {
-            message: 'Must be filled if numberField is empty',
-            validate(value, formData) {
-              return formData.numberField || value;
+            message: 'Must be filled',
+            validate(value) {
+              return value;
             },
           },
         ],
@@ -111,6 +112,14 @@ export function FormExamples() {
         ],
       }}
     >
+      <h5>Form configuration:</h5>
+      <FormGroupSwitch
+        id="bootstrapFormValidation"
+        name="bootstrapFormValidation"
+        label="Use bootstrap form validation?"
+        afterChange={(value) => setBootstrapFormValidation(value)}
+      />
+      <hr />
       <div className="row">
         <div className="col">
           <FormGroupInput name="textField" label="Text field" disabled help="Text field help" />
@@ -146,6 +155,15 @@ export function FormExamples() {
             placeholder="Type some numbers"
             help="Disabled autocomplete"
             disabled
+          />
+        </div>
+        <div className="col">
+          <FormGroupAutocomplete
+            name="autocompleteField"
+            label="Autocomplete Field with Custom Validation"
+            options={['1', '2', '3']}
+            placeholder="Type some numbers"
+            allowUnlistedValue
           />
         </div>
         <div className="col">
@@ -195,7 +213,7 @@ export function FormExamples() {
                 <strong>{option}</strong> - {option}
               </>
             )}
-            required={() => false}
+            required={() => true}
           />
         </div>
         <div className="col">

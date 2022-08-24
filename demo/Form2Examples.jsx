@@ -12,12 +12,14 @@ import {
   useFormControl2,
   useFormEffect,
   NumberMask,
+  FormGroupAutocomplete2,
 } from '../dist/main';
 
 export function Form2Examples() {
+  const [bootstrapFormValidation, setBootstrapFormValidation] = useState(false);
   return (
     <div className="pb-4">
-      Alternative Form implementation
+      <h4>Alternative Form implementation</h4>
       <Form2
         initialValues={{
           attrA: 'ABC',
@@ -51,8 +53,16 @@ export function Form2Examples() {
             }),
           };
         }}
-        customValidation={true}
+        customValidation={bootstrapFormValidation}
         validations={{
+          autocomplete2Field2: [
+            {
+              message: 'Must be filled if Autocomplete Object Options is empty',
+              validate(value, formData) {
+                return formData.autocomplete2Field1 || value;
+              },
+            },
+          ],
           attrB: [
             {
               message: 'Must be filled if AttrA is not empty',
@@ -63,6 +73,14 @@ export function Form2Examples() {
           ],
         }}
       >
+        <h5>Form configuration:</h5>
+        <FormGroupSwitch2
+          id="bootstrapForms2Validation"
+          name="bootstrapForm2Validation"
+          label="Use bootstrap form validation?"
+          afterChange={(value) => setBootstrapFormValidation(value)}
+        />
+        <hr />
         <div className="form-group">
           <label htmlFor="">Obj</label>
           <div className="form-row">
@@ -85,6 +103,44 @@ export function Form2Examples() {
           <label htmlFor="">Array of objects</label>
           <FormArrayOfObjects />
         </div>
+        <FormGroupAutocomplete2
+          name="autocomplete2Field1"
+          label="Autocomplete Object Options"
+          options={[
+            { value: { _id: '1234', name: '1234 name' }, label: '1234 Label' },
+            { value: { _id: '2345', name: '2345 name' }, label: '2345 Label' },
+            { value: { _id: '3456', name: '3456 name' }, label: '3456 Label' },
+          ]}
+          placeholder="Type some numbers"
+          trackBy="_id"
+          help="Autocomplete help"
+          allowUnlistedValue
+        />
+
+        <FormGroupAutocomplete2
+          name="autocomplete2Field2"
+          label="Autocomplete Field with Custom Validation"
+          options={['1', '2', '3']}
+          placeholder="Type some numbers"
+          allowUnlistedValue
+        />
+
+        <FormGroupAutocomplete2
+          name="autocomplete2Field3"
+          label="Autocomplete with item template"
+          options={Array.from({ length: 10 }).map((_, index) => ({
+            value: index + 1,
+            label: `${index + 1}${index + 2}${index + 3}${index + 4}`,
+          }))}
+          placeholder="Type some numbers"
+          template={(option) => (
+            <>
+              <strong>{option}</strong> - {option}
+            </>
+          )}
+          required={() => true}
+        />
+
         <FormGroupInput2 label="AttrA" name="attrA"></FormGroupInput2>
         <FormGroupInput2 label="AttrB" name="attrB"></FormGroupInput2>
         <FormGroupSelect2 label="AttrC" name="attrC" options={[1, 2, 3]}></FormGroupSelect2>
