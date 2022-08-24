@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.29](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.28...v0.26.29) (2022-08-24)
+
+
+### Bug Fixes
+
+* required form autocomplete using custom validation ([#33](https://github.com/geolaborapp/react-bootstrap-utils/issues/33)) ([3d84c67](https://github.com/geolaborapp/react-bootstrap-utils/commit/3d84c67c357e5b8bb3e3a7a4b371a415f0a7eaee))
+* required form autocomplete using native form validation ([#30](https://github.com/geolaborapp/react-bootstrap-utils/issues/30)) ([1ece0f0](https://github.com/geolaborapp/react-bootstrap-utils/commit/1ece0f0e3ab00695c3e67d48278bdb2ad4a8464a))
+
 ### [0.26.28](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.27...v0.26.28) (2022-08-12)
 
 
