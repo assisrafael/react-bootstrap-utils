@@ -161,9 +161,10 @@ export function FormExamples() {
           <FormGroupAutocomplete
             name="autocompleteField"
             label="Autocomplete Field with Custom Validation"
-            options={['1', '2', '3']}
+            options={['111', '222', '333']}
             placeholder="Type some numbers"
             allowUnlistedValue
+            required
           />
         </div>
         <div className="col">
