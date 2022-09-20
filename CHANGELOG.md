@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.30](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.29...v0.26.30) (2022-09-20)
+
+
+### Features
+
+* inclui funcionalidade de esconder aba ([#34](https://github.com/geolaborapp/react-bootstrap-utils/issues/34)) ([e54f6fa](https://github.com/geolaborapp/react-bootstrap-utils/commit/e54f6fa6dc346f5a57a84b9ccab7a84252a4976f))
+
 ### [0.26.29](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.28...v0.26.29) (2022-08-24)
 
 
