@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { isFunction } from 'js-var-type';
 
 import { formatClasses } from '../utils/attributes';
 
 import { TabHeader } from './TabHeader';
 import { TabContent } from './TabContent';
 
-export function Tabs({ vertical, tabs, activeTab, onlyRenderActiveTab, bordered, onSelect, justified, fill }) {
+export function Tabs({ vertical, tabs: _tabs, activeTab, onlyRenderActiveTab, bordered, onSelect, justified, fill }) {
+  const tabs = useMemo(() => _tabs.filter((tab) => (isFunction(tab?.hideIf) ? !tab.hideIf() : true)), [_tabs]);
+
   if (activeTab >= tabs.length) {
     // eslint-disable-next-line no-console
     console.error(`Invalid tab selected: ${activeTab}. The first tab will be selected instead.`);
@@ -78,6 +81,7 @@ Tabs.propTypes = {
     PropTypes.shape({
       title: PropTypes.node,
       content: PropTypes.node,
+      hideIf: PropTypes.func,
     })
   ).isRequired,
   vertical: PropTypes.bool,
