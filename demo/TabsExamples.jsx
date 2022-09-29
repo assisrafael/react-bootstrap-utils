@@ -69,7 +69,7 @@ export function TabsExamples() {
               { title: 'C', content: <Lorem header="Content C" /> },
             ]}
             vertical={true}
-            onSelect={console.log}
+            onSelect={(index) => console.log('Index selecionado ', index)}
           />
         </div>
         <div className="col">
@@ -82,6 +82,7 @@ export function TabsExamples() {
             ]}
             vertical={true}
             bordered={true}
+            onSelect={(index) => console.log('Index selecionado ', index)}
           />
         </div>
       </div>

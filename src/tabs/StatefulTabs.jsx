@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { isFunction } from 'js-var-type';
 
 import { useSelectedItem } from '../utils/useSelectedItem';
 
 import { Tabs } from './Tabs';
 
-export function StatefulTabs({ initialTab, tabs, ...props }) {
+export function StatefulTabs({ initialTab, tabs, onSelect, ...props }) {
   const { getSelected, select } = useSelectedItem(initialTab, tabs.length);
 
-  return <Tabs tabs={tabs} {...props} activeTab={getSelected()} onSelect={select} />;
+  const _onSelect = useCallback(
+    (index) => {
+      select(index);
+
+      if (isFunction(onSelect)) {
+        return onSelect(index);
+      }
+    },
+    [onSelect, select]
+  );
+
+  return <Tabs tabs={tabs} {...props} activeTab={getSelected()} onSelect={_onSelect} />;
 }
 
 StatefulTabs.propTypes = {
