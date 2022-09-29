@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.31](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.30...v0.26.31) (2022-09-29)
+
+
+### Bug Fixes
+
+* corrige prop onSelect do StatefulTabs ([#35](https://github.com/geolaborapp/react-bootstrap-utils/issues/35)) ([8fde4a6](https://github.com/geolaborapp/react-bootstrap-utils/commit/8fde4a6df42d2f2616e5ed229421c19deb4908d8))
+
 ### [0.26.30](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.29...v0.26.30) (2022-09-20)
 
 
