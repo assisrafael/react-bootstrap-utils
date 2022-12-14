@@ -87,6 +87,7 @@ export function TableExamples() {
                 {
                   attribute: 'selected',
                   label: '#',
+                  width: '10%',
                   format(_, __, index) {
                     return (
                       <div onClick={stopPropagation}>
@@ -98,6 +99,7 @@ export function TableExamples() {
                 {
                   attribute: 'a',
                   label: 'A',
+                  width: '40%',
                   format(v) {
                     return `${v}*`;
                   },
@@ -105,6 +107,7 @@ export function TableExamples() {
                 {
                   attribute: 'b',
                   label: 'B',
+                  width: '30%',
                   format(v, doc) {
                     return v + doc.a;
                   },
@@ -112,6 +115,7 @@ export function TableExamples() {
                 {
                   attribute: 'c',
                   label: 'C',
+                  width: '20%',
                   format(_, __, docIndex) {
                     return <strong>{docIndex + 1}</strong>;
                   },

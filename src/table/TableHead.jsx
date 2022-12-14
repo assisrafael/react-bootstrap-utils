@@ -10,7 +10,7 @@ export function TableHead({ columns, hasActions, actionLabel, columnHeaderFormat
     <thead>
       <tr>
         {filteredColumns?.map((column, columnIndex) => (
-          <th key={columnIndex} className={getColumnClass(column)}>
+          <th key={columnIndex} className={getColumnClass(column)} width={column.width}>
             {columnHeaderFormat(column.label, column.attribute, column)}
           </th>
         ))}

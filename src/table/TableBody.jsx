@@ -28,6 +28,7 @@ export function TableBody({ columns, docs, rowRole, rowClass, actions, onRowClic
               key={columnIndex}
               className={getColumnClass(column)}
               data-testid={isEmptyLike(column.dataTestId) ? '' : column.dataTestId}
+              width={column.width}
             >
               {getColumnValue(doc, column, docIndex)}
             </td>
