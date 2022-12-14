@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.32](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.31...v0.26.32) (2022-12-14)
+
+
+### Features
+
+* allow custom columns width in Table ([#36](https://github.com/geolaborapp/react-bootstrap-utils/issues/36)) ([e7c417e](https://github.com/geolaborapp/react-bootstrap-utils/commit/e7c417e30598eb2fc952b3af7cf091686692446b))
+
 ### [0.26.31](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.30...v0.26.31) (2022-09-29)
 
 
