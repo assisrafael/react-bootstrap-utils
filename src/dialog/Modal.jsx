@@ -54,6 +54,8 @@ export function Modal({
     } else {
       hideModal(modalRef);
     }
+
+    return () => hideModal(modalRef);
   }, [afterOpen, isOpen]);
 
   return (
