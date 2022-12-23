@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.34](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.32...v0.26.34) (2022-12-23)
+
+
+### Bug Fixes
+
+* corrige fechamento de modal ao desmontar componente ([#37](https://github.com/geolaborapp/react-bootstrap-utils/issues/37)) ([52a0978](https://github.com/geolaborapp/react-bootstrap-utils/commit/52a09782cb268a4bab4b3b7d5abb9e1dfe859027))
+
+### [0.26.33](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.32...v0.26.33) (2022-12-23)
+
+
+### Bug Fixes
+
+* corrige fechamento de modal ao desmontar componente ([#37](https://github.com/geolaborapp/react-bootstrap-utils/issues/37)) ([52a0978](https://github.com/geolaborapp/react-bootstrap-utils/commit/52a09782cb268a4bab4b3b7d5abb9e1dfe859027))
+
 ### [0.26.32](https://github.com/geolaborapp/react-bootstrap-utils/compare/v0.26.31...v0.26.32) (2022-12-14)
 
 
