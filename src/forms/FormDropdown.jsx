@@ -13,6 +13,7 @@ import { FormGroup } from './FormGroup';
 export const FormDropdown = ({
   afterChange,
   childClassName,
+  disabled,
   dropdownClassName,
   includeEmptyItem,
   itemClassName,
@@ -37,6 +38,10 @@ export const FormDropdown = ({
 
   const setValue = useCallback(
     (v) => {
+      if (disabled) {
+        return;
+      }
+
       const previousValue = getValue();
 
       _setValue(v);
@@ -45,7 +50,7 @@ export const FormDropdown = ({
         afterChange(v, previousValue);
       }
     },
-    [_setValue, afterChange, getValue]
+    [_setValue, afterChange, getValue, disabled]
   );
 
   const onSelectItem = useCallback(
@@ -56,9 +61,17 @@ export const FormDropdown = ({
     [close, setValue]
   );
 
-  const toggleDropdown = useCallback(() => (isOpen ? close() : open()), [close, isOpen, open]);
+  const toggleDropdown = useCallback(() => {
+    if (!disabled) {
+      return isOpen ? close() : open();
+    }
+  }, [close, isOpen, open, disabled]);
 
   useEffect(() => {
+    if (disabled) {
+      return;
+    }
+
     /* The logic in this effect allows the user to close the dropdown menu when they click outside of the component. */
     const pageClickEvent = (e) => {
       if (dropdownRef.current !== null && !dropdownRef.current.contains(e.target)) {
@@ -77,12 +90,13 @@ export const FormDropdown = ({
     return () => {
       window.removeEventListener('click', pageClickEvent);
     };
-  }, [close, isOpen, open]);
+  }, [close, disabled, isOpen, open]);
 
   return (
     <div ref={dropdownRef}>
       <Dropdown
         isOpen={isOpen}
+        isDisabled={disabled}
         items={includeEmptyItem ? [{ value: null, label: <div className="m-3"></div> }, ...items] : items}
         onSelect={onSelectItem}
         template={template}
@@ -91,7 +105,11 @@ export const FormDropdown = ({
         menuClassName={menuClassName}
       >
         <div
-          className={formatClasses(['input-group justify-content-between form-control h-auto', childClassName])}
+          className={formatClasses([
+            'input-group justify-content-between form-control h-auto',
+            childClassName,
+            disabled && 'disabled',
+          ])}
           onClick={toggleDropdown}
         >
           {selectedItem ? (
@@ -122,6 +140,7 @@ FormDropdown.defaultProps = {
 FormDropdown.propTypes = {
   afterChange: PropTypes.func,
   childClassName: PropTypes.string,
+  disabled: PropTypes.bool,
   dropdownClassName: PropTypes.string,
   includeEmptyItem: PropTypes.bool,
   itemClassName: PropTypes.string,
@@ -148,6 +167,7 @@ export function FormGroupDropdown(props) {
 FormGroupDropdown.propTypes = {
   afterChange: PropTypes.func,
   childClassName: PropTypes.string,
+  disabled: PropTypes.bool,
   dropdownClassName: PropTypes.string,
   help: PropTypes.node,
   includeEmptyItem: PropTypes.bool,

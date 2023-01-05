@@ -13,6 +13,7 @@ import {
   useFormEffect,
   NumberMask,
   FormGroupAutocomplete2,
+  FormGroupDropdown2,
 } from '../dist/main';
 
 export function Form2Examples() {
@@ -222,6 +223,46 @@ export function Form2Examples() {
             parse: currencyMask,
             format: (value) => value,
           }}
+        />
+
+        <FormGroupDropdown2
+          label="FormDropdown2"
+          name="dropdown"
+          options={[
+            {
+              value: 1,
+              label: 'Label para o valor 1',
+            },
+            {
+              value: 2,
+              label: 'Label para o valor 2',
+            },
+            {
+              value: 3,
+              label: 'Label para o valor 3',
+            },
+          ]}
+          template={(linha) => <p className="mb-0">{linha}</p>}
+        />
+        <FormGroupDropdown2
+          label="FormDropdown2 disabled"
+          name="dropdown-desabilitado"
+          options={[
+            {
+              value: 1,
+              label: 'Label para o valor 1',
+            },
+            {
+              value: 2,
+              label: 'Label para o valor 2',
+            },
+            {
+              value: 3,
+              label: 'Label para o valor 3',
+            },
+          ]}
+          template={(linha) => <p className="mb-0">{linha}</p>}
+          disabled
         />
       </Form2>
     </div>
