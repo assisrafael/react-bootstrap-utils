@@ -30,8 +30,13 @@ export function useDialog({ onlyRenderContentIfIsOpen = true, ...props }) {
   };
 }
 
-export function Dialog({ children, onlyRenderContentIfIsOpen, ...props }) {
+export function Dialog({ children, onlyRenderContentIfIsOpen, onClose, ...props }) {
   const { isOpen, open, close } = useOpenState();
+
+  const onCloseDialog = async () => {
+    await onClose();
+    close();
+  }
 
   return (
     <React.Fragment>
@@ -41,7 +46,7 @@ export function Dialog({ children, onlyRenderContentIfIsOpen, ...props }) {
         <></>
       ) : (
         <ModalPortal isOpen={isOpen()} title={props.title}>
-          <Modal {...props} onClose={close} isOpen={isOpen()} />
+          <Modal {...props} onClose={onCloseDialog} isOpen={isOpen()} />
         </ModalPortal>
       )}
     </React.Fragment>
@@ -49,6 +54,7 @@ export function Dialog({ children, onlyRenderContentIfIsOpen, ...props }) {
 }
 
 Dialog.defaultProps = {
+  onClose: () => {},
   onlyRenderContentIfIsOpen: true,
 };
 
@@ -60,6 +66,7 @@ Dialog.propTypes = {
   footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   keyboard: PropTypes.bool,
   onlyRenderContentIfIsOpen: PropTypes.bool,
+  onClose: PropTypes.func,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl', '']),
   staticBackdrop: PropTypes.bool,
